@@ -12,7 +12,7 @@ so.
 |---|---|---|---|---:|
 | `agent-acceptance` | `agent-acceptance` | Governance, acceptance, TaskSpec/Gate0 contracts | `codex/paper-archive-final-verdict-boundary` | `1b1fad5808f288f48ae1e9a49f65ff765060e6fb` |
 | `devframe-control-plane` | `devframe-control-plane` | Queue/dispatch/control-plane candidate | `codex/lease-source-lock-contracts` | `49c6be859dd726092fc433cc18cb7ea9537498da` |
-| `dev-frame-opencode` | `dev-frame-opencode` | Controlled coding runtime candidate | `codex/paper-user-visible-mojibake-cleanup` | `4ab02c8999304ab35c7abf2e665bdaef05b2b82b` |
+| `dev-frame-opencode` | `dev-frame-opencode` | Controlled coding runtime candidate | `codex/post-run-write-set-hard-gate` | `7a1278b09e5427b5af7d3731f3e90c25796c0ee0` |
 | `test-frame` | `test-frame` | Controlled verification runtime candidate | `codex/adapter-negative-matrix` | `71caa1c242d9a85d185c4e29ee24eb078183ffd5` |
 
 ## Boundary Rules

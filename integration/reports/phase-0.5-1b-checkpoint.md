@@ -16,7 +16,7 @@ superproject has advanced submodule gitlinks to committed branch tips.
 |---|---|---|---|
 | `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `1b1fad5` | Path drift, expired authorization, HUMAN_REQUIRED preservation, and paper archive SD-04 final-verdict boundary |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `49c6be8` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion |
-| `dev-frame-opencode` | `codex/paper-user-visible-mojibake-cleanup` | Pinned at `4ab02c8` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, and focused mojibake cleanup |
+| `dev-frame-opencode` | `codex/post-run-write-set-hard-gate` | Pinned at `7a1278b` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, focused mojibake cleanup, and post-run write-set hard gate |
 | `test-frame` | `codex/adapter-negative-matrix` | Pinned at `71caa1c` | Adapter mapping, required/optional profile semantics, fake-green canaries |
 
 ## Paper Focus
@@ -61,10 +61,14 @@ Completed in the `dev-frame-opencode` submodule branch:
 - Added `agent-acceptance` closure validator SD-04 checks so paper
   reviewer-pack/report/test/zip artifacts cannot claim final verdict authority
   or promote `needs_more_evidence` to final acceptance.
+- Added OpenCode goal-runner post-run write-set enforcement. It checks
+  `state.json.changed_files` against `allowed_files`, `write_set`, or
+  `conflict_registry.write_set`, and fails forbidden/out-of-scope files with
+  `diff_scope_ok=false`.
 
 Still open:
 
-- Post-run `changed_files subset of write_set` hard gate.
+- Control-plane runtime SourceLock/WorkerLease enforcement.
 - Real WriteLab paragraph-text flow requires fresh RuntimeAuthorization.
 - Broader dispatch/test-frame runtime artifacts still need equivalent
   verdict-separation probes before live runtime use.

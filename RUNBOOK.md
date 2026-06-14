@@ -61,10 +61,10 @@ Current submodule branch outputs:
 
 | Module | Branch | Main-thread status |
 |---|---|---|
-| `agent-acceptance` | `codex/devframe-system-path-gate0-contract` | Reviewer Index returned; parent pin pending |
-| `devframe-control-plane` | `codex/lease-source-lock-contracts` | Reviewer Index returned; parent pin pending |
-| `test-frame` | `codex/adapter-negative-matrix` | Reviewer Index returned; parent pin pending |
-| `dev-frame-opencode` | `codex/runtime-authorization-contract` | Reviewer Index returned; parent pin pending |
+| `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `1b1fad5`; archive SD-04 final-verdict boundary active |
+| `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `49c6be8`; runtime enforcement remains future work |
+| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `71caa1c`; canary implementation remains future work |
+| `dev-frame-opencode` | `codex/post-run-write-set-hard-gate` | Pinned at `7a1278b`; paper runtime/privacy/write-scope boundaries active |
 
 ## Paper Focus
 

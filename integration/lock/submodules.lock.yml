@@ -20,8 +20,8 @@ modules:
   dev-frame-opencode:
     path: "dev-frame-opencode"
     role: "opencode_workflow_runtime_candidate"
-    branch: "codex/paper-user-visible-mojibake-cleanup"
-    commit: "4ab02c8999304ab35c7abf2e665bdaef05b2b82b"
+    branch: "codex/post-run-write-set-hard-gate"
+    commit: "7a1278b09e5427b5af7d3731f3e90c25796c0ee0"
     remote: "https://github.com/RD2100/dev-frame-opencode.git"
   test-frame:
     path: "test-frame"

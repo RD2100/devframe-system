@@ -99,8 +99,8 @@ Paper functionality is not complete until all of the following are true:
 
 ## Current Paper Branch Evidence
 
-- `dev-frame-opencode` branch: `codex/paper-user-visible-mojibake-cleanup`
-- Pinned commit: `4ab02c8999304ab35c7abf2e665bdaef05b2b82b`
+- `dev-frame-opencode` branch: `codex/post-run-write-set-hard-gate`
+- Pinned commit: `7a1278b09e5427b5af7d3731f3e90c25796c0ee0`
 - Paper text fix files:
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/contracts/paper_task_spec.schema.json`
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/fixtures/paper_task_spec.sample.yaml`
@@ -192,6 +192,14 @@ Paper functionality is not complete until all of the following are true:
   - `pytest tests\test_workflow_closure_validation.py -q` -> `18 passed in 0.10s`.
   - `pytest tests\test_workflow_closure_validation.py tests\test_paper_acceptance_contracts.py tests\test_paper_privacy_boundaries.py tests\test_paper_go_nogo.py -q` -> `48 passed in 0.20s` with existing tuple-return warnings in `tests/test_paper_acceptance_contracts.py`.
   - Real CLI probe with a synthetic bad `reviewer_pack.json` ZIP -> `WORKFLOW_CLOSURE_VALIDATION.result=fail` and SD-04 blocking issues for final-verdict promotion.
+- Post-run write-set hard gate added in commit `7a1278b`:
+  - `ai-workflow-hub/src/ai_workflow_hub/goal_runner.py`
+  - `ai-workflow-hub/tests/test_batch_retry.py`
+- Verification observed by the main thread for commit `7a1278b`:
+  - `python -m py_compile src\ai_workflow_hub\goal_runner.py tests\test_batch_retry.py` -> passed.
+  - `pytest tests\test_batch_retry.py tests\test_stage3b_idempotency.py tests\test_workflow_nodes.py -q` -> `14 passed, 1 skipped in 0.60s`.
+  - `pytest tests\test_paper_runtime.py tests\test_paper_cli.py -q` -> `130 passed in 13.37s`.
+  - `git diff --check` passed with CRLF warnings only.
 
 Remaining hard boundary: real paper content remains blocked unless a fresh
 RuntimeAuthorization with `data_policy.paper_sensitive_input=explicit_allow`,
