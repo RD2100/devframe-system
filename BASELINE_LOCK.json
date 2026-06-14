@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-14T11:50:00+08:00",
+  "route": "ROUTE_A_STRICT_CLEAN_BASELINE",
+  "merge_type": "git_superproject_with_submodules",
+  "executed_external_runtime": false,
+  "source_repositories": [
+    {
+      "project_id": "agent-acceptance",
+      "path": "agent-acceptance",
+      "role": "governance_acceptance_framework",
+      "remote": "https://github.com/RD2100/agent-acceptance.git",
+      "branch": "master",
+      "commit": "285d5c906a074ce7c689c8f656caabbdb32af8dc",
+      "pre_pin_status": "clean_head_equals_upstream"
+    },
+    {
+      "project_id": "devframe-control-plane",
+      "path": "devframe-control-plane",
+      "role": "control_plane_runtime_candidate",
+      "remote": "git@github.com:RD2100/devframe-control-plane.git",
+      "branch": "codex/route-a-baseline-candidate",
+      "commit": "311847818927d3c7ec8c8718949b38c74605fc83",
+      "pre_pin_status": "clean_head_equals_upstream"
+    },
+    {
+      "project_id": "dev-frame-opencode",
+      "path": "dev-frame-opencode",
+      "role": "opencode_workflow_runtime_candidate",
+      "remote": "git@github.com:RD2100/dev-frame-opencode.git",
+      "branch": "master",
+      "commit": "3a3aa5722bd6015bec30a8e9190140148b45167c",
+      "pre_pin_status": "clean_head_equals_upstream"
+    },
+    {
+      "project_id": "test-frame",
+      "path": "test-frame",
+      "role": "controlled_verification_runtime_candidate",
+      "remote": "git@github.com:RD2100/test-frame.git",
+      "branch": "codex/harden-baseline",
+      "commit": "aeb4a31f770e35e7f698e5c3169406ddba231a4d",
+      "pre_pin_status": "clean_head_equals_upstream"
+    }
+  ],
+  "verification": {
+    "source_preflight_before_bootstrap": "all_sources_passed; target_required_bootstrap_approval",
+    "superproject_checks_required": [
+      "git submodule status --recursive",
+      "git status --porcelain=v1 -uall",
+      "git diff --check"
+    ]
+  }
+}

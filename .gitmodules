@@ -1,0 +1,16 @@
+[submodule "agent-acceptance"]
+	path = agent-acceptance
+	url = https://github.com/RD2100/agent-acceptance.git
+	branch = master
+[submodule "devframe-control-plane"]
+	path = devframe-control-plane
+	url = git@github.com:RD2100/devframe-control-plane.git
+	branch = codex/route-a-baseline-candidate
+[submodule "test-frame"]
+	path = test-frame
+	url = git@github.com:RD2100/test-frame.git
+	branch = codex/harden-baseline
+[submodule "dev-frame-opencode"]
+	path = dev-frame-opencode
+	url = git@github.com:RD2100/dev-frame-opencode.git
+	branch = master
