@@ -28,8 +28,8 @@
       "path": "dev-frame-opencode",
       "role": "opencode_workflow_runtime_candidate",
       "remote": "https://github.com/RD2100/dev-frame-opencode.git",
-      "branch": "codex/paper-governance-finalizer-boundary",
-      "commit": "ee08dd181fc992eed3f58754038375933c31145b",
+      "branch": "codex/paper-user-visible-mojibake-cleanup",
+      "commit": "4ab02c8999304ab35c7abf2e665bdaef05b2b82b",
       "pre_pin_status": "clean_submodule_branch_committed"
     },
     {

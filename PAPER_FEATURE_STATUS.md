@@ -77,12 +77,12 @@ Core implementation areas:
 | ID | Severity | Gap | Evidence | Desired outcome |
 |---|---|---|---|---|
 | PAPER-001 | P1 | User-visible schema/fixture text is mojibake in at least `paper_task_spec.schema.json` and `paper_task_spec.sample.yaml` | Fixed and pinned in `dev-frame-opencode` commit `08c76bb`; JSON/YAML parse and static pytest passed | Preserve field names, required fields, enums, and schema structure in future edits |
-| PAPER-002 | P1 | Paper full-text privacy boundary needs a project-level gate | Runtime/API gate pinned in `145fc05`; audit bundle sensitive scan pinned in `cb34be3`; live WriteLab authorization guard pinned in `ea0758a`; reviewer-pack boundary pinned in `51215f1`; finalizer acceptance boundary pinned in `ee08dd1`; unauthorized raw `paragraph_text`/`writelab_token` becomes `human_required`, audit ZIP candidates fail closed on unredacted sensitive artifacts, direct live WriteLab calls block before HTTP dispatch without explicit `paragraph_text` authorization, closeout reports carry non-authoritative redacted reviewer-pack metadata, and graph finalization cannot be promoted by report/artifact pass fields | Add archive-side governance probes before any real paper content run |
+| PAPER-002 | P1 | Paper full-text privacy boundary needs a project-level gate | Runtime/API gate pinned in `145fc05`; audit bundle sensitive scan pinned in `cb34be3`; live WriteLab authorization guard pinned in `ea0758a`; reviewer-pack boundary pinned in `51215f1`; finalizer acceptance boundary pinned through `4ab02c8`; unauthorized raw `paragraph_text`/`writelab_token` becomes `human_required`, audit ZIP candidates fail closed on unredacted sensitive artifacts, direct live WriteLab calls block before HTTP dispatch without explicit `paragraph_text` authorization, closeout reports carry non-authoritative redacted reviewer-pack metadata, and graph finalization cannot be promoted by report/artifact pass fields | Add archive-side governance probes before any real paper content run |
 | PAPER-003 | P1 | CLI command completeness is broad but not summarized for users | Fixed and pinned in `3395033`: `docs/paper/PAPER_CLI_STATUS_MATRIX.md` maps paper commands and three status layers | Keep the matrix current as commands evolve |
-| PAPER-004 | P1 | Runtime success, human_required, blocked, and final acceptance boundaries need integration-level assertions | Fixed at CLI boundary in `3395033` and graph finalizer boundary in `ee08dd1`: non-JSON output, JSON/report fields, and production finalizer state distinguish workflow status from final acceptance; tests cover accepted, accepted_with_limitation, blocked, needs_more_evidence, and fake reviewer-pack/artifact pass fields | Extend the same boundary into agent-acceptance archive/final verdict integration |
+| PAPER-004 | P1 | Runtime success, human_required, blocked, and final acceptance boundaries need integration-level assertions | Fixed at CLI boundary in `3395033` and graph finalizer boundary in `ee08dd1`, then pinned through `4ab02c8`: non-JSON output, JSON/report fields, and production finalizer state distinguish workflow status from final acceptance; tests cover accepted, accepted_with_limitation, blocked, needs_more_evidence, and fake reviewer-pack/artifact pass fields | Extend the same boundary into agent-acceptance archive/final verdict integration |
 | PAPER-005 | P2 | WriteLab/offline handoff path needs current compatibility proof | Fixed and pinned in `dev-frame-opencode` commit `72d1dbd`; tracked `mock_handoff.zip` restored, manifest SHA/size values match ZIP entries, and `test_writelab_adapter.py` now asserts ZIP manifest consistency | Keep the fixture in CI and add future negative fixtures for privacy-attestation and integrity failures |
 | PAPER-006 | P2 | Paper evidence reports need redacted reviewer pack shape | Fixed and pinned in `51215f1`: `paper report` includes `reviewer_pack`, `schemas/paper_redacted_evidence_pack.schema.json` validates its boundary fields, and tests prove raw payload/token strings are omitted while summary text cannot override structured acceptance | Keep reviewer-pack schema current as governance-level EvidenceManifest contracts mature |
-| PAPER-007 | P2 | Additional user-facing paper adapter/client evidence strings may still contain mojibake | Static sub-agent read on 2026-06-15 | Fix remaining user-visible output strings in a focused follow-up with snapshot checks |
+| PAPER-007 | P2 | Additional user-facing paper adapter/client evidence strings may still contain mojibake | Focused cleanup pinned in `4ab02c8`; Unicode scan of `ai-workflow-hub` source/tests/paper docs/schemas found no remaining target mojibake after cleanup, except legitimate BibTeX Latin character mappings | Keep the scan pattern available for future text/report edits |
 
 ## Paper Completion Criteria
 
@@ -99,8 +99,8 @@ Paper functionality is not complete until all of the following are true:
 
 ## Current Paper Branch Evidence
 
-- `dev-frame-opencode` branch: `codex/paper-governance-finalizer-boundary`
-- Pinned commit: `ee08dd181fc992eed3f58754038375933c31145b`
+- `dev-frame-opencode` branch: `codex/paper-user-visible-mojibake-cleanup`
+- Pinned commit: `4ab02c8999304ab35c7abf2e665bdaef05b2b82b`
 - Paper text fix files:
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/contracts/paper_task_spec.schema.json`
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/fixtures/paper_task_spec.sample.yaml`
@@ -177,6 +177,13 @@ Paper functionality is not complete until all of the following are true:
   - `python -m pytest tests/test_paper_cli.py tests/test_paper_cli_a18b.py tests/test_paper_a19_safe_e2e.py tests/test_paper_a23_closeout_report.py tests/test_paper_a23b_closeout_hardening.py tests/test_paper_a24_artifact_binding.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py -q` -> `173 passed in 5.38s`.
   - `python -m pytest tests/test_writelab_client.py tests/test_paper_runtime.py tests/test_paper_graph.py tests/test_paper_evidence_pipeline.py tests/test_writelab_adapter.py -q` -> `278 passed in 16.16s`.
   - `python -m pytest tests/test_paper_a19_safe_e2e.py tests/test_paper_a20_real_e2e.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py tests/test_paper_a27_audit_polish.py tests/test_paper_a28_verify_command.py -q` -> `115 passed in 4.01s`.
+- Focused mojibake cleanup added in commit `4ab02c8`:
+  - `ai-workflow-hub/src/ai_workflow_hub/goal_runner.py`
+- Verification observed by the main thread for commit `4ab02c8`:
+  - Unicode scan across `ai-workflow-hub/src`, `tests`, `docs/paper`, and `schemas` -> `invalid_utf8 0`; no target mojibake findings remain except legitimate BibTeX Latin character mappings.
+  - `python -m py_compile src/ai_workflow_hub/goal_runner.py` -> passed.
+  - `pytest tests/test_batch_retry.py tests/test_stage3b_idempotency.py -q` -> `11 passed in 0.50s`.
+  - `git diff --check` passed with CRLF warnings only.
 
 Remaining hard boundary: real paper content remains blocked unless a fresh
 RuntimeAuthorization with `data_policy.paper_sensitive_input=explicit_allow`,

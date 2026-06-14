@@ -1,7 +1,7 @@
 # Integration Status
 
 Date: 2026-06-15
-Status: Phase 0.5 complete; Phase 1B paper privacy gate, handoff fixture, audit scan, live WriteLab guard, CLI status boundary, redacted reviewer pack boundary, and finalizer acceptance boundary advanced
+Status: Phase 0.5 complete; Phase 1B paper privacy gate, handoff fixture, audit scan, live WriteLab guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, and focused mojibake cleanup advanced
 Route: ROUTE_A_STRICT_CLEAN_BASELINE
 
 ## Current State
@@ -19,7 +19,7 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 |---|---|---:|---|
 | `agent-acceptance` | Governance and acceptance framework | `88dd58183e705f1df07c32b690ab56766c643642` | Contract branch pinned |
 | `devframe-control-plane` | Control-plane runtime candidate | `49c6be859dd726092fc433cc18cb7ea9537498da` | Contract branch pinned |
-| `dev-frame-opencode` | Controlled coding runtime candidate | `ee08dd181fc992eed3f58754038375933c31145b` | Runtime/paper privacy gate, WriteLab handoff fixture, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, and finalizer acceptance boundary branch pinned |
+| `dev-frame-opencode` | Controlled coding runtime candidate | `4ab02c8999304ab35c7abf2e665bdaef05b2b82b` | Runtime/paper privacy gate, WriteLab handoff fixture, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, and focused mojibake cleanup branch pinned |
 | `test-frame` | Controlled verification runtime candidate | `71caa1c242d9a85d185c4e29ee24eb078183ffd5` | Adapter contract branch pinned |
 
 ## Current Gaps
@@ -31,7 +31,7 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 | Independent A120 ZIP verifier | P1 | Implemented | `scripts/review_a120_evidence_zip.py` produced `PASS_WITH_BOUNDARY`; reports are stored under `integration/reports/a120`. This is evidence review, not final acceptance. |
 | `control-plane` lease/heartbeat/cancellation runtime | P0/P1 | Contracted and pinned | Commit `49c6be8` adds DispatchAssignment, WorkerLease, runtime SourceLock, AuditEvent, FailureRecord contracts. Runtime enforcement remains future work. |
 | `test-frame` adapter/failure semantics | P1 | Contracted and pinned | Commit `71caa1c` maps RunSpec/EvidenceManifest/ExecutionReport and adds canary guidance. It remains a verification runtime candidate, not a final verdict source. |
-| Paper feature usability and privacy boundary | P1 | Runtime/API privacy gate, WriteLab handoff fixture coverage, audit bundle sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, and finalizer acceptance boundary pinned | Commit `ee08dd1` adds production-path `final_acceptance` output from the paper finalizer and proves reviewer-pack/report/artifact status cannot promote non-accepted results. It includes the `51215f1` reviewer-pack schema/report boundary. Verification passed 100 graph tests, 130 runtime/CLI tests, 173 CLI/report/audit tests, 278 runtime/graph/WriteLab tests, and 115 audit/e2e tests. Remaining work is scattered user-visible mojibake cleanup and archive-side governance integration. |
+| Paper feature usability and privacy boundary | P1 | Runtime/API privacy gate, WriteLab handoff fixture coverage, audit bundle sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, and focused mojibake cleanup pinned | Commit `ee08dd1` adds production-path `final_acceptance` output from the paper finalizer and proves reviewer-pack/report/artifact status cannot promote non-accepted results. Commit `4ab02c8` cleans the remaining focused mojibake hits found in goal-runner review text; a Unicode scan across `ai-workflow-hub` source/tests/paper docs/schemas now leaves only legitimate BibTeX Latin character mappings. Remaining work is archive-side governance integration. |
 | Final verdict authority | P0 | Open | Dispatch, execution, test, review, and governance results must remain distinct. |
 
 ## Allowed Next Work

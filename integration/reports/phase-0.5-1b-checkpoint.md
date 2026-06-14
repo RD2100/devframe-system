@@ -16,7 +16,7 @@ superproject has advanced submodule gitlinks to committed branch tips.
 |---|---|---|---|
 | `agent-acceptance` | `codex/devframe-system-path-gate0-contract` | Pinned at `88dd581` | Path drift, expired authorization, HUMAN_REQUIRED preservation |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `49c6be8` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion |
-| `dev-frame-opencode` | `codex/paper-governance-finalizer-boundary` | Pinned at `ee08dd1` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, and finalizer acceptance boundary |
+| `dev-frame-opencode` | `codex/paper-user-visible-mojibake-cleanup` | Pinned at `4ab02c8` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, and focused mojibake cleanup |
 | `test-frame` | `codex/adapter-negative-matrix` | Pinned at `71caa1c` | Adapter mapping, required/optional profile semantics, fake-green canaries |
 
 ## Paper Focus
@@ -55,10 +55,12 @@ Completed in the `dev-frame-opencode` submodule branch:
 - Added production-path `final_acceptance` output in the paper finalizer.
   It is true only for accepted, completed, unblocked runs and ignores
   reviewer-pack, closeout, validation, and artifact-verification claims.
+- Cleaned remaining focused mojibake hits in goal-runner review comments and
+  reran the Unicode scan across `ai-workflow-hub` source/tests/paper
+  docs/schemas; only legitimate BibTeX Latin mappings remain.
 
 Still open:
 
-- Remaining scattered user-visible mojibake in paper adapter/client output strings.
 - Post-run `changed_files subset of write_set` hard gate.
 - Real WriteLab paragraph-text flow requires fresh RuntimeAuthorization.
 - Archive-side agent-acceptance integration must still reject any promotion
