@@ -2,7 +2,7 @@
 
 Date: 2026-06-15
 Primary module: `dev-frame-opencode/ai-workflow-hub`
-Status: Active development focus; Security Preflight P1 fix candidate ready; runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, paper audit privacy hard gate, Security Preflight P1 gates, and cross-module final-verdict boundaries pinned
+Status: Active development focus; Security Preflight P1 review pass with boundary; runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, paper audit privacy hard gate, Security Preflight P1 gates, and cross-module final-verdict boundaries pinned
 
 ## Current Surface
 
@@ -74,9 +74,9 @@ Core implementation areas:
 - Paper audit/report privacy hard gates now reject or redact direct
   `paragraph`, `matched_text`, and `text_span` payload keys before they can
   enter closeout/reviewer-pack/audit outputs.
-- Security Preflight P1 fix candidates now add deny-by-default TaskSpec
+- Security Preflight P1 review now covers deny-by-default TaskSpec
   verification command allowlisting, structured review-recovery verdict
-  requirements, and daemon-side write authorization/risk gating.
+  requirements, and daemon-side structured write authorization/risk gating.
 - `test-frame` now carries paper/WriteLab reviewer-pack negative fixtures for
   no-tests-run, fake green, summary-as-final-verdict, artifact outside root,
   token leakage, raw paragraph leakage, `human_required` promotion, and missing
@@ -90,7 +90,7 @@ Core implementation areas:
 | ID | Severity | Gap | Evidence | Desired outcome |
 |---|---|---|---|---|
 | PAPER-001 | P1 | User-visible schema/fixture text is mojibake in at least `paper_task_spec.schema.json` and `paper_task_spec.sample.yaml` | Fixed and pinned in `dev-frame-opencode` commit `08c76bb`; JSON/YAML parse and static pytest passed | Preserve field names, required fields, enums, and schema structure in future edits |
-| PAPER-002 | P1 | Paper full-text privacy boundary needs a project-level gate | Runtime/API gate pinned in `145fc05`; audit bundle sensitive scan pinned in `cb34be3`; live WriteLab authorization guard pinned in `ea0758a`; reviewer-pack boundary pinned in `51215f1`; finalizer acceptance boundary pinned through `4ab02c8`; archive SD-04/SD-05 boundary pinned in `b505bf7`; paper audit privacy hard gate pinned in `8119c85`; Security Preflight P1 gate candidate pinned in `4558ab8`; unauthorized raw `paragraph_text`/`writelab_token` becomes `human_required`, audit ZIP candidates fail closed on unredacted sensitive artifacts, direct live WriteLab calls block before HTTP dispatch without explicit `paragraph_text` authorization, closeout reports carry non-authoritative redacted reviewer-pack metadata, graph finalization cannot be promoted by report/artifact pass fields, closure validation rejects reviewer-pack/report/test/zip/dispatch/test-frame/control-plane final-verdict promotion, and daemon/CLI paths have fix-candidate security gates | Keep real paper content blocked until fresh RuntimeAuthorization is issued and Security Preflight independent review passes |
+| PAPER-002 | P1 | Paper full-text privacy boundary needs a project-level gate | Runtime/API gate pinned in `145fc05`; audit bundle sensitive scan pinned in `cb34be3`; live WriteLab authorization guard pinned in `ea0758a`; reviewer-pack boundary pinned in `51215f1`; finalizer acceptance boundary pinned through `4ab02c8`; archive SD-04/SD-05 boundary pinned in `b505bf7`; paper audit privacy hard gate pinned in `8119c85`; Security Preflight P1 review pass pinned in `40ee21b`; unauthorized raw `paragraph_text`/`writelab_token` becomes `human_required`, audit ZIP candidates fail closed on unredacted sensitive artifacts, direct live WriteLab calls block before HTTP dispatch without explicit `paragraph_text` authorization, closeout reports carry non-authoritative redacted reviewer-pack metadata, graph finalization cannot be promoted by report/artifact pass fields, closure validation rejects reviewer-pack/report/test/zip/dispatch/test-frame/control-plane final-verdict promotion, and daemon/CLI paths have reviewed security gates | Keep real paper content blocked until fresh RuntimeAuthorization is issued |
 | PAPER-003 | P1 | CLI command completeness is broad but not summarized for users | Fixed and pinned in `3395033`: `docs/paper/PAPER_CLI_STATUS_MATRIX.md` maps paper commands and three status layers | Keep the matrix current as commands evolve |
 | PAPER-004 | P1 | Runtime success, human_required, blocked, and final acceptance boundaries need integration-level assertions | Fixed at CLI boundary in `3395033`, graph finalizer boundary in `ee08dd1`, and archive SD-04 boundary in `1b1fad5`: non-JSON output, JSON/report fields, production finalizer state, and closure validation distinguish workflow status from final acceptance; tests cover accepted, accepted_with_limitation, blocked, needs_more_evidence, fake reviewer-pack/artifact pass fields, and reviewer-pack/report/test/zip promotion attempts | Extend equivalent boundary probes to future dispatch/test-frame runtime artifacts |
 | PAPER-005 | P2 | WriteLab/offline handoff path needs current compatibility proof | Fixed and pinned in `dev-frame-opencode` commit `72d1dbd`; tracked `mock_handoff.zip` restored, manifest SHA/size values match ZIP entries, and `test_writelab_adapter.py` now asserts ZIP manifest consistency | Keep the fixture in CI and add future negative fixtures for privacy-attestation and integrity failures |
@@ -113,7 +113,7 @@ Paper functionality is not complete until all of the following are true:
 ## Current Paper Branch Evidence
 
 - `dev-frame-opencode` branch: `codex/paper-audit-privacy-hard-gate`
-- Pinned commit: `4558ab819ceacd8998c5b295f51f790c21e55857`
+- Pinned commit: `40ee21b56e1bf96bd4874098e251eb23c9d05a35`
 - Paper text fix files:
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/contracts/paper_task_spec.schema.json`
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/fixtures/paper_task_spec.sample.yaml`
@@ -230,6 +230,17 @@ Paper functionality is not complete until all of the following are true:
   - `PYTHONPATH=D:\devframe-system\dev-frame-opencode\ai-workflow-hub\src; python -m pytest ai-workflow-hub\tests\test_batch_retry.py ai-workflow-hub\tests\test_stage3b_idempotency.py -q` -> `14 passed in 0.59s`.
   - `python -m compileall -q ai-workflow-hub\src` -> passed.
   - `git diff --check` passed.
+- Daemon authorization trust-boundary fix added in commit `40ee21b`:
+  - `ai-workflow-hub/src/ai_workflow_hub/daemon.py`
+  - `ai-workflow-hub/tests/test_paper_a21_daemon_queue_e2e.py`
+- Main-thread verification for commit `40ee21b`:
+  - `PYTHONPATH=D:\devframe-system\dev-frame-opencode\ai-workflow-hub\src; python -m pytest ai-workflow-hub\tests\test_security_preflight_p1.py ai-workflow-hub\tests\test_paper_a21_daemon_queue_e2e.py ai-workflow-hub\tests\test_paper_a22_daemon_soak_hardening.py ai-workflow-hub\tests\test_paper_runtime.py -q` -> `146 passed in 12.91s`.
+  - `PYTHONPATH=D:\devframe-system\dev-frame-opencode\ai-workflow-hub\src; python -m pytest ai-workflow-hub\tests\test_batch_retry.py ai-workflow-hub\tests\test_stage3b_idempotency.py -q` -> `14 passed in 0.60s`.
+  - `python -m compileall -q ai-workflow-hub\src` -> passed.
+  - `git diff --check` passed.
+- Independent review for commit `40ee21b`:
+  - `agent-acceptance` -> `SECURITY_PREFLIGHT_REVIEW_PASS`.
+  - `test-frame` -> `NEGATIVE_MATRIX_REVIEW_PASS`.
 - Paper reviewer-pack negative fixtures added in `test-frame` commit
   `be27de0`:
   - `docs/agent-runtime/negative-test-fixtures/NEG-031` through `NEG-038`
@@ -249,12 +260,12 @@ Paper functionality is not complete until all of the following are true:
 Current security gate:
 
 - `integration/reports/security-preflight-2026-06-15.md`
-- `PROJECT_STAGE: SECURITY_PREFLIGHT_FIX_CANDIDATE_READY`
-- P1 security findings have fix candidates pinned in `dev-frame-opencode`
-  commit `4558ab8` for TaskSpec command execution boundary, exit-code based
-  review recovery, and daemon queued write authorization.
-- Independent Security Preflight review is still required before Paper Function
-  Business Capability Validation.
+- `PROJECT_STAGE: SECURITY_PREFLIGHT_REVIEW_PASS`
+- P1 security findings have independent review pass with boundary after
+  `dev-frame-opencode` commits `4558ab8` and `40ee21b`.
+- Paper Function Business Capability Validation can start on synthetic/offline
+  evidence; real paper content and live WriteLab flows still require fresh
+  RuntimeAuthorization.
 
 Remaining hard boundary: real paper content remains blocked unless a fresh
 RuntimeAuthorization with `data_policy.paper_sensitive_input=explicit_allow`,

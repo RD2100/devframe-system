@@ -11,9 +11,9 @@ Current reports:
   four-submodule contract branches, paper focus, and static verification
   checkpoint.
 - `security-preflight-2026-06-15.md` records the canonical clean baseline,
-  SkillSpector availability, focused security findings, P1 fix candidate
-  commit `4558ab8`, and independent-review boundary before Paper Function
-  Business Capability Validation.
+  SkillSpector availability, focused security findings, P1 fix commits
+  `4558ab8` and `40ee21b`, and independent-review pass boundary before Paper
+  Function Business Capability Validation.
 - `a120/a120-evidence-zip-review.json` and
   `a120/a120-evidence-zip-review.md` record the independent A120 evidence ZIP
   review boundary.
