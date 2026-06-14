@@ -16,7 +16,7 @@ superproject has advanced submodule gitlinks to committed branch tips.
 |---|---|---|---|
 | `agent-acceptance` | `codex/devframe-system-path-gate0-contract` | Pinned at `88dd581` | Path drift, expired authorization, HUMAN_REQUIRED preservation |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `49c6be8` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion |
-| `dev-frame-opencode` | `codex/writelab-handoff-fixture` | Pinned at `72d1dbd` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, and WriteLab handoff fixture coverage |
+| `dev-frame-opencode` | `codex/paper-audit-sensitive-scan` | Pinned at `cb34be3` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, and audit sensitive scan |
 | `test-frame` | `codex/adapter-negative-matrix` | Pinned at `71caa1c` | Adapter mapping, required/optional profile semantics, fake-green canaries |
 
 ## Paper Focus
@@ -35,10 +35,13 @@ Completed in the `dev-frame-opencode` submodule branch:
 - Restored tracked `mock_handoff.zip` coverage for WriteLab handoff conversion.
 - Added a regression test that asserts ZIP `manifest.json` matches the tracked
   `mock_manifest.json`.
+- Added an audit ZIP preflight scan that fails closed when candidate text
+  artifacts contain unredacted paper sensitive fields, Bearer tokens, WriteLab
+  paragraph payloads, or matched-text payloads.
 
 Still open:
 
-- Old evidence audit scans and full redacted reviewer pack shape for paper evidence.
+- Full redacted reviewer pack shape for paper evidence.
 - Remaining scattered user-visible mojibake in paper adapter/client output strings.
 - Post-run `changed_files subset of write_set` hard gate.
 - Real WriteLab paragraph-text flow requires fresh RuntimeAuthorization.
@@ -61,6 +64,9 @@ Allowed static verification only:
 - Wider related paper/WriteLab group:
   `python -m pytest -p no:cacheprovider tests\test_writelab_adapter.py tests\test_writelab_client.py tests\test_paper_acceptance_gate.py tests\test_paper_graph.py -q`
   -> `221 passed in 5.32s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest -p no:cacheprovider tests\test_paper_a26_audit_hardening.py -q` -> `17 passed in 1.14s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest -p no:cacheprovider tests\test_paper_a25_audit_package.py tests\test_paper_a26_audit_hardening.py tests\test_paper_cli_a18b.py -q` -> `62 passed in 2.06s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest -p no:cacheprovider tests\test_paper_runtime.py tests\test_writelab_adapter.py -q` -> `143 passed in 13.20s`.
 
 ## Known Boundary
 
