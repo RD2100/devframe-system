@@ -20,8 +20,8 @@ modules:
   dev-frame-opencode:
     path: "dev-frame-opencode"
     role: "opencode_workflow_runtime_candidate"
-    branch: "codex/paper-redacted-reviewer-pack"
-    commit: "51215f1b060fe760ebd0da192f03cb28694411d8"
+    branch: "codex/paper-governance-finalizer-boundary"
+    commit: "ee08dd181fc992eed3f58754038375933c31145b"
     remote: "https://github.com/RD2100/dev-frame-opencode.git"
   test-frame:
     path: "test-frame"

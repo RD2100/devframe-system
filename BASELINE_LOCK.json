@@ -28,8 +28,8 @@
       "path": "dev-frame-opencode",
       "role": "opencode_workflow_runtime_candidate",
       "remote": "https://github.com/RD2100/dev-frame-opencode.git",
-      "branch": "codex/paper-redacted-reviewer-pack",
-      "commit": "51215f1b060fe760ebd0da192f03cb28694411d8",
+      "branch": "codex/paper-governance-finalizer-boundary",
+      "commit": "ee08dd181fc992eed3f58754038375933c31145b",
       "pre_pin_status": "clean_submodule_branch_committed"
     },
     {

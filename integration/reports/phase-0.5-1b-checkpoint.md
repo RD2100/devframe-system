@@ -16,7 +16,7 @@ superproject has advanced submodule gitlinks to committed branch tips.
 |---|---|---|---|
 | `agent-acceptance` | `codex/devframe-system-path-gate0-contract` | Pinned at `88dd581` | Path drift, expired authorization, HUMAN_REQUIRED preservation |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `49c6be8` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion |
-| `dev-frame-opencode` | `codex/paper-redacted-reviewer-pack` | Pinned at `51215f1` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, and redacted reviewer pack boundary |
+| `dev-frame-opencode` | `codex/paper-governance-finalizer-boundary` | Pinned at `ee08dd1` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, and finalizer acceptance boundary |
 | `test-frame` | `codex/adapter-negative-matrix` | Pinned at `71caa1c` | Adapter mapping, required/optional profile semantics, fake-green canaries |
 
 ## Paper Focus
@@ -52,14 +52,17 @@ Completed in the `dev-frame-opencode` submodule branch:
   acceptance.
 - Extended report redaction to WriteLab live payload fragments and Bearer
   tokens before closeout/reviewer-pack output is emitted.
+- Added production-path `final_acceptance` output in the paper finalizer.
+  It is true only for accepted, completed, unblocked runs and ignores
+  reviewer-pack, closeout, validation, and artifact-verification claims.
 
 Still open:
 
 - Remaining scattered user-visible mojibake in paper adapter/client output strings.
 - Post-run `changed_files subset of write_set` hard gate.
 - Real WriteLab paragraph-text flow requires fresh RuntimeAuthorization.
-- Governance-level finalizer tests must still reject any promotion from
-  report/reviewer-pack output to final acceptance.
+- Archive-side agent-acceptance integration must still reject any promotion
+  from report/reviewer-pack output to final acceptance.
 
 ## Verification Run
 
@@ -93,6 +96,12 @@ Allowed local verification only:
 - `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_cli.py tests/test_paper_cli_a18b.py tests/test_paper_a19_safe_e2e.py tests/test_paper_a23_closeout_report.py tests/test_paper_a23b_closeout_hardening.py tests/test_paper_a24_artifact_binding.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py -q` -> `173 passed in 5.04s`.
 - `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_writelab_client.py tests/test_paper_runtime.py tests/test_paper_graph.py tests/test_paper_evidence_pipeline.py tests/test_writelab_adapter.py -q` -> `276 passed in 16.12s`.
 - `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_a19_safe_e2e.py tests/test_paper_a20_real_e2e.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py tests/test_paper_a27_audit_polish.py tests/test_paper_a28_verify_command.py -q` -> `115 passed in 3.84s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m py_compile src/ai_workflow_hub/workflows/paper_graph.py src/ai_workflow_hub/workflows/paper_workflow_state.py` -> passed.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_graph.py -q` -> `100 passed in 0.67s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_runtime.py tests/test_paper_cli.py -q` -> `130 passed in 11.97s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_cli.py tests/test_paper_cli_a18b.py tests/test_paper_a19_safe_e2e.py tests/test_paper_a23_closeout_report.py tests/test_paper_a23b_closeout_hardening.py tests/test_paper_a24_artifact_binding.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py -q` -> `173 passed in 5.38s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_writelab_client.py tests/test_paper_runtime.py tests/test_paper_graph.py tests/test_paper_evidence_pipeline.py tests/test_writelab_adapter.py -q` -> `278 passed in 16.16s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_a19_safe_e2e.py tests/test_paper_a20_real_e2e.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py tests/test_paper_a27_audit_polish.py tests/test_paper_a28_verify_command.py -q` -> `115 passed in 4.01s`.
 
 ## Known Boundary
 
