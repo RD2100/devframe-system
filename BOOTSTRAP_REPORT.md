@@ -21,6 +21,8 @@ source repositories as submodules. This is not a source-code merge.
 - `dev-frame-opencode` was cleaned and verified before pinning.
 - `agent-acceptance` was pushed to the GitHub remote `https-origin/master`
   because the GitLab `origin/master` push path timed out.
+- All submodule URLs use HTTPS so a public fresh clone does not require SSH key
+  configuration.
 - No external runtime, paper workflow, package install, cleanup, reset, or stash
   command was used during bootstrap.
 
