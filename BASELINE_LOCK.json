@@ -28,8 +28,8 @@
       "path": "dev-frame-opencode",
       "role": "opencode_workflow_runtime_candidate",
       "remote": "https://github.com/RD2100/dev-frame-opencode.git",
-      "branch": "codex/paper-privacy-gate",
-      "commit": "145fc0500d8fc03e5a11c5909ca615300e48cbc3",
+      "branch": "codex/writelab-handoff-fixture",
+      "commit": "72d1dbd7907089b8f34dfa0b8c59c51dfe415d72",
       "pre_pin_status": "clean_submodule_branch_committed"
     },
     {

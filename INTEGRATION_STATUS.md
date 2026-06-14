@@ -1,7 +1,7 @@
 # Integration Status
 
 Date: 2026-06-15
-Status: Phase 0.5 complete; Phase 1B paper privacy gate advanced with runtime boundaries
+Status: Phase 0.5 complete; Phase 1B paper privacy gate and handoff fixture coverage advanced
 Route: ROUTE_A_STRICT_CLEAN_BASELINE
 
 ## Current State
@@ -19,7 +19,7 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 |---|---|---:|---|
 | `agent-acceptance` | Governance and acceptance framework | `88dd58183e705f1df07c32b690ab56766c643642` | Contract branch pinned |
 | `devframe-control-plane` | Control-plane runtime candidate | `49c6be859dd726092fc433cc18cb7ea9537498da` | Contract branch pinned |
-| `dev-frame-opencode` | Controlled coding runtime candidate | `145fc0500d8fc03e5a11c5909ca615300e48cbc3` | Runtime/paper privacy gate branch pinned |
+| `dev-frame-opencode` | Controlled coding runtime candidate | `72d1dbd7907089b8f34dfa0b8c59c51dfe415d72` | Runtime/paper privacy gate plus WriteLab handoff fixture branch pinned |
 | `test-frame` | Controlled verification runtime candidate | `71caa1c242d9a85d185c4e29ee24eb078183ffd5` | Adapter contract branch pinned |
 
 ## Current Gaps
@@ -31,7 +31,7 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 | Independent A120 ZIP verifier | P1 | Implemented | `scripts/review_a120_evidence_zip.py` produced `PASS_WITH_BOUNDARY`; reports are stored under `integration/reports/a120`. This is evidence review, not final acceptance. |
 | `control-plane` lease/heartbeat/cancellation runtime | P0/P1 | Contracted and pinned | Commit `49c6be8` adds DispatchAssignment, WorkerLease, runtime SourceLock, AuditEvent, FailureRecord contracts. Runtime enforcement remains future work. |
 | `test-frame` adapter/failure semantics | P1 | Contracted and pinned | Commit `71caa1c` maps RunSpec/EvidenceManifest/ExecutionReport and adds canary guidance. It remains a verification runtime candidate, not a final verdict source. |
-| Paper feature usability and privacy boundary | P1 | Runtime/API privacy gate pinned; broader evidence pack work pending | Commit `145fc05` fail-closes raw `paragraph_text`/`writelab_token` to `human_required` unless explicit `RuntimeAuthorization.data_policy` allows the supplied fields. It also redacts runtime API return state and human-gate issue text. Narrow verification passed 80 paper runtime tests, 23 paper CLI/spec tests, schema parse, and diff check. Live WriteLab use, old evidence audit scans, and reviewer-pack shape still need follow-up probes. |
+| Paper feature usability and privacy boundary | P1 | Runtime/API privacy gate and WriteLab handoff fixture coverage pinned; broader evidence pack work pending | Commit `72d1dbd` includes the `145fc05` privacy gate and restores tracked `mock_handoff.zip` fixture coverage. Verification passed 80 paper runtime tests, 23 paper CLI/spec tests, 63 WriteLab adapter tests, and 221 broader paper/WriteLab tests. Live WriteLab use, old evidence audit scans, reviewer-pack shape, and CLI UX matrix still need follow-up probes. |
 | Final verdict authority | P0 | Open | Dispatch, execution, test, review, and governance results must remain distinct. |
 
 ## Allowed Next Work

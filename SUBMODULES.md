@@ -12,7 +12,7 @@ so.
 |---|---|---|---|---:|
 | `agent-acceptance` | `agent-acceptance` | Governance, acceptance, TaskSpec/Gate0 contracts | `codex/devframe-system-path-gate0-contract` | `88dd58183e705f1df07c32b690ab56766c643642` |
 | `devframe-control-plane` | `devframe-control-plane` | Queue/dispatch/control-plane candidate | `codex/lease-source-lock-contracts` | `49c6be859dd726092fc433cc18cb7ea9537498da` |
-| `dev-frame-opencode` | `dev-frame-opencode` | Controlled coding runtime candidate | `codex/paper-privacy-gate` | `145fc0500d8fc03e5a11c5909ca615300e48cbc3` |
+| `dev-frame-opencode` | `dev-frame-opencode` | Controlled coding runtime candidate | `codex/writelab-handoff-fixture` | `72d1dbd7907089b8f34dfa0b8c59c51dfe415d72` |
 | `test-frame` | `test-frame` | Controlled verification runtime candidate | `codex/adapter-negative-matrix` | `71caa1c242d9a85d185c4e29ee24eb078183ffd5` |
 
 ## Boundary Rules
