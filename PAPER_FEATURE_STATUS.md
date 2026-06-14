@@ -2,7 +2,7 @@
 
 Date: 2026-06-15
 Primary module: `dev-frame-opencode/ai-workflow-hub`
-Status: Active development focus; first static privacy/usability contract pinned
+Status: Active development focus; runtime/API privacy gate pinned with remaining evidence-pack gaps
 
 ## Current Surface
 
@@ -43,6 +43,11 @@ Core implementation areas:
   gate concepts.
 - Privacy redaction exists for sensitive fields such as `paragraph_text` and
   `writelab_token`.
+- Raw `paragraph_text` and `writelab_token` now fail closed to
+  `human_required` unless explicit `RuntimeAuthorization.data_policy` allows
+  the supplied fields.
+- Runtime API return state and human-gate issue summaries are redacted before
+  leaving the adapter boundary.
 - Run ID sanitization exists.
 - There are extensive paper tests and cumulative A66-A120 evidence.
 - A120 ZIP evidence now has an independent `PASS_WITH_BOUNDARY` reviewer-side
@@ -53,11 +58,11 @@ Core implementation areas:
 | ID | Severity | Gap | Evidence | Desired outcome |
 |---|---|---|---|---|
 | PAPER-001 | P1 | User-visible schema/fixture text is mojibake in at least `paper_task_spec.schema.json` and `paper_task_spec.sample.yaml` | Fixed and pinned in `dev-frame-opencode` commit `08c76bb`; JSON/YAML parse and static pytest passed | Preserve field names, required fields, enums, and schema structure in future edits |
-| PAPER-002 | P1 | Paper full-text privacy boundary needs a project-level gate | `paper_task_input` and redaction schemas exist, but final integration gate is not yet in this superproject | No real paper full text can enter evidence, memory, or reports without explicit authorization |
+| PAPER-002 | P1 | Paper full-text privacy boundary needs a project-level gate | First runtime/API gate pinned in `dev-frame-opencode` commit `145fc05`; unauthorized raw `paragraph_text`/`writelab_token` becomes `human_required`, and authorized use still redacts persisted/API state | Extend the gate to old evidence audit scans and reviewer packs before any real paper content run |
 | PAPER-003 | P1 | CLI command completeness is broad but not summarized for users | CLI has many commands; no superproject UX matrix yet | One user-facing paper command map and readiness state |
 | PAPER-004 | P1 | Runtime success, human_required, blocked, and final acceptance boundaries need integration-level assertions | Paper runtime can pause for human gate | Paper command output cannot become final governance acceptance |
-| PAPER-005 | P2 | WriteLab/offline handoff path needs current compatibility proof | WriteLab adapters and schemas exist | Static contract check plus fixture validation |
-| PAPER-006 | P2 | Paper evidence reports need redacted reviewer pack shape | Paper evidence schemas exist | Reviewer pack contains summaries/hashes, not private full text |
+| PAPER-005 | P2 | WriteLab/offline handoff path needs current compatibility proof | Broader related test run produced 213 passed / 7 failed because `writelab_fixtures/mock_handoff.zip` is missing in the submodule path | Restore or generate the fixture and rerun `tests\test_writelab_adapter.py` handoff ZIP cases |
+| PAPER-006 | P2 | Paper evidence reports need redacted reviewer pack shape | Human-gate issue summaries are redacted in commit `145fc05`; full evidence reviewer pack shape remains pending | Reviewer pack contains summaries/hashes, not private full text |
 | PAPER-007 | P2 | Additional user-facing paper adapter/client evidence strings may still contain mojibake | Static sub-agent read on 2026-06-15 | Fix remaining user-visible output strings in a focused follow-up with snapshot checks |
 
 ## Paper Completion Criteria
@@ -75,8 +80,8 @@ Paper functionality is not complete until all of the following are true:
 
 ## Current Paper Branch Evidence
 
-- `dev-frame-opencode` branch: `codex/runtime-authorization-contract`
-- Pinned commit: `08c76bbeb743a68b35c33c0357aff057bb69bd49`
+- `dev-frame-opencode` branch: `codex/paper-privacy-gate`
+- Pinned commit: `145fc0500d8fc03e5a11c5909ca615300e48cbc3`
 - Paper text fix files:
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/contracts/paper_task_spec.schema.json`
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/fixtures/paper_task_spec.sample.yaml`
@@ -90,7 +95,22 @@ Paper functionality is not complete until all of the following are true:
   - `schemas/agent-runtime/runtime-authorization.schema.json`
   - `schemas/agent-runtime/evidence-manifest.schema.json`
   - optional `ExecutionReport` references for runtime authorization, runtime observations, and evidence manifest
+- Paper privacy gate files added or updated in the pinned branch:
+  - `ai-workflow-hub/src/ai_workflow_hub/context_layer/adapters/paper_runtime.py`
+  - `ai-workflow-hub/tests/test_paper_runtime.py`
+  - `schemas/agent-runtime/runtime-authorization.schema.json`
+  - `docs/agent-runtime/integration-contracts.md`
+- Narrow verification observed by the main thread for commit `145fc05`:
+  - `python -m pytest -p no:cacheprovider tests\test_paper_runtime.py -q` -> `80 passed in 13.70s`.
+  - `python -m pytest -p no:cacheprovider tests\test_paper_task_spec_contract.py tests\test_paper_cli_a18b.py -q` -> `23 passed in 0.72s`.
+  - RuntimeAuthorization schema JSON parses successfully.
+  - `git diff --check` passed with CRLF warnings only.
+- Wider related verification boundary:
+  - `python -m pytest -p no:cacheprovider tests\test_writelab_adapter.py tests\test_writelab_client.py tests\test_paper_acceptance_gate.py tests\test_paper_graph.py -q` -> `213 passed, 7 failed`.
+  - The 7 failures are all from missing `ai_workflow_hub/context_layer/adapters/writelab_fixtures/mock_handoff.zip`; `dry_run` fails because that manifest cannot be built.
 
-Remaining hard boundary: `writelab_client` may send paragraph text to a local
-WriteLab API in live paths. Real paper content remains blocked until a fresh
-RuntimeAuthorization and privacy attestation explicitly allow that flow.
+Remaining hard boundary: real paper content remains blocked unless a fresh
+RuntimeAuthorization with `data_policy.paper_sensitive_input=explicit_allow`,
+`redaction_required=true`, `human_gate_ref`, and matching
+`allowed_sensitive_fields` explicitly allows that flow. Old evidence audit
+scans and reviewer-pack generation still need dedicated negative probes.

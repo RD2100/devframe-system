@@ -20,8 +20,8 @@ modules:
   dev-frame-opencode:
     path: "dev-frame-opencode"
     role: "opencode_workflow_runtime_candidate"
-    branch: "codex/runtime-authorization-contract"
-    commit: "08c76bbeb743a68b35c33c0357aff057bb69bd49"
+    branch: "codex/paper-privacy-gate"
+    commit: "145fc0500d8fc03e5a11c5909ca615300e48cbc3"
     remote: "https://github.com/RD2100/dev-frame-opencode.git"
   test-frame:
     path: "test-frame"

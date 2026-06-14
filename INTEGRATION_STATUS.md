@@ -1,7 +1,7 @@
 # Integration Status
 
 Date: 2026-06-15
-Status: Phase 0.5 complete; Phase 1B/2-pre contract pins advanced with runtime boundaries
+Status: Phase 0.5 complete; Phase 1B paper privacy gate advanced with runtime boundaries
 Route: ROUTE_A_STRICT_CLEAN_BASELINE
 
 ## Current State
@@ -19,7 +19,7 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 |---|---|---:|---|
 | `agent-acceptance` | Governance and acceptance framework | `88dd58183e705f1df07c32b690ab56766c643642` | Contract branch pinned |
 | `devframe-control-plane` | Control-plane runtime candidate | `49c6be859dd726092fc433cc18cb7ea9537498da` | Contract branch pinned |
-| `dev-frame-opencode` | Controlled coding runtime candidate | `08c76bbeb743a68b35c33c0357aff057bb69bd49` | Runtime/paper contract branch pinned |
+| `dev-frame-opencode` | Controlled coding runtime candidate | `145fc0500d8fc03e5a11c5909ca615300e48cbc3` | Runtime/paper privacy gate branch pinned |
 | `test-frame` | Controlled verification runtime candidate | `71caa1c242d9a85d185c4e29ee24eb078183ffd5` | Adapter contract branch pinned |
 
 ## Current Gaps
@@ -31,7 +31,7 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 | Independent A120 ZIP verifier | P1 | Implemented | `scripts/review_a120_evidence_zip.py` produced `PASS_WITH_BOUNDARY`; reports are stored under `integration/reports/a120`. This is evidence review, not final acceptance. |
 | `control-plane` lease/heartbeat/cancellation runtime | P0/P1 | Contracted and pinned | Commit `49c6be8` adds DispatchAssignment, WorkerLease, runtime SourceLock, AuditEvent, FailureRecord contracts. Runtime enforcement remains future work. |
 | `test-frame` adapter/failure semantics | P1 | Contracted and pinned | Commit `71caa1c` maps RunSpec/EvidenceManifest/ExecutionReport and adds canary guidance. It remains a verification runtime candidate, not a final verdict source. |
-| Paper feature usability and privacy boundary | P1 | Static contract pinned; live privacy gate pending | Commit `08c76bb` fixed visible PaperTaskSpec text, added runtime/evidence contracts, and added `ai-workflow-hub/tests/test_paper_task_spec_contract.py` with 5 passing static tests. Live WriteLab paragraph-text handling still needs explicit authorization before real paper content use. |
+| Paper feature usability and privacy boundary | P1 | Runtime/API privacy gate pinned; broader evidence pack work pending | Commit `145fc05` fail-closes raw `paragraph_text`/`writelab_token` to `human_required` unless explicit `RuntimeAuthorization.data_policy` allows the supplied fields. It also redacts runtime API return state and human-gate issue text. Narrow verification passed 80 paper runtime tests, 23 paper CLI/spec tests, schema parse, and diff check. Live WriteLab use, old evidence audit scans, and reviewer-pack shape still need follow-up probes. |
 | Final verdict authority | P0 | Open | Dispatch, execution, test, review, and governance results must remain distinct. |
 
 ## Allowed Next Work

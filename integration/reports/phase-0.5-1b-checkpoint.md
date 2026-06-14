@@ -16,7 +16,7 @@ superproject has advanced submodule gitlinks to committed branch tips.
 |---|---|---|---|
 | `agent-acceptance` | `codex/devframe-system-path-gate0-contract` | Pinned at `88dd581` | Path drift, expired authorization, HUMAN_REQUIRED preservation |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `49c6be8` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion |
-| `dev-frame-opencode` | `codex/runtime-authorization-contract` | Pinned at `08c76bb` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability and privacy contract |
+| `dev-frame-opencode` | `codex/paper-privacy-gate` | Pinned at `145fc05` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, and runtime/API privacy gate |
 | `test-frame` | `codex/adapter-negative-matrix` | Pinned at `71caa1c` | Adapter mapping, required/optional profile semantics, fake-green canaries |
 
 ## Paper Focus
@@ -27,11 +27,16 @@ Completed in the `dev-frame-opencode` submodule branch:
 - Fixed user-visible text in `ai-workflow-hub/src/ai_workflow_hub/domains/paper/fixtures/paper_task_spec.sample.yaml`.
 - Added runtime/evidence boundary contracts for controlled execution review.
 - Added `ai-workflow-hub/tests/test_paper_task_spec_contract.py`, a pure static guardrail for schema shape, fixture shape, mojibake regression, and sensitive field redaction contract references.
+- Added a runtime/API paper privacy gate that fails raw `paragraph_text` or
+  `writelab_token` closed to `human_required` unless explicit
+  `RuntimeAuthorization.data_policy` allows the supplied fields.
+- Redacted sensitive fields from runtime API return state and human-gate issue
+  summaries.
 
 Still open:
 
-- Paper privacy negative cases for real paragraph text.
-- Redacted reviewer pack shape for paper evidence.
+- Old evidence audit scans and full redacted reviewer pack shape for paper evidence.
+- Missing `writelab_fixtures/mock_handoff.zip` fixture in the submodule path.
 - Remaining scattered user-visible mojibake in paper adapter/client output strings.
 - Post-run `changed_files subset of write_set` hard gate.
 - Real WriteLab paragraph-text flow requires fresh RuntimeAuthorization.
@@ -47,12 +52,20 @@ Allowed static verification only:
 - Submodule `git diff --check` for all four modules -> passed with CRLF warnings only.
 - Target JSON/YAML parse in changed submodule contracts -> passed.
 - `dev-frame-opencode\ai-workflow-hub`: `python -m pytest -p no:cacheprovider tests\test_paper_task_spec_contract.py -q` -> `5 passed in 0.09s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest -p no:cacheprovider tests\test_paper_runtime.py -q` -> `80 passed in 13.70s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest -p no:cacheprovider tests\test_paper_task_spec_contract.py tests\test_paper_cli_a18b.py -q` -> `23 passed in 0.72s`.
+- `dev-frame-opencode`: RuntimeAuthorization schema JSON parse -> passed.
+- Wider related paper/WriteLab group:
+  `python -m pytest -p no:cacheprovider tests\test_writelab_adapter.py tests\test_writelab_client.py tests\test_paper_acceptance_gate.py tests\test_paper_graph.py -q`
+  -> `213 passed, 7 failed`; all failures are tied to missing
+  `ai_workflow_hub/context_layer/adapters/writelab_fixtures/mock_handoff.zip`.
 
 ## Known Boundary
 
 `scripts\check-submodules.ps1` should pass after the parent lock files are
 updated and all submodule gitlinks are staged.
 
-No runtime, package install, pytest/npm suite, OpenCode execution, control-plane
-worker dispatch, test-frame external capability, paper workflow, pack, or
-validate script was run in this checkpoint.
+No package install, npm suite, OpenCode execution, control-plane worker
+dispatch, test-frame external capability, real paper-content run, pack, or
+validate script was run in this checkpoint. The only Python execution added for
+the paper gate was local pytest/schema verification inside `dev-frame-opencode`.

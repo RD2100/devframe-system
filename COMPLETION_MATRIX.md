@@ -12,8 +12,8 @@ complete only when its evidence is present and current.
 | 0.5 | Readonly inventory | Complete | `scripts/readonly-inventory.ps1`, `.gitlab-ci.yml`, `integration/runbooks/gitlab-ci-readonly-policy.md`; inventory also parses JSON as UTF-8 | GitLab runner proof |
 | 1A | A120 ZIP independent review | Complete with boundary | `scripts/review_a120_evidence_zip.py`, `integration/reports/a120/a120-evidence-zip-review.json` | Negative fixtures and reviewer sign-off |
 | 1B | `agent-acceptance` path/Gate0 contract | Complete with boundary | Parent pins commit `88dd581`; Reviewer Index returned | Human decision for active config rebinding |
-| 1B | `dev-frame-opencode` runtime authorization contract | Complete with boundary | Parent pins commit `08c76bb`; RuntimeAuthorization/EvidenceManifest contracts added | Runtime enforcement and fresh authorization before live execution |
-| 1B | Paper feature hardening | Complete with boundary | Parent pins commit `08c76bb`; `ai-workflow-hub/tests/test_paper_task_spec_contract.py` passed 5 static tests | Real full-text privacy gate, redacted reviewer pack, and CLI UX matrix |
+| 1B | `dev-frame-opencode` runtime authorization contract | Complete with boundary | Parent pins commit `145fc05`; RuntimeAuthorization/EvidenceManifest contracts include paper `data_policy` | Runtime enforcement and fresh authorization before live execution |
+| 1B | Paper feature hardening | In progress with pinned gate | Parent pins commit `145fc05`; `ai-workflow-hub/tests/test_paper_runtime.py` passed 80 tests; paper CLI/spec tests passed 23 tests | Old evidence audit scan, full redacted reviewer pack, WriteLab handoff fixture proof, and CLI UX matrix |
 | 1B | `test-frame` adapter/negative matrix | Complete with boundary | Parent pins commit `71caa1c`; Reviewer Index returned | Canary implementation before external verification runtime use |
 | 2-pre | `control-plane` lease/source-lock contract | Complete with boundary | Parent pins commit `49c6be8`; Reviewer Index returned | Runtime lease/heartbeat/cancellation enforcement |
 | 3 | Canary negative matrix | Not started | None | Consolidate module negative cases |
