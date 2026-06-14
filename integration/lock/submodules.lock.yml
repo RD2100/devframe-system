@@ -20,8 +20,8 @@ modules:
   dev-frame-opencode:
     path: "dev-frame-opencode"
     role: "opencode_workflow_runtime_candidate"
-    branch: "codex/paper-audit-sensitive-scan"
-    commit: "cb34be3dfd72513a49996a32ecca1d2a145d64c8"
+    branch: "codex/writelab-live-authorization-guard"
+    commit: "ea0758a3ee801b71bea8a2df291a8a0c07358abb"
     remote: "https://github.com/RD2100/dev-frame-opencode.git"
   test-frame:
     path: "test-frame"
