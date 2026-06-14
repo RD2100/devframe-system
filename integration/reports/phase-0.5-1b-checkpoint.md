@@ -16,7 +16,7 @@ superproject has advanced submodule gitlinks to committed branch tips.
 |---|---|---|---|
 | `agent-acceptance` | `codex/devframe-system-path-gate0-contract` | Pinned at `88dd581` | Path drift, expired authorization, HUMAN_REQUIRED preservation |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `49c6be8` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion |
-| `dev-frame-opencode` | `codex/paper-cli-status-matrix` | Pinned at `3395033` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, and CLI status boundary |
+| `dev-frame-opencode` | `codex/paper-redacted-reviewer-pack` | Pinned at `51215f1` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, and redacted reviewer pack boundary |
 | `test-frame` | `codex/adapter-negative-matrix` | Pinned at `71caa1c` | Adapter mapping, required/optional profile semantics, fake-green canaries |
 
 ## Paper Focus
@@ -44,13 +44,22 @@ Completed in the `dev-frame-opencode` submodule branch:
 - Added CLI final-acceptance boundary output and
   `docs/paper/PAPER_CLI_STATUS_MATRIX.md` so workflow status, schema validity,
   and artifact verdicts are not promoted to final paper acceptance.
+- Added a redacted `reviewer_pack` boundary to `paper report`, including
+  privacy/redaction status, sanitized RuntimeAuthorization metadata,
+  artifact/hash pointers, and explicit non-authoritative verdict fields.
+- Expanded `schemas/paper_redacted_evidence_pack.schema.json` to validate the
+  reviewer pack boundary and prevent treating reviewer-pack output as final
+  acceptance.
+- Extended report redaction to WriteLab live payload fragments and Bearer
+  tokens before closeout/reviewer-pack output is emitted.
 
 Still open:
 
-- Full redacted reviewer pack shape for paper evidence.
 - Remaining scattered user-visible mojibake in paper adapter/client output strings.
 - Post-run `changed_files subset of write_set` hard gate.
 - Real WriteLab paragraph-text flow requires fresh RuntimeAuthorization.
+- Governance-level finalizer tests must still reject any promotion from
+  report/reviewer-pack output to final acceptance.
 
 ## Verification Run
 
@@ -79,6 +88,11 @@ Allowed local verification only:
 - `dev-frame-opencode\ai-workflow-hub`: `python -m py_compile src/ai_workflow_hub/cli.py` -> passed.
 - `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_cli.py tests/test_paper_a19_safe_e2e.py tests/test_paper_a20_real_e2e.py tests/test_paper_a23_closeout_report.py tests/test_paper_a23b_closeout_hardening.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py -q` -> `151 passed in 4.94s`.
 - `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_writelab_client.py tests/test_paper_runtime.py tests/test_paper_graph.py tests/test_paper_evidence_pipeline.py tests/test_writelab_adapter.py -q` -> `276 passed in 15.83s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m py_compile src/ai_workflow_hub/cli.py` -> passed.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_a23b_closeout_hardening.py -q` -> `14 passed in 1.12s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_cli.py tests/test_paper_cli_a18b.py tests/test_paper_a19_safe_e2e.py tests/test_paper_a23_closeout_report.py tests/test_paper_a23b_closeout_hardening.py tests/test_paper_a24_artifact_binding.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py -q` -> `173 passed in 5.04s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_writelab_client.py tests/test_paper_runtime.py tests/test_paper_graph.py tests/test_paper_evidence_pipeline.py tests/test_writelab_adapter.py -q` -> `276 passed in 16.12s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_a19_safe_e2e.py tests/test_paper_a20_real_e2e.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py tests/test_paper_a27_audit_polish.py tests/test_paper_a28_verify_command.py -q` -> `115 passed in 3.84s`.
 
 ## Known Boundary
 

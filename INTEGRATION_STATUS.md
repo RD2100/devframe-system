@@ -1,7 +1,7 @@
 # Integration Status
 
 Date: 2026-06-15
-Status: Phase 0.5 complete; Phase 1B paper privacy gate, handoff fixture, audit scan, live WriteLab guard, and CLI status boundary advanced
+Status: Phase 0.5 complete; Phase 1B paper privacy gate, handoff fixture, audit scan, live WriteLab guard, CLI status boundary, and redacted reviewer pack boundary advanced
 Route: ROUTE_A_STRICT_CLEAN_BASELINE
 
 ## Current State
@@ -19,7 +19,7 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 |---|---|---:|---|
 | `agent-acceptance` | Governance and acceptance framework | `88dd58183e705f1df07c32b690ab56766c643642` | Contract branch pinned |
 | `devframe-control-plane` | Control-plane runtime candidate | `49c6be859dd726092fc433cc18cb7ea9537498da` | Contract branch pinned |
-| `dev-frame-opencode` | Controlled coding runtime candidate | `3395033c10db0a2a91a428ace013534095f97b2b` | Runtime/paper privacy gate, WriteLab handoff fixture, audit sensitive scan, live WriteLab authorization guard, and CLI status boundary branch pinned |
+| `dev-frame-opencode` | Controlled coding runtime candidate | `51215f1b060fe760ebd0da192f03cb28694411d8` | Runtime/paper privacy gate, WriteLab handoff fixture, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, and redacted reviewer pack boundary branch pinned |
 | `test-frame` | Controlled verification runtime candidate | `71caa1c242d9a85d185c4e29ee24eb078183ffd5` | Adapter contract branch pinned |
 
 ## Current Gaps
@@ -31,7 +31,7 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 | Independent A120 ZIP verifier | P1 | Implemented | `scripts/review_a120_evidence_zip.py` produced `PASS_WITH_BOUNDARY`; reports are stored under `integration/reports/a120`. This is evidence review, not final acceptance. |
 | `control-plane` lease/heartbeat/cancellation runtime | P0/P1 | Contracted and pinned | Commit `49c6be8` adds DispatchAssignment, WorkerLease, runtime SourceLock, AuditEvent, FailureRecord contracts. Runtime enforcement remains future work. |
 | `test-frame` adapter/failure semantics | P1 | Contracted and pinned | Commit `71caa1c` maps RunSpec/EvidenceManifest/ExecutionReport and adds canary guidance. It remains a verification runtime candidate, not a final verdict source. |
-| Paper feature usability and privacy boundary | P1 | Runtime/API privacy gate, WriteLab handoff fixture coverage, audit bundle sensitive scan, live WriteLab authorization guard, and CLI status boundary pinned; reviewer-pack work pending | Commit `3395033` includes the earlier privacy gates plus CLI final-acceptance labels and `docs/paper/PAPER_CLI_STATUS_MATRIX.md`, so `completed`, `Validation PASSED`, and artifact verification are not promoted to final acceptance. Verification passed 151 CLI/report/audit regression tests and 276 paper runtime/graph/WriteLab regression tests. Full reviewer-pack shape still needs follow-up probes. |
+| Paper feature usability and privacy boundary | P1 | Runtime/API privacy gate, WriteLab handoff fixture coverage, audit bundle sensitive scan, live WriteLab authorization guard, CLI status boundary, and redacted reviewer pack boundary pinned | Commit `51215f1` adds a `reviewer_pack` section to `paper report`, expands the redacted evidence-pack schema, redacts WriteLab live payload fragments and Bearer tokens in report strings, and preserves the rule that summaries/reports/reviewer packs are not final acceptance. Verification passed 173 CLI/report/audit regression tests, 276 paper runtime/graph/WriteLab regression tests, and 115 audit/e2e regression tests. Remaining work is governance-level finalizer coverage and scattered user-visible mojibake cleanup. |
 | Final verdict authority | P0 | Open | Dispatch, execution, test, review, and governance results must remain distinct. |
 
 ## Allowed Next Work

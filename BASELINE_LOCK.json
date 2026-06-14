@@ -28,8 +28,8 @@
       "path": "dev-frame-opencode",
       "role": "opencode_workflow_runtime_candidate",
       "remote": "https://github.com/RD2100/dev-frame-opencode.git",
-      "branch": "codex/paper-cli-status-matrix",
-      "commit": "3395033c10db0a2a91a428ace013534095f97b2b",
+      "branch": "codex/paper-redacted-reviewer-pack",
+      "commit": "51215f1b060fe760ebd0da192f03cb28694411d8",
       "pre_pin_status": "clean_submodule_branch_committed"
     },
     {
