@@ -4,7 +4,7 @@ Date: 2026-06-15
 
 | ID | Severity | Risk | Current control | Required next action |
 |---|---|---|---|---|
-| R-001 | P0 | `HUMAN_REQUIRED` or `BLOCKED` is reported as PASS | SADP negative fixtures and review rules | Add finalizer tests that reject status promotion. |
+| R-001 | P0 | `HUMAN_REQUIRED` or `BLOCKED` is reported as PASS | SADP negative fixtures and review rules; paper CLI final-acceptance labels pinned at `3395033` keep workflow/schema/artifact status separate from final acceptance | Add remaining governance-level finalizer tests that reject status promotion. |
 | R-002 | P0 | Dispatch success is treated as task success | Contract separation in plan | Require `ExecutionReport`, `ReviewVerdict`, and governance verdict as separate artifacts. |
 | R-003 | P0 | Reviewer and executor roles are mixed | SADP reviewer rules | Enforce `independent_from_executor` in review contract. |
 | R-004 | P0 | Worker writes outside approved scope | `write_set` contract planned | Add SourceLock/WorkerLease and post-run diff checks before runtime use. |

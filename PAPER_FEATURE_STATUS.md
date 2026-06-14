@@ -2,7 +2,7 @@
 
 Date: 2026-06-15
 Primary module: `dev-frame-opencode/ai-workflow-hub`
-Status: Active development focus; runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, and live WriteLab authorization guard pinned with remaining reviewer-pack gaps
+Status: Active development focus; runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, and CLI status boundary pinned with remaining reviewer-pack gaps
 
 ## Current Surface
 
@@ -59,6 +59,9 @@ Core implementation areas:
 - Direct live WriteLab expression and paragraph diagnosis calls now fail closed
   before HTTP dispatch unless `RuntimeAuthorization.data_policy` explicitly
   allows `paragraph_text`.
+- Paper CLI now displays final-acceptance boundaries for `paper run`, `go`,
+  `resume`, `status`, `validate`, and `report`, and documents the command
+  status matrix in `docs/paper/PAPER_CLI_STATUS_MATRIX.md`.
 
 ## Priority Gaps
 
@@ -66,8 +69,8 @@ Core implementation areas:
 |---|---|---|---|---|
 | PAPER-001 | P1 | User-visible schema/fixture text is mojibake in at least `paper_task_spec.schema.json` and `paper_task_spec.sample.yaml` | Fixed and pinned in `dev-frame-opencode` commit `08c76bb`; JSON/YAML parse and static pytest passed | Preserve field names, required fields, enums, and schema structure in future edits |
 | PAPER-002 | P1 | Paper full-text privacy boundary needs a project-level gate | Runtime/API gate pinned in `145fc05`; audit bundle sensitive scan pinned in `cb34be3`; live WriteLab authorization guard pinned in `ea0758a`; unauthorized raw `paragraph_text`/`writelab_token` becomes `human_required`, audit ZIP candidates fail closed on unredacted sensitive artifacts, and direct live WriteLab calls block before HTTP dispatch without explicit `paragraph_text` authorization | Extend remaining guard coverage to full reviewer-pack shape before any real paper content run |
-| PAPER-003 | P1 | CLI command completeness is broad but not summarized for users | CLI has many commands; no superproject UX matrix yet | One user-facing paper command map and readiness state |
-| PAPER-004 | P1 | Runtime success, human_required, blocked, and final acceptance boundaries need integration-level assertions | Paper runtime can pause for human gate | Paper command output cannot become final governance acceptance |
+| PAPER-003 | P1 | CLI command completeness is broad but not summarized for users | Fixed and pinned in `3395033`: `docs/paper/PAPER_CLI_STATUS_MATRIX.md` maps paper commands and three status layers | Keep the matrix current as commands evolve |
+| PAPER-004 | P1 | Runtime success, human_required, blocked, and final acceptance boundaries need integration-level assertions | Fixed at CLI boundary in `3395033`: non-JSON output and JSON/report fields distinguish workflow status from final acceptance; focused CLI tests cover accepted, accepted_with_limitation, blocked, and needs_more_evidence cases | Add remaining governance-level finalizer tests |
 | PAPER-005 | P2 | WriteLab/offline handoff path needs current compatibility proof | Fixed and pinned in `dev-frame-opencode` commit `72d1dbd`; tracked `mock_handoff.zip` restored, manifest SHA/size values match ZIP entries, and `test_writelab_adapter.py` now asserts ZIP manifest consistency | Keep the fixture in CI and add future negative fixtures for privacy-attestation and integrity failures |
 | PAPER-006 | P2 | Paper evidence reports need redacted reviewer pack shape | Human-gate issue summaries are redacted in `145fc05`; audit bundle candidate files are scanned before ZIP packaging in `cb34be3`; direct live WriteLab calls block before HTTP dispatch in `ea0758a`; full reviewer-pack shape remains pending | Reviewer pack contains summaries/hashes, not private full text |
 | PAPER-007 | P2 | Additional user-facing paper adapter/client evidence strings may still contain mojibake | Static sub-agent read on 2026-06-15 | Fix remaining user-visible output strings in a focused follow-up with snapshot checks |
@@ -87,8 +90,8 @@ Paper functionality is not complete until all of the following are true:
 
 ## Current Paper Branch Evidence
 
-- `dev-frame-opencode` branch: `codex/writelab-live-authorization-guard`
-- Pinned commit: `ea0758a3ee801b71bea8a2df291a8a0c07358abb`
+- `dev-frame-opencode` branch: `codex/paper-cli-status-matrix`
+- Pinned commit: `3395033c10db0a2a91a428ace013534095f97b2b`
 - Paper text fix files:
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/contracts/paper_task_spec.schema.json`
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/fixtures/paper_task_spec.sample.yaml`
@@ -135,6 +138,14 @@ Paper functionality is not complete until all of the following are true:
   - `python -m ruff check src/ai_workflow_hub/context_layer/adapters/writelab_client.py tests/test_writelab_client.py` -> passed.
   - `python -m pytest tests/test_writelab_client.py tests/test_paper_runtime.py tests/test_paper_graph.py tests/test_paper_evidence_pipeline.py tests/test_writelab_adapter.py -q` -> `276 passed in 17.56s`.
   - `python -m pytest tests/test_paper_a19_safe_e2e.py tests/test_paper_a20_real_e2e.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py tests/test_paper_a27_audit_polish.py tests/test_paper_a28_verify_command.py -q` -> `115 passed in 4.26s`.
+- CLI status boundary added in commit `3395033`:
+  - `ai-workflow-hub/src/ai_workflow_hub/cli.py`
+  - `ai-workflow-hub/tests/test_paper_cli.py`
+  - `docs/paper/PAPER_CLI_STATUS_MATRIX.md`
+- Verification observed by the main thread for commit `3395033`:
+  - `python -m py_compile src/ai_workflow_hub/cli.py` -> passed.
+  - `python -m pytest tests/test_paper_cli.py tests/test_paper_a19_safe_e2e.py tests/test_paper_a20_real_e2e.py tests/test_paper_a23_closeout_report.py tests/test_paper_a23b_closeout_hardening.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py -q` -> `151 passed in 4.94s`.
+  - `python -m pytest tests/test_writelab_client.py tests/test_paper_runtime.py tests/test_paper_graph.py tests/test_paper_evidence_pipeline.py tests/test_writelab_adapter.py -q` -> `276 passed in 15.83s`.
 
 Remaining hard boundary: real paper content remains blocked unless a fresh
 RuntimeAuthorization with `data_policy.paper_sensitive_input=explicit_allow`,

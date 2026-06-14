@@ -16,7 +16,7 @@ superproject has advanced submodule gitlinks to committed branch tips.
 |---|---|---|---|
 | `agent-acceptance` | `codex/devframe-system-path-gate0-contract` | Pinned at `88dd581` | Path drift, expired authorization, HUMAN_REQUIRED preservation |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `49c6be8` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion |
-| `dev-frame-opencode` | `codex/writelab-live-authorization-guard` | Pinned at `ea0758a` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, and live WriteLab authorization guard |
+| `dev-frame-opencode` | `codex/paper-cli-status-matrix` | Pinned at `3395033` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, and CLI status boundary |
 | `test-frame` | `codex/adapter-negative-matrix` | Pinned at `71caa1c` | Adapter mapping, required/optional profile semantics, fake-green canaries |
 
 ## Paper Focus
@@ -41,6 +41,9 @@ Completed in the `dev-frame-opencode` submodule branch:
 - Added a live WriteLab client authorization guard that fails direct expression
   and paragraph diagnosis calls closed before HTTP dispatch unless
   `RuntimeAuthorization.data_policy` explicitly allows `paragraph_text`.
+- Added CLI final-acceptance boundary output and
+  `docs/paper/PAPER_CLI_STATUS_MATRIX.md` so workflow status, schema validity,
+  and artifact verdicts are not promoted to final paper acceptance.
 
 Still open:
 
@@ -73,6 +76,9 @@ Allowed local verification only:
 - `dev-frame-opencode\ai-workflow-hub`: `python -m ruff check src/ai_workflow_hub/context_layer/adapters/writelab_client.py tests/test_writelab_client.py` -> passed.
 - `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_writelab_client.py tests/test_paper_runtime.py tests/test_paper_graph.py tests/test_paper_evidence_pipeline.py tests/test_writelab_adapter.py -q` -> `276 passed in 17.56s`.
 - `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_a19_safe_e2e.py tests/test_paper_a20_real_e2e.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py tests/test_paper_a27_audit_polish.py tests/test_paper_a28_verify_command.py -q` -> `115 passed in 4.26s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m py_compile src/ai_workflow_hub/cli.py` -> passed.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_cli.py tests/test_paper_a19_safe_e2e.py tests/test_paper_a20_real_e2e.py tests/test_paper_a23_closeout_report.py tests/test_paper_a23b_closeout_hardening.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py -q` -> `151 passed in 4.94s`.
+- `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_writelab_client.py tests/test_paper_runtime.py tests/test_paper_graph.py tests/test_paper_evidence_pipeline.py tests/test_writelab_adapter.py -q` -> `276 passed in 15.83s`.
 
 ## Known Boundary
 

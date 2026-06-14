@@ -28,8 +28,8 @@
       "path": "dev-frame-opencode",
       "role": "opencode_workflow_runtime_candidate",
       "remote": "https://github.com/RD2100/dev-frame-opencode.git",
-      "branch": "codex/writelab-live-authorization-guard",
-      "commit": "ea0758a3ee801b71bea8a2df291a8a0c07358abb",
+      "branch": "codex/paper-cli-status-matrix",
+      "commit": "3395033c10db0a2a91a428ace013534095f97b2b",
       "pre_pin_status": "clean_submodule_branch_committed"
     },
     {
