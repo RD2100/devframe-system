@@ -17,8 +17,21 @@ development. The source implementation currently lives in
 
 ## Active Focus
 
-1. Fix user-visible mojibake in paper schema and fixtures.
-2. Define paper privacy/redaction gates at integration level.
-3. Map paper CLI commands to status meanings and evidence outputs.
-4. Add paper negative cases: real full text without authorization, memory write
-   with paper content, unredacted evidence pack, human_required promoted to pass.
+1. Keep paper privacy/redaction gates fail-closed for reports, audit ZIPs, and
+   reviewer packs.
+2. Keep paper CLI status, artifact verification, and final acceptance as
+   separate user-visible meanings.
+3. Use test-frame negative fixtures for paper/WriteLab reviewer-pack privacy
+   and fake-green canaries.
+4. Keep real paper content and live WriteLab flows blocked until fresh
+   RuntimeAuthorization exists.
+5. Resolve Security Preflight P1 findings before Paper Function Business
+   Capability Validation.
+
+## Current Gate
+
+`SECURITY_PREFLIGHT_IN_PROGRESS`
+
+Next target after P1 security triage:
+
+`Paper Function Business Capability Validation`

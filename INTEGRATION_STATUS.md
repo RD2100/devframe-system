@@ -1,7 +1,7 @@
 # Integration Status
 
 Date: 2026-06-15
-Status: Phase 0.5 complete; Phase 1B paper privacy gate, handoff fixture, audit scan, live WriteLab guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, and focused mojibake cleanup advanced
+Status: Phase 0.5 complete; Security Preflight in progress; paper privacy, reviewer-pack, dispatch verdict, test-frame, and control-plane guardrails advanced
 Route: ROUTE_A_STRICT_CLEAN_BASELINE
 
 ## Current State
@@ -17,22 +17,23 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 
 | Module | Role | Pinned commit | Status |
 |---|---|---:|---|
-| `agent-acceptance` | Governance and acceptance framework | `1b1fad5808f288f48ae1e9a49f65ff765060e6fb` | Path/Gate0 contract and paper archive final-verdict boundary branch pinned |
-| `devframe-control-plane` | Control-plane runtime candidate | `49c6be859dd726092fc433cc18cb7ea9537498da` | Contract branch pinned |
-| `dev-frame-opencode` | Controlled coding runtime candidate | `7a1278b09e5427b5af7d3731f3e90c25796c0ee0` | Runtime/paper privacy gate, WriteLab handoff fixture, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, focused mojibake cleanup, and post-run write-set hard gate branch pinned |
-| `test-frame` | Controlled verification runtime candidate | `71caa1c242d9a85d185c4e29ee24eb078183ffd5` | Adapter contract branch pinned |
+| `agent-acceptance` | Governance and acceptance framework | `b505bf716c55c804302db35f33375afc9524c826` | Path/Gate0, paper archive SD-04, and dispatch/test-frame/control-plane SD-05 final-verdict boundary branch pinned |
+| `devframe-control-plane` | Control-plane runtime candidate | `c3edf8528cb853c023929c2c26fef208177e2198` | Lease/source-lock contract plus in-memory runtime contract probe branch pinned |
+| `dev-frame-opencode` | Controlled coding runtime candidate | `8119c85fd4991961accd35507351bf7db9199252` | Runtime/paper privacy gate, WriteLab handoff fixture, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, focused mojibake cleanup, post-run write-set hard gate, and paper audit privacy hard gate branch pinned |
+| `test-frame` | Controlled verification runtime candidate | `be27de01950a05d743764fd394a3ab9c9336b818` | Adapter contract plus paper reviewer-pack negative matrix branch pinned |
 
 ## Current Gaps
 
 | Gap | Severity | Status | Notes |
 |---|---|---|---|
-| `agent-acceptance` active binding path drift | P1 | Contracted and pinned | Commit `88dd581` documents the integration path, legacy path, and HUMAN_REQUIRED preservation; current pin `1b1fad5` preserves that boundary and adds paper archive SD-04 verdict-promotion rejection. Active rebinding is still human-gated. |
+| `agent-acceptance` active binding path drift | P1 | Contracted and pinned | Commit `88dd581` documents the integration path, legacy path, and HUMAN_REQUIRED preservation; current pin `b505bf7` preserves that boundary and adds SD-04/SD-05 verdict-promotion rejection. Active rebinding is still human-gated. |
 | A120 evidence location split | P1 | Open | A120 generated evidence exists in `D:\dev-frame-opencode\ai-workflow-hub`, not the submodule path. |
 | Independent A120 ZIP verifier | P1 | Implemented | `scripts/review_a120_evidence_zip.py` produced `PASS_WITH_BOUNDARY`; reports are stored under `integration/reports/a120`. This is evidence review, not final acceptance. |
-| `control-plane` lease/heartbeat/cancellation runtime | P0/P1 | Contracted and pinned | Commit `49c6be8` adds DispatchAssignment, WorkerLease, runtime SourceLock, AuditEvent, FailureRecord contracts. Runtime enforcement remains future work. |
-| `test-frame` adapter/failure semantics | P1 | Contracted and pinned | Commit `71caa1c` maps RunSpec/EvidenceManifest/ExecutionReport and adds canary guidance. It remains a verification runtime candidate, not a final verdict source. |
-| Paper feature usability and privacy boundary | P1 | Runtime/API privacy gate, WriteLab handoff fixture coverage, audit bundle sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, focused mojibake cleanup, archive-side SD-04 boundary, and post-run write-set hard gate pinned | Commit `ee08dd1` adds production-path `final_acceptance` output from the paper finalizer and proves reviewer-pack/report/artifact status cannot promote non-accepted results. Commit `4ab02c8` cleans the remaining focused mojibake hits found in goal-runner review text. Commit `1b1fad5` adds `agent-acceptance` closure validator SD-04 checks so reviewer-pack/report/test/zip outputs cannot claim final verdict or promote `needs_more_evidence` to final acceptance. Commit `7a1278b` enforces post-run `changed_files` against effective write scope from `allowed_files`, `write_set`, or `conflict_registry.write_set`, with forbidden files blocking even when other checks pass. |
-| Final verdict authority | P0 | Partially enforced | Dispatch, execution, test, review, and governance results must remain distinct. Paper reviewer-pack/report/test/zip promotion is now rejected by `agent-acceptance` SD-04; broader runtime dispatch/test-frame verdict separation remains open. |
+| `control-plane` lease/heartbeat/cancellation runtime | P0/P1 | Contracted and probe-pinned | Commit `c3edf85` adds a pure in-memory runtime contract probe for duplicate dispatch, stale lease completion, overlap SourceLock, cancellation after completion, retry non-retryable failure, and dispatch-success promotion. Runtime enforcement remains future work. |
+| `test-frame` adapter/failure semantics | P1 | Contracted and fixture-pinned | Commit `be27de0` adds paper/WriteLab reviewer-pack negative fixtures `NEG-031` through `NEG-038`. It remains a verification runtime candidate, not a final verdict source. |
+| Paper feature usability and privacy boundary | P1 | Runtime/API privacy gate, WriteLab handoff fixture coverage, audit bundle sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, focused mojibake cleanup, archive-side SD-04/SD-05 boundaries, post-run write-set hard gate, and paper audit privacy hard gate pinned | Commit `8119c85` expands audit/report hard gates for raw paragraph payloads, WriteLab `matched_text`, `text_span`, and payload markers. Commit `b505bf7` adds SD-05 so dispatch/test-frame/control-plane evidence and expired authorization cannot claim final governance verdict. Commit `be27de0` adds paper reviewer-pack negative fixtures. |
+| Security Preflight | P1 | In progress | `integration/reports/security-preflight-2026-06-15.md` records canonical clean baseline, SkillSpector `TOOL_NOT_AVAILABLE`, focused security findings, and P1 blockers. |
+| Final verdict authority | P0 | Expanded, not live-runtime complete | Dispatch, execution, test, review, and governance results must remain distinct. Paper reviewer-pack/report/test/zip promotion is rejected by SD-04, and dispatch/test-frame/control-plane promotion is rejected by SD-05. Live runtime final verdict authority is still blocked until security preflight and fresh authorization. |
 
 ## Allowed Next Work
 
@@ -40,6 +41,7 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 - Add contracts, plans, risk register, runbooks, and readonly CI.
 - Implement independent evidence verifier design before live runtime use.
 - Add dry-run-only adapters before any real dispatch.
+- Fix or explicitly triage Security Preflight P1 findings before paper business acceptance.
 
 ## Not Yet Allowed
 
@@ -47,3 +49,4 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 - Control-plane worker dispatch.
 - Test-frame runtime execution against real H5, MiniApp, MeterSphere, cloud device, or Android targets.
 - Treating any generated summary, dispatch result, or internal verdict as final acceptance.
+- Paper Business Capability Validation with real paper content before fresh RuntimeAuthorization and P1 security triage.

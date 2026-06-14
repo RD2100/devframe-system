@@ -61,10 +61,10 @@ Current submodule branch outputs:
 
 | Module | Branch | Main-thread status |
 |---|---|---|
-| `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `1b1fad5`; archive SD-04 final-verdict boundary active |
-| `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `49c6be8`; runtime enforcement remains future work |
-| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `71caa1c`; canary implementation remains future work |
-| `dev-frame-opencode` | `codex/post-run-write-set-hard-gate` | Pinned at `7a1278b`; paper runtime/privacy/write-scope boundaries active |
+| `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `b505bf7`; SD-04 and SD-05 final-verdict boundaries active |
+| `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `c3edf85`; runtime contract probe active, runtime enforcement remains future work |
+| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `be27de0`; paper reviewer-pack negative matrix active, canary implementation remains future work |
+| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `8119c85`; paper runtime/privacy/write-scope/audit privacy boundaries active |
 
 ## Paper Focus
 
@@ -72,3 +72,8 @@ Paper functionality is tracked in `PAPER_FEATURE_STATUS.md` and
 `integration\paper\README.md`. Treat real paper text as sensitive by default:
 paper reports and evidence must use summaries, hashes, or redacted excerpts
 unless a fresh RuntimeAuthorization explicitly allows broader handling.
+
+Security preflight is tracked in
+`integration\reports\security-preflight-2026-06-15.md`. Do not start Paper
+Function Business Capability Validation until P1 security findings are fixed or
+human-triaged.

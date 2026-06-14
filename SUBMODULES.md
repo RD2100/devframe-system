@@ -10,10 +10,10 @@ so.
 
 | Path | Project | Role | Branch | Locked commit |
 |---|---|---|---|---:|
-| `agent-acceptance` | `agent-acceptance` | Governance, acceptance, TaskSpec/Gate0 contracts | `codex/paper-archive-final-verdict-boundary` | `1b1fad5808f288f48ae1e9a49f65ff765060e6fb` |
-| `devframe-control-plane` | `devframe-control-plane` | Queue/dispatch/control-plane candidate | `codex/lease-source-lock-contracts` | `49c6be859dd726092fc433cc18cb7ea9537498da` |
-| `dev-frame-opencode` | `dev-frame-opencode` | Controlled coding runtime candidate | `codex/post-run-write-set-hard-gate` | `7a1278b09e5427b5af7d3731f3e90c25796c0ee0` |
-| `test-frame` | `test-frame` | Controlled verification runtime candidate | `codex/adapter-negative-matrix` | `71caa1c242d9a85d185c4e29ee24eb078183ffd5` |
+| `agent-acceptance` | `agent-acceptance` | Governance, acceptance, TaskSpec/Gate0 contracts | `codex/paper-archive-final-verdict-boundary` | `b505bf716c55c804302db35f33375afc9524c826` |
+| `devframe-control-plane` | `devframe-control-plane` | Queue/dispatch/control-plane candidate | `codex/lease-source-lock-contracts` | `c3edf8528cb853c023929c2c26fef208177e2198` |
+| `dev-frame-opencode` | `dev-frame-opencode` | Controlled coding runtime candidate | `codex/paper-audit-privacy-hard-gate` | `8119c85fd4991961accd35507351bf7db9199252` |
+| `test-frame` | `test-frame` | Controlled verification runtime candidate | `codex/adapter-negative-matrix` | `be27de01950a05d743764fd394a3ab9c9336b818` |
 
 ## Boundary Rules
 

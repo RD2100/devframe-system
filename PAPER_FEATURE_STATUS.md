@@ -2,7 +2,7 @@
 
 Date: 2026-06-15
 Primary module: `dev-frame-opencode/ai-workflow-hub`
-Status: Active development focus; runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, and finalizer acceptance boundary pinned
+Status: Active development focus; Security Preflight in progress; runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, paper audit privacy hard gate, and cross-module final-verdict boundaries pinned
 
 ## Current Surface
 
@@ -71,13 +71,23 @@ Core implementation areas:
 - The paper finalizer now emits `final_acceptance` from the production graph
   path. It is true only for accepted, completed, unblocked runs and ignores
   reviewer-pack/report/artifact validation claims.
+- Paper audit/report privacy hard gates now reject or redact direct
+  `paragraph`, `matched_text`, and `text_span` payload keys before they can
+  enter closeout/reviewer-pack/audit outputs.
+- `test-frame` now carries paper/WriteLab reviewer-pack negative fixtures for
+  no-tests-run, fake green, summary-as-final-verdict, artifact outside root,
+  token leakage, raw paragraph leakage, `human_required` promotion, and missing
+  hash/manifest boundaries.
+- `agent-acceptance` now rejects dispatch/test-frame/control-plane evidence and
+  expired RuntimeAuthorization when those artifacts try to claim final
+  governance acceptance.
 
 ## Priority Gaps
 
 | ID | Severity | Gap | Evidence | Desired outcome |
 |---|---|---|---|---|
 | PAPER-001 | P1 | User-visible schema/fixture text is mojibake in at least `paper_task_spec.schema.json` and `paper_task_spec.sample.yaml` | Fixed and pinned in `dev-frame-opencode` commit `08c76bb`; JSON/YAML parse and static pytest passed | Preserve field names, required fields, enums, and schema structure in future edits |
-| PAPER-002 | P1 | Paper full-text privacy boundary needs a project-level gate | Runtime/API gate pinned in `145fc05`; audit bundle sensitive scan pinned in `cb34be3`; live WriteLab authorization guard pinned in `ea0758a`; reviewer-pack boundary pinned in `51215f1`; finalizer acceptance boundary pinned through `4ab02c8`; archive SD-04 boundary pinned in `1b1fad5`; unauthorized raw `paragraph_text`/`writelab_token` becomes `human_required`, audit ZIP candidates fail closed on unredacted sensitive artifacts, direct live WriteLab calls block before HTTP dispatch without explicit `paragraph_text` authorization, closeout reports carry non-authoritative redacted reviewer-pack metadata, graph finalization cannot be promoted by report/artifact pass fields, and closure validation rejects reviewer-pack/report/test/zip final-verdict promotion | Keep real paper content blocked until fresh RuntimeAuthorization is issued |
+| PAPER-002 | P1 | Paper full-text privacy boundary needs a project-level gate | Runtime/API gate pinned in `145fc05`; audit bundle sensitive scan pinned in `cb34be3`; live WriteLab authorization guard pinned in `ea0758a`; reviewer-pack boundary pinned in `51215f1`; finalizer acceptance boundary pinned through `4ab02c8`; archive SD-04/SD-05 boundary pinned in `b505bf7`; paper audit privacy hard gate pinned in `8119c85`; unauthorized raw `paragraph_text`/`writelab_token` becomes `human_required`, audit ZIP candidates fail closed on unredacted sensitive artifacts, direct live WriteLab calls block before HTTP dispatch without explicit `paragraph_text` authorization, closeout reports carry non-authoritative redacted reviewer-pack metadata, graph finalization cannot be promoted by report/artifact pass fields, and closure validation rejects reviewer-pack/report/test/zip/dispatch/test-frame/control-plane final-verdict promotion | Keep real paper content blocked until fresh RuntimeAuthorization is issued |
 | PAPER-003 | P1 | CLI command completeness is broad but not summarized for users | Fixed and pinned in `3395033`: `docs/paper/PAPER_CLI_STATUS_MATRIX.md` maps paper commands and three status layers | Keep the matrix current as commands evolve |
 | PAPER-004 | P1 | Runtime success, human_required, blocked, and final acceptance boundaries need integration-level assertions | Fixed at CLI boundary in `3395033`, graph finalizer boundary in `ee08dd1`, and archive SD-04 boundary in `1b1fad5`: non-JSON output, JSON/report fields, production finalizer state, and closure validation distinguish workflow status from final acceptance; tests cover accepted, accepted_with_limitation, blocked, needs_more_evidence, fake reviewer-pack/artifact pass fields, and reviewer-pack/report/test/zip promotion attempts | Extend equivalent boundary probes to future dispatch/test-frame runtime artifacts |
 | PAPER-005 | P2 | WriteLab/offline handoff path needs current compatibility proof | Fixed and pinned in `dev-frame-opencode` commit `72d1dbd`; tracked `mock_handoff.zip` restored, manifest SHA/size values match ZIP entries, and `test_writelab_adapter.py` now asserts ZIP manifest consistency | Keep the fixture in CI and add future negative fixtures for privacy-attestation and integrity failures |
@@ -99,8 +109,8 @@ Paper functionality is not complete until all of the following are true:
 
 ## Current Paper Branch Evidence
 
-- `dev-frame-opencode` branch: `codex/post-run-write-set-hard-gate`
-- Pinned commit: `7a1278b09e5427b5af7d3731f3e90c25796c0ee0`
+- `dev-frame-opencode` branch: `codex/paper-audit-privacy-hard-gate`
+- Pinned commit: `8119c85fd4991961accd35507351bf7db9199252`
 - Paper text fix files:
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/contracts/paper_task_spec.schema.json`
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/fixtures/paper_task_spec.sample.yaml`
@@ -200,6 +210,35 @@ Paper functionality is not complete until all of the following are true:
   - `pytest tests\test_batch_retry.py tests\test_stage3b_idempotency.py tests\test_workflow_nodes.py -q` -> `14 passed, 1 skipped in 0.60s`.
   - `pytest tests\test_paper_runtime.py tests\test_paper_cli.py -q` -> `130 passed in 13.37s`.
   - `git diff --check` passed with CRLF warnings only.
+- Paper audit privacy hard gate added in commit `8119c85`:
+  - `ai-workflow-hub/src/ai_workflow_hub/cli.py`
+  - `ai-workflow-hub/tests/test_paper_cli_a18b.py`
+  - `ai-workflow-hub/tests/test_paper_a26_audit_hardening.py`
+- Main-thread verification for commit `8119c85`:
+  - `PYTHONPATH=D:\devframe-system\dev-frame-opencode\ai-workflow-hub\src; python -m pytest tests\test_paper_cli_a18b.py tests\test_paper_a23b_closeout_hardening.py tests\test_paper_a26_audit_hardening.py -q` -> `54 passed`.
+  - `git diff --check` passed.
+- Paper reviewer-pack negative fixtures added in `test-frame` commit
+  `be27de0`:
+  - `docs/agent-runtime/negative-test-fixtures/NEG-031` through `NEG-038`
+  - `tests/test_paper_negative_fixtures.py`
+- Main-thread verification for commit `be27de0`:
+  - `python -m pytest tests\test_paper_negative_fixtures.py tests\test_gate_semantics.py -q` -> `31 passed`.
+  - `python tools\ai_guard.py full` -> `PASS`.
+- Dispatch/test-frame/control-plane final verdict boundary added in
+  `agent-acceptance` commit `b505bf7`:
+  - `scripts/validate_workflow_closure.py`
+  - `tests/test_workflow_closure_validation.py`
+  - `docs/agent-runtime/negative-test-fixtures/NEG-039` through `NEG-042`
+- Main-thread verification for commit `b505bf7`:
+  - `python tests\test_workflow_closure_validation.py` -> `22/22 passed`.
+  - `python scripts\qoderwork_task_runner.py finish --task-id devframe-final-verdict-boundary-a1` -> `PASS`.
+
+Current security gate:
+
+- `integration/reports/security-preflight-2026-06-15.md`
+- `PROJECT_STAGE: SECURITY_PREFLIGHT_IN_PROGRESS`
+- P1 security findings remain open for TaskSpec command execution boundary,
+  exit-code based review recovery, and daemon queued write authorization.
 
 Remaining hard boundary: real paper content remains blocked unless a fresh
 RuntimeAuthorization with `data_policy.paper_sensitive_input=explicit_allow`,

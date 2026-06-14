@@ -10,6 +10,9 @@ Current reports:
 - `phase-0.5-1b-checkpoint.md` records the `/rdinit`, Phase 0.5,
   four-submodule contract branches, paper focus, and static verification
   checkpoint.
+- `security-preflight-2026-06-15.md` records the canonical clean baseline,
+  SkillSpector availability, focused security findings, and P1 blockers before
+  Paper Function Business Capability Validation.
 - `a120/a120-evidence-zip-review.json` and
   `a120/a120-evidence-zip-review.md` record the independent A120 evidence ZIP
   review boundary.
