@@ -34,6 +34,7 @@ DEFAULT_MAX_ENTRY_BYTES = 10 * 1024 * 1024
 DEFAULT_MAX_TOTAL_BYTES = 50 * 1024 * 1024
 VERDICT_START = 66
 VERDICT_END = 119
+FALLBACK_GENERATED_AT = "1970-01-01T00:00:00+00:00"
 
 
 @dataclass
@@ -54,6 +55,13 @@ def sha256_text(text: str) -> str:
 
 def read_text_entry(zf: zipfile.ZipFile, name: str) -> str:
     return zf.read(name).decode("utf-8", errors="replace")
+
+
+def zip_content_generated_at(infos: list[zipfile.ZipInfo]) -> str:
+    if not infos:
+        return FALLBACK_GENERATED_AT
+    latest = max(info.date_time for info in infos)
+    return datetime(*latest, tzinfo=timezone.utc).isoformat()
 
 
 def sorted_manifest_metadata_hash(manifest: dict[str, Any]) -> str:
@@ -135,6 +143,7 @@ def review(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
 
     with zipfile.ZipFile(zip_path, "r") as zf:
         infos = zf.infolist()
+        generated_at = zip_content_generated_at(infos)
         names = [info.filename for info in infos]
         name_set = set(names)
         duplicates = sorted({name for name in names if names.count(name) > 1})
@@ -360,6 +369,7 @@ def review(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
             "verdict_sha256": sha256_bytes(verdict_path.read_bytes()) if verdict_path else None,
         },
         verdict_summary,
+        generated_at,
     )
     return report, 1 if any(check.status == "FAIL" for check in checks) else 0
 
@@ -369,6 +379,7 @@ def make_report(
     checks: list[Check],
     artifact_hashes: dict[str, Any],
     verdict_summary: dict[str, Any] | None,
+    generated_at: str | None = None,
 ) -> dict[str, Any]:
     counts = {
         "pass": sum(1 for check in checks if check.status == "PASS"),
@@ -378,7 +389,7 @@ def make_report(
     return {
         "schema_version": "1.0",
         "review_type": "A120EvidenceZipReviewReport",
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": generated_at or FALLBACK_GENERATED_AT,
         "reviewer_boundary": {
             "read_only": True,
             "runs_pack_or_validate_scripts": False,
