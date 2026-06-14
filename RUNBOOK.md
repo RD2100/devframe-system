@@ -62,18 +62,18 @@ Current submodule branch outputs:
 | Module | Branch | Main-thread status |
 |---|---|---|
 | `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `f3abb20`; SD-04, SD-05, and SD-06 final-verdict boundaries active |
-| `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `c3edf85`; runtime contract probe active, runtime enforcement remains future work |
-| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `93b95b9`; paper reviewer-pack and business-validation negative matrix active, canary implementation remains future work |
-| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `b805658`; paper runtime/privacy/write-scope/audit privacy boundaries, Security Preflight P1 reviewed gates, and synthetic/offline business capability validation active |
+| `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `b001cea`; runtime contract probe plus dry-run state machine active, runtime enforcement remains future work |
+| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `891b106`; paper reviewer-pack, business-validation, and business report negative matrix active, canary implementation remains future work |
+| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `08ac4f5`; paper runtime/privacy/write-scope/audit privacy boundaries, Security Preflight P1 reviewed gates, and machine-readable synthetic/offline business validation report active |
 
 Current delegated next-slice assignments:
 
 | TaskSpec | Module | Expected output |
 |---|---|---|
-| `TS-PAPER-BUSINESS-REPORT-ARTIFACT.md` | `dev-frame-opencode` | Machine-readable synthetic/offline paper business validation report |
-| `TS-TEST-FRAME-BUSINESS-REPORT-NEGATIVES.md` | `test-frame` | Negative fixtures/tests for business validation report shape |
-| `TS-AGENT-ACCEPTANCE-SD07-AUTH-GATE.md` | `agent-acceptance` | Read-only SD-07 governance TaskSpec decision |
-| `TS-CONTROL-PLANE-DRY-RUN-STATE-MACHINE.md` | `devframe-control-plane` | Pure in-memory dry-run state machine/validator candidate |
+| `TS-PAPER-BUSINESS-REPORT-ARTIFACT.md` | `dev-frame-opencode` | Completed in `08ac4f5`: machine-readable synthetic/offline paper business validation report |
+| `TS-TEST-FRAME-BUSINESS-REPORT-NEGATIVES.md` | `test-frame` | Completed in `891b106`: negative fixtures/tests for business validation report shape |
+| `TS-AGENT-ACCEPTANCE-SD07-AUTH-GATE.md` | `agent-acceptance` | Completed read-only: returned `SD07_TASKSPEC_REQUIRED` |
+| `TS-CONTROL-PLANE-DRY-RUN-STATE-MACHINE.md` | `devframe-control-plane` | Completed in `b001cea`: pure in-memory dry-run state machine/validator candidate |
 
 ## Paper Focus
 
@@ -87,7 +87,7 @@ Security preflight is tracked in
 review has passed with boundary; real paper content and live WriteLab flows
 still require fresh RuntimeAuthorization before execution.
 
-Paper Business Capability Validation candidate evidence is tracked in
+Paper Business Validation report artifact candidate evidence is tracked in
 `integration\reports\paper-business-validation-2026-06-15.md`. Treat that
-candidate as review input only: it validates the synthetic/offline command and
-evidence shape, not final user acceptance.
+candidate as review input only: it validates the synthetic/offline command,
+schema, JSON artifact, and evidence shape, not final user acceptance.
