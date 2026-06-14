@@ -25,13 +25,15 @@ development. The source implementation currently lives in
    and fake-green canaries.
 4. Keep real paper content and live WriteLab flows blocked until fresh
    RuntimeAuthorization exists.
-5. Start Paper Function Business Capability Validation with synthetic/offline
-   evidence first; keep real content gated by fresh RuntimeAuthorization.
+5. Review the Paper Function Business Capability Validation candidate with
+   synthetic/offline evidence; keep real content gated by fresh
+   RuntimeAuthorization.
 
 ## Current Gate
 
-`SECURITY_PREFLIGHT_REVIEW_PASS`
+`PAPER_BUSINESS_CAPABILITY_VALIDATION_CANDIDATE`
 
 Next target:
 
-`Paper Function Business Capability Validation`
+Human review of the synthetic/offline business validation candidate, then a
+fresh RuntimeAuthorization-gated real-content pilot.

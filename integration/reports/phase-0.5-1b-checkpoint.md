@@ -2,7 +2,7 @@
 
 Date: 2026-06-15
 Branch: `codex/rdinit-phase-0-5`
-Status: checkpoint only, not final acceptance; Security Preflight P1 review pass with boundary
+Status: checkpoint only, not final acceptance; Paper Business Capability Validation candidate recorded with boundary
 
 ## Summary
 
@@ -14,10 +14,10 @@ superproject has advanced submodule gitlinks to committed branch tips.
 
 | Module | Branch | Status | Review focus |
 |---|---|---|---|
-| `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `b505bf7` | Path drift, expired authorization, HUMAN_REQUIRED preservation, paper archive SD-04, and dispatch/test-frame/control-plane SD-05 final-verdict boundary |
+| `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `f3abb20` | Path drift, expired authorization, HUMAN_REQUIRED preservation, paper archive SD-04, dispatch/test-frame/control-plane SD-05, and paper business-validation SD-06 final-verdict boundary |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `c3edf85` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion, and in-memory runtime contract probe |
-| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `40ee21b` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, focused mojibake cleanup, post-run write-set hard gate, paper audit privacy hard gate, and Security Preflight P1 reviewed gates |
-| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `be27de0` | Adapter mapping, required/optional profile semantics, fake-green canaries, and paper reviewer-pack negative fixtures |
+| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `b805658` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, focused mojibake cleanup, post-run write-set hard gate, paper audit privacy hard gate, Security Preflight P1 reviewed gates, and synthetic/offline paper business validation candidate |
+| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `93b95b9` | Adapter mapping, required/optional profile semantics, fake-green canaries, paper reviewer-pack negative fixtures, and paper business-validation negative fixtures |
 
 ## Paper Focus
 
@@ -83,6 +83,14 @@ Completed in the `dev-frame-opencode` submodule branch:
 - Added `devframe-control-plane` in-memory runtime contract probe for duplicate
   dispatch, stale lease completion, overlapping SourceLock, cancellation after
   completion, retry non-retryable failure, and dispatch-success promotion.
+- Added a synthetic/offline Paper Business Capability Validation candidate in
+  `dev-frame-opencode` commit `b805658`, covering paper command-chain evidence,
+  reviewer-pack non-finality, status/final-acceptance separation, redaction
+  boundaries, and the current business capability matrix.
+- Added `test-frame` paper business-validation negative fixtures `NEG-039`
+  through `NEG-043` in commit `93b95b9`.
+- Added `agent-acceptance` SD-06 closure validation in commit `f3abb20` so
+  paper business-validation artifacts cannot claim final governance verdict.
 
 Security Preflight status:
 
@@ -165,6 +173,17 @@ Allowed local verification only:
 - `devframe-control-plane`: `python -m pytest tests\test_runtime_contract_probe.py -q` -> `8 passed`.
 - `agent-acceptance`: `python tests\test_workflow_closure_validation.py` -> `22/22 passed`.
 - `agent-acceptance`: `python scripts\qoderwork_task_runner.py finish --task-id devframe-final-verdict-boundary-a1` -> `PASS`.
+- `dev-frame-opencode`: with `PYTHONPATH` set to
+  `D:\devframe-system\dev-frame-opencode\ai-workflow-hub\src`,
+  `python -m pytest ai-workflow-hub\tests\test_paper_business_capability_validation.py -q`
+  -> `4 passed in 0.27s`.
+- `dev-frame-opencode`: with `PYTHONPATH` set to the submodule source path,
+  the current paper regression group -> `435 passed in 13.62s`.
+- `test-frame`: `python -m pytest tests\test_paper_negative_fixtures.py tests\contracts\test_contracts.py tests\schema\test_canonical.py -q`
+  -> `19 passed in 0.17s`.
+- `agent-acceptance`: `python -m pytest tests\test_workflow_closure_validation.py -q`
+  -> `23 passed in 0.11s`.
+- `agent-acceptance`: `python -m compileall -q scripts\validate_workflow_closure.py` -> passed.
 
 ## Known Boundary
 
@@ -175,4 +194,5 @@ No package install, npm suite, OpenCode execution, control-plane worker
 dispatch, test-frame external capability, real paper-content run, pack, or
 validate script was run in this checkpoint. The Python execution added for the
 paper gates was local ruff/pytest/schema verification inside
-`dev-frame-opencode`.
+`dev-frame-opencode`. The Paper Business Capability Validation candidate is
+synthetic/offline review evidence only; it is not final paper acceptance.

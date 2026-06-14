@@ -10,10 +10,10 @@ so.
 
 | Path | Project | Role | Branch | Locked commit |
 |---|---|---|---|---:|
-| `agent-acceptance` | `agent-acceptance` | Governance, acceptance, TaskSpec/Gate0 contracts | `codex/paper-archive-final-verdict-boundary` | `b505bf716c55c804302db35f33375afc9524c826` |
+| `agent-acceptance` | `agent-acceptance` | Governance, acceptance, TaskSpec/Gate0 contracts | `codex/paper-archive-final-verdict-boundary` | `f3abb202a9d58044718d3e5b9b920bef8e4000e8` |
 | `devframe-control-plane` | `devframe-control-plane` | Queue/dispatch/control-plane candidate | `codex/lease-source-lock-contracts` | `c3edf8528cb853c023929c2c26fef208177e2198` |
-| `dev-frame-opencode` | `dev-frame-opencode` | Controlled coding runtime candidate | `codex/paper-audit-privacy-hard-gate` | `40ee21b56e1bf96bd4874098e251eb23c9d05a35` |
-| `test-frame` | `test-frame` | Controlled verification runtime candidate | `codex/adapter-negative-matrix` | `be27de01950a05d743764fd394a3ab9c9336b818` |
+| `dev-frame-opencode` | `dev-frame-opencode` | Controlled coding runtime candidate | `codex/paper-audit-privacy-hard-gate` | `b805658a2c9111ab839749ed81a210305127d42d` |
+| `test-frame` | `test-frame` | Controlled verification runtime candidate | `codex/adapter-negative-matrix` | `93b95b98e59dbf0ca0bc060c949eb7fa53f3b3ef` |
 
 ## Boundary Rules
 

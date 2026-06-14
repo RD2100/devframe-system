@@ -61,10 +61,10 @@ Current submodule branch outputs:
 
 | Module | Branch | Main-thread status |
 |---|---|---|
-| `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `b505bf7`; SD-04 and SD-05 final-verdict boundaries active |
+| `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `f3abb20`; SD-04, SD-05, and SD-06 final-verdict boundaries active |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `c3edf85`; runtime contract probe active, runtime enforcement remains future work |
-| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `be27de0`; paper reviewer-pack negative matrix active, canary implementation remains future work |
-| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `40ee21b`; paper runtime/privacy/write-scope/audit privacy boundaries and Security Preflight P1 reviewed gates active |
+| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `93b95b9`; paper reviewer-pack and business-validation negative matrix active, canary implementation remains future work |
+| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `b805658`; paper runtime/privacy/write-scope/audit privacy boundaries, Security Preflight P1 reviewed gates, and synthetic/offline business capability validation active |
 
 ## Paper Focus
 
@@ -77,3 +77,8 @@ Security preflight is tracked in
 `integration\reports\security-preflight-2026-06-15.md`. Security Preflight P1
 review has passed with boundary; real paper content and live WriteLab flows
 still require fresh RuntimeAuthorization before execution.
+
+Paper Business Capability Validation candidate evidence is tracked in
+`integration\reports\paper-business-validation-2026-06-15.md`. Treat that
+candidate as review input only: it validates the synthetic/offline command and
+evidence shape, not final user acceptance.

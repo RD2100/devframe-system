@@ -11,7 +11,7 @@
       "role": "governance_acceptance_framework",
       "remote": "https://github.com/RD2100/agent-acceptance.git",
       "branch": "codex/paper-archive-final-verdict-boundary",
-      "commit": "b505bf716c55c804302db35f33375afc9524c826",
+      "commit": "f3abb202a9d58044718d3e5b9b920bef8e4000e8",
       "pre_pin_status": "clean_submodule_branch_committed"
     },
     {
@@ -29,7 +29,7 @@
       "role": "opencode_workflow_runtime_candidate",
       "remote": "https://github.com/RD2100/dev-frame-opencode.git",
       "branch": "codex/paper-audit-privacy-hard-gate",
-      "commit": "40ee21b56e1bf96bd4874098e251eb23c9d05a35",
+      "commit": "b805658a2c9111ab839749ed81a210305127d42d",
       "pre_pin_status": "clean_submodule_branch_committed"
     },
     {
@@ -38,7 +38,7 @@
       "role": "controlled_verification_runtime_candidate",
       "remote": "https://github.com/RD2100/test-frame.git",
       "branch": "codex/adapter-negative-matrix",
-      "commit": "be27de01950a05d743764fd394a3ab9c9336b818",
+      "commit": "93b95b98e59dbf0ca0bc060c949eb7fa53f3b3ef",
       "pre_pin_status": "clean_submodule_branch_committed"
     }
   ],
