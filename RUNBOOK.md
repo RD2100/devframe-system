@@ -48,7 +48,8 @@ Pause before:
 - Running OpenCode, control-plane worker, test-frame runtime, or any external
   H5/MiniApp/MeterSphere/cloud/Android capability.
 - Promoting an internal verdict to final acceptance.
-- Updating submodule commits.
+- Updating submodule commits, unless the update is a planned parent pin after
+  a completed sub-agent TaskSpec and main-thread verification.
 - Pushing, merging, deploying, resetting, cleaning, or stashing.
 
 ## Active TaskSpecs
@@ -61,7 +62,7 @@ Current submodule branch outputs:
 
 | Module | Branch | Main-thread status |
 |---|---|---|
-| `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `f3abb20`; SD-04, SD-05, and SD-06 final-verdict boundaries active |
+| `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `38d7b2e`; SD-04, SD-05, SD-06, and SD-07 RuntimeAuthorization boundaries active |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `b001cea`; runtime contract probe plus dry-run state machine active, runtime enforcement remains future work |
 | `test-frame` | `codex/adapter-negative-matrix` | Pinned at `891b106`; paper reviewer-pack, business-validation, and business report negative matrix active, canary implementation remains future work |
 | `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `08ac4f5`; paper runtime/privacy/write-scope/audit privacy boundaries, Security Preflight P1 reviewed gates, and machine-readable synthetic/offline business validation report active |
@@ -72,7 +73,7 @@ Current delegated next-slice assignments:
 |---|---|---|
 | `TS-PAPER-BUSINESS-REPORT-ARTIFACT.md` | `dev-frame-opencode` | Completed in `08ac4f5`: machine-readable synthetic/offline paper business validation report |
 | `TS-TEST-FRAME-BUSINESS-REPORT-NEGATIVES.md` | `test-frame` | Completed in `891b106`: negative fixtures/tests for business validation report shape |
-| `TS-AGENT-ACCEPTANCE-SD07-AUTH-GATE.md` | `agent-acceptance` | Completed read-only: returned `SD07_TASKSPEC_REQUIRED` |
+| `TS-AGENT-ACCEPTANCE-SD07-AUTH-GATE.md` | `agent-acceptance` | Read-only completed and implementation pinned in `38d7b2e`: SD-07 real-content/live WriteLab RuntimeAuthorization boundary |
 | `TS-CONTROL-PLANE-DRY-RUN-STATE-MACHINE.md` | `devframe-control-plane` | Completed in `b001cea`: pure in-memory dry-run state machine/validator candidate |
 
 ## Paper Focus
@@ -91,3 +92,8 @@ Paper Business Validation report artifact candidate evidence is tracked in
 `integration\reports\paper-business-validation-2026-06-15.md`. Treat that
 candidate as review input only: it validates the synthetic/offline command,
 schema, JSON artifact, and evidence shape, not final user acceptance.
+
+SD-07 RuntimeAuthorization boundary evidence is tracked in
+`integration\reports\sd07-runtime-authorization-boundary-2026-06-15.md`. Treat
+it as a governance gate only: it blocks unauthorized real-content/live evidence
+but does not authorize any live or real-content run.

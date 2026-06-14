@@ -2,7 +2,7 @@
 
 Date: 2026-06-15
 Primary module: `dev-frame-opencode/ai-workflow-hub`
-Status: Machine-readable Paper Business Validation report artifact candidate recorded with synthetic/offline evidence; runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, paper audit privacy hard gate, Security Preflight P1 gates, and cross-module final-verdict boundaries pinned
+Status: Machine-readable Paper Business Validation report artifact candidate recorded with synthetic/offline evidence; runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, paper audit privacy hard gate, Security Preflight P1 gates, cross-module final-verdict boundaries, and SD-07 real-content/live RuntimeAuthorization boundary pinned
 
 ## Current Surface
 
@@ -93,19 +93,23 @@ Core implementation areas:
   expired RuntimeAuthorization when those artifacts try to claim final
   governance acceptance, and rejects business-validation artifacts when they
   try to claim final governance acceptance.
+- `agent-acceptance` now rejects real-content pilot, real paper content, and
+  live WriteLab evidence without fresh scoped RuntimeAuthorization, required
+  human gate references, sensitive-field authorization, and redaction-required
+  flags; synthetic/offline candidates cannot authorize live execution.
 
 ## Priority Gaps
 
 | ID | Severity | Gap | Evidence | Desired outcome |
 |---|---|---|---|---|
 | PAPER-001 | P1 | User-visible schema/fixture text is mojibake in at least `paper_task_spec.schema.json` and `paper_task_spec.sample.yaml` | Fixed and pinned in `dev-frame-opencode` commit `08c76bb`; JSON/YAML parse and static pytest passed | Preserve field names, required fields, enums, and schema structure in future edits |
-| PAPER-002 | P1 | Paper full-text privacy boundary needs a project-level gate | Runtime/API gate pinned in `145fc05`; audit bundle sensitive scan pinned in `cb34be3`; live WriteLab authorization guard pinned in `ea0758a`; reviewer-pack boundary pinned in `51215f1`; finalizer acceptance boundary pinned through `4ab02c8`; archive SD-04/SD-05/SD-06 boundary pinned in `f3abb20`; paper audit privacy hard gate pinned in `8119c85`; Security Preflight P1 review pass pinned in `40ee21b`; machine-readable business validation report candidate pinned in `08ac4f5`; unauthorized raw `paragraph_text`/`writelab_token` becomes `human_required`, audit ZIP candidates fail closed on unredacted sensitive artifacts, direct live WriteLab calls block before HTTP dispatch without explicit `paragraph_text` authorization, closeout reports carry non-authoritative redacted reviewer-pack metadata, graph finalization cannot be promoted by report/artifact/business-validation pass fields, business report schema keeps real-content authorization required, closure validation rejects reviewer-pack/report/test/zip/dispatch/test-frame/control-plane/business-validation final-verdict promotion, and daemon/CLI paths have reviewed security gates | Keep real paper content blocked until fresh RuntimeAuthorization is issued and SD-07 is implemented |
+| PAPER-002 | P1 | Paper full-text privacy boundary needs a project-level gate | Runtime/API gate pinned in `145fc05`; audit bundle sensitive scan pinned in `cb34be3`; live WriteLab authorization guard pinned in `ea0758a`; reviewer-pack boundary pinned in `51215f1`; finalizer acceptance boundary pinned through `4ab02c8`; archive SD-04/SD-05/SD-06/SD-07 boundary pinned in `38d7b2e`; paper audit privacy hard gate pinned in `8119c85`; Security Preflight P1 review pass pinned in `40ee21b`; machine-readable business validation report candidate pinned in `08ac4f5`; unauthorized raw `paragraph_text`/`writelab_token` becomes `human_required`, audit ZIP candidates fail closed on unredacted sensitive artifacts, direct live WriteLab calls block before HTTP dispatch without explicit `paragraph_text` authorization, closeout reports carry non-authoritative redacted reviewer-pack metadata, graph finalization cannot be promoted by report/artifact/business-validation pass fields, business report schema keeps real-content authorization required, closure validation rejects reviewer-pack/report/test/zip/dispatch/test-frame/control-plane/business-validation final-verdict promotion, SD-07 rejects real-content/live evidence without fresh scoped RuntimeAuthorization, and daemon/CLI paths have reviewed security gates | Keep real paper content blocked until fresh RuntimeAuthorization and a dedicated pilot TaskSpec exist |
 | PAPER-003 | P1 | CLI command completeness is broad but not summarized for users | Fixed and pinned in `3395033`: `docs/paper/PAPER_CLI_STATUS_MATRIX.md` maps paper commands and three status layers | Keep the matrix current as commands evolve |
 | PAPER-004 | P1 | Runtime success, human_required, blocked, and final acceptance boundaries need integration-level assertions | Fixed at CLI boundary in `3395033`, graph finalizer boundary in `ee08dd1`, and archive SD-04 boundary in `1b1fad5`: non-JSON output, JSON/report fields, production finalizer state, and closure validation distinguish workflow status from final acceptance; tests cover accepted, accepted_with_limitation, blocked, needs_more_evidence, fake reviewer-pack/artifact pass fields, and reviewer-pack/report/test/zip promotion attempts | Extend equivalent boundary probes to future dispatch/test-frame runtime artifacts |
 | PAPER-005 | P2 | WriteLab/offline handoff path needs current compatibility proof | Fixed and pinned in `dev-frame-opencode` commit `72d1dbd`; tracked `mock_handoff.zip` restored, manifest SHA/size values match ZIP entries, and `test_writelab_adapter.py` now asserts ZIP manifest consistency | Keep the fixture in CI and add future negative fixtures for privacy-attestation and integrity failures |
 | PAPER-006 | P2 | Paper evidence reports need redacted reviewer pack shape | Fixed and pinned in `51215f1`: `paper report` includes `reviewer_pack`, `schemas/paper_redacted_evidence_pack.schema.json` validates its boundary fields, and tests prove raw payload/token strings are omitted while summary text cannot override structured acceptance | Keep reviewer-pack schema current as governance-level EvidenceManifest contracts mature |
 | PAPER-007 | P2 | Additional user-facing paper adapter/client evidence strings may still contain mojibake | Focused cleanup pinned in `4ab02c8`; Unicode scan of `ai-workflow-hub` source/tests/paper docs/schemas found no remaining target mojibake after cleanup, except legitimate BibTeX Latin character mappings | Keep the scan pattern available for future text/report edits |
-| PAPER-008 | P1 | Business capability validation must not be treated as final paper acceptance | Machine-readable synthetic/offline candidate pinned in `08ac4f5`; `test-frame` negative fixtures `NEG-039` through `NEG-048` pinned in `891b106`; `agent-acceptance` SD-06 governance boundary pinned in `f3abb20`; main-thread verification passed 7 opencode business-report tests, 97 paper CLI tests, 19 test-frame negative/contract tests, and a CLI JSON artifact probe | Use this as review input only; require human review, SD-07, and fresh RuntimeAuthorization before any real paper/live WriteLab pilot |
+| PAPER-008 | P1 | Business capability validation must not be treated as final paper acceptance | Machine-readable synthetic/offline candidate pinned in `08ac4f5`; `test-frame` negative fixtures `NEG-039` through `NEG-048` pinned in `891b106`; `agent-acceptance` SD-06/SD-07 governance boundary pinned in `38d7b2e`; main-thread verification passed 7 opencode business-report tests, 97 paper CLI tests, 19 test-frame negative/contract tests, 27 agent-acceptance closure tests, NEG-044/045/046 JSON parse, and a CLI JSON artifact probe | Use this as review input only; require human review and fresh RuntimeAuthorization before any real paper/live WriteLab pilot |
 
 ## Paper Completion Criteria
 
@@ -136,11 +140,13 @@ Paper functionality is not complete until all of the following are true:
     manifests, invalid report validation modes, final-acceptance promotion,
     missing fresh authorization gate, incomplete report command chain, and raw
     privacy field leakage.
-  - `agent-acceptance` commit `f3abb20`: adds SD-06 closure validation so
-    paper business validation artifacts cannot claim final governance verdict.
+  - `agent-acceptance` commit `38d7b2e`: adds SD-06 closure validation so
+    paper business validation artifacts cannot claim final governance verdict
+    and SD-07 closure validation so real-content/live WriteLab artifacts
+    require fresh scoped RuntimeAuthorization.
   - Main-thread verification: `7 passed` for the opencode business report
     test, `97 passed` for the paper CLI subset, a CLI JSON artifact probe,
-    `19 passed` for test-frame negative/contract tests, and `23 passed` for
+    `19 passed` for test-frame negative/contract tests, and `27 passed` for
     agent-acceptance closure validation.
 - Paper text fix files:
   - `ai-workflow-hub/src/ai_workflow_hub/domains/paper/contracts/paper_task_spec.schema.json`
@@ -289,12 +295,14 @@ Current project gate:
 
 - `integration/reports/security-preflight-2026-06-15.md`
 - `integration/reports/paper-business-validation-2026-06-15.md`
-- `PROJECT_STAGE: PAPER_BUSINESS_VALIDATION_REPORT_ARTIFACT_CANDIDATE`
+- `integration/reports/sd07-runtime-authorization-boundary-2026-06-15.md`
+- `PROJECT_STAGE: PAPER_BUSINESS_VALIDATION_REPORT_ARTIFACT_CANDIDATE_WITH_SD07_GATE`
 - P1 security findings have independent review pass with boundary after
   `dev-frame-opencode` commits `4558ab8` and `40ee21b`.
 - Paper Function Business Capability Validation has a machine-readable
   synthetic/offline report artifact candidate; real paper content and live
-  WriteLab flows still require SD-07 and fresh RuntimeAuthorization.
+  WriteLab flows still require fresh RuntimeAuthorization and a dedicated pilot
+  TaskSpec. SD-07 is now pinned as a governance gate, not runtime approval.
 
 Remaining hard boundary: real paper content remains blocked unless a fresh
 RuntimeAuthorization with `data_policy.paper_sensitive_input=explicit_allow`,

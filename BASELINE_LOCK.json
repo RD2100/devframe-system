@@ -11,7 +11,7 @@
       "role": "governance_acceptance_framework",
       "remote": "https://github.com/RD2100/agent-acceptance.git",
       "branch": "codex/paper-archive-final-verdict-boundary",
-      "commit": "f3abb202a9d58044718d3e5b9b920bef8e4000e8",
+      "commit": "38d7b2e0aad226cce5732cb4d56e45ae2d065ec7",
       "pre_pin_status": "clean_submodule_branch_committed"
     },
     {

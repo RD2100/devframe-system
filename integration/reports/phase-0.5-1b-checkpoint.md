@@ -14,7 +14,7 @@ superproject has advanced submodule gitlinks to committed branch tips.
 
 | Module | Branch | Status | Review focus |
 |---|---|---|---|
-| `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `f3abb20` | Path drift, expired authorization, HUMAN_REQUIRED preservation, paper archive SD-04, dispatch/test-frame/control-plane SD-05, and paper business-validation SD-06 final-verdict boundary |
+| `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `38d7b2e` | Path drift, expired authorization, HUMAN_REQUIRED preservation, paper archive SD-04, dispatch/test-frame/control-plane SD-05, paper business-validation SD-06, and real-content/live WriteLab SD-07 RuntimeAuthorization boundary |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `b001cea` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion, in-memory runtime contract probe, and dry-run state machine |
 | `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `08ac4f5` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, focused mojibake cleanup, post-run write-set hard gate, paper audit privacy hard gate, Security Preflight P1 reviewed gates, and machine-readable synthetic/offline paper business validation report |
 | `test-frame` | `codex/adapter-negative-matrix` | Pinned at `891b106` | Adapter mapping, required/optional profile semantics, fake-green canaries, paper reviewer-pack negative fixtures, business-validation negative fixtures, and business report shape negative fixtures |
@@ -95,8 +95,10 @@ Completed in the `dev-frame-opencode` submodule branch:
   fixtures `NEG-039` through `NEG-048` in commit `891b106`.
 - Added `agent-acceptance` SD-06 closure validation in commit `f3abb20` so
   paper business-validation artifacts cannot claim final governance verdict.
-- Added `agent-acceptance` SD-07 read-only assessment:
-  `SD07_TASKSPEC_REQUIRED` before real-content or live WriteLab pilots.
+- Added `agent-acceptance` SD-07 closure validation in commit `38d7b2e` so
+  real-content/live WriteLab evidence cannot pass without fresh scoped
+  RuntimeAuthorization, non-empty human gate evidence, sensitive-field
+  authorization, and required redaction flags.
 
 Security Preflight status:
 
@@ -113,8 +115,9 @@ Security Preflight status:
 Still open:
 
 - Control-plane runtime SourceLock/WorkerLease enforcement.
-- Real WriteLab paragraph-text flow requires fresh RuntimeAuthorization.
-- SD-07 real-content/live WriteLab RuntimeAuthorization boundary implementation.
+- Real WriteLab paragraph-text flow requires fresh RuntimeAuthorization and a
+  dedicated pilot TaskSpec.
+- Independent review of SD-07 before any real-content or live WriteLab pilot.
 - Live daemon worker use should add signed or out-of-band authorization storage
   beyond the current structured task authorization contract.
 

@@ -18,6 +18,9 @@ Current reports:
   machine-readable Paper Business Validation report artifact candidate,
   sub-agent outputs, main-thread verification, and non-final-acceptance
   boundary.
+- `sd07-runtime-authorization-boundary-2026-06-15.md` records the
+  `agent-acceptance` SD-07 real-content/live WriteLab RuntimeAuthorization
+  boundary implementation and main-thread verification.
 - `a120/a120-evidence-zip-review.json` and
   `a120/a120-evidence-zip-review.md` record the independent A120 evidence ZIP
   review boundary.
