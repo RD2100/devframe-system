@@ -66,6 +66,15 @@ Current submodule branch outputs:
 | `test-frame` | `codex/adapter-negative-matrix` | Pinned at `93b95b9`; paper reviewer-pack and business-validation negative matrix active, canary implementation remains future work |
 | `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `b805658`; paper runtime/privacy/write-scope/audit privacy boundaries, Security Preflight P1 reviewed gates, and synthetic/offline business capability validation active |
 
+Current delegated next-slice assignments:
+
+| TaskSpec | Module | Expected output |
+|---|---|---|
+| `TS-PAPER-BUSINESS-REPORT-ARTIFACT.md` | `dev-frame-opencode` | Machine-readable synthetic/offline paper business validation report |
+| `TS-TEST-FRAME-BUSINESS-REPORT-NEGATIVES.md` | `test-frame` | Negative fixtures/tests for business validation report shape |
+| `TS-AGENT-ACCEPTANCE-SD07-AUTH-GATE.md` | `agent-acceptance` | Read-only SD-07 governance TaskSpec decision |
+| `TS-CONTROL-PLANE-DRY-RUN-STATE-MACHINE.md` | `devframe-control-plane` | Pure in-memory dry-run state machine/validator candidate |
+
 ## Paper Focus
 
 Paper functionality is tracked in `PAPER_FEATURE_STATUS.md` and

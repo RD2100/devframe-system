@@ -11,3 +11,12 @@ Every TaskSpec must preserve these boundaries:
 - No final acceptance claims from executor, runtime, or test summaries.
 - No mutation of historical evidence archives.
 - Every sub-agent report must include a Reviewer Index.
+
+## Active Assignments
+
+| TaskSpec | Owner thread | Module | Status |
+|---|---|---|---|
+| `TS-PAPER-BUSINESS-REPORT-ARTIFACT.md` | `019ec6c5-7d65-76e2-b9a6-9316c75aeae8` | `dev-frame-opencode` | delegated |
+| `TS-TEST-FRAME-BUSINESS-REPORT-NEGATIVES.md` | `019ec6c6-5238-74b3-8870-c973bee56131` | `test-frame` | delegated |
+| `TS-AGENT-ACCEPTANCE-SD07-AUTH-GATE.md` | `019ec6c5-0855-7b11-812a-a099010b9b18` | `agent-acceptance` | delegated-readonly |
+| `TS-CONTROL-PLANE-DRY-RUN-STATE-MACHINE.md` | `019ec6c4-a05c-7053-966e-a260f5b51aa1` | `devframe-control-plane` | delegated |
