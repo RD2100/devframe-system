@@ -25,13 +25,13 @@ development. The source implementation currently lives in
    and fake-green canaries.
 4. Keep real paper content and live WriteLab flows blocked until fresh
    RuntimeAuthorization exists.
-5. Resolve Security Preflight P1 findings before Paper Function Business
-   Capability Validation.
+5. Complete independent Security Preflight review for the P1 fix candidates
+   before Paper Function Business Capability Validation.
 
 ## Current Gate
 
-`SECURITY_PREFLIGHT_IN_PROGRESS`
+`SECURITY_PREFLIGHT_FIX_CANDIDATE_READY`
 
-Next target after P1 security triage:
+Next target after independent Security Preflight review:
 
 `Paper Function Business Capability Validation`

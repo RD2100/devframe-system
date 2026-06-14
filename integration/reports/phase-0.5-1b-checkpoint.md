@@ -2,7 +2,7 @@
 
 Date: 2026-06-15
 Branch: `codex/rdinit-phase-0-5`
-Status: checkpoint only, not final acceptance; Security Preflight in progress
+Status: checkpoint only, not final acceptance; Security Preflight P1 fix candidate ready
 
 ## Summary
 
@@ -16,7 +16,7 @@ superproject has advanced submodule gitlinks to committed branch tips.
 |---|---|---|---|
 | `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `b505bf7` | Path drift, expired authorization, HUMAN_REQUIRED preservation, paper archive SD-04, and dispatch/test-frame/control-plane SD-05 final-verdict boundary |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `c3edf85` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion, and in-memory runtime contract probe |
-| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `8119c85` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, focused mojibake cleanup, post-run write-set hard gate, and paper audit privacy hard gate |
+| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `4558ab8` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, focused mojibake cleanup, post-run write-set hard gate, paper audit privacy hard gate, and Security Preflight P1 gate candidates |
 | `test-frame` | `codex/adapter-negative-matrix` | Pinned at `be27de0` | Adapter mapping, required/optional profile semantics, fake-green canaries, and paper reviewer-pack negative fixtures |
 
 ## Paper Focus
@@ -68,6 +68,9 @@ Completed in the `dev-frame-opencode` submodule branch:
 - Expanded paper audit/report hard gates for raw paragraph payloads, WriteLab
   `matched_text`, `text_span`, and payload markers before closeout,
   reviewer-pack, or audit outputs can be considered safe.
+- Added Security Preflight P1 fix candidates in OpenCode for deny-by-default
+  TaskSpec verification command allowlisting, structured review-recovery
+  verdict requirements, and daemon-side queued write authorization/risk gating.
 - Added `test-frame` paper reviewer-pack negative fixtures `NEG-031` through
   `NEG-038` for privacy and fake-green canaries.
 - Added `agent-acceptance` SD-05 closure validation so dispatch/test-frame/
@@ -82,17 +85,20 @@ Security Preflight status:
 - Canonical `D:\dev-frame-opencode` master is clean at `3a3aa57`.
 - SkillSpector is not available in the current environment; result recorded as
   `TOOL_NOT_AVAILABLE`.
-- Focused security review found no P0, but P1 findings remain open for TaskSpec
-  verification command execution boundary, exit-code based review recovery, and
-  daemon queued write authorization.
+- Focused security review found no P0. P1 findings now have fix candidates
+  pinned in `dev-frame-opencode` commit `4558ab8` for TaskSpec verification
+  command execution boundary, exit-code based review recovery, and daemon
+  queued write authorization.
+- Independent Security Preflight review is still required before Paper Function
+  Business Capability Validation.
 - See `integration/reports/security-preflight-2026-06-15.md`.
 
 Still open:
 
 - Control-plane runtime SourceLock/WorkerLease enforcement.
 - Real WriteLab paragraph-text flow requires fresh RuntimeAuthorization.
-- Security Preflight P1 findings must be fixed or human-triaged before paper
-  business capability acceptance.
+- Security Preflight P1 fix candidates must pass independent review before
+  paper business capability acceptance.
 
 ## Verification Run
 
@@ -134,6 +140,14 @@ Allowed local verification only:
 - `dev-frame-opencode\ai-workflow-hub`: `python -m pytest tests/test_paper_a19_safe_e2e.py tests/test_paper_a20_real_e2e.py tests/test_paper_a25_audit_package.py tests/test_paper_a26_audit_hardening.py tests/test_paper_a27_audit_polish.py tests/test_paper_a28_verify_command.py -q` -> `115 passed in 4.01s`.
 - `dev-frame-opencode\ai-workflow-hub`: with `PYTHONPATH` set to the submodule
   source path, `python -m pytest tests\test_paper_cli_a18b.py tests\test_paper_a23b_closeout_hardening.py tests\test_paper_a26_audit_hardening.py -q` -> `54 passed`.
+- `dev-frame-opencode`: with `PYTHONPATH` set to
+  `D:\devframe-system\dev-frame-opencode\ai-workflow-hub\src`,
+  `python -m pytest ai-workflow-hub\tests\test_security_preflight_p1.py ai-workflow-hub\tests\test_paper_a21_daemon_queue_e2e.py ai-workflow-hub\tests\test_paper_a22_daemon_soak_hardening.py ai-workflow-hub\tests\test_paper_runtime.py -q` -> `144 passed in 13.95s`.
+- `dev-frame-opencode`: with `PYTHONPATH` set to
+  `D:\devframe-system\dev-frame-opencode\ai-workflow-hub\src`,
+  `python -m pytest ai-workflow-hub\tests\test_batch_retry.py ai-workflow-hub\tests\test_stage3b_idempotency.py -q` -> `14 passed in 0.59s`.
+- `dev-frame-opencode`: `python -m compileall -q ai-workflow-hub\src` -> passed.
+- `dev-frame-opencode`: `git diff --check` -> passed.
 - `test-frame`: `python -m pytest tests\test_paper_negative_fixtures.py tests\test_gate_semantics.py -q` -> `31 passed`.
 - `test-frame`: `python tools\ai_guard.py full` -> `PASS`.
 - `devframe-control-plane`: `python -m pytest tests\test_runtime_contract_probe.py -q` -> `8 passed`.
