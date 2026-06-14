@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-acceptance.rd2100/schemas/resource-integration/resource-registry-record.schema.json",
+  "title": "ResourceRegistryRecord",
+  "description": "Record of a resource registered in the R0 resource registry. R0 produces registration and classification only -- no execution, enablement, installation, or configuration. Register != Enable. Candidate != Adapter. Adapter != Capability.",
+  "type": "object",
+  "required": [
+    "resource_id",
+    "resource_name",
+    "resource_type",
+    "phase",
+    "path_or_reference",
+    "path_status",
+    "runtime_layer",
+    "access_mode",
+    "risk_level",
+    "lifecycle_state",
+    "promotion_status",
+    "allowed_actions",
+    "forbidden_actions",
+    "human_gate_required",
+    "contract_mapping",
+    "evidence_requirements",
+    "local_verification_status",
+    "verification_gaps",
+    "next_phase"
+  ],
+  "properties": {
+    "resource_id": {
+      "type": "string",
+      "description": "Unique resource identifier. Must be unique across the registry."
+    },
+    "resource_name": {
+      "type": "string",
+      "description": "Human-readable name for the resource."
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["R0", "R1", "R2", "R3", "R4", "R5", "R6", "R7"],
+      "description": "The current integration phase (R0-R7) for this record. R0 records must use phase=R0."
+    },
+    "resource_type": {
+      "type": "string",
+      "enum": [
+        "mcp_server",
+        "repository",
+        "test_framework",
+        "code_intelligence",
+        "skills_collection",
+        "memory_system",
+        "rules_config",
+        "native_runtime"
+      ],
+      "description": "Classification of the resource by type. Determines which runtime layer and access mode categories apply."
+    },
+    "path_or_reference": {
+      "type": "string",
+      "description": "Filesystem path (e.g., D:\\dev-frame\\codegraph) or logical reference (e.g., 'bb_* MCP tools'). Paths use backslash separators on Windows."
+    },
+    "path_status": {
+      "type": "string",
+      "enum": ["exists", "not_found", "deprecated_alias", "duplicate", "verified"],
+      "description": "Current status of the path or reference. 'verified' means both path exists AND content integrity has been confirmed."
+    },
+    "runtime_layer": {
+      "type": "string",
+      "enum": [
+        "collaboration",
+        "orchestration",
+        "evidence",
+        "intelligence",
+        "capability",
+        "memory",
+        "governance",
+        "execution"
+      ],
+      "description": "The runtime layer this resource belongs to in the RD2100 Agent Runtime v2 architecture."
+    },
+    "access_mode": {
+      "type": "string",
+      "enum": [
+        "snapshot_only",
+        "read_only",
+        "dry_run_candidate",
+        "reference_only",
+        "human_gated",
+        "forbidden"
+      ],
+      "description": "The maximum access mode permitted for this resource at its current lifecycle state. 'human_gated' requires an explicit human reviewer decision to escalate beyond this mode."
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"],
+      "description": "Assessed risk level for this resource. Critical resources require human gate for any access mode escalation."
+    },
+    "lifecycle_state": {
+      "type": "string",
+      "enum": [
+        "discovered",
+        "registered",
+        "classified",
+        "evaluated",
+        "quarantined",
+        "adapter_draft",
+        "adapter_dry_run",
+        "capability_proposed",
+        "capability_approved",
+        "active",
+        "deprecated",
+        "rejected"
+      ],
+      "description": "Current lifecycle state. R0 only operates in discovered/registered/classified/evaluated. States beyond 'classified' require later phases (R1-R7)."
+    },
+    "promotion_status": {
+      "type": "string",
+      "enum": ["registered", "candidate", "deferred", "rejected"],
+      "description": "Promotion status within the current phase. R0 cannot set this beyond 'candidate'. 'approved', 'enabled', 'capability_approved', 'active', and 'installed' are NOT valid promotion_status values -- those are lifecycle_states or belong to later phases."
+    },
+    "allowed_actions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Actions currently permitted on this resource at R0 (snapshot, read, classify, evaluate)."
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Actions explicitly forbidden on this resource at the current phase (execute, install, enable, configure, modify, delete)."
+    },
+    "human_gate_required": {
+      "type": "boolean",
+      "description": "Whether any state transition on this resource requires human reviewer approval."
+    },
+    "contract_mapping": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "References to integration contracts (e.g., 'A2: CodeGraph') that govern this resource's integration."
+    },
+    "evidence_requirements": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Evidence artifacts required before this resource can advance to the next lifecycle state (e.g., 'path-exists-verified', 'smoke-test-pass', 'contract-check-pass')."
+    },
+    "local_verification_status": {
+      "type": "string",
+      "enum": ["verified", "needs_local_verification", "unverified", "stale", "blocked", "not_applicable"],
+      "description": "Status of local verification checks for this resource. 'verified' means all local checks pass and integrity is confirmed. 'needs_local_verification' means registration is based on reference/secondary evidence without direct local scan. 'stale' means previously verified but checks need rerun."
+    },
+    "verification_gaps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Known gaps in verification coverage for this resource. Each gap should reference a specific check that cannot currently be performed."
+    },
+    "next_phase": {
+      "type": "string",
+      "description": "The next phase (R1-R7) where this resource's promotion or capability enablement is planned. Used for roadmap tracking."
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional human-readable description of the resource, its role, and why it was registered."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional notes, observations, or warnings about this resource."
+    },
+    "registered_date": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO8601 date (YYYY-MM-DD) when this resource was first registered in the R0 registry."
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": { "phase": { "const": "R0" } },
+        "required": ["phase"]
+      },
+      "then": {
+        "properties": {
+          "lifecycle_state": {
+            "enum": ["discovered", "registered", "classified"]
+          }
+        },
+        "errorMessage": "R0 records may only use lifecycle_state: discovered, registered, or classified. States beyond classified (evaluated, quarantined, adapter_draft, adapter_dry_run, capability_proposed, capability_approved, active) are forbidden at R0."
+      }
+    }
+  ],
+  "examples": [
+    {
+      "resource_id": "res-codegraph-devframe-001",
+      "resource_name": "CodeGraph (dev-frame)",
+      "resource_type": "code_intelligence",
+      "phase": "R0",
+      "path_or_reference": "D:\\dev-frame\\codegraph",
+      "path_status": "verified",
+      "runtime_layer": "intelligence",
+      "access_mode": "read_only",
+      "risk_level": "low",
+      "lifecycle_state": "classified",
+      "promotion_status": "registered",
+      "allowed_actions": ["codegraph_search", "codegraph_context", "snapshot"],
+      "forbidden_actions": ["reindex", "modify", "delete"],
+      "human_gate_required": false,
+      "contract_mapping": ["A2: CodeGraph"],
+      "evidence_requirements": ["path-exists-verified", "index-health-check-pass"],
+      "local_verification_status": "verified",
+      "verification_gaps": [],
+      "next_phase": "R4",
+      "description": "CodeGraph code intelligence library at dev-frame, 410 files indexed, active and verified.",
+      "registered_date": "2026-05-27"
+    }
+  ]
+}

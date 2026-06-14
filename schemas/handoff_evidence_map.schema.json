@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-acceptance/schemas/handoff_evidence_map.schema.json",
+  "title": "Handoff Evidence Map",
+  "type": "object",
+  "required": ["task_id", "generated_at", "source_priority", "claims"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "source_priority": {
+      "type": "array",
+      "items": {"type": "object", "required": ["layer", "description"], "properties": {"layer": {"type": "string", "enum": ["P0", "P1", "P2", "P3"]}, "description": {"type": "string"}}}
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim_id", "claim", "source_layer", "source_path", "sha256", "timestamp", "bound"],
+        "properties": {
+          "claim_id": {"type": "string"},
+          "claim": {"type": "string"},
+          "source_layer": {"type": "string", "enum": ["P0", "P1", "P2", "P3"]},
+          "source_path": {"type": "string"},
+          "sha256": {"type": ["string", "null"]},
+          "timestamp": {"type": ["string", "null"]},
+          "bound": {"type": "boolean"}
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

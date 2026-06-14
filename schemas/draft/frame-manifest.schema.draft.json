@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "DRAFT — NOT ACTIVE. For future activation only. See docs/agent-runtime/inactive-frame-registry.md for activation triggers.",
+  "title": "FrameManifest",
+  "description": "Self-declaration of a frame project. Declares capabilities, NOT grants authority. Authority is determined by the runtime compatibility lock.",
+  "type": "object",
+  "required": ["manifest_version", "frame", "contracts", "capabilities", "paths"],
+  "properties": {
+    "manifest_version": {
+      "type": "string",
+      "description": "Version of the manifest schema itself",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "frame": {
+      "type": "object",
+      "required": ["id", "role", "version", "phase"],
+      "properties": {
+        "id": { "type": "string", "description": "Unique frame identifier, e.g. dev-frame" },
+        "role": { "type": "string", "description": "e.g. orchestration_adapter_candidate" },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "phase": { "type": "string", "description": "e.g. R3" },
+        "git_commit": { "type": "string", "description": "HEAD commit hash when manifest was generated" },
+        "generated_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "contracts": {
+      "type": "object",
+      "properties": {
+        "produces": {
+          "type": "object",
+          "description": "Contracts this frame claims it CAN produce. Actual acceptance is determined by compatibility lock.",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["versions", "authority", "active"],
+            "properties": {
+              "versions": { "type": "array", "items": { "type": "string" } },
+              "authority": { "type": "string", "enum": ["full", "candidate_only", "historical_only", "historical_observation_only", "forbidden"] },
+              "active": { "type": "boolean" },
+              "allowed_status": { "type": "array", "items": { "type": "string" } },
+              "allowed_freshness": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "consumes": {
+          "type": "object",
+          "description": "Contracts this frame consumes",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["versions"],
+            "properties": {
+              "versions": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["access", "execution_policy"],
+        "properties": {
+          "path_key": { "type": "string" },
+          "access": { "type": "string", "enum": ["read_only", "forbidden"] },
+          "execution_policy": { "type": "string", "enum": ["forbidden", "human_gated", "dry_run_allowed", "allowed"] },
+          "human_gate_required": { "type": "boolean" }
+        }
+      }
+    },
+    "paths": {
+      "type": "object",
+      "required": ["root"],
+      "additionalProperties": { "type": "string" },
+      "properties": {
+        "root": { "type": "string", "description": "Canonical root of this frame" }
+      }
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-acceptance/schemas/agent-runtime/source-lock-record.schema.json",
+  "title": "SourceLockRecord",
+  "description": "Records a locked skill source at a specific commit under quarantine review. Phase 6 contract of RD2100 Agent Runtime v2.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id",
+    "skill_name",
+    "source_url",
+    "locked_commit_sha",
+    "cloned_to_quarantine_path",
+    "cloned_at",
+    "static_review_status",
+    "reviewer",
+    "gate_decision"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "description": "Unique record identifier, format 'slr-NNN' (source lock record).",
+      "pattern": "^slr-[0-9]{3,}$"
+    },
+    "skill_name": {
+      "type": "string",
+      "description": "Name of the skill being locked for review.",
+      "minLength": 1
+    },
+    "source_url": {
+      "type": "string",
+      "description": "Canonical source URL (GitHub repo, skill hub, or user-provided path).",
+      "format": "uri",
+      "minLength": 1
+    },
+    "locked_commit_sha": {
+      "type": "string",
+      "description": "Full 40-character SHA of the pinned commit.",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "cloned_to_quarantine_path": {
+      "type": "string",
+      "description": "Absolute path to the quarantine directory where the repo was cloned.",
+      "minLength": 1
+    },
+    "cloned_at": {
+      "type": "string",
+      "description": "ISO 8601 timestamp of when the clone was performed.",
+      "format": "date-time"
+    },
+    "static_review_status": {
+      "type": "string",
+      "description": "Current status of the Phase 6C static review checklist.",
+      "enum": [
+        "pending",
+        "in_progress",
+        "passed",
+        "failed_critical",
+      "failed_non_critical"
+      ]
+    },
+    "reviewer": {
+      "type": "string",
+      "description": "Identifier of the reviewer (human or agent role) assigned to this skill.",
+      "minLength": 1
+    },
+    "gate_decision": {
+      "type": "string",
+      "description": "Phase 6F gate decision for Phase 7 eligibility.",
+      "enum": [
+        "pending",
+        "approved_for_install",
+        "rejected_permanent",
+        "rejected_needs_fix",
+        "rejected_allowlist",
+        "archived"
+      ]
+    },
+    "skill_intake_record_id": {
+      "type": "string",
+      "description": "Reference to the originating SkillIntakeRecord (Contract 6).",
+      "pattern": "^sr-[0-9]{3,}$"
+    },
+    "allowlist_entry_matched": {
+      "type": "string",
+      "description": "Which allowlist entry matched the source URL (Phase 6A output)."
+    },
+    "branch_or_tag": {
+      "type": "string",
+      "description": "Branch or tag name from which the commit was resolved."
+    },
+    "quarantine_checksum": {
+      "type": "string",
+      "description": "SHA-256 checksum of the quarantine repo/ directory post-clone, for integrity verification.",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "static_review_artifacts": {
+      "type": "object",
+      "description": "Paths to Phase 6C review artifact files.",
+      "properties": {
+        "static_review_md": {
+          "type": "string",
+          "description": "Path to the filled-out static review checklist."
+        },
+        "tool_manifest_json": {
+          "type": "string",
+          "description": "Path to the extracted tool declarations."
+        },
+        "risk_report_md": {
+          "type": "string",
+          "description": "Path to the overall risk assessment report."
+        }
+      },
+      "additionalProperties": false
+    },
+    "checklist_results": {
+      "type": "object",
+      "description": "Summary counts from the Phase 6C static review checklist.",
+      "properties": {
+        "total_checks": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of checklist items evaluated."
+        },
+        "passed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of checklist items that passed."
+        },
+        "flagged": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of checklist items flagged for deeper review."
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of checklist items that failed."
+        },
+        "critical_failures": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of C-codes (e.g., C3.4, C5.3) that failed critically."
+        }
+      },
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-text reviewer notes or observations."
+    }
+  }
+}

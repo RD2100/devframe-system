@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RunSpec",
+  "description": "Records how a task was executed. Produced by a runner (PowerShell script or agent), consumed by a reviewer agent and verification gates.",
+  "type": "object",
+  "required": [
+    "run_id",
+    "task_id",
+    "started_at",
+    "status",
+    "exit_code"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "description": "Unique run identifier."
+    },
+    "task_id": {
+      "type": "string",
+      "description": "Reference to the TaskSpec that this run executes."
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 execution start timestamp."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "running", "completed", "blocked", "failed"],
+      "description": "Current execution status."
+    },
+    "exit_code": {
+      "type": "integer",
+      "enum": [0, 1, 2],
+      "description": "0=PASS, 1=BLOCKED, 2=FAILED."
+    },
+    "finished_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 execution end timestamp."
+    },
+    "command": {
+      "type": "string",
+      "description": "Exact command that was executed."
+    },
+    "cwd": {
+      "type": "string",
+      "description": "Working directory at execution time."
+    },
+    "tier": {
+      "type": "integer",
+      "enum": [0, 1, 2],
+      "description": "Execution tier."
+    },
+    "dry_run": {
+      "type": "boolean",
+      "description": "Whether this was a dry run."
+    },
+    "error_output": {
+      "type": "string",
+      "description": "Captured error output from the run."
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "run_id": "r-001",
+      "task_id": "t-001",
+      "started_at": "2026-05-27T10:00:00Z",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ]
+}

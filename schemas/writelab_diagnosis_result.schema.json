@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WriteLab Sanitized Diagnosis Result",
+  "type": "object",
+  "required": [
+    "handoff_id",
+    "source_project",
+    "privacy_redaction_status",
+    "contains_text_spans",
+    "contains_original_paragraph",
+    "contains_rewrite_text",
+    "expression_metrics",
+    "diagnosis",
+    "limitations"
+  ],
+  "properties": {
+    "handoff_id": {"type": "string", "minLength": 1},
+    "source_project": {"type": "string", "enum": ["writelab"]},
+    "privacy_redaction_status": {"type": "string", "enum": ["metadata_only", "synthetic_only"]},
+    "contains_text_spans": {"type": "boolean", "const": false},
+    "contains_original_paragraph": {"type": "boolean", "const": false},
+    "contains_rewrite_text": {"type": "boolean", "const": false},
+    "expression_metrics": {
+      "type": "object",
+      "required": [
+        "sentence_count",
+        "avg_sentence_length",
+        "abstract_noun_density",
+        "dunhao_density",
+        "template_sentence_count",
+        "normative_expression_count",
+        "ai_like_risk"
+      ],
+      "properties": {
+        "sentence_count": {"type": "integer", "minimum": 0},
+        "avg_sentence_length": {"type": "number", "minimum": 0},
+        "abstract_noun_density": {"type": "number", "minimum": 0},
+        "dunhao_density": {"type": "number", "minimum": 0},
+        "template_sentence_count": {"type": "integer", "minimum": 0},
+        "normative_expression_count": {"type": "integer", "minimum": 0},
+        "ai_like_risk": {"type": "string", "enum": ["low", "medium", "medium-high", "high"]}
+      },
+      "additionalProperties": false
+    },
+    "diagnosis": {
+      "type": "object",
+      "required": [
+        "expected_function",
+        "actual_function",
+        "function_match_score",
+        "problem_types",
+        "severity_counts"
+      ],
+      "properties": {
+        "expected_function": {"type": "string"},
+        "actual_function": {"type": "string"},
+        "function_match_score": {"type": "integer", "minimum": 0, "maximum": 100},
+        "problem_types": {"type": "array", "items": {"type": "string"}},
+        "severity_counts": {
+          "type": "object",
+          "required": ["low", "medium", "high"],
+          "properties": {
+            "low": {"type": "integer", "minimum": 0},
+            "medium": {"type": "integer", "minimum": 0},
+            "high": {"type": "integer", "minimum": 0}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

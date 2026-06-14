@@ -1,0 +1,14 @@
+{
+  "test_id": "NEG-019",
+  "scenario": "ExecutionReport submitted with pre-task git status but no post-task git status, violating review-006. Without post status, reviewer cannot verify what the agent actually changed.",
+  "input_report_features": "Report includes pre git-status snapshot but omits post git-status. The report claims 'task completed, files written as specified' but there is no verification of what was actually written. The pre/post pair is incomplete -- only one half exists.",
+  "expected_gate_decision": "fail",
+  "expected_findings": [
+    "Missing post-task git status snapshot",
+    "Cannot verify what files were actually created or modified",
+    "review-006 violation: pre/post status pair required",
+    "Evidence chain broken: claim of completion is unverifiable"
+  ],
+  "related_invariant": "review-006",
+  "hard_stop": false
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-acceptance/schemas/handoff_compiler_result.schema.json",
+  "title": "Handoff Compiler Result",
+  "type": "object",
+  "required": ["task_id", "generated_at", "approval_status", "draft_path", "paste_block_path", "privacy_checked", "source_map_path"],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "approval_status": {"type": "string", "enum": ["draft_only", "gpt_approved", "needs_fix", "review_unverified"]},
+    "draft_path": {"type": ["string", "null"]},
+    "paste_block_path": {"type": ["string", "null"]},
+    "source_map_path": {"type": ["string", "null"]},
+    "stale_check_path": {"type": ["string", "null"]},
+    "safety_scan_path": {"type": ["string", "null"]},
+    "privacy_checked": {"type": "boolean"},
+    "safety_pass": {"type": "boolean"},
+    "hash": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SafetyReport",
+  "description": "Deterministic guard output captured for an @go run.",
+  "type": "object",
+  "required": ["generated_at", "producer", "command", "exit_code", "stdout"],
+  "properties": {
+    "generated_at": { "type": "string", "format": "date-time" },
+    "producer": { "type": "string" },
+    "command": { "type": "string" },
+    "exit_code": { "type": "integer" },
+    "stdout": { "type": "string" },
+    "stderr": { "type": "string" }
+  },
+  "additionalProperties": false
+}

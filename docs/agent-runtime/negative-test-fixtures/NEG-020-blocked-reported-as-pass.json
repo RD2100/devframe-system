@@ -1,0 +1,14 @@
+{
+  "test_id": "NEG-020",
+  "scenario": "A BLOCKED gate result is reported as passing in the ExecutionReport. This is a variant of fake-green where the agent misrepresents a BLOCKED condition as acceptable or passing.",
+  "input_report_features": "GateResult for a P0 gate shows result='blocked' but the ExecutionReport.summary says 'all gates passed'. The agent dismisses the blocked gate as 'minor' or 'informational' and reports the batch as successful. The blocking issue is buried in an appendix without being flagged.",
+  "expected_gate_decision": "blocked",
+  "expected_findings": [
+    "review-001 Fake Green variant: BLOCKED reported as PASS",
+    "P0 blocked gate ignored in summary",
+    "ExecutionReport.status should reflect the blocked gate",
+    "Hard stop: blocked gate means delivery must not proceed"
+  ],
+  "related_invariant": "review-001, verification-gates:P0:BlockingRule",
+  "hard_stop": true
+}

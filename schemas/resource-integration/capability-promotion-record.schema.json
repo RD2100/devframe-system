@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-acceptance.rd2100/schemas/resource-integration/capability-promotion-record.schema.json",
+  "title": "CapabilityPromotionRecord",
+  "description": "Record of a capability promotion attempt for a resource. Tracks progression through the R0-R7 promotion gates. R0 cannot approve capability -- promotion_status 'approved' is the maximum status and only maps to capability_approved lifecycle state, not execution or enablement.",
+  "type": "object",
+  "required": [
+    "record_id",
+    "resource_id",
+    "current_phase",
+    "target_phase",
+    "promotion_gate",
+    "promotion_status",
+    "reviewer_decision",
+    "human_gate_passed",
+    "forbidden_if"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "description": "Unique record identifier for this promotion attempt."
+    },
+    "resource_id": {
+      "type": "string",
+      "description": "Reference to a resource registered in the resource-registry. Must match an existing resource_id."
+    },
+    "current_phase": {
+      "type": "string",
+      "description": "The current phase (R0-R7) of the resource. R0 is registration and classification only."
+    },
+    "target_phase": {
+      "type": "string",
+      "description": "The target phase (R1-R7 or 'none') for this promotion. 'none' means no further promotion is planned."
+    },
+    "promotion_gate": {
+      "type": "string",
+      "enum": [
+        "registered_to_candidate",
+        "candidate_to_evaluated",
+        "evaluated_to_adapter_draft",
+        "adapter_draft_to_adapter_dry_run",
+        "adapter_dry_run_to_capability_proposed",
+        "capability_proposed_to_capability_approved"
+      ],
+      "description": "The specific promotion gate being attempted. Each gate represents one step in the R0-R7 progression. The chain ends at capability_approved -- there is no 'active' or 'integrated' gate beyond this."
+    },
+    "promotion_status": {
+      "type": "string",
+      "enum": ["not_started", "pending_human_review", "approved", "rejected", "blocked"],
+      "description": "Current status of this promotion attempt. 'approved' is the MAXIMUM -- there is no status beyond this. 'approved' here means the specific gate was passed, not that the resource is fully active."
+    },
+    "reviewer_decision": {
+      "type": "string",
+      "description": "Human reviewer's decision text or rationale. Empty string if still pending. Must be non-empty when promotion_status is 'approved' or 'rejected'."
+    },
+    "human_gate_passed": {
+      "type": "boolean",
+      "description": "Whether the human gate was explicitly passed. MUST be false if promotion_status is not 'approved'. A value of true when promotion_status is not 'approved' is an invalid state."
+    },
+    "forbidden_if": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Conditions that would block this promotion. Each entry describes a specific blocking condition (e.g., 'path_status is not_found', 'local_verification_status is blocked')."
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "promotion_status": {
+            "not": { "const": "approved" }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "human_gate_passed": { "const": false }
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "record_id": "promo-001",
+      "resource_id": "res-codegraph-devframe-001",
+      "current_phase": "R0",
+      "target_phase": "R4",
+      "promotion_gate": "registered_to_candidate",
+      "promotion_status": "not_started",
+      "reviewer_decision": "",
+      "human_gate_passed": false,
+      "forbidden_if": [
+        "path_status must be 'exists' or 'verified'",
+        "local_verification_status must not be 'blocked'",
+        "resource_type must not be 'native_runtime' without human gate"
+      ]
+    }
+  ]
+}

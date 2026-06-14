@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PAPER-C2 Authorization Gate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "authorization_id",
+    "authorized_by",
+    "authorized_at_utc",
+    "expires_at_utc",
+    "task_id",
+    "allowed_input_classification",
+    "allowed_operations",
+    "revocation_supported",
+    "status"
+  ],
+  "properties": {
+    "authorization_id": {"type": "string"},
+    "authorized_by": {"type": "string", "const": "human_user"},
+    "authorized_at_utc": {"type": "string"},
+    "expires_at_utc": {"type": "string"},
+    "task_id": {"type": "string"},
+    "allowed_input_classification": {"type": "string", "const": "user_authorized_excerpt"},
+    "allowed_operations": {
+      "type": "array",
+      "items": {"type": "string", "enum": ["classify", "redact", "summarize_metadata"]},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "revocation_supported": {"type": "boolean", "const": true},
+    "status": {"type": "string", "const": "active"}
+  }
+}

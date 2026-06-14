@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CapabilityRoutingAuditRecord",
+  "description": "CR3 audit record for capability routing decisions. Records what capability was expected, whether it was used, and why (if not). Forbidden capabilities must never appear with used=true.",
+  "type": "object",
+  "required": [
+    "audit_id", "task_area", "expected_capability", "status",
+    "used", "fallback", "evidence", "forbidden_capabilities_verified"
+  ],
+  "properties": {
+    "audit_id": { "type": "string" },
+    "expected_capability": { "type": "string" },
+    "status": { "type": "string", "enum": ["available", "stale", "empty", "forbidden", "unavailable"] },
+    "used": { "type": "boolean" },
+    "reason_if_not_used": { "type": "string", "minLength": 1 },
+    "fallback": { "type": "string", "minLength": 1 },
+    "evidence": { "type": "string", "minLength": 1 },
+    "forbidden_capabilities_verified": { "type": "array", "items": { "type": "string" } },
+    "reviewer_decision": { "type": "string", "enum": ["", "pass", "needs_revision", "blocked"] }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": { "properties": { "used": { "const": false } }, "required": ["used"] },
+      "then": {
+        "required": ["reason_if_not_used", "fallback"],
+        "properties": {
+          "reason_if_not_used": { "minLength": 1 },
+          "fallback": { "minLength": 1 }
+        },
+        "errorMessage": "reason_if_not_used and fallback are required and must be non-empty when used=false."
+      }
+    },
+    {
+      "if": { "properties": { "status": { "enum": ["forbidden", "unavailable", "stale", "empty"] } }, "required": ["status"] },
+      "then": {
+        "properties": { "used": { "const": false } },
+        "errorMessage": "used MUST be false when status is forbidden, unavailable, stale, or empty."
+      }
+    }
+  ],
+  "examples": [{
+    "audit_id": "cra-001",
+    "task_area": "code_structure",
+    "expected_capability": "CodeGraph",
+    "status": "empty",
+    "used": false,
+    "reason_if_not_used": "agent-acceptance index empty (0 files)",
+    "fallback": "rg + Read",
+    "evidence": "codegraph_status output",
+    "reviewer_decision": ""
+  }]
+}

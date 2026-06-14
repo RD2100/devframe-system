@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LocalSkillIntakeRecord",
+  "description": "R5 record for local skill intake classification. R5 = reference and classify only. No execution, no auto-load, no install. Decision enum excludes approved/installed/enabled.",
+  "type": "object",
+  "required": [
+    "record_id", "phase", "skill_name", "skill_source", "skill_type",
+    "risk_level", "decision", "auto_trigger_allowed", "execution_allowed",
+    "install_allowed", "forbidden_actions", "human_gate_required",
+    "local_verification_status", "verification_gaps", "next_phase_blocked"
+  ],
+  "properties": {
+    "record_id": { "type": "string" },
+    "phase": { "type": "string", "enum": ["R5"] },
+    "skill_name": { "type": "string" },
+    "skill_source": { "type": "string" },
+    "skill_type": { "type": "string", "enum": ["coding", "quality", "process", "git", "memory", "doc", "platform", "design", "utility", "external_intake", "evolution"] },
+    "risk_level": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "decision": { "type": "string", "enum": ["reference_only", "candidate", "defer", "reject"] },
+    "auto_trigger_allowed": { "type": "boolean", "const": false },
+    "execution_allowed": { "type": "boolean", "const": false },
+    "install_allowed": { "type": "boolean", "const": false },
+    "allowed_actions": { "type": "array", "items": { "type": "string" } },
+    "forbidden_actions": { "type": "array", "items": { "type": "string" } },
+    "human_gate_required": { "type": "boolean" },
+    "local_verification_status": { "type": "string", "enum": ["verified", "needs_local_verification", "unverified"] },
+    "verification_gaps": { "type": "array", "items": { "type": "string" } },
+    "next_phase_blocked": { "type": "boolean" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": { "skill_type": { "const": "evolution" } },
+        "required": ["skill_type"]
+      },
+      "then": {
+        "properties": {
+          "human_gate_required": { "const": true },
+          "decision": { "enum": ["defer", "reject"] },
+          "next_phase_blocked": { "const": true }
+        },
+        "errorMessage": "Evolution skill_type requires human_gate_required=true, decision must be defer or reject, and next_phase_blocked=true."
+      }
+    }
+  ],
+  "examples": [{
+    "record_id": "lsr-coding-discipline-001",
+    "phase": "R5",
+    "skill_name": "coding-discipline",
+    "skill_source": "system prompt skill manifest",
+    "skill_type": "coding",
+    "risk_level": "low",
+    "decision": "candidate",
+    "auto_trigger_allowed": false,
+    "execution_allowed": false,
+    "install_allowed": false,
+    "allowed_actions": ["reference_skill_name", "classify_risk"],
+    "forbidden_actions": ["execute_skill", "auto_load", "install", "enable_mcp", "register_hook"],
+    "human_gate_required": false,
+    "local_verification_status": "needs_local_verification",
+    "verification_gaps": ["physical skill file not scanned"],
+    "next_phase_blocked": false,
+    "notes": "Reasoning workflow skill. Does not install or execute external code."
+  }]
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-acceptance/schemas/minimax_m3_observation.schema.json",
+  "title": "Minimax M3 Observation Entry",
+  "type": "object",
+  "required": [
+    "observation_id",
+    "date",
+    "task_id",
+    "submitted_claim",
+    "evidence_received",
+    "GPT_verdict",
+    "dimensions",
+    "strengths",
+    "weaknesses",
+    "error_patterns",
+    "reliability_score_1_to_5",
+    "notes_for_future_model_assessment"
+  ],
+  "properties": {
+    "observation_id": {"type": "string"},
+    "date": {"type": "string"},
+    "task_id": {"type": "string"},
+    "submitted_claim": {"type": "string"},
+    "evidence_received": {"type": "array", "items": {"type": "string"}},
+    "GPT_verdict": {"type": ["string", "null"]},
+    "dimensions": {
+      "type": "object",
+      "required": ["Evidence-First", "Stale identification", "Safety boundary", "Task planning", "Repair quality", "Loop control", "Command discipline", "Honesty"],
+      "properties": {
+        "Evidence-First": {"type": "string"},
+        "Stale identification": {"type": "string"},
+        "Safety boundary": {"type": "string"},
+        "Task planning": {"type": "string"},
+        "Repair quality": {"type": "string"},
+        "Loop control": {"type": "string"},
+        "Command discipline": {"type": "string"},
+        "Honesty": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "strengths": {"type": "array", "items": {"type": "string"}},
+    "weaknesses": {"type": "array", "items": {"type": "string"}},
+    "error_patterns": {"type": "array", "items": {"type": "string"}},
+    "reliability_score_1_to_5": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+    "notes_for_future_model_assessment": {"type": "string"}
+  },
+  "additionalProperties": false
+}

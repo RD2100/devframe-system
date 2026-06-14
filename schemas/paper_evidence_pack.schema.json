@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-acceptance/schemas/paper_evidence_pack.schema.json",
+  "title": "Paper Evidence Pack",
+  "description": "Schema for paper workflow evidence packs. Defines required and optional fields for paper task evidence submission. Does not require real paper full text — input_summary and output_summary may be sanitized summaries.",
+  "type": "object",
+  "required": [
+    "paper_task_id",
+    "contract_id",
+    "contract_version",
+    "task_type",
+    "authorization_scope",
+    "input_version_hash",
+    "output_version_hash",
+    "confidentiality_attestation",
+    "decision",
+    "created_at"
+  ],
+  "properties": {
+    "paper_task_id": {
+      "type": "string",
+      "description": "Unique identifier for this paper task (e.g., PAPER-R1, THESIS-M1)"
+    },
+    "contract_id": {
+      "type": "string",
+      "description": "Registered contract ID from contracts/paper_acceptance_contracts.yaml",
+      "enum": [
+        "PAPER_GENERAL_ACCEPTANCE_CONTRACT",
+        "CSSCI_REVIEW_CONTRACT",
+        "THESIS_MIDTERM_REVIEW_CONTRACT",
+        "CITATION_VERIFICATION_CONTRACT",
+        "ACADEMIC_REVISION_CONTRACT",
+        "CONFIDENTIALITY_CONTRACT",
+        "PAPER_EVIDENCE_PACK_CONTRACT"
+      ]
+    },
+    "contract_version": {
+      "type": "string",
+      "description": "Version of the contract being applied"
+    },
+    "task_type": {
+      "type": "string",
+      "description": "Type of paper task",
+      "enum": [
+        "cssci_review",
+        "thesis_midterm_review",
+        "citation_verification",
+        "academic_revision",
+        "paper_structure_assessment",
+        "confidentiality_audit",
+        "general_paper_check"
+      ]
+    },
+    "authorization_scope": {
+      "type": "string",
+      "description": "Explicitly authorized operations for this task"
+    },
+    "input_version_hash": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "description": "SHA256 hash of the input paper version"
+    },
+    "output_version_hash": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "description": "SHA256 hash of the output paper version. Same as input if no modification."
+    },
+    "input_summary": {
+      "type": "string",
+      "description": "Sanitized summary of input paper. MUST NOT contain full paper text or author identity."
+    },
+    "output_summary": {
+      "type": "string",
+      "description": "Sanitized summary of output paper. MUST NOT contain full paper text or author identity."
+    },
+    "revision_diff_summary": {
+      "type": "string",
+      "description": "Summary of changes between input and output. Required for academic_revision tasks."
+    },
+    "revision_rationale": {
+      "type": "string",
+      "description": "Rationale for each major revision decision."
+    },
+    "review_report": {
+      "type": "string",
+      "description": "Full review report. Required for cssci_review and thesis_midterm_review tasks."
+    },
+    "dimension_scores": {
+      "type": "object",
+      "description": "Per-dimension evaluation scores and comments. Required for review tasks.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "score": { "type": "string" },
+          "comment": { "type": "string" }
+        }
+      }
+    },
+    "citation_check_result": {
+      "type": "object",
+      "description": "Citation verification result. Required for citation_verification tasks.",
+      "properties": {
+        "verified_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "citation_key": { "type": "string" },
+              "verification_method": { "type": "string" },
+              "source_note": { "type": "string" }
+            }
+          }
+        },
+        "unverified_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "citation_key": { "type": "string" },
+              "reason_unverified": { "type": "string" }
+            }
+          }
+        },
+        "suspect_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "citation_key": { "type": "string" },
+              "reason_suspect": { "type": "string" }
+            }
+          }
+        },
+        "verified_count": { "type": "integer" },
+        "unverified_count": { "type": "integer" },
+        "suspect_count": { "type": "integer" }
+      }
+    },
+    "changed_claims_list": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of claims that were changed. Required for revision tasks."
+    },
+    "added_claims_list": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of claims that were added. Required for revision tasks."
+    },
+    "deleted_claims_list": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of claims that were deleted. Required for revision tasks."
+    },
+    "author_intent_preservation": {
+      "type": "string",
+      "description": "Attestation that core author intent was preserved. Required for revision tasks.",
+      "enum": ["preserved", "partially_preserved", "violated", "not_applicable"]
+    },
+    "confidentiality_attestation": {
+      "type": "string",
+      "description": "Attestation that confidentiality rules were followed. REQUIRED for all paper tasks.",
+      "enum": ["no_breach", "potential_concern", "breach_detected"],
+      "minLength": 1
+    },
+    "data_classification": {
+      "type": "string",
+      "description": "Classification of the paper data",
+      "enum": ["public", "private", "embargoed"]
+    },
+    "authorization_status": {
+      "type": "string",
+      "description": "Whether explicit authorization was granted",
+      "enum": ["explicit", "none", "partial"]
+    },
+    "external_service_access_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "service": { "type": "string" },
+          "timestamp": { "type": "string" },
+          "purpose": { "type": "string" },
+          "authorized": { "type": "boolean" }
+        }
+      },
+      "description": "Log of external service access. Empty array if none."
+    },
+    "risk_flags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "flag": { "type": "string" },
+          "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+          "description": { "type": "string" }
+        }
+      },
+      "description": "Optional risk flags identified during review."
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["accepted", "blocked", "needs_more_evidence", "review_unverified"],
+      "description": "Final decision for this paper task."
+    },
+    "decision_rationale": {
+      "type": "string",
+      "description": "Explanation of why the decision was reached."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 timestamp of evidence pack creation."
+    },
+    "reviewer_identity": {
+      "type": "string",
+      "description": "Identity of the reviewer: agent, GPT, or human."
+    },
+    "evidence_pack_hash": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "description": "SHA256 hash of the entire evidence pack for integrity verification."
+    }
+  },
+
+  "allOf": [
+    {
+      "if": {
+        "properties": { "task_type": { "const": "academic_revision" } }
+      },
+      "then": {
+        "required": [
+          "revision_diff_summary",
+          "author_intent_preservation",
+          "changed_claims_list",
+          "added_claims_list",
+          "deleted_claims_list"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": { "task_type": { "enum": ["cssci_review", "thesis_midterm_review"] } }
+      },
+      "then": {
+        "required": ["review_report", "dimension_scores"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "task_type": { "const": "citation_verification" } }
+      },
+      "then": {
+        "required": ["citation_check_result"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "decision": { "const": "blocked" } }
+      },
+      "then": {
+        "required": ["decision_rationale"]
+      }
+    }
+  ]
+}

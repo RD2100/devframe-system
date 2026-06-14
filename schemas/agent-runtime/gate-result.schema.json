@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GateResult",
+  "description": "Result of a single verification gate check. Produced by a verification gate runner, consumed by a reviewer agent and release pipeline.",
+  "type": "object",
+  "required": [
+    "gate_id",
+    "run_id",
+    "gate_level",
+    "gate_name",
+    "result",
+    "checked_at"
+  ],
+  "properties": {
+    "gate_id": {
+      "type": "string",
+      "description": "Unique gate result identifier."
+    },
+    "run_id": {
+      "type": "string",
+      "description": "Reference to the RunSpec being gated."
+    },
+    "gate_level": {
+      "type": "string",
+      "enum": ["P0", "P1", "P2", "P3"],
+      "description": "Priority level of this gate check."
+    },
+    "gate_name": {
+      "type": "string",
+      "description": "Human-readable gate name."
+    },
+    "result": {
+      "type": "string",
+      "enum": ["pass", "fail", "warning", "blocked", "skipped"],
+      "description": "Outcome of the gate check. P0 gates with 'fail' or 'blocked' must block delivery."
+    },
+    "checked_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 timestamp when the check was performed."
+    },
+    "signer_role": {
+      "type": "string",
+      "not": { "enum": ["executor", "fixer", "coder"] },
+      "description": "Role of the person or agent that performed this gate check. Must not be executor, fixer, or coder."
+    },
+    "details": {
+      "type": "string",
+      "description": "Explanation of the gate result."
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Evidence identifiers referenced by this gate."
+    },
+    "recommendation": {
+      "type": "string",
+      "description": "Suggested action if the result is not 'pass'."
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "gate_id": "g-001",
+      "run_id": "r-001",
+      "gate_level": "P0",
+      "gate_name": "Security: No secrets in output",
+      "result": "pass",
+      "checked_at": "2026-05-27T10:02:00Z",
+      "signer_role": "reviewer"
+    }
+  ]
+}

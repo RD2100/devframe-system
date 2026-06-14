@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Paper C4 Section Review Result",
+  "type": "object",
+  "required": ["task_id","input_privacy_mode","safety_status","review_allowed","target_section_name"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "input_privacy_mode": {"type": "string"},
+    "safety_status": {"type": "string", "enum": ["PASS","BLOCKED"]},
+    "review_allowed": {"type": "boolean"},
+    "target_section_name": {"type": "string"},
+    "diagnosis": {"type": "string"},
+    "revision_priorities": {"type": "array", "items": {"type": "string"}},
+    "suggested_structure": {"type": "string"},
+    "argument_continuity_notes": {"type": "string"},
+    "citation_or_evidence_needs": {"type": "array", "items": {"type": "string"}},
+    "privacy_limitations": {"type": "array", "items": {"type": "string"}},
+    "blocked_reasons": {"type": "array", "items": {"type": "string"}},
+    "next_recommended_human_action": {"type": "string"}
+  },
+  "additionalProperties": false
+}

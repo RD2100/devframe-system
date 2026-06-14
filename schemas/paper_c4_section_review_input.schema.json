@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Paper C4 Section Review Input",
+  "type": "object",
+  "required": ["task_id","paper_project_type","target_section_name","privacy_mode"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "paper_project_type": {"type": "string", "enum": ["dissertation","journal_article","conference_paper","book_chapter"]},
+    "paper_title": {"type": "string"},
+    "target_section_name": {"type": "string"},
+    "section_purpose": {"type": "string"},
+    "research_question": {"type": "string"},
+    "argument_outline": {"type": "string"},
+    "known_problems": {"type": "string"},
+    "desired_output": {"type": "string"},
+    "privacy_mode": {"type": "string", "enum": ["synthetic_only","metadata_only","sanitized_section"]},
+    "authorization_ref": {"type": "string"},
+    "section_content_sanitized": {"type": "string"}
+  },
+  "additionalProperties": false
+}

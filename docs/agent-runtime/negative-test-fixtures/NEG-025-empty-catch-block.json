@@ -1,0 +1,14 @@
+{
+  "test_id": "NEG-025",
+  "scenario": "Agent-produced code or script contains an empty catch/except block that silently swallows errors. This is an error-handling anti-pattern that the P3 Completeness Gate should catch.",
+  "input_report_features": "The report includes a generated script (e.g., a PowerShell or Python helper) with a try/catch block where the catch body is empty or contains only a comment like '# ignore errors'. The P3 Completeness Gate error-handling check is marked pass. The report does not mention the swallowed errors.",
+  "expected_gate_decision": "warning",
+  "expected_findings": [
+    "Empty catch block: errors silently swallowed",
+    "P3 Completeness Gate: error-handling check missed",
+    "Script quality issue: unhandled failure modes",
+    "Error information lost, making debugging impossible"
+  ],
+  "related_invariant": "verification-gates:P3:Completeness:ErrorHandling",
+  "hard_stop": false
+}

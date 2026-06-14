@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Paper Task Input",
+  "type": "object",
+  "required": ["task_id","task_type","paper_data_classification","user_authorization","input_materials","privacy_constraints","memory_policy","expected_outputs"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "task_type": {"type": "string", "enum": ["cssci_review","thesis_midterm_review","academic_revision","citation_verification","paper_structure_diagnosis"]},
+    "paper_data_classification": {"type": "string", "enum": ["synthetic","redacted","user_authorized_excerpt","real_paper_full_text"]},
+    "user_authorization": {"type": "string", "enum": ["explicit","none","synthetic"]},
+    "input_materials": {"type": "array", "items": {"type": "string"}},
+    "privacy_constraints": {"type": "array", "items": {"type": "string"}},
+    "memory_policy": {"type": "string", "enum": ["none","redacted_workflow_lesson_only"]},
+    "expected_outputs": {"type": "array", "items": {"type": "string"}}
+  },
+  "allOf": [
+    {"if": {"properties":{"paper_data_classification":{"const":"real_paper_full_text"}}},
+     "then": {"properties":{"user_authorization":{"const":"blocked"}}}},
+    {"if": {"properties":{"paper_data_classification":{"const":"user_authorized_excerpt"}}},
+     "then": {"properties":{"user_authorization":{"const":"explicit"}}}}
+  ]
+}

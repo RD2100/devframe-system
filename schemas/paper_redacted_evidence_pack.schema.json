@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Paper Redacted Evidence Pack",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id","contains_real_paper_full_text","contains_user_private_text","contains_raw_transcript","contains_memory_write","contains_external_upload","redaction_applied","manual_review_required"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "contains_real_paper_full_text": {"type": "boolean", "const": false},
+    "contains_user_private_text": {"type": "boolean", "const": false},
+    "contains_raw_transcript": {"type": "boolean", "const": false},
+    "contains_memory_write": {"type": "boolean"},
+    "contains_external_upload": {"type": "boolean", "const": false},
+    "redaction_applied": {"type": "boolean", "const": true},
+    "manual_review_required": {"type": "boolean"},
+    "memory_write_policy": {"type": "string", "enum": ["none","redacted_workflow_lesson_only"]}
+  }
+}

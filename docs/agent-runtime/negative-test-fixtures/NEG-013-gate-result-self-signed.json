@@ -1,0 +1,14 @@
+{
+  "test_id": "NEG-013",
+  "scenario": "GateResult was produced by the executor and stamped with its own approval, with no independent verification chain. The GateResult lacks an evidence chain linking it to a verifiable check.",
+  "input_report_features": "GateResult record has result='pass' but the checked_at timestamp is identical to the RunSpec.finished_at timestamp (same second). The gate appears to have been auto-generated without actual verification. No evidence_ids field linking to EvidenceIndex records. The gate result is 'self-signed' by the executor.",
+  "expected_gate_decision": "fail",
+  "expected_findings": [
+    "Gate result has no evidence chain (evidence_ids is empty)",
+    "Gate timestamp suggests auto-generation, not real verification",
+    "review-004: claims must be traceable to observable evidence",
+    "review-005: gate results must be explicitly produced, not assumed"
+  ],
+  "related_invariant": "review-004, review-005",
+  "hard_stop": false
+}

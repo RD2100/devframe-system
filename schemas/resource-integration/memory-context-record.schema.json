@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MemoryContextRecord",
+  "description": "R6 record for RD2100 memory context mapping. Memory is reference material only -- NOT a source of fact. All memory entries have stale_risk and conflict_check. Write is forbidden.",
+  "type": "object",
+  "required": [
+    "record_id", "phase", "memory_source", "memory_type", "memory_path",
+    "access_mode", "write_allowed", "used_as_fact", "stale_risk",
+    "conflict_check", "ttl_recommendation", "human_gate_required",
+    "local_verification_status", "verification_gaps", "next_phase_blocked"
+  ],
+  "properties": {
+    "record_id": { "type": "string" },
+    "phase": { "type": "string", "enum": ["R6"] },
+    "memory_source": { "type": "string" },
+    "memory_path": { "type": "string" },
+    "access_mode": { "type": "string", "const": "read_only" },
+    "write_allowed": { "type": "boolean", "const": false },
+    "used_as_fact": { "type": "boolean", "const": false },
+    "allowed_actions": { "type": "array", "items": { "type": "string" } },
+    "forbidden_actions": { "type": "array", "items": { "type": "string" } },
+    "stale_risk": { "type": "string", "enum": ["high", "medium", "low"] },
+    "conflict_check": { "type": "string" },
+    "ttl_recommendation": { "type": "string" },
+    "human_gate_required": { "type": "boolean" },
+    "local_verification_status": { "type": "string", "enum": ["verified", "needs_local_verification", "unverified", "stale"] },
+    "verification_gaps": { "type": "array", "items": { "type": "string" } },
+    "next_phase_blocked": { "type": "boolean" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false,
+  "examples": [{
+    "record_id": "mem-active-001",
+    "phase": "R6",
+    "memory_source": "RD2100-memory",
+    "memory_type": "active_rules",
+    "memory_path": "C:\\Users\\RD\\.codex\\memories\\RD2100-memory\\ACTIVE.md",
+    "access_mode": "read_only",
+    "write_allowed": false,
+    "used_as_fact": false,
+    "allowed_actions": ["read", "reference"],
+    "forbidden_actions": ["write", "modify", "delete", "use_as_current_fact"],
+    "stale_risk": "medium",
+    "conflict_check": "Compare with current filesystem/git state. ACTIVE.md last reviewed 2026-05-24.",
+    "ttl_recommendation": "Re-verify every 30 days or after any rules change in agent-acceptance",
+    "human_gate_required": false,
+    "local_verification_status": "needs_local_verification",
+    "verification_gaps": ["ACTIVE.md content not re-read in this session", "last_reviewed field may be stale"],
+    "next_phase_blocked": false,
+    "notes": "Global active rules. Overridden by system/developer/project-local instructions."
+  }]
+}

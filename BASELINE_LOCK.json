@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-06-14T11:50:00+08:00",
+  "generated_at": "2026-06-15T00:00:00+08:00",
   "route": "ROUTE_A_STRICT_CLEAN_BASELINE",
   "merge_type": "git_superproject_with_submodules",
   "executed_external_runtime": false,
@@ -10,36 +10,36 @@
       "path": "agent-acceptance",
       "role": "governance_acceptance_framework",
       "remote": "https://github.com/RD2100/agent-acceptance.git",
-      "branch": "master",
-      "commit": "285d5c906a074ce7c689c8f656caabbdb32af8dc",
-      "pre_pin_status": "clean_head_equals_upstream"
+      "branch": "codex/devframe-system-path-gate0-contract",
+      "commit": "88dd58183e705f1df07c32b690ab56766c643642",
+      "pre_pin_status": "clean_submodule_branch_committed"
     },
     {
       "project_id": "devframe-control-plane",
       "path": "devframe-control-plane",
       "role": "control_plane_runtime_candidate",
       "remote": "https://github.com/RD2100/devframe-control-plane.git",
-      "branch": "codex/route-a-baseline-candidate",
-      "commit": "311847818927d3c7ec8c8718949b38c74605fc83",
-      "pre_pin_status": "clean_head_equals_upstream"
+      "branch": "codex/lease-source-lock-contracts",
+      "commit": "49c6be859dd726092fc433cc18cb7ea9537498da",
+      "pre_pin_status": "clean_submodule_branch_committed"
     },
     {
       "project_id": "dev-frame-opencode",
       "path": "dev-frame-opencode",
       "role": "opencode_workflow_runtime_candidate",
       "remote": "https://github.com/RD2100/dev-frame-opencode.git",
-      "branch": "master",
-      "commit": "3a3aa5722bd6015bec30a8e9190140148b45167c",
-      "pre_pin_status": "clean_head_equals_upstream"
+      "branch": "codex/runtime-authorization-contract",
+      "commit": "08c76bbeb743a68b35c33c0357aff057bb69bd49",
+      "pre_pin_status": "clean_submodule_branch_committed"
     },
     {
       "project_id": "test-frame",
       "path": "test-frame",
       "role": "controlled_verification_runtime_candidate",
       "remote": "https://github.com/RD2100/test-frame.git",
-      "branch": "codex/harden-baseline",
-      "commit": "aeb4a31f770e35e7f698e5c3169406ddba231a4d",
-      "pre_pin_status": "clean_head_equals_upstream"
+      "branch": "codex/adapter-negative-matrix",
+      "commit": "71caa1c242d9a85d185c4e29ee24eb078183ffd5",
+      "pre_pin_status": "clean_submodule_branch_committed"
     }
   ],
   "verification": {

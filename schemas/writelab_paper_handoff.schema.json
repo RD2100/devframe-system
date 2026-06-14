@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WriteLab Paper Handoff",
+  "type": "object",
+  "required": [
+    "handoff_id",
+    "source_project",
+    "source_artifact_type",
+    "content_classification",
+    "privacy_mode",
+    "user_authorization",
+    "source_refs",
+    "target_contracts",
+    "diagnosis_summary",
+    "evidence_basis",
+    "limitations"
+  ],
+  "properties": {
+    "handoff_id": {"type": "string", "minLength": 1},
+    "source_project": {"type": "string", "enum": ["writelab"]},
+    "source_artifact_type": {
+      "type": "string",
+      "enum": ["paragraph_diagnosis", "expression_risk_report", "diagnosis_report"]
+    },
+    "content_classification": {"type": "string", "enum": ["synthetic", "redacted_metadata"]},
+    "privacy_mode": {"type": "string", "enum": ["synthetic_only", "metadata_only"]},
+    "user_authorization": {"type": "string", "enum": ["synthetic", "redacted_local_only"]},
+    "source_refs": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "target_contracts": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "diagnosis_summary": {
+      "type": "object",
+      "required": [
+        "expected_function",
+        "actual_function",
+        "function_match_score",
+        "ai_like_risk",
+        "problem_type_count"
+      ],
+      "properties": {
+        "expected_function": {"type": "string"},
+        "actual_function": {"type": "string"},
+        "function_match_score": {"type": "integer", "minimum": 0, "maximum": 100},
+        "ai_like_risk": {"type": "string", "enum": ["low", "medium", "medium-high", "high"]},
+        "problem_type_count": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "evidence_basis": {
+      "type": "string",
+      "enum": ["synthetic_case", "redacted_metadata_only", "local_rule_diagnosis"]
+    },
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

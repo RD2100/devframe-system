@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PAPER-C2 Redaction Gate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "redaction_report_present",
+    "privacy_attestation_present",
+    "redaction_applied",
+    "redacted_material_classification",
+    "contains_real_paper_full_text",
+    "contains_user_private_text",
+    "contains_raw_transcript",
+    "contains_memory_write_with_paper_content",
+    "contains_external_upload"
+  ],
+  "properties": {
+    "redaction_report_present": {"type": "boolean", "const": true},
+    "privacy_attestation_present": {"type": "boolean", "const": true},
+    "redaction_applied": {"type": "boolean", "const": true},
+    "redacted_material_classification": {
+      "type": "string",
+      "enum": ["redacted_metadata", "user_authorized_excerpt_metadata"]
+    },
+    "contains_real_paper_full_text": {"type": "boolean", "const": false},
+    "contains_user_private_text": {"type": "boolean", "const": false},
+    "contains_raw_transcript": {"type": "boolean", "const": false},
+    "contains_memory_write_with_paper_content": {"type": "boolean", "const": false},
+    "contains_external_upload": {"type": "boolean", "const": false}
+  }
+}

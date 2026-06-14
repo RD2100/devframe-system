@@ -1,0 +1,13 @@
+stages:
+  - readonly
+
+readonly:inventory:
+  stage: readonly
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+  script:
+    - powershell -NoProfile -ExecutionPolicy Bypass -Command "git status --short --branch"
+    - powershell -NoProfile -ExecutionPolicy Bypass -Command "git submodule status --recursive"
+    - powershell -NoProfile -ExecutionPolicy Bypass -Command "git diff --check"
+    - powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-submodules.ps1
+    - powershell -NoProfile -ExecutionPolicy Bypass -File scripts/readonly-inventory.ps1

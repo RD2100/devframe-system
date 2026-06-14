@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChainEvidence",
+  "description": "Role/session chain for an @go run.",
+  "type": "object",
+  "required": ["run_id", "task_file", "executor_id", "created_at", "producer"],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_file": { "type": "string", "minLength": 1 },
+    "executor_id": { "type": "string", "minLength": 1 },
+    "reviewer_id": { "type": ["string", "null"] },
+    "reviewer_role": { "type": "string" },
+    "reviewed_at": { "type": "string", "format": "date-time" },
+    "rerun_verified_at": { "type": "string", "format": "date-time" },
+    "rerun_summary": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "producer": { "type": "string" }
+  },
+  "additionalProperties": false
+}

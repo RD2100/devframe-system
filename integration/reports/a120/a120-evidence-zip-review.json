@@ -1,0 +1,214 @@
+{
+  "schema_version": "1.0",
+  "review_type": "A120EvidenceZipReviewReport",
+  "generated_at": "2026-06-14T16:45:49.625994+00:00",
+  "reviewer_boundary": {
+    "read_only": true,
+    "runs_pack_or_validate_scripts": false,
+    "runs_tests_or_runtime": false,
+    "claims_final_acceptance": false
+  },
+  "inputs": {
+    "zip": "D:\\dev-frame-opencode\\ai-workflow-hub\\CDP_EVIDENCE_A120.zip",
+    "manifest": "D:\\dev-frame-opencode\\ai-workflow-hub\\COUNTS_MANIFEST_A120.json",
+    "verdict": "D:\\dev-frame-opencode\\ai-workflow-hub\\CDP_VERDICT_A120.txt",
+    "prefix": "a120-evidence/"
+  },
+  "artifact_hashes": {
+    "zip_sha256": "8f64f959cd774987913db65fa53aaa599028df930af2c7675f7468549433984e",
+    "manifest_sha256": "2c34f479d59e40e3eb5ad7105042d9ac8ccf14b3451ebe000a8b697c08ca029a",
+    "verdict_sha256": "080e67076ece4f1b3c08adc1d33c620f80841519903b06a1da7afc2173748a59"
+  },
+  "summary": {
+    "pass": 18,
+    "warn": 0,
+    "fail": 0
+  },
+  "status": "PASS_WITH_BOUNDARY",
+  "verdict_summary": {
+    "first_line": "ACCEPTED",
+    "treated_as_final_acceptance": false
+  },
+  "checks": [
+    {
+      "id": "FILE-ZIP",
+      "status": "PASS",
+      "message": "zip file exists",
+      "details": {
+        "path": "D:\\dev-frame-opencode\\ai-workflow-hub\\CDP_EVIDENCE_A120.zip"
+      }
+    },
+    {
+      "id": "FILE-MANIFEST",
+      "status": "PASS",
+      "message": "manifest file exists",
+      "details": {
+        "path": "D:\\dev-frame-opencode\\ai-workflow-hub\\COUNTS_MANIFEST_A120.json"
+      }
+    },
+    {
+      "id": "FILE-VERDICT",
+      "status": "PASS",
+      "message": "verdict file exists",
+      "details": {
+        "path": "D:\\dev-frame-opencode\\ai-workflow-hub\\CDP_VERDICT_A120.txt"
+      }
+    },
+    {
+      "id": "ZIP-STRUCTURE",
+      "status": "PASS",
+      "message": "ZIP names are unique, relative, and under the expected prefix",
+      "details": {
+        "entry_count": 177,
+        "duplicate_entries": [],
+        "unsafe_entries": [],
+        "wrong_prefix_entries": [],
+        "expected_prefix": "a120-evidence/"
+      }
+    },
+    {
+      "id": "ZIP-SIZE",
+      "status": "PASS",
+      "message": "ZIP uncompressed sizes are within configured reviewer limits",
+      "details": {
+        "max_entry_bytes": 300995,
+        "total_uncompressed_bytes": 1993189,
+        "max_entry_limit": 10485760,
+        "total_limit": 52428800
+      }
+    },
+    {
+      "id": "ZIP-REQUIRED-ENTRIES",
+      "status": "PASS",
+      "message": "Required A120 entries are present",
+      "details": {
+        "missing_required": [],
+        "required_count": 62
+      }
+    },
+    {
+      "id": "MANIFEST-IDENTITY",
+      "status": "PASS",
+      "message": "External manifest matches manifest embedded in ZIP",
+      "details": {
+        "external_manifest_sha256": "2c34f479d59e40e3eb5ad7105042d9ac8ccf14b3451ebe000a8b697c08ca029a",
+        "embedded_manifest_sha256": "2c34f479d59e40e3eb5ad7105042d9ac8ccf14b3451ebe000a8b697c08ca029a"
+      }
+    },
+    {
+      "id": "MANIFEST-REQUIRED-FIELDS",
+      "status": "PASS",
+      "message": "Manifest required fields are present",
+      "details": {
+        "missing_fields": []
+      }
+    },
+    {
+      "id": "MANIFEST-A120-SCHEMA",
+      "status": "PASS",
+      "message": "Manifest identifies A120 with schema 1.61",
+      "details": {
+        "acceptance": "A120",
+        "schema_version": "1.61"
+      }
+    },
+    {
+      "id": "MANIFEST-ARTIFACT-ORDER",
+      "status": "PASS",
+      "message": "Evidence bundle artifact order matches A120 contract",
+      "details": {
+        "observed": [
+          "src/ai_workflow_hub/cli.py",
+          "SCOPE_DECLARATION_A120.txt",
+          "output/REGRESSION_OUTPUT_A120.txt",
+          "output/IN_SCOPE_TEST_RESULTS_A120.txt",
+          "known_flaky_tests.json",
+          "manifest_metadata"
+        ],
+        "expected": [
+          "src/ai_workflow_hub/cli.py",
+          "SCOPE_DECLARATION_A120.txt",
+          "output/REGRESSION_OUTPUT_A120.txt",
+          "output/IN_SCOPE_TEST_RESULTS_A120.txt",
+          "known_flaky_tests.json",
+          "manifest_metadata"
+        ]
+      }
+    },
+    {
+      "id": "TRANSCRIPT-HASHES",
+      "status": "PASS",
+      "message": "Transcript hashes and chain hash match manifest",
+      "details": {
+        "regression_sha256": "a511d2b340c57ffb4d1a1301903e951c61cff7523f4e05ae68e0b5d1e618483e",
+        "in_scope_sha256": "f272cef9685dece382bb1bf338e76f1cf4e515adc8e56cdebe758f38bd9ddf55",
+        "transcript_chain_hash": "71e8f3d9eae641fb19d19f6225749a98cbf99f73a2cd7632c75bdc3af49aedbe"
+      }
+    },
+    {
+      "id": "COMMAND-HASHES",
+      "status": "PASS",
+      "message": "Command echo hashes match manifest",
+      "details": {
+        "regression_command_hash": "8c8cb2f0668d11a840b89743bc163f2fcbf49142940acf061df0ab21734d59b2",
+        "in_scope_command_hash": "77c3424a5a134a077b381a6bc99e407f541b76a54352b9e754b8fd40a81356fb"
+      }
+    },
+    {
+      "id": "BUNDLE-HASH",
+      "status": "PASS",
+      "message": "Evidence bundle hash recomputes from ordered ZIP artifacts",
+      "details": {
+        "recomputed": "f0c5bb5bdb6b0402cd198f11cae81464963989c3d0b43f585d5113a57111074d",
+        "manifest": "f0c5bb5bdb6b0402cd198f11cae81464963989c3d0b43f585d5113a57111074d"
+      }
+    },
+    {
+      "id": "KNOWN-FLAKY",
+      "status": "PASS",
+      "message": "Known flaky metadata matches deselect command evidence",
+      "details": {
+        "total_known_flaky": 2,
+        "test_entries": 2,
+        "missing_deselects": []
+      }
+    },
+    {
+      "id": "TEST-INVENTORY",
+      "status": "PASS",
+      "message": "ZIP test inventory count matches manifest",
+      "details": {
+        "observed_count": 103,
+        "manifest_total": 103
+      }
+    },
+    {
+      "id": "VERDICT-CHAIN",
+      "status": "PASS",
+      "message": "A66-A119 verdict chain exists and contains verdict status tokens",
+      "details": {
+        "expected_count": 54,
+        "missing_verdicts": [],
+        "bad_verdicts": []
+      }
+    },
+    {
+      "id": "SOURCE-CONTRACT-CHECKS",
+      "status": "PASS",
+      "message": "cli.py contains schema 1.61 and A96-A120 contract markers",
+      "details": {
+        "schema_match": true,
+        "missing_contract_comments": []
+      }
+    },
+    {
+      "id": "EXTERNAL-VERDICT-BOUNDARY",
+      "status": "PASS",
+      "message": "External A120 verdict is readable but is treated as input evidence, not final acceptance",
+      "details": {
+        "first_line": "ACCEPTED",
+        "final_acceptance": false
+      }
+    }
+  ]
+}

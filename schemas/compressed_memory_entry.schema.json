@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://agent-acceptance/schemas/compressed_memory_entry",
+  "title": "Compressed Memory Entry",
+  "description": "Schema for a single compressed task lifecycle or knowledge entry in the memory system.",
+  "type": "object",
+  "required": ["entry_id", "entry_type", "content"],
+  "properties": {
+    "entry_id": {
+      "type": "string",
+      "description": "Unique identifier, e.g. TASK-GROUP-01 or KNOWLEDGE-evidence-first",
+      "pattern": "^(TASK|KNOWLEDGE|INDEX)-.+$"
+    },
+    "entry_type": {
+      "type": "string",
+      "enum": ["task_lifecycle", "knowledge", "index"],
+      "description": "Type of memory entry"
+    },
+    "content": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Compressed content, must not contain paper text or secrets"
+    },
+    "task_id": {
+      "type": "string",
+      "description": "Original task ID if this is a task lifecycle entry"
+    },
+    "review_run_id": {
+      "type": "string",
+      "description": "GPT review run ID"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["accepted", "blocked", "superseded", "closed"],
+      "description": "Final lifecycle status"
+    },
+    "related_entries": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Related entry IDs"
+    },
+    "source_files": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Files this entry was compressed from"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Search/discovery tags"
+    },
+    "privacy_checked": {
+      "type": "boolean",
+      "description": "Must be true; false means entry is invalid"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of generation"
+    }
+  },
+  "additionalProperties": false
+}

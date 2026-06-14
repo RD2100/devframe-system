@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Paper Task Output",
+  "type": "object",
+  "required": ["task_id","task_type","output_summary","findings","evidence_basis","privacy_redaction_status","manual_review_required","limitations"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "task_type": {"type": "string"},
+    "output_summary": {"type": "string"},
+    "findings": {"type": "array", "items": {"type": "object"}},
+    "evidence_basis": {"type": "string"},
+    "privacy_redaction_status": {"type": "string", "enum": ["full","partial","none"]},
+    "manual_review_required": {"type": "boolean"},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "contains_real_paper_full_text": {"type": "boolean"},
+    "contains_unredacted_excerpt": {"type": "boolean"},
+    "contains_user_identity": {"type": "boolean"}
+  }
+}

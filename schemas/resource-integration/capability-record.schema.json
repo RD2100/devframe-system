@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CapabilityRecord",
+  "description": "CR0 record for a capability in the RD2100 Agent Runtime v2. Capabilities are registered, classified, and routed -- not auto-executed. auto_use_allowed=false, execution_allowed=false, mutation_allowed=false by default.",
+  "type": "object",
+  "required": [
+    "capability_id", "capability_name", "capability_type",
+    "default_access_mode", "default_risk", "preferred_for", "forbidden_for",
+    "requires_human_gate", "auto_use_allowed", "execution_allowed",
+    "mutation_allowed", "freshness_required", "fallback_capability",
+    "must_explain_if_skipped", "evidence_required"
+  ],
+  "properties": {
+    "capability_id": { "type": "string" },
+    "capability_name": { "type": "string" },
+    "capability_type": { "type": "string", "enum": ["code_intelligence", "search", "shell", "validation", "documentation", "rules", "testing", "review", "mcp", "evidence", "orchestration", "skill", "memory", "workqueue", "script", "hook", "source_lock"] },
+    "default_access_mode": { "type": "string", "enum": ["read_only", "snapshot_only", "reference_only", "human_gated", "forbidden"] },
+    "default_risk": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "preferred_for": { "type": "array", "items": { "type": "string" } },
+    "forbidden_for": { "type": "array", "items": { "type": "string" } },
+    "requires_human_gate": { "type": "boolean" },
+    "auto_use_allowed": { "type": "boolean", "const": false },
+    "execution_allowed": { "type": "boolean", "const": false },
+    "mutation_allowed": { "type": "boolean", "const": false },
+    "freshness_required": { "type": "boolean" },
+    "fallback_capability": { "type": "array", "items": { "type": "string" } },
+    "must_explain_if_skipped": { "type": "boolean" },
+    "evidence_required": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false,
+  "examples": [{
+    "capability_id": "cap-codegraph-001",
+    "capability_name": "CodeGraph",
+    "capability_type": "code_intelligence",
+    "default_access_mode": "read_only",
+    "default_risk": "high",
+    "preferred_for": ["structural_code_understanding", "symbol_lookup", "caller_callee_analysis"],
+    "forbidden_for": ["literal_string_search", "current_fact_without_freshness", "override_filesystem"],
+    "requires_human_gate": true,
+    "auto_use_allowed": false,
+    "execution_allowed": false,
+    "mutation_allowed": false,
+    "freshness_required": true,
+    "fallback_capability": ["rg", "Read", "Grep"],
+    "must_explain_if_skipped": true,
+    "evidence_required": ["codegraph_status output", "index_freshness", "target_root match"],
+    "notes": "Preferred for structural code understanding. Must check index freshness before use. Stale/empty/unknown index -> fallback."
+  }]
+}

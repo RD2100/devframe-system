@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SkillIntakeRecord",
+  "description": "Record of the intake evaluation of an external skill. Produced by a skill evaluator, consumed by a reviewer and the future Phase 6+ quarantine pipeline. Phase 0-5 only allows reference or defer -- no install, clone, or execution.",
+  "type": "object",
+  "required": [
+    "record_id",
+    "skill_name",
+    "source",
+    "evaluated_at",
+    "disposition",
+    "rationale"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "description": "Unique record identifier."
+    },
+    "skill_name": {
+      "type": "string",
+      "description": "Name of the skill being evaluated."
+    },
+    "source": {
+      "type": "string",
+      "description": "Where the skill came from (URL, path, user request)."
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 evaluation timestamp."
+    },
+    "disposition": {
+      "type": "string",
+      "enum": ["reference_only", "candidate", "defer", "reject"],
+      "description": "Intake disposition. Phase 0-5: 'install', 'absorb', and 'approved' are NOT valid dispositions -- skills cannot be installed or approved in this phase."
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Why this disposition was chosen. Must be non-empty."
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"],
+      "description": "Risk level of the skill."
+    },
+    "declared_tools": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Tools the skill claims to use. Must not include forbidden Phase 0-5 tools (MCP config modification, UI-TARS/computer-use, package managers, external script execution)."
+    },
+    "gate_results": {
+      "type": "array",
+      "items": {
+        "$ref": "./gate-result.schema.json"
+      },
+      "description": "Gate check results for this skill intake."
+    },
+    "reviewer_notes": {
+      "type": "string",
+      "description": "Human reviewer notes."
+    },
+    "target_phase": {
+      "type": "string",
+      "description": "Phase when this skill could be reconsidered. Required when disposition is 'defer' or 'reject'."
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "disposition": { "enum": ["defer", "reject"] }
+        },
+        "required": ["disposition"]
+      },
+      "then": {
+        "required": ["target_phase"]
+      }
+    }
+  ],
+  "examples": [
+    {
+      "record_id": "sr-001",
+      "skill_name": "example-skill",
+      "source": "user request 2026-05-27",
+      "evaluated_at": "2026-05-27T10:10:00Z",
+      "disposition": "defer",
+      "rationale": "Phase 0-5 does not permit skill installation. Re-evaluate in Phase 6.",
+      "target_phase": "Phase 6"
+    }
+  ]
+}

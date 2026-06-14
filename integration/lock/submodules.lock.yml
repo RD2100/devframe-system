@@ -1,0 +1,31 @@
+schema_version: "1.0"
+generated_at: "2026-06-15"
+source: "BASELINE_LOCK.json"
+route: "ROUTE_A_STRICT_CLEAN_BASELINE"
+merge_type: "git_superproject_with_submodules"
+executed_external_runtime: false
+modules:
+  agent-acceptance:
+    path: "agent-acceptance"
+    role: "governance_acceptance_framework"
+    branch: "codex/devframe-system-path-gate0-contract"
+    commit: "88dd58183e705f1df07c32b690ab56766c643642"
+    remote: "https://github.com/RD2100/agent-acceptance.git"
+  devframe-control-plane:
+    path: "devframe-control-plane"
+    role: "control_plane_runtime_candidate"
+    branch: "codex/lease-source-lock-contracts"
+    commit: "49c6be859dd726092fc433cc18cb7ea9537498da"
+    remote: "https://github.com/RD2100/devframe-control-plane.git"
+  dev-frame-opencode:
+    path: "dev-frame-opencode"
+    role: "opencode_workflow_runtime_candidate"
+    branch: "codex/runtime-authorization-contract"
+    commit: "08c76bbeb743a68b35c33c0357aff057bb69bd49"
+    remote: "https://github.com/RD2100/dev-frame-opencode.git"
+  test-frame:
+    path: "test-frame"
+    role: "controlled_verification_runtime_candidate"
+    branch: "codex/adapter-negative-matrix"
+    commit: "71caa1c242d9a85d185c4e29ee24eb078183ffd5"
+    remote: "https://github.com/RD2100/test-frame.git"

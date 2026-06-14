@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MemoryUpdateRecord",
+  "type": "object",
+  "required": [
+    "record_id",
+    "proposed_at",
+    "memory_type",
+    "target_location",
+    "summary",
+    "status"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "description": "Unique record identifier."
+    },
+    "proposed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 timestamp when this memory was proposed."
+    },
+    "memory_type": {
+      "type": "string",
+      "enum": ["user", "feedback", "project", "reference"],
+      "description": "Type of memory being proposed."
+    },
+    "target_location": {
+      "type": "string",
+      "description": "Where this memory would be written. Must be a valid path."
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One-line summary of the proposed memory. Must be non-empty."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["proposed"],
+      "description": "Current status. Phase 0-5: only 'proposed' is allowed for new records. 'approved', 'rejected', and 'superseded' statuses are for use by human reviewers or future phases."
+    },
+    "full_content": {
+      "type": "string",
+      "description": "Full proposed memory content."
+    },
+    "trigger_event": {
+      "type": "string",
+      "description": "What triggered this proposal."
+    },
+    "reviewer": {
+      "type": "string",
+      "description": "Who should review this proposal."
+    },
+    "approved_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 timestamp when approved (set by human reviewer or future phase)."
+    },
+    "written_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 timestamp when actually written (future phase)."
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "record_id": "mu-001",
+      "proposed_at": "2026-05-27T10:15:00Z",
+      "memory_type": "project",
+      "target_location": "C:\\Users\\RD\\.claude\\projects\\D--agent-acceptance\\memory\\",
+      "summary": "Batch A1 inventory discovered path drift D:\\devFrame vs D:\\dev-frame",
+      "status": "proposed"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CodeGraphIndexRecord",
+  "description": "R4 record of a CodeGraph index. CodeGraph is a code intelligence candidate, NOT a source of truth. All indexes are governed by stale-aware policy. No automatic reindex is permitted.",
+  "type": "object",
+  "required": [
+    "record_id", "phase", "resource_id", "index_name", "index_path",
+    "target_root", "target_root_status", "index_status", "index_file_status",
+    "index_freshness", "trusted_for_current_run", "allowed_actions",
+    "forbidden_actions", "reindex_policy", "human_gate_required",
+    "evidence_requirements", "local_verification_status", "verification_gaps",
+    "next_phase_blocked"
+  ],
+  "properties": {
+    "record_id": { "type": "string" },
+    "phase": { "type": "string", "enum": ["R4"] },
+    "resource_id": { "type": "string" },
+    "index_name": { "type": "string" },
+    "index_path": { "type": "string" },
+    "target_root": { "type": "string" },
+    "target_root_status": { "type": "string", "enum": ["exists", "not_found", "changed", "unverified"] },
+    "index_status": { "type": "string", "enum": ["present", "missing", "unknown", "stale", "current", "empty", "needs_local_verification"] },
+    "index_file_status": { "type": "string", "enum": ["present", "missing", "locked", "corrupted"] },
+    "index_freshness": { "type": "string", "enum": ["current", "stale", "unknown", "not_applicable"] },
+    "trusted_for_current_run": { "type": "boolean", "default": false },
+    "allowed_actions": { "type": "array", "items": { "type": "string" } },
+    "forbidden_actions": { "type": "array", "items": { "type": "string" } },
+    "reindex_policy": { "type": "string", "enum": ["forbidden_in_r4", "human_required", "approved_future_only"] },
+    "human_gate_required": { "type": "boolean" },
+    "evidence_requirements": { "type": "array", "items": { "type": "string" } },
+    "local_verification_status": { "type": "string", "enum": ["verified", "needs_local_verification", "unverified", "stale", "blocked"] },
+    "verification_gaps": { "type": "array", "items": { "type": "string" } },
+    "next_phase_blocked": { "type": "boolean" }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": { "index_freshness": { "enum": ["unknown", "stale"] } },
+        "required": ["index_freshness"]
+      },
+      "then": {
+        "properties": { "trusted_for_current_run": { "const": false } },
+        "errorMessage": "trusted_for_current_run MUST be false when index_freshness is unknown or stale."
+      }
+    },
+    {
+      "if": {
+        "properties": { "index_status": { "const": "empty" } },
+        "required": ["index_status"]
+      },
+      "then": {
+        "properties": { "trusted_for_current_run": { "const": false } },
+        "errorMessage": "trusted_for_current_run MUST be false when index_status is empty (0 files indexed)."
+      }
+    }
+  ],
+  "examples": [{
+    "record_id": "cg-idx-agent-acceptance-001",
+    "phase": "R4",
+    "resource_id": "res-codegraph-004",
+    "index_name": "agent-acceptance",
+    "index_path": "D:\\agent-acceptance\\.codegraph\\codegraph.db",
+    "target_root": "D:\\agent-acceptance",
+    "target_root_status": "exists",
+    "index_status": "empty",
+    "index_file_status": "present",
+    "index_freshness": "not_applicable",
+    "trusted_for_current_run": false,
+    "allowed_actions": ["codegraph_status"],
+    "forbidden_actions": ["reindex", "init", "modify_db", "delete_db"],
+    "reindex_policy": "human_required",
+    "human_gate_required": true,
+    "evidence_requirements": ["db_file_exists", "db_file_size"],
+    "local_verification_status": "verified",
+    "verification_gaps": ["0 files indexed", "sqlite3 not available"],
+    "next_phase_blocked": false
+  }]
+}

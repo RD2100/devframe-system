@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvidenceIndex",
+  "description": "Index of evidence artifacts produced during a run. Produced by an executor agent, consumed by a reviewer agent and audit trail.",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "run_id",
+    "artifact_path",
+    "artifact_type",
+    "collected_at",
+    "status"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "description": "Unique evidence identifier."
+    },
+    "run_id": {
+      "type": "string",
+      "description": "Reference to the RunSpec that produced this evidence."
+    },
+    "artifact_path": {
+      "type": "string",
+      "description": "Path to the evidence artifact within the project root."
+    },
+    "artifact_type": {
+      "type": "string",
+      "enum": ["log", "screenshot", "diff", "report", "output"],
+      "description": "Type of evidence artifact."
+    },
+    "collected_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 timestamp when evidence was collected."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["collected", "verified", "disputed"],
+      "description": "Current verification status of the evidence."
+    },
+    "freshness": {
+      "type": "string",
+      "enum": ["historical", "current", "stale_or_unknown"],
+      "description": "Whether this evidence can support current gate decisions."
+    },
+    "currency_basis": {
+      "type": "string",
+      "enum": ["approved_run", "existing_artifact", "manual_inspection", "unknown"],
+      "description": "Basis for treating evidence as current."
+    },
+    "approved_run_id": {
+      "type": "string",
+      "description": "Run ID that produced this evidence when currency_basis is approved_run."
+    },
+    "checksum": {
+      "type": "string",
+      "description": "SHA256 checksum of the artifact."
+    },
+    "size_bytes": {
+      "type": "integer",
+      "description": "Artifact file size in bytes."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Collector notes about the evidence."
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "evidence_id": "ev-001",
+      "run_id": "r-001",
+      "artifact_path": "runs/powershell-acceptance/smoke-20260527.log",
+      "artifact_type": "log",
+      "collected_at": "2026-05-27T10:01:00Z",
+      "status": "collected"
+    }
+  ]
+}

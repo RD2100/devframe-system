@@ -1,0 +1,14 @@
+{
+  "test_id": "NEG-001",
+  "scenario": "ExecutionReport submitted with post-task git status but no pre-task git status, violating review-006 Pre/Post Status Required rule. Reviewer cannot verify the diff is clean because the baseline is missing.",
+  "input_report_features": "Report includes post git-status but omits pre git-status. The report claims 'no unexpected changes' without showing what the starting state was. Fake report says 'Status: submitted' with a summary claiming all changes are approved, but only one git status snapshot is attached.",
+  "expected_gate_decision": "fail",
+  "expected_findings": [
+    "Missing pre-task git status snapshot",
+    "Cannot verify that changes are only to approved paths",
+    "review-006 violation: pre/post status pair not provided",
+    "Evidence chain broken: claim of 'no unexpected changes' is unverifiable"
+  ],
+  "related_invariant": "review-006",
+  "hard_stop": false
+}

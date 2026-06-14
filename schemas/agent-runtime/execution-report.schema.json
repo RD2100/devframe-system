@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExecutionReport",
+  "description": "Final structured report of a batch execution. Produced by a report generator, consumed by a human reviewer and planning agent. Must include trust_record for dispatched tasks and fallback_record when fallback was used.",
+  "type": "object",
+  "required": [
+    "report_id",
+    "batch_id",
+    "generated_at",
+    "status",
+    "summary"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string",
+      "description": "Unique report identifier."
+    },
+    "batch_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Batch identifier. Must not be empty."
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 report generation timestamp."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pass", "fail", "blocked", "escalate"],
+      "description": "Execution outcome. This is separate from review_status lifecycle."
+    },
+    "review_status": {
+      "type": "string",
+      "enum": ["draft", "submitted", "reviewed", "accepted", "rejected"],
+      "description": "Document lifecycle status for reviewer processing."
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Executive summary. Must not be empty."
+    },
+    "executor_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Session or agent identity that executed the implementation. Required for pass reports."
+    },
+    "run_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "RunSpec identifiers referenced by this report."
+    },
+    "gate_results": {
+      "type": "array",
+      "items": {
+        "$ref": "./gate-result.schema.json"
+      },
+      "description": "Inline gate results for this report."
+    },
+    "trust_record": {
+      "type": "object",
+      "description": "Dispatch trust record. Required when task was dispatched to external agent. Contains session metadata for audit.",
+      "properties": {
+        "session_id": {
+          "type": "string",
+          "description": "External agent session identifier"
+        },
+        "model_used": {
+          "type": "string",
+          "description": "Model used for dispatch (e.g. deepseek/deepseek-v4-pro)"
+        },
+        "tokens_used": {
+          "type": "number",
+          "description": "Estimated token consumption"
+        },
+        "dispatch_method": {
+          "type": "string",
+          "enum": ["opencode", "codex_direct", "backup_model"],
+          "description": "How the task was dispatched"
+        },
+        "cost_estimate": {
+          "type": "number",
+          "description": "Estimated cost in USD"
+        }
+      }
+    },
+    "fallback_record": {
+      "type": "object",
+      "description": "Fallback decision record. Required when original dispatch failed and fallback was used.",
+      "properties": {
+        "original_route": { "type": "string" },
+        "failure_type": {
+          "type": "string",
+          "enum": ["api_key_expired", "cli_changed", "model_unavailable", "timeout", "unknown"]
+        },
+        "fallback_route": { "type": "string" },
+        "allowed_by_policy": { "type": "boolean" },
+        "risk_level": { "type": "string", "enum": ["low", "medium", "high"] },
+        "audit_note": { "type": "string" }
+      }
+    },
+    "blocking_issues": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Issues blocking progress."
+    },
+    "recommendations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Suggested next actions."
+    },
+    "reviewer_decision": {
+      "type": "string",
+      "description": "Reviewer gate decision."
+    },
+    "reviewer_artifacts": {
+      "type": "object",
+      "description": "Independent reviewer artifacts required before status can be accepted.",
+      "required": ["review_md", "review_yaml", "reviewer_role", "reviewer_id"],
+      "properties": {
+        "review_md": {
+          "type": "string",
+          "description": "Path to reviewer-authored review.md"
+        },
+        "review_yaml": {
+          "type": "string",
+          "description": "Path to reviewer-authored review.yaml"
+        },
+        "reviewer_role": {
+          "type": "string",
+          "not": { "enum": ["executor", "fixer", "coder"] },
+          "description": "Role that produced the reviewer artifacts. Must be independent of executor/fixer."
+        },
+        "reviewer_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Independent reviewer session or agent identity. Semantic validation requires it to differ from executor_id."
+        },
+        "verdict": {
+          "type": "string",
+          "enum": ["pass", "blocked", "fail", "escalate"],
+          "description": "Machine-readable reviewer verdict."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "status": { "const": "pass" } },
+        "required": ["status"]
+      },
+      "then": {
+        "required": ["reviewer_artifacts", "executor_id"]
+      }
+    }
+  ],
+  "additionalProperties": false
+}

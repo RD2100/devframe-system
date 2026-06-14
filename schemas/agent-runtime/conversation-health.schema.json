@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Conversation Health Metrics",
+  "description": "Source of truth for conversation health state. Read by Pre-Task gate, written by Pre-GPT wrapper.",
+  "type": "object",
+  "required": ["schema_version", "conversation_id", "chat_url", "status", "last_known_metrics", "last_nav_result", "last_checked_at", "metrics_source"],
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^conversation-health\\.v\\d+$" },
+    "conversation_id": { "type": "string", "description": "UUID extracted from chat URL" },
+    "chat_url": { "type": "string", "format": "uri" },
+    "status": { "type": "string", "enum": ["active", "stale", "handoff_required", "migrated", "inaccessible"] },
+    "last_known_metrics": {
+      "type": "object",
+      "properties": {
+        "assistant_message_count": { "type": ["integer", "null"], "minimum": 0 },
+        "review_round_count": { "type": ["integer", "null"], "minimum": 0 },
+        "last_response_time_seconds": { "type": ["number", "null"], "minimum": 0 },
+        "last_gpt_reply_bytes": { "type": ["integer", "null"], "minimum": 0 }
+      }
+    },
+    "last_nav_result": { "type": "string", "enum": ["ok", "access_denied", "not_found", "timeout", "auth_required", "cdp_unavailable", "unknown"] },
+    "last_health_decision": { "type": "string", "enum": ["OK", "FORCE_HANDOFF", "SUGGEST_HANDOFF", "UNKNOWN", "HUMAN_REQUIRED"] },
+    "last_health_reasons": { "type": "array", "items": { "type": "string" } },
+    "last_checked_at": { "type": "string", "format": "date-time" },
+    "metrics_source": { "type": "string", "enum": ["cdp_dom_count", "wrapper_counter", "manual_estimate", "none"] },
+    "metrics_freshness": { "type": "string", "enum": ["fresh", "stale", "unknown"] }
+  },
+  "additionalProperties": false
+}

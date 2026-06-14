@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Conversation Health Decision",
+  "description": "Output of check_handoff_needed.py --write. Records the health decision with reasons.",
+  "type": "object",
+  "required": ["schema_version", "decision", "severity", "reasons", "recommended_action", "checked_at", "source"],
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^conversation-health-decision\\.v\\d+$" },
+    "decision": { "type": "string", "enum": ["OK", "FORCE_HANDOFF", "SUGGEST_HANDOFF", "UNKNOWN", "HUMAN_REQUIRED"] },
+    "severity": { "type": "string", "enum": ["INFO", "WARNING", "BLOCKING"] },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "policy"],
+        "properties": {
+          "code": { "type": "string" },
+          "actual": {},
+          "threshold": {},
+          "policy": { "type": "string", "enum": ["force", "suggest", "force_composite", "human", "suggest_capped", "warning"] }
+        }
+      }
+    },
+    "recommended_action": { "type": "string", "enum": ["continue", "suggest_handoff", "generate_handoff", "human_review"] },
+    "checked_at": { "type": "string", "format": "date-time" },
+    "source": { "type": "string" }
+  },
+  "additionalProperties": false
+}

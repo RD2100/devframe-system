@@ -1,0 +1,14 @@
+{
+  "test_id": "NEG-029",
+  "scenario": "ExecutionReport omits the constraint compliance table entirely, violating review-002 which requires the report to include a constraint compliance table with forbidden action check and blocking issues.",
+  "input_report_features": "The report has a summary, status, and file list but no constraint compliance table. There is no section checking forbidden actions, no gate results inline, and no blocking issues section (not even 'None'). The required report structure per review-002 is incomplete.",
+  "expected_gate_decision": "warning",
+  "expected_findings": [
+    "review-002 violation: constraint compliance table missing",
+    "No forbidden action check in the report",
+    "Required report sections absent",
+    "Reviewer cannot verify scope control without compliance table"
+  ],
+  "related_invariant": "review-002",
+  "hard_stop": false
+}

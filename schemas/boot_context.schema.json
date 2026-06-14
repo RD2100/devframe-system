@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://agent-acceptance/schemas/boot_context",
+  "title": "Boot Context",
+  "description": "Schema for BOOT_CONTEXT.md — the short cold-start entry point for new agents.",
+  "type": "object",
+  "required": ["boot_context_version", "sections", "total_characters", "privacy_checked"],
+  "properties": {
+    "boot_context_version": {
+      "type": "string",
+      "description": "Version of the boot context format"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "total_characters": {
+      "type": "integer",
+      "minimum": 3000,
+      "maximum": 6000,
+      "description": "Total Chinese character count, must be 3000-6000"
+    },
+    "sections": {
+      "type": "object",
+      "required": [
+        "project_identity",
+        "three_layer_architecture",
+        "current_stage",
+        "recent_accepted_tasks",
+        "open_risks",
+        "next_recommended_task",
+        "absolute_safety_boundaries",
+        "cold_start_reading_order"
+      ],
+      "properties": {
+        "project_identity": { "type": "string", "maxLength": 500 },
+        "three_layer_architecture": { "type": "string", "maxLength": 600 },
+        "current_stage": { "type": "string", "maxLength": 400 },
+        "recent_accepted_tasks": { "type": "string", "maxLength": 1000 },
+        "open_risks": { "type": "string", "maxLength": 800 },
+        "next_recommended_task": { "type": "string", "maxLength": 400 },
+        "absolute_safety_boundaries": { "type": "string", "maxLength": 800 },
+        "cold_start_reading_order": { "type": "string", "maxLength": 400 }
+      }
+    },
+    "privacy_checked": {
+      "type": "boolean",
+      "description": "Must be true; false means the boot context is invalid"
+    },
+    "hash": {
+      "type": "string",
+      "description": "SHA256 of the boot context content"
+    }
+  },
+  "additionalProperties": false
+}

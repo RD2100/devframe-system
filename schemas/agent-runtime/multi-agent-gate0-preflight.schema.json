@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-acceptance/schemas/agent-runtime/multi-agent-gate0-preflight.schema.json",
+  "title": "MultiAgentGate0Preflight",
+  "description": "Read-only Gate 0 readiness report for multi-agent / multi-GPT pilot startup.",
+  "type": "object",
+  "required": [
+    "generated_at",
+    "overall",
+    "executed_external_runtime",
+    "human_gate_required",
+    "agent_count",
+    "checks"
+  ],
+  "properties": {
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "overall": {
+      "type": "string",
+      "enum": ["PASS", "BLOCKED", "HUMAN_REQUIRED"]
+    },
+    "executed_external_runtime": {
+      "const": false,
+      "description": "Gate 0 preflight is read-only and must not execute external runtimes."
+    },
+    "human_gate_required": {
+      "type": "boolean"
+    },
+    "agent_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "status", "detail", "evidence"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": ["passed", "blocked", "human_required"]
+          },
+          "detail": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": ["string", "null"]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "overall": { "const": "PASS" } },
+        "required": ["overall"]
+      },
+      "then": {
+        "properties": { "human_gate_required": { "const": false } }
+      }
+    },
+    {
+      "if": {
+        "properties": { "overall": { "const": "HUMAN_REQUIRED" } },
+        "required": ["overall"]
+      },
+      "then": {
+        "properties": { "human_gate_required": { "const": true } }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

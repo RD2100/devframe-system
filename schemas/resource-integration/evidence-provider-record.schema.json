@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-acceptance.rd2100/schemas/resource-integration/evidence-provider-record.schema.json",
+  "title": "EvidenceProviderRecord",
+  "description": "Evidence provider registration record for R2 phase. Registers test-frame as a potential evidence source. R2 = evidence provider registration only. No test execution. No aggregator. No attribution. No CLI. No orchestrator. All reports are historical evidence. No current result is produced.",
+  "type": "object",
+  "required": [
+    "record_id",
+    "phase",
+    "resource_id",
+    "provider_name",
+    "provider_type",
+    "source_root",
+    "source_status",
+    "evidence_roots",
+    "report_roots",
+    "execution_tools",
+    "read_only_artifacts",
+    "historical_artifacts",
+    "forbidden_actions",
+    "allowed_actions",
+    "risk_level",
+    "access_mode",
+    "contract_mapping",
+    "evidence_index_mapping",
+    "attribution_policy",
+    "current_result_policy",
+    "execution_policy",
+    "human_gate_required",
+    "local_verification_status",
+    "verification_gaps",
+    "next_phase_blocked"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "description": "Unique evidence provider record identifier."
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["R2"],
+      "description": "The integration phase for this record. Must be R2 for evidence provider registration."
+    },
+    "resource_id": {
+      "type": "string",
+      "description": "Reference to the resource-registry record (e.g., res-testframe-003)."
+    },
+    "provider_name": {
+      "type": "string",
+      "description": "Human-readable provider name (e.g., 'test-frame Evidence Provider')."
+    },
+    "provider_type": {
+      "type": "string",
+      "enum": [
+        "test_framework",
+        "evidence_repository",
+        "report_repository",
+        "attribution_candidate",
+        "aggregation_candidate"
+      ],
+      "description": "Classification of the evidence provider by role. test_framework covers D:\\test-frame. evidence_repository and report_repository cover read-only artifact sources. attribution_candidate and aggregation_candidate mark components that are registered but explicitly forbidden from execution."
+    },
+    "source_root": {
+      "type": "string",
+      "description": "Root path of the evidence source. Must be D:\\test-frame."
+    },
+    "source_status": {
+      "type": "string",
+      "enum": ["exists", "not_found", "partially_accessible"],
+      "description": "Status of the source root directory. 'exists' means the directory is present and accessible for listing. 'not_found' means the path does not exist. 'partially_accessible' means some subdirectories are inaccessible."
+    },
+    "evidence_roots": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of evidence source directories (e.g., evidence/, reports/, test-results/)."
+    },
+    "report_roots": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of report subdirectories within reports/ that contain historical report artifacts."
+    },
+    "execution_tools": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of execution tools that are REGISTERED but CANNOT be run by R2. Includes: pytest, npm test, playwright, aggregator, attribution, cli, orchestrator."
+    },
+    "read_only_artifacts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of artifacts that CAN be read (directory listings, documentation). Includes: README, ARCHITECTURE, PIPELINE, directory listings."
+    },
+    "historical_artifacts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Existing historical data paths within test-frame that may be used as context. These are NOT current results."
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Actions explicitly forbidden on the evidence provider. Includes all execution, modification, and current-result claims."
+    },
+    "allowed_actions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Actions currently permitted. Limited to: read_directory, read_docs, validate_json, git_status."
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["high"],
+      "description": "Assessed risk level. test-frame is high risk because it contains executable test frameworks and historical data that could be mistaken for current results."
+    },
+    "access_mode": {
+      "type": "string",
+      "enum": ["read_only", "metadata_only", "human_gated", "forbidden"],
+      "description": "Maximum access mode. Default is 'read_only'. Sub-components (aggregator, attribution, cli, orchestrator) are individually set to 'forbidden' or 'human_gated'."
+    },
+    "contract_mapping": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "References to integration contracts that govern this provider."
+    },
+    "evidence_index_mapping": {
+      "type": "string",
+      "description": "How evidence from this provider maps to Contract 3: EvidenceIndex. Historical artifacts can populate evidence_id, artifact_path, artifact_type fields but must be marked as historical context, not current evidence."
+    },
+    "attribution_policy": {
+      "type": "string",
+      "description": "Description of attribution constraints. R2 does NOT allow attribution to produce GateResult. Attribution is registered as an attribution_candidate provider_type but remains in forbidden execution_policy."
+    },
+    "current_result_policy": {
+      "type": "string",
+      "enum": ["historical_only"],
+      "description": "Policy for current results. MUST be exactly 'historical_only'. R2 cannot use any result as current. NOT 'current_after_approved_run'. NOT 'current_pass'."
+    },
+    "execution_policy": {
+      "type": "string",
+      "enum": ["forbidden"],
+      "description": "Policy for execution. MUST be exactly 'forbidden'. R2 cannot execute tools. NOT 'human_gated'. NOT 'dry_run_allowed'."
+    },
+    "human_gate_required": {
+      "type": "boolean",
+      "description": "Whether human gate is required. MUST be true."
+    },
+    "local_verification_status": {
+      "type": "string",
+      "enum": ["verified", "needs_local_verification", "unverified"],
+      "description": "Status of local verification for this evidence provider record."
+    },
+    "verification_gaps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Known gaps in verification coverage. test-frame's primary gap: no test execution has been performed in this runtime, reports directory contains historical data only."
+    },
+    "next_phase_blocked": {
+      "type": "boolean",
+      "description": "Whether the next phase transition is blocked until conditions are met. MUST be true for R2 evidence provider registration."
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional human-readable description of this evidence provider record."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional notes or warnings about this evidence provider."
+    },
+    "registered_date": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO8601 date (YYYY-MM-DD) when this evidence provider record was created."
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": { "current_result_policy": { "const": "current_after_approved_run" } }
+      },
+      "then": false,
+      "else": true
+    },
+    {
+      "if": {
+        "properties": { "current_result_policy": { "const": "current_pass" } }
+      },
+      "then": false,
+      "else": true
+    },
+    {
+      "if": {
+        "properties": { "execution_policy": { "const": "human_gated" } }
+      },
+      "then": false,
+      "else": true
+    },
+    {
+      "if": {
+        "properties": { "execution_policy": { "const": "dry_run_allowed" } }
+      },
+      "then": false,
+      "else": true
+    }
+  ],
+  "examples": [
+    {
+      "record_id": "evp-testframe-001",
+      "phase": "R2",
+      "resource_id": "res-testframe-003",
+      "provider_name": "test-frame Evidence Provider",
+      "provider_type": "test_framework",
+      "source_root": "D:\\test-frame",
+      "source_status": "exists",
+      "evidence_roots": ["evidence/", "reports/", "test-results/"],
+      "report_roots": ["reports/allure-results/", "reports/jest-results/", "reports/failure_history/"],
+      "execution_tools": ["pytest", "npm test", "playwright", "aggregator", "attribution", "cli", "orchestrator"],
+      "read_only_artifacts": ["README.md", "ARCHITECTURE.md", "PIPELINE.md", "directory listings"],
+      "historical_artifacts": ["reports/allure-results/", "reports/jest-results/", "reports/failure_history/", "test-results/", "evidence/"],
+      "forbidden_actions": [
+        "execute pytest/npm test/playwright",
+        "execute aggregator",
+        "execute attribution",
+        "execute CLI commands",
+        "execute orchestrator",
+        "modify D:\\test-frame",
+        "write test results",
+        "write reports",
+        "install dependencies",
+        "treat historical report as current pass",
+        "allow attribution to produce GateResult",
+        "trigger external services",
+        "read .env or credentials in test-frame",
+        "consume test-frame evidence in GateResult without reviewer approval",
+        "register test-frame as active provider"
+      ],
+      "allowed_actions": ["read_directory", "read_docs", "validate_json", "git_status"],
+      "risk_level": "high",
+      "access_mode": "read_only",
+      "contract_mapping": ["Contract 3: EvidenceIndex", "Contract 4: GateResult", "A4: test-frame"],
+      "evidence_index_mapping": "Historical artifacts from test-frame can populate EvidenceIndex fields (evidence_id, artifact_path, artifact_type) but all artifacts must carry status=collected and include notes='historical context only -- not a current result'. GateResult evidence_ids may reference these but MUST NOT use them as gate-check evidence without reviewer approval.",
+      "attribution_policy": "Attribution is registered as an attribution_candidate provider_type with execution_policy=forbidden. R2 does not allow attribution to produce GateResult. Any attribution output from historical runs is context-only and must be treated as stale.",
+      "current_result_policy": "historical_only",
+      "execution_policy": "forbidden",
+      "human_gate_required": true,
+      "local_verification_status": "verified",
+      "verification_gaps": [
+        "no test execution has been performed in this runtime",
+        "reports directory contains historical data only",
+        "aggregator has never been invoked",
+        "attribution has never produced a GateResult",
+        "orchestrator has never dispatched a task",
+        "CLI has never been triggered"
+      ],
+      "next_phase_blocked": true,
+      "registered_date": "2026-05-27"
+    }
+  ]
+}

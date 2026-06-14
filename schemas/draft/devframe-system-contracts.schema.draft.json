@@ -1,0 +1,387 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "DRAFT - NOT ACTIVE. Planning-only contract packet for future devframe-system activation. Do not wire into validators or runtime without human approval.",
+  "title": "DevframeSystemContractsDraft",
+  "description": "Inactive draft definitions for future devframe-system contract-only planning. These contracts do not grant runtime authority and do not permit external frames to produce GateResult.",
+  "type": "object",
+  "oneOf": [
+    { "$ref": "#/$defs/RepoBaselineRecord" },
+    { "$ref": "#/$defs/SuperprojectLock" },
+    { "$ref": "#/$defs/RuntimeExecutionRequest" },
+    { "$ref": "#/$defs/FrameActivationRecord" },
+    { "$ref": "#/$defs/VerificationRuntimeResult" },
+    { "$ref": "#/$defs/HumanRouteApprovalRecord" }
+  ],
+  "$defs": {
+    "RepoBaselineRecord": {
+      "type": "object",
+      "required": [
+        "contract_type",
+        "contract_version",
+        "repo_id",
+        "path",
+        "head",
+        "branch",
+        "dirty_status",
+        "runtime_execution_authorized",
+        "recorded_at"
+      ],
+      "properties": {
+        "contract_type": { "const": "RepoBaselineRecord" },
+        "contract_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "repo_id": {
+          "type": "string",
+          "enum": ["agent-acceptance", "dev-frame-opencode", "devframe-control-plane", "test-frame"]
+        },
+        "path": { "type": "string" },
+        "head": { "type": "string", "pattern": "^[0-9a-fA-F]{7,40}$" },
+        "branch": { "type": "string" },
+        "dirty_status": {
+          "type": "string",
+          "enum": ["clean", "dirty", "unknown"]
+        },
+        "dirty_summary": {
+          "type": "object",
+          "properties": {
+            "tracked": { "type": "integer", "minimum": 0 },
+            "staged": { "type": "integer", "minimum": 0 },
+            "unstaged": { "type": "integer", "minimum": 0 },
+            "untracked": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "remote_portability_status": {
+          "type": "string",
+          "enum": ["local_only", "portable_remote_available", "unknown"]
+        },
+        "runtime_execution_authorized": { "const": false },
+        "recorded_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "SuperprojectLock": {
+      "type": "object",
+      "required": [
+        "contract_type",
+        "contract_version",
+        "superproject_path",
+        "status",
+        "submodules",
+        "runtime_execution_authorized",
+        "recorded_at"
+      ],
+      "properties": {
+        "contract_type": { "const": "SuperprojectLock" },
+        "contract_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "superproject_path": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["draft", "human_required", "ready_for_bootstrap", "blocked"]
+        },
+        "submodules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["repo_id", "local_path", "target_path", "pinned_head"],
+            "properties": {
+              "repo_id": { "type": "string" },
+              "local_path": { "type": "string" },
+              "target_path": { "type": "string" },
+              "pinned_head": { "type": "string", "pattern": "^[0-9a-fA-F]{7,40}$" },
+              "remote_portability_status": {
+                "type": "string",
+                "enum": ["local_only", "portable_remote_available", "unknown"]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "blocking_conditions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "runtime_execution_authorized": { "const": false },
+        "recorded_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "RuntimeExecutionRequest": {
+      "type": "object",
+      "required": [
+        "contract_type",
+        "contract_version",
+        "request_id",
+        "target_frame",
+        "command",
+        "cwd",
+        "human_authorized",
+        "runtime_execution_authorized",
+        "evidence_destination"
+      ],
+      "properties": {
+        "contract_type": { "const": "RuntimeExecutionRequest" },
+        "contract_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "request_id": { "type": "string" },
+        "target_frame": {
+          "type": "string",
+          "enum": ["dev-frame-opencode", "devframe-control-plane", "test-frame"]
+        },
+        "command": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "cwd": { "type": "string" },
+        "timeout_seconds": { "type": "integer", "minimum": 1 },
+        "human_authorized": { "type": "boolean" },
+        "runtime_execution_authorized": { "type": "boolean" },
+        "evidence_destination": { "type": "string" },
+        "forbidden_if_false": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["human_authorized", "runtime_execution_authorized"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "FrameActivationRecord": {
+      "type": "object",
+      "required": [
+        "contract_type",
+        "contract_version",
+        "frame_id",
+        "from_status",
+        "to_status",
+        "source_lock_record",
+        "boundary_envelope",
+        "gate_result_allowed",
+        "human_approved"
+      ],
+      "properties": {
+        "contract_type": { "const": "FrameActivationRecord" },
+        "contract_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "frame_id": {
+          "type": "string",
+          "enum": ["dev-frame-opencode", "devframe-control-plane", "test-frame", "devframe-system"]
+        },
+        "from_status": { "type": "string", "enum": ["inactive", "activating"] },
+        "to_status": { "type": "string", "enum": ["activating", "active", "rejected"] },
+        "source_lock_record": { "type": "string" },
+        "boundary_envelope": { "type": "string" },
+        "gate_result_allowed": { "const": false },
+        "human_approved": { "type": "boolean" },
+        "approved_by": { "type": "string" },
+        "approved_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "VerificationRuntimeResult": {
+      "type": "object",
+      "required": [
+        "contract_type",
+        "contract_version",
+        "run_id",
+        "source_frame",
+        "status",
+        "evidence_index",
+        "gate_result_allowed"
+      ],
+      "properties": {
+        "contract_type": { "const": "VerificationRuntimeResult" },
+        "contract_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "run_id": { "type": "string" },
+        "source_frame": { "const": "test-frame" },
+        "status": {
+          "type": "string",
+          "enum": ["completed", "failed", "blocked", "partial"]
+        },
+        "evidence_index": { "type": "string" },
+        "summary": { "type": "string" },
+        "gate_result_allowed": { "const": false }
+      },
+      "additionalProperties": false
+    },
+    "HumanRouteApprovalRecord": {
+      "type": "object",
+      "required": [
+        "contract_type",
+        "contract_version",
+        "approval_record_id",
+        "record_type",
+        "status",
+        "created_at",
+        "human_decision_source",
+        "route_selection",
+        "allowed_file_system_scope",
+        "submodule_status",
+        "runtime_gate_status",
+        "source_frame_authority",
+        "required_preflight_before_action",
+        "explicit_non_authorizations",
+        "human_signature"
+      ],
+      "properties": {
+        "contract_type": { "const": "HumanRouteApprovalRecord" },
+        "contract_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "approval_record_id": { "type": "string", "pattern": "^DEVFRAME-SYSTEM-ROUTE-APPROVAL-[0-9]{8}-[A-Z0-9]+$" },
+        "record_type": { "const": "human_route_approval" },
+        "status": {
+          "type": "string",
+          "enum": ["pending_human_signature", "approved", "rejected", "superseded"]
+        },
+        "created_at": { "type": "string", "format": "date-time" },
+        "human_decision_source": { "type": "string", "minLength": 1 },
+        "route_selection": {
+          "type": "object",
+          "required": ["exact_route_name", "rationale"],
+          "properties": {
+            "exact_route_name": {
+              "type": "string",
+              "enum": [
+                "CONTINUE_CONTRACT_ONLY_PLANNING",
+                "ROUTE_A_STRICT_CLEAN_BASELINE",
+                "ROUTE_B_DIRTY_AWARE_SKELETON"
+              ]
+            },
+            "rationale": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        "allowed_file_system_scope": {
+          "type": "object",
+          "required": [
+            "agent_acceptance",
+            "devframe_system_creation_authorized",
+            "devframe_system_path",
+            "external_source_repos_mutation_authorized",
+            "notes"
+          ],
+          "properties": {
+            "agent_acceptance": { "type": "string", "minLength": 1 },
+            "devframe_system_creation_authorized": { "type": "boolean" },
+            "devframe_system_path": { "const": "D:\\devframe-system" },
+            "external_source_repos_mutation_authorized": { "const": false },
+            "notes": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "submodule_status": {
+          "type": "object",
+          "required": [
+            "git_submodule_add_authorized",
+            "gitmodules_creation_authorized",
+            "trusted_submodule_baseline_claim_authorized"
+          ],
+          "properties": {
+            "git_submodule_add_authorized": { "const": false },
+            "gitmodules_creation_authorized": { "const": false },
+            "trusted_submodule_baseline_claim_authorized": { "const": false }
+          },
+          "additionalProperties": false
+        },
+        "runtime_gate_status": {
+          "type": "object",
+          "required": [
+            "external_runtime_execution_authorized",
+            "external_tests_builds_package_installs_authorized",
+            "paper_workflow_authorized",
+            "runtime_execution_requires_separate_request"
+          ],
+          "properties": {
+            "external_runtime_execution_authorized": { "const": false },
+            "external_tests_builds_package_installs_authorized": { "const": false },
+            "paper_workflow_authorized": { "const": false },
+            "runtime_execution_requires_separate_request": { "const": true }
+          },
+          "additionalProperties": false
+        },
+        "source_frame_authority": {
+          "type": "object",
+          "required": [
+            "agent_acceptance",
+            "dev_frame_opencode",
+            "devframe_control_plane",
+            "test_frame",
+            "devframe_system"
+          ],
+          "properties": {
+            "agent_acceptance": { "type": "string", "minLength": 1 },
+            "dev_frame_opencode": { "type": "string", "minLength": 1 },
+            "devframe_control_plane": { "type": "string", "minLength": 1 },
+            "test_frame": {
+              "type": "string",
+              "pattern": "evidence-only"
+            },
+            "devframe_system": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        "required_preflight_before_action": {
+          "type": "object",
+          "required": [
+            "route_a_clean_baseline_required",
+            "route_b_dirty_snapshot_required",
+            "latest_source_status_artifact",
+            "stop_if_source_repo_dirty_for_route_a"
+          ],
+          "properties": {
+            "route_a_clean_baseline_required": { "const": true },
+            "route_b_dirty_snapshot_required": { "const": true },
+            "latest_source_status_artifact": { "type": "string", "minLength": 1 },
+            "stop_if_source_repo_dirty_for_route_a": { "const": true }
+          },
+          "additionalProperties": false
+        },
+        "explicit_non_authorizations": {
+          "type": "object",
+          "required": [
+            "cleanup_reset_stash_checkout_delete_authorized",
+            "source_repo_stage_commit_authorized",
+            "secret_reading_authorized",
+            "destructive_git_authorized"
+          ],
+          "properties": {
+            "cleanup_reset_stash_checkout_delete_authorized": { "const": false },
+            "source_repo_stage_commit_authorized": { "const": false },
+            "secret_reading_authorized": { "const": false },
+            "destructive_git_authorized": { "const": false }
+          },
+          "additionalProperties": false
+        },
+        "human_signature": {
+          "type": "object",
+          "required": ["approved_by", "approved_at", "approval_text"],
+          "properties": {
+            "approved_by": { "type": "string", "minLength": 1 },
+            "approved_at": { "type": "string", "format": "date-time" },
+            "approval_text": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": { "const": "approved" },
+              "route_selection": {
+                "properties": {
+                  "exact_route_name": { "const": "CONTINUE_CONTRACT_ONLY_PLANNING" }
+                },
+                "required": ["exact_route_name"]
+              }
+            },
+            "required": ["status", "route_selection"]
+          },
+          "then": {
+            "properties": {
+              "allowed_file_system_scope": {
+                "properties": {
+                  "devframe_system_creation_authorized": { "const": false }
+                },
+                "required": ["devframe_system_creation_authorized"]
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SubmissionTarget",
+  "type": "object",
+  "required": [
+    "task_id",
+    "primary_repo",
+    "repos"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "primary_repo": {
+      "type": "string",
+      "enum": [
+        "agent-acceptance",
+        "devframe-control-plane",
+        "dev-frame-opencode"
+      ]
+    },
+    "secondary_repos": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "repos": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "object",
+          "required": [
+            "allowed",
+            "blocked"
+          ],
+          "properties": {
+            "allowed": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "blocked": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "commit_required": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "evidence_binding": {
+      "type": "object",
+      "properties": {
+        "git_tree_sha_per_repo": {
+          "type": "boolean"
+        },
+        "gpt_accepted_binds_all_repos": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

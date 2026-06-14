@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://agent-acceptance/schemas/review_ticket",
+  "title": "Review Ticket",
+  "description": "Machine-readable GPT review queue ticket for DevFrame evidence packs.",
+  "type": "object",
+  "required": ["ticket_id", "task_id", "status", "evidence_pack_path", "evidence_pack_sha256", "created_at"],
+  "properties": {
+    "ticket_id": {
+      "type": "string",
+      "pattern": "^REVIEW-[A-Z0-9-]+$"
+    },
+    "task_id": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["queued", "submitted", "gpt_replied", "accepted", "blocked", "closed"]
+    },
+    "evidence_pack_path": { "type": "string" },
+    "evidence_pack_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "submission_target": { "type": "string", "description": "GPT conversation URL" },
+    "reviewer": { "type": "string", "default": "gpt" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "submitted_at": { "type": "string", "format": "date-time" },
+    "gpt_replied_at": { "type": "string", "format": "date-time" },
+    "gpt_verdict": { "type": "string", "enum": ["accepted", "blocked", null] },
+    "gpt_reply_path": { "type": "string" },
+    "gpt_reply_sha256": { "type": "string" },
+    "round": { "type": "integer", "minimum": 1 },
+    "blocking_issues": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "closed_at": { "type": "string", "format": "date-time" },
+    "notes": { "type": "string", "maxLength": 1000 }
+  },
+  "additionalProperties": false
+}

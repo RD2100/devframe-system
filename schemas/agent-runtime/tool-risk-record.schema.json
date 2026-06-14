@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ToolRiskRecord",
+  "description": "Risk assessment of a tool available to agents. Produced by a tool policy evaluator, consumed by the agent runtime and verification gates. Phase 0-5 bootstraps strict read-mostly policy; forbidden patterns include MCP config modification, UI-TARS/computer-use, and package managers (npm/pip/yarn).",
+  "type": "object",
+  "required": [
+    "record_id",
+    "tool_name",
+    "risk_level",
+    "phase_policy",
+    "classification",
+    "rationale"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "description": "Unique record identifier."
+    },
+    "tool_name": {
+      "type": "string",
+      "description": "Tool identifier being evaluated."
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"],
+      "description": "Risk level of the tool."
+    },
+    "phase_policy": {
+      "type": "string",
+      "description": "Phase range where this policy applies, e.g. 'Phase 0-5'. Must specify applicable phase range."
+    },
+    "classification": {
+      "type": "string",
+      "enum": ["permitted", "restricted", "forbidden_in_phase", "needs_review"],
+      "description": "Current classification of the tool under this phase policy."
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Why this classification was chosen. Must be non-empty."
+    },
+    "conditions": {
+      "type": "string",
+      "description": "Conditions under which the classification could change."
+    },
+    "review_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 date when this tool should be re-evaluated."
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "record_id": "tr-001",
+      "tool_name": "skill-installer",
+      "risk_level": "critical",
+      "phase_policy": "Phase 0-5",
+      "classification": "forbidden_in_phase",
+      "rationale": "Skill installation is deferred to Phase 6+ Source Lock & Quarantine."
+    }
+  ]
+}

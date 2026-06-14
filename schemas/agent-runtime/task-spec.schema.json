@@ -1,0 +1,264 @@
+﻿{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "title":  "TaskSpec",
+    "description":  "Describes a unit of work before execution begins. Produced by a planner agent or human operator, consumed by an executor agent. Construction tasks MUST include gate_0 and conflict_registry. Dual-format contract: this JSON schema is the machine-validatable subset; the SADP protocol defines the human-readable markdown projection with additional fields (Batch, Risk, Allowed Files, Forbidden, Acceptance Gates, Expected Output, Rollback, Report To). See integration-contracts.md for field mapping.",
+    "type":  "object",
+    "required":  [
+                     "task_id",
+                     "title",
+                     "priority",
+                     "status",
+                     "description"
+                 ],
+    "properties":  {
+                       "task_id":  {
+                                       "type":  "string",
+                                       "description":  "Unique task identifier within the session."
+                                   },
+                       "title":  {
+                                     "type":  "string",
+                                     "description":  "Short human-readable description of the task."
+                                 },
+                       "priority":  {
+                                        "type":  "string",
+                                        "enum":  [
+                                                     "P0",
+                                                     "P1",
+                                                     "P2",
+                                                     "P3"
+                                                 ],
+                                        "description":  "Task priority level."
+                                    },
+                       "status":  {
+                                      "type":  "string",
+                                      "enum":  [
+                                                   "draft",
+                                                   "ready",
+                                                   "in_progress",
+                                                   "completed",
+                                                   "closed",
+                                                   "deferred",
+                                                   "rejected",
+                                                   "accepted_with_limitation",
+                                                   "pending_human_decision"
+                                               ],
+                                      "description":  "Current status of the task. draft: not yet reviewed. ready: approved for dispatch. in_progress: actively being worked. completed: all acceptance criteria met. closed: superseded or no longer needed. deferred: postponed to future phase. rejected: not approved. accepted_with_limitation: accepted with documented constraints. pending_human_decision: requires human authorization."
+                                  },
+                       "description":  {
+                                           "type":  "string",
+                                           "minLength":  1,
+                                           "description":  "What to do and why -- must be non-empty."
+                                       },
+                       "depends_on":  {
+                                          "type":  "array",
+                                          "items":  {
+                                                        "type":  "string"
+                                                    },
+                                          "description":  "Task IDs that must complete before this task can start."
+                                      },
+                       "assumptions":  {
+                                           "type":  "array",
+                                           "items":  {
+                                                         "type":  "string"
+                                                     },
+                                           "description":  "Assumptions made when creating this task."
+                                       },
+                       "risk_notes":  {
+                                          "type":  "string",
+                                          "description":  "Known risks or concerns."
+                                      },
+                       "estimated_tools":  {
+                                               "type":  "array",
+                                               "items":  {
+                                                             "type":  "string"
+                                                         },
+                                               "description":  "Tools likely needed during execution."
+                                           },
+                       "gate_0":  {
+                                      "type":  "object",
+                                      "description":  "Gate 0 Reuse-before-Build evidence contract. REQUIRED for any construction task. Boolean self-attestation alone is INVALID.",
+                                      "required":  [
+                                                       "triggered",
+                                                       "inventory_evidence",
+                                                       "sufficiency_decision"
+                                                   ],
+                                      "properties":  {
+                                                         "triggered":  {
+                                                                           "type":  "boolean",
+                                                                           "description":  "Whether Gate 0 was triggered"
+                                                                       },
+                                                         "trigger_reason":  {
+                                                                                "type":  "string",
+                                                                                "description":  "Why Gate 0 was triggered"
+                                                                            },
+                                                         "inventory_evidence":  {
+                                                                                    "type":  "object",
+                                                                                    "description":  "Evidence of inventory consultation. Must include queried sources and matched capabilities.",
+                                                                                    "required":  [
+                                                                                                     "queried_sources",
+                                                                                                     "matched_capabilities"
+                                                                                                 ],
+                                                                                    "properties":  {
+                                                                                                       "queried_sources":  {
+                                                                                                                               "type":  "array",
+                                                                                                                               "items":  {
+                                                                                                                                             "type":  "string"
+                                                                                                                                         },
+                                                                                                                               "minItems":  1,
+                                                                                                                               "description":  "Files/registries actually consulted"
+                                                                                                                           },
+                                                                                                       "matched_capabilities":  {
+                                                                                                                                    "type":  "array",
+                                                                                                                                    "items":  {
+                                                                                                                                                  "type":  "string"
+                                                                                                                                              },
+                                                                                                                                    "description":  "Capability IDs found relevant to the request"
+                                                                                                                                },
+                                                                                                       "compared_against_request":  {
+                                                                                                                                        "type":  "array",
+                                                                                                                                        "items":  {
+                                                                                                                                                      "type":  "string"
+                                                                                                                                                  },
+                                                                                                                                        "description":  "What user need was checked against inventory"
+                                                                                                                                    }
+                                                                                                   }
+                                                                                },
+                                                         "rules_checked":  {
+                                                                               "type":  "array",
+                                                                               "items":  {
+                                                                                             "type":  "string"
+                                                                                         },
+                                                                               "description":  "Rule IDs consulted"
+                                                                           },
+                                                         "lessons_checked":  {
+                                                                                 "type":  "array",
+                                                                                 "items":  {
+                                                                                               "type":  "string"
+                                                                                           },
+                                                                                 "description":  "Lesson IDs consulted"
+                                                                             },
+                                                         "sufficiency_decision":  {
+                                                                                      "type":  "string",
+                                                                                      "enum":  [
+                                                                                                   "existing_sufficient",
+                                                                                                   "existing_partial",
+                                                                                                   "new_delta_required",
+                                                                                                   "escalate_uncertain"
+                                                                                               ],
+                                                                                      "description":  "Result of sufficiency check"
+                                                                                  },
+                                                         "decision":  {
+                                                                          "type":  "string",
+                                                                          "enum":  [
+                                                                                       "reuse",
+                                                                                       "build_delta",
+                                                                                       "escalate"
+                                                                                   ],
+                                                                          "description":  "Final decision"
+                                                                      },
+                                                         "delta_justification":  {
+                                                                                     "type":  "string",
+                                                                                     "description":  "Required if sufficiency_decision is new_delta_required"
+                                                                                 }
+                                                     }
+                                  },
+                       "conflict_registry":  {
+                                                 "type":  "object",
+                                                 "description":  "File access scope for parallel dispatch safety. Declare read_set and write_set before execution.",
+                                                 "required":  [
+                                                                  "read_set",
+                                                                  "write_set"
+                                                              ],
+                                                 "properties":  {
+                                                                    "read_set":  {
+                                                                                     "type":  "array",
+                                                                                     "items":  {
+                                                                                                   "type":  "string"
+                                                                                               },
+                                                                                     "description":  "Files this task will read"
+                                                                                 },
+                                                                    "write_set":  {
+                                                                                      "type":  "array",
+                                                                                      "items":  {
+                                                                                                    "type":  "string"
+                                                                                                },
+                                                                                      "description":  "Files this task will modify"
+                                                                                  },
+                                                                    "protected_files_touched":  {
+                                                                                                    "type":  "boolean",
+                                                                                                    "description":  "Whether any protected file is in read_set or write_set"
+                                                                                                },
+                                                                    "conflict_level":  {
+                                                                                           "type":  "string",
+                                                                                           "enum":  [
+                                                                                                        "none",
+                                                                                                        "low",
+                                                                                                        "high"
+                                                                                                    ],
+                                                                                           "description":  "Conflict risk level"
+                                                                                       }
+                                                                }
+                                             },
+                       "security_report":  {
+                                               "type":  "object",
+                                               "description":  "Mandatory security report for any task involving external APIs, credentials, or sensitive configuration. Must be completed before task is marked done.",
+                                               "properties":  {
+                                                                  "scan_status":  {
+                                                                                      "type":  "string",
+                                                                                      "enum":  ["not_run", "passed", "failed"],
+                                                                                      "description":  "Overall scan lifecycle. Planning defaults to not_run and must not imply completed scanning."
+                                                                                  },
+                                                                  "new_external_api":  {
+                                                                                           "type":  "boolean",
+                                                                                           "description":  "Does this task introduce or modify external API integration?"
+                                                                                       },
+                                                                  "new_env_variable":  {
+                                                                                           "type":  "boolean",
+                                                                                           "description":  "Does this task add or modify environment variables?"
+                                                                                       },
+                                                                  "env_example_placeholders_only":  {
+                                                                                                        "type":  ["boolean", "null"],
+                                                                                                        "description":  "Are .env.example files confirmed to contain only placeholders?"
+                                                                                                    },
+                                                                  "real_key_patterns_found":  {
+                                                                                                  "type":  ["boolean", "null"],
+                                                                                                  "description":  "Were any real API key patterns (sk-, ghp_, etc.) found in committed files?"
+                                                                                              },
+                                                                  "staged_diff_secret_scan_run":  {
+                                                                                                      "type":  "boolean",
+                                                                                                      "description":  "Was secret scanning run on staged diff before commit?"
+                                                                                                  },
+                                                                  "full_repo_secret_scan_run":  {
+                                                                                                    "type":  "boolean",
+                                                                                                    "description":  "Was secret scanning run on full repo?"
+                                                                                                },
+                                                                  "packaging_artifact_scanned":  {
+                                                                                                     "type":  "boolean",
+                                                                                                     "description":  "Were packaging/release artifacts scanned for secrets?"
+                                                                                                 },
+                                                                  "key_rotation_needed":  {
+                                                                                              "type":  ["boolean", "null"],
+                                                                                              "description":  "Does any API key need rotation as a result of this task?"
+                                                                                          }
+                                                              },
+                                               "required":  [
+                                                               "scan_status",
+                                                               "new_external_api",
+                                                                "env_example_placeholders_only",
+                                                                "real_key_patterns_found",
+                                                                "staged_diff_secret_scan_run",
+                                                                "key_rotation_needed"
+                                                            ]
+                                           }
+                   },
+    "additionalProperties":  false,
+    "examples":  [
+                     {
+                         "task_id":  "t-001",
+                         "title":  "Inventory agent-acceptance directory",
+                         "priority":  "P1",
+                         "status":  "ready",
+                         "description":  "Run read-only checks and report findings."
+                     }
+                 ]
+}
