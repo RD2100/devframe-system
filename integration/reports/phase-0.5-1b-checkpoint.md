@@ -14,7 +14,7 @@ superproject has advanced submodule gitlinks to committed branch tips.
 
 | Module | Branch | Status | Review focus |
 |---|---|---|---|
-| `agent-acceptance` | `codex/devframe-system-path-gate0-contract` | Pinned at `88dd581` | Path drift, expired authorization, HUMAN_REQUIRED preservation |
+| `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `1b1fad5` | Path drift, expired authorization, HUMAN_REQUIRED preservation, and paper archive SD-04 final-verdict boundary |
 | `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `49c6be8` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion |
 | `dev-frame-opencode` | `codex/paper-user-visible-mojibake-cleanup` | Pinned at `4ab02c8` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, and focused mojibake cleanup |
 | `test-frame` | `codex/adapter-negative-matrix` | Pinned at `71caa1c` | Adapter mapping, required/optional profile semantics, fake-green canaries |
@@ -58,13 +58,16 @@ Completed in the `dev-frame-opencode` submodule branch:
 - Cleaned remaining focused mojibake hits in goal-runner review comments and
   reran the Unicode scan across `ai-workflow-hub` source/tests/paper
   docs/schemas; only legitimate BibTeX Latin mappings remain.
+- Added `agent-acceptance` closure validator SD-04 checks so paper
+  reviewer-pack/report/test/zip artifacts cannot claim final verdict authority
+  or promote `needs_more_evidence` to final acceptance.
 
 Still open:
 
 - Post-run `changed_files subset of write_set` hard gate.
 - Real WriteLab paragraph-text flow requires fresh RuntimeAuthorization.
-- Archive-side agent-acceptance integration must still reject any promotion
-  from report/reviewer-pack output to final acceptance.
+- Broader dispatch/test-frame runtime artifacts still need equivalent
+  verdict-separation probes before live runtime use.
 
 ## Verification Run
 

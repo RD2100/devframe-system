@@ -8,8 +8,8 @@ modules:
   agent-acceptance:
     path: "agent-acceptance"
     role: "governance_acceptance_framework"
-    branch: "codex/devframe-system-path-gate0-contract"
-    commit: "88dd58183e705f1df07c32b690ab56766c643642"
+    branch: "codex/paper-archive-final-verdict-boundary"
+    commit: "1b1fad5808f288f48ae1e9a49f65ff765060e6fb"
     remote: "https://github.com/RD2100/agent-acceptance.git"
   devframe-control-plane:
     path: "devframe-control-plane"
