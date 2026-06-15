@@ -173,6 +173,12 @@ Latest test-frame Zotero metadata adapter evidence consumption return review:
 Latest test-frame Zotero metadata adapter evidence consumption parent pin review:
 `integration/reports/parent-pin-review-test-frame-zotero-metadata-adapter-evidence-consumption-2026-06-16.md`
 
+Latest opencode Zotero Web API metadata batch A31-A34 return review:
+`integration/reports/opencode-zotero-web-api-metadata-batch-a31-a34-return-review-2026-06-16.md`
+
+Latest opencode Zotero Web API metadata batch A31-A34 parent pin review:
+`integration/reports/parent-pin-review-opencode-zotero-web-api-metadata-batch-a31-a34-2026-06-16.md`
+
 Previous Zotero Web API metadata-only blocked preflight:
 `integration/reports/zotero-web-api-metadata-only-preflight-blocked-2026-06-16.md`
 
@@ -1068,6 +1074,12 @@ Parent decision:
   and fails closed on final/live overclaims, raw persistence flags, forbidden
   resource flags, zero-record PASS, forbidden item type counts, and raw
   sensitive markers. Parent accepted it for pin review.
+- `dev-frame-opencode` then completed Zotero Web API metadata-only hardening
+  batch A31-A34 at `b097217c9ad3b53d4c28a03a7fb1510d2606bf71`. The batch adds
+  bounded pagination evidence, CLI `--page-limit`, fail-closed over-limit
+  behavior, minimized failure summaries for HTTP/non-JSON/network errors, and
+  documentation of the non-final metadata-only boundary. Parent accepted it for
+  pin review.
 - `dev-frame-opencode` then completed an evidence-only manual-input metadata
   batch smoke at already-pinned `f9ab656...`: two BibTeX inputs and one RDF
   input each produced `PASS_METADATA_ONLY` with sanitizer redactions, raw export

@@ -7,6 +7,12 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-opencode-zotero-web-api-metadata-batch-a31-a34-2026-06-16.md`
+  records the parent gitlink and lock update to `dev-frame-opencode` Zotero Web
+  API metadata-only hardening batch head `b097217...`.
+- `opencode-zotero-web-api-metadata-batch-a31-a34-return-review-2026-06-16.md`
+  records parent intake of the opencode Zotero Web API metadata-only
+  pagination, page-limit, failure-minimization, and documentation batch.
 - `parent-pin-review-test-frame-zotero-metadata-adapter-evidence-consumption-2026-06-16.md`
   records the parent gitlink and lock update to `test-frame` Zotero metadata
   adapter evidence consumption commit `f8bce53...`.
