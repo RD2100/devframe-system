@@ -7,6 +7,11 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-a26-2026-06-15.md` records the parent gitlink and lock
+  update to clean committed `dev-frame-opencode` head `a852bf1...`.
+- `opencode-preauth-sensitive-fields-closed-scope-return-review-2026-06-15.md`
+  records parent intake of the local/offline preauth sensitive field scope
+  schema hardening slice.
 - `zotero-metadata-only-pilot-blocked-newbib-2026-06-15.md` records the second
   user-provided BibTeX export attempt. The run was correctly blocked because
   `导出的条目2.bib` still contained `abstract`, `file`, and `note` fields.
