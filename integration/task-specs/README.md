@@ -29,7 +29,7 @@ Every TaskSpec must preserve these boundaries:
 | `TS-CONTROL-PLANE-RUNTIME-AUTH-SCHEMA-ALIGNMENT.md` | `019ec6c4-a05c-7053-966e-a260f5b51aa1` | `devframe-control-plane` | dispatched |
 | `TS-AGENT-ACCEPTANCE-PARENT-CANARY-GATE-A1.md` | `019ec6c5-0855-7b11-812a-a099010b9b18` | `agent-acceptance` | returned `PARENT_CANARY_GATE_GAP_FIXED` in `b9bb53a`; parent intake accepted |
 | `TS-TEST-FRAME-PARENT-CANARY-REPORT-A1.md` | `019ec6c6-5238-74b3-8870-c973bee56131` | `test-frame` | returned `PARENT_CANARY_REPORT_GAP_FIXED` in `eed8d88`; parent intake accepted |
-| `TS-AGENT-ACCEPTANCE-A11-CROSS-MODULE-SMOKE.md` | `019ec6c5-0855-7b11-812a-a099010b9b18` | `agent-acceptance` | prepared for dispatch |
+| `TS-AGENT-ACCEPTANCE-A11-CROSS-MODULE-SMOKE.md` | `019ec6c5-0855-7b11-812a-a099010b9b18` | `agent-acceptance` | returned `A11_CROSS_MODULE_LOCK_EVIDENCE_SMOKE_PASS`; parent intake accepted |
 
 ## Next Required Assignment
 

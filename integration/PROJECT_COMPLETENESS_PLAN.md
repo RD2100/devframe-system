@@ -92,6 +92,9 @@ Latest parent pin A11:
 Latest post-pin status:
 `integration/reports/post-pin-status-a11-2026-06-15.md`
 
+Latest A11 cross-module smoke intake:
+`integration/reports/agent-acceptance-a11-cross-module-smoke-return-review-2026-06-15.md`
+
 Latest contract alignment:
 `integration/reports/contract-alignment-matrix-v1-2026-06-15.md`
 
@@ -722,6 +725,8 @@ Parent decision:
 
 - A10 grouped parent pin has been applied.
 - A11 opencode-only pin has been applied for `f9d381c...`.
+- `agent-acceptance` read-only A11 cross-module lock/evidence smoke returned
+  PASS and was accepted for parent intake.
 - The only current parent worktree note is old untracked evidence inside
   `agent-acceptance`; do not clean it without explicit approval.
 - Do not authorize real runtime or final acceptance from this pin review.

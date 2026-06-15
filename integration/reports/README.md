@@ -118,6 +118,9 @@ Current reports:
 - `post-pin-status-a11-2026-06-15.md` records the current A11 post-pin state,
   including the `agent-acceptance` untracked evidence note and verification
   boundary.
+- `agent-acceptance-a11-cross-module-smoke-return-review-2026-06-15.md`
+  records parent intake of the read-only A11 cross-module lock/evidence smoke
+  return from `agent-acceptance`.
 - `contract-alignment-matrix-v1-2026-06-15.md` records S06 contract alignment:
   producers, consumers, required fields, invalid cases, schema coverage, and
   non-equivalence rules.
