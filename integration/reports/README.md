@@ -7,6 +7,11 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-a23-2026-06-15.md` records the parent gitlink and lock
+  update to clean committed `dev-frame-opencode` head `4333c12...`.
+- `opencode-business-validation-evidence-row-command-binding-return-review-2026-06-15.md`
+  records parent intake of the local/offline evidence row command binding
+  schema hardening slice.
 - `parent-pin-review-a22-2026-06-15.md` records the parent gitlink and lock
   update to clean committed `dev-frame-opencode` head `f29fe61...`.
 - `opencode-capability-map-evidence-matrix-return-review-2026-06-15.md`

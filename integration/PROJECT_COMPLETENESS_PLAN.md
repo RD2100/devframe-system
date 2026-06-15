@@ -104,6 +104,12 @@ Latest parent pin review A21:
 Latest parent pin review A22:
 `integration/reports/parent-pin-review-a22-2026-06-15.md`
 
+Latest parent pin review A23:
+`integration/reports/parent-pin-review-a23-2026-06-15.md`
+
+Latest opencode evidence row command binding return review:
+`integration/reports/opencode-business-validation-evidence-row-command-binding-return-review-2026-06-15.md`
+
 Latest opencode capability-map evidence matrix return review:
 `integration/reports/opencode-capability-map-evidence-matrix-return-review-2026-06-15.md`
 
@@ -742,10 +748,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A22_OPENCODE_BUSINESS_VALIDATION_EVIDENCE_MATRIX_PIN_REVIEW_PASS`
+Status: `A23_OPENCODE_BUSINESS_VALIDATION_EVIDENCE_ROW_COMMAND_BINDING_PIN_REVIEW_PASS`
 
 Latest report:
-`integration/reports/parent-pin-review-a22-2026-06-15.md`
+`integration/reports/parent-pin-review-a23-2026-06-15.md`
 
 Current facts:
 
@@ -823,6 +829,8 @@ Current facts:
 - `dev-frame-opencode` then completed the evidence matrix enum closure at
   `f29fe61fdf9952bfa77fe6e5f858219293355641`; parent pinned that clean
   committed head for A22.
+- `dev-frame-opencode` then completed evidence row command binding at
+  `4333c1218d5c7871e090b8364bbe96c4e57ecd50`; parent accepted it for A23 pin.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -852,6 +860,8 @@ Parent decision:
   accepts `a1ed82b...`.
 - A22 opencode business validation evidence matrix pin review accepts clean
   committed `f29fe61...`.
+- A23 opencode business validation evidence row command binding pin review
+  accepts clean committed `4333c12...`.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.
