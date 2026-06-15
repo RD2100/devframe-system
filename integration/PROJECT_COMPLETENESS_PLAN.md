@@ -83,6 +83,9 @@ Latest opencode report closed-shape return review:
 Latest real-resource positive pilot authorization checklist:
 `integration/reports/real-resource-positive-pilot-authorization-checklist-2026-06-15.md`
 
+Latest positive-pilot authorization packet validator:
+`integration/reports/positive-pilot-authorization-packet-validator-2026-06-15.md`
+
 Latest grouped parent pin:
 `integration/reports/grouped-parent-pin-a10-2026-06-15.md`
 
@@ -756,4 +759,7 @@ Parent decision:
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.
+- Parent now has a local authorization-packet validator and synthetic fixtures
+  for RuntimeAuthorization/TestRunSpec cross-contract checks before any real
+  positive pilot.
 - Do not authorize real runtime or final acceptance from this pin review.

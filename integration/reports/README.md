@@ -147,6 +147,9 @@ Current reports:
 - `real-resource-positive-pilot-authorization-checklist-2026-06-15.md`
   records the required human RuntimeAuthorization packet and single-track
   selection gate before any real positive pilot.
+- `positive-pilot-authorization-packet-validator-2026-06-15.md` records the
+  local validator and synthetic fixtures for RuntimeAuthorization/TestRunSpec
+  positive-pilot authorization packets.
 - `contract-alignment-matrix-v1-2026-06-15.md` records S06 contract alignment:
   producers, consumers, required fields, invalid cases, schema coverage, and
   non-equivalence rules.

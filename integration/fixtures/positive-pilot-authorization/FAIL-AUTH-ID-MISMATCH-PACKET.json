@@ -1,0 +1,34 @@
+{
+  "packet_id": "ppauth-fail-auth-id-mismatch",
+  "packet_mode": "synthetic_fixture",
+  "selected_track": "zotero_metadata_live",
+  "expected_validation_status": "FAIL",
+  "runtime_authorization": {
+    "authorization_id": "ra-auth-id-mismatch-fixture-a1",
+    "authorized_by": "fixture-human-reviewer",
+    "authorized_at": "2026-06-15T00:00:00Z",
+    "expires_at": "2026-06-16T00:00:00Z",
+    "runtime_type": "zotero_live",
+    "resource_binding": "live_resource",
+    "data_class": "redacted",
+    "allowed_commands": [
+      "python -m ai_workflow_hub.cli paper real-zotero-metadata-pilot --authorization D:\\devframe-system\\.agent\\evidence\\auth-id-mismatch-fixture\\authorization.json"
+    ],
+    "allowed_paths": [
+      "D:\\devframe-system\\.agent\\evidence\\auth-id-mismatch-fixture"
+    ],
+    "redaction_required": true,
+    "evidence_output_path": "D:\\devframe-system\\.agent\\evidence\\auth-id-mismatch-fixture",
+    "human_gate_reference": "fixture-human-gate-auth-id-mismatch-a1"
+  },
+  "test_run_spec": {
+    "test_id": "tr-auth-id-mismatch-fixture-a1",
+    "target_module": "dev-frame-opencode",
+    "test_profile": "real_env_positive_pilot",
+    "runtime_allowed": true,
+    "runtime_authorization_id": "ra-different-authorization-id",
+    "expected_status": "blocked",
+    "blocked_by_env_policy": "blocked_not_pass",
+    "artifact_output_path": "D:\\devframe-system\\.agent\\evidence\\auth-id-mismatch-fixture\\test-execution-report.json"
+  }
+}

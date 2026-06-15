@@ -1,0 +1,35 @@
+{
+  "packet_id": "ppauth-fail-multi-track",
+  "packet_mode": "synthetic_fixture",
+  "selected_track": "zotero_metadata_live",
+  "selected_tracks": ["zotero_metadata_live", "writelab_live_boundary"],
+  "expected_validation_status": "FAIL",
+  "runtime_authorization": {
+    "authorization_id": "ra-multi-track-fixture-a1",
+    "authorized_by": "fixture-human-reviewer",
+    "authorized_at": "2026-06-15T00:00:00Z",
+    "expires_at": "2026-06-16T00:00:00Z",
+    "runtime_type": "zotero_live",
+    "resource_binding": "live_resource",
+    "data_class": "redacted",
+    "allowed_commands": [
+      "python -m ai_workflow_hub.cli paper real-zotero-metadata-pilot --authorization D:\\devframe-system\\.agent\\evidence\\multi-track-fixture\\authorization.json"
+    ],
+    "allowed_paths": [
+      "D:\\devframe-system\\.agent\\evidence\\multi-track-fixture"
+    ],
+    "redaction_required": true,
+    "evidence_output_path": "D:\\devframe-system\\.agent\\evidence\\multi-track-fixture",
+    "human_gate_reference": "fixture-human-gate-multi-track-a1"
+  },
+  "test_run_spec": {
+    "test_id": "tr-multi-track-fixture-a1",
+    "target_module": "dev-frame-opencode",
+    "test_profile": "real_env_positive_pilot",
+    "runtime_allowed": true,
+    "runtime_authorization_id": "ra-multi-track-fixture-a1",
+    "expected_status": "blocked",
+    "blocked_by_env_policy": "blocked_not_pass",
+    "artifact_output_path": "D:\\devframe-system\\.agent\\evidence\\multi-track-fixture\\test-execution-report.json"
+  }
+}

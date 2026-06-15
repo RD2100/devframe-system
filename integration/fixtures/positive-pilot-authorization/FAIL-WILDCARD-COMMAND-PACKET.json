@@ -1,0 +1,32 @@
+{
+  "packet_id": "ppauth-fail-wildcard-command",
+  "packet_mode": "synthetic_fixture",
+  "selected_track": "zotero_metadata_live",
+  "expected_validation_status": "FAIL",
+  "runtime_authorization": {
+    "authorization_id": "ra-wildcard-command-fixture-a1",
+    "authorized_by": "fixture-human-reviewer",
+    "authorized_at": "2026-06-15T00:00:00Z",
+    "expires_at": "2026-06-16T00:00:00Z",
+    "runtime_type": "zotero_live",
+    "resource_binding": "live_resource",
+    "data_class": "redacted",
+    "allowed_commands": ["python -m ai_workflow_hub.cli paper *"],
+    "allowed_paths": [
+      "D:\\devframe-system\\.agent\\evidence\\wildcard-command-fixture"
+    ],
+    "redaction_required": true,
+    "evidence_output_path": "D:\\devframe-system\\.agent\\evidence\\wildcard-command-fixture",
+    "human_gate_reference": "fixture-human-gate-wildcard-command-a1"
+  },
+  "test_run_spec": {
+    "test_id": "tr-wildcard-command-fixture-a1",
+    "target_module": "dev-frame-opencode",
+    "test_profile": "real_env_positive_pilot",
+    "runtime_allowed": true,
+    "runtime_authorization_id": "ra-wildcard-command-fixture-a1",
+    "expected_status": "blocked",
+    "blocked_by_env_policy": "blocked_not_pass",
+    "artifact_output_path": "D:\\devframe-system\\.agent\\evidence\\wildcard-command-fixture\\test-execution-report.json"
+  }
+}
