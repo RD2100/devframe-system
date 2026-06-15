@@ -89,6 +89,9 @@ Latest positive-pilot authorization packet validator:
 Latest parent pin review A17:
 `integration/reports/parent-pin-review-a17-2026-06-15.md`
 
+Latest parent pin review A18:
+`integration/reports/parent-pin-review-a18-2026-06-15.md`
+
 Latest opencode summary sample closed-shape return review:
 `integration/reports/opencode-zotero-summary-sample-closed-shape-return-review-2026-06-15.md`
 
@@ -97,6 +100,9 @@ Latest opencode authorization result closed-shape return review:
 
 Latest opencode human RuntimeAuthorization decision closed-shape return review:
 `integration/reports/opencode-human-runtime-authorization-decision-closed-shape-return-review-2026-06-15.md`
+
+Latest opencode agent-acceptance rules closed-shape return review:
+`integration/reports/opencode-agent-acceptance-rules-closed-shape-return-review-2026-06-15.md`
 
 Latest grouped parent pin:
 `integration/reports/grouped-parent-pin-a10-2026-06-15.md`
@@ -712,10 +718,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A17_OPENCODE_HUMAN_RUNTIME_AUTHORIZATION_DECISION_CLOSED_SHAPE_PIN_REVIEW_PASS`
+Status: `A18_OPENCODE_AGENT_ACCEPTANCE_RULES_CLOSED_SHAPE_PIN_REVIEW_PASS`
 
 Latest report:
-`integration/reports/parent-pin-review-a17-2026-06-15.md`
+`integration/reports/parent-pin-review-a18-2026-06-15.md`
 
 Current facts:
 
@@ -766,6 +772,10 @@ Current facts:
   closed-shape schema hardening at
   `f8de96134d61427854cd6e4c35e376914577e8af`; parent intake accepted it for
   A17 pin.
+- `dev-frame-opencode` then advanced to `agent_acceptance_rules`
+  closed-shape schema hardening at
+  `8ae6cb77ac977a602dd834efd14405a523c0cb5a`; parent intake accepted it for
+  A18 pin.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -785,6 +795,8 @@ Parent decision:
   `d19d9ac...`.
 - A17 opencode human RuntimeAuthorization decision closed-shape schema pin
   review accepts `f8de961...`.
+- A18 opencode `agent_acceptance_rules` closed-shape schema pin review accepts
+  `8ae6cb7...`.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.

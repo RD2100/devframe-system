@@ -168,6 +168,12 @@ Current reports:
 - `parent-pin-review-a17-2026-06-15.md` records the parent decision to pin
   `dev-frame-opencode` to `f8de961...` while preserving the no-real-runtime and
   no-final-acceptance boundary.
+- `opencode-agent-acceptance-rules-closed-shape-return-review-2026-06-15.md`
+  records parent intake of `dev-frame-opencode` A18 local/offline
+  `agent_acceptance_rules` closed-shape schema hardening at `8ae6cb7...`.
+- `parent-pin-review-a18-2026-06-15.md` records the parent decision to pin
+  `dev-frame-opencode` to `8ae6cb7...` while preserving the no-real-runtime and
+  no-final-acceptance boundary.
 - `contract-alignment-matrix-v1-2026-06-15.md` records S06 contract alignment:
   producers, consumers, required fields, invalid cases, schema coverage, and
   non-equivalence rules.
