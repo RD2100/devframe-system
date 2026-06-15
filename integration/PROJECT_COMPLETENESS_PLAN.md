@@ -74,8 +74,8 @@ Latest parent pin review A9:
 Latest opencode evidence-manifest boundary return review:
 `integration/reports/opencode-zotero-evidence-manifest-boundary-return-review-2026-06-15.md`
 
-Latest parent pin review A10:
-`integration/reports/parent-pin-review-a10-2026-06-15.md`
+Latest parent pin review A12:
+`integration/reports/parent-pin-review-a12-2026-06-15.md`
 
 Latest grouped parent pin:
 `integration/reports/grouped-parent-pin-a10-2026-06-15.md`
@@ -691,10 +691,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A11_STAGE_CLOSEOUT_READY_FOR_HUMAN_PUSH_DECISION`
+Status: `A12_OPENCODE_RECORD_SHAPE_SCHEMA_PIN_REVIEW_PASS`
 
 Latest report:
-`integration/reports/stage-closeout-a11-2026-06-15.md`
+`integration/reports/parent-pin-review-a12-2026-06-15.md`
 
 Current facts:
 
@@ -722,6 +722,12 @@ Current facts:
 - `dev-frame-opencode` then advanced to schema-gated evidence manifest at
   `f9d381c0f8e974f1dd36642e1e412dfb2581ad5a`; parent intake accepted it.
   A11 updates only opencode and keeps A10 pins for the other modules.
+- `agent-acceptance` then advanced to local evidence ignore cleanup at
+  `75f8eb329778d4a8cffb28f6ba79b137038d4fed`; parent pinned it as a hygiene
+  update only, with no runtime/final acceptance claim.
+- `dev-frame-opencode` then advanced to Zotero manifest record-shape schema
+  hardening at `3c08f3aaadae8282a5ca6d11676d1826d5895ee5`; parent intake
+  accepted it for A12 pin.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -730,6 +736,7 @@ Parent decision:
 - A11 opencode-only pin has been applied for `f9d381c...`.
 - `agent-acceptance` read-only A11 cross-module lock/evidence smoke returned
   PASS and was accepted for parent intake.
-- The only current parent worktree note is old untracked evidence inside
-  `agent-acceptance`; do not clean it without explicit approval.
+- A12 agent-acceptance evidence-ignore hygiene has been applied for
+  `75f8eb...`.
+- A12 opencode record-shape schema pin review accepts `3c08f3a...`.
 - Do not authorize real runtime or final acceptance from this pin review.

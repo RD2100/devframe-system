@@ -126,6 +126,12 @@ Current reports:
 - `agent-acceptance-evidence-ignore-a12-2026-06-15.md` records the narrow
   `agent-acceptance` local evidence ignore cleanup, parent gitlink/lock update,
   and the explicit decision not to pin concurrent `dev-frame-opencode` work.
+- `opencode-zotero-manifest-record-shape-schema-return-review-2026-06-15.md`
+  records parent intake of `dev-frame-opencode` A12 local/offline Zotero
+  manifest record-shape schema hardening at `3c08f3a...`.
+- `parent-pin-review-a12-2026-06-15.md` records the parent decision to pin
+  `dev-frame-opencode` to `3c08f3a...` while preserving the no-real-runtime and
+  no-final-acceptance boundary.
 - `contract-alignment-matrix-v1-2026-06-15.md` records S06 contract alignment:
   producers, consumers, required fields, invalid cases, schema coverage, and
   non-equivalence rules.
