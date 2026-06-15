@@ -11,6 +11,7 @@ runtime.
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import sys
 from dataclasses import dataclass, field
@@ -27,6 +28,9 @@ except ImportError:  # pragma: no cover - exercised only in missing dependency e
 REPO_ROOT = Path(__file__).resolve().parents[1]
 RUNTIME_AUTH_SCHEMA = REPO_ROOT / "schemas" / "agent-runtime" / "runtime-authorization.schema.json"
 TEST_RUN_SPEC_SCHEMA = REPO_ROOT / "schemas" / "agent-runtime" / "test-run-spec.schema.json"
+POSITIVE_PILOT_PACKET_SCHEMA = (
+    REPO_ROOT / "schemas" / "agent-runtime" / "positive-pilot-authorization-packet.schema.json"
+)
 APPROVED_EVIDENCE_ROOT = r"D:\devframe-system\.agent\evidence"
 
 TRACKS = {
@@ -84,6 +88,17 @@ def validate_json_schema(instance: dict[str, Any], schema: dict[str, Any]) -> li
     return [error.message for error in sorted(validator.iter_errors(instance), key=str)]
 
 
+def load_packet_schema(
+    runtime_auth_schema: dict[str, Any],
+    test_run_spec_schema: dict[str, Any],
+) -> dict[str, Any]:
+    packet_schema = copy.deepcopy(load_schema(POSITIVE_PILOT_PACKET_SCHEMA))
+    properties = packet_schema.setdefault("properties", {})
+    properties["runtime_authorization"] = runtime_auth_schema
+    properties["test_run_spec"] = test_run_spec_schema
+    return packet_schema
+
+
 def contains_placeholder(value: Any) -> bool:
     if isinstance(value, str):
         return any(token in value for token in PLACEHOLDER_TOKENS)
@@ -136,6 +151,7 @@ def parse_datetime(value: str) -> datetime | None:
 
 def validate_packet(
     packet: dict[str, Any],
+    packet_schema: dict[str, Any],
     runtime_auth_schema: dict[str, Any],
     test_run_spec_schema: dict[str, Any],
 ) -> dict[str, Any]:
@@ -155,6 +171,15 @@ def validate_packet(
         "PASS" if not missing else "FAIL",
         "packet has required wrapper fields",
         missing=missing,
+    )
+
+    wrapper_errors = validate_json_schema(packet, packet_schema)
+    add_check(
+        checks,
+        "PACKET-WRAPPER-SCHEMA",
+        "PASS" if not wrapper_errors else "FAIL",
+        "packet wrapper validates against parent schema",
+        errors=wrapper_errors[:10],
     )
 
     packet_mode = packet.get("packet_mode")
@@ -319,6 +344,13 @@ def validate_packet(
             "real authorization packets must not contain placeholders",
             placeholder_fields=placeholders,
         )
+        add_check(
+            checks,
+            "REAL-AUTH-NO-FIXTURE-EXPECTATION",
+            "PASS" if "expected_validation_status" not in packet else "FAIL",
+            "real authorization packets must not carry fixture expectations",
+            has_expected_validation_status="expected_validation_status" in packet,
+        )
     else:
         add_check(
             checks,
@@ -351,7 +383,8 @@ def validate_file(path: Path) -> dict[str, Any]:
     packet = load_json(path)
     runtime_auth_schema = load_schema(RUNTIME_AUTH_SCHEMA)
     test_run_spec_schema = load_schema(TEST_RUN_SPEC_SCHEMA)
-    result = validate_packet(packet, runtime_auth_schema, test_run_spec_schema)
+    packet_schema = load_packet_schema(runtime_auth_schema, test_run_spec_schema)
+    result = validate_packet(packet, packet_schema, runtime_auth_schema, test_run_spec_schema)
     expected = packet.get("expected_validation_status")
     expectation_met = expected in {None, result["status"]} if expected is not None else True
     result.update(

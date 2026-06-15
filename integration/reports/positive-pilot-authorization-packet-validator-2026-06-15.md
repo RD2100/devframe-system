@@ -33,6 +33,7 @@ Out of scope:
 
 The verifier checks:
 
+- packet wrapper schema validity;
 - one selected track only;
 - RuntimeAuthorization schema validity;
 - TestRunSpec schema validity;
@@ -76,8 +77,8 @@ Expected:
 ## Reviewer Index
 
 - Changed files:
-- `D:\devframe-system\scripts\validate_positive_pilot_authorization_packet.py`
-- `D:\devframe-system\schemas\agent-runtime\positive-pilot-authorization-packet.schema.json`
+  - `D:\devframe-system\scripts\validate_positive_pilot_authorization_packet.py`
+  - `D:\devframe-system\schemas\agent-runtime\positive-pilot-authorization-packet.schema.json`
   - `D:\devframe-system\integration\fixtures\positive-pilot-authorization\README.md`
   - `D:\devframe-system\integration\fixtures\positive-pilot-authorization\PASS-ZOTERO-METADATA-LIVE-PACKET.json`
   - `D:\devframe-system\integration\fixtures\positive-pilot-authorization\FAIL-MULTI-TRACK-PACKET.json`
