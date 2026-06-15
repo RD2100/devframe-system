@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FailureRecord",
+  "description": "Traceable record for blocked or failed states. A FailureRecord prevents blocked/failed conditions from being silently converted to pass.",
+  "type": "object",
+  "required": [
+    "failure_id",
+    "source_contract",
+    "severity",
+    "status",
+    "reason",
+    "owner",
+    "next_action",
+    "evidence_path"
+  ],
+  "properties": {
+    "failure_id": {
+      "type": "string",
+      "pattern": "^fr-[A-Za-z0-9._-]+$",
+      "description": "Unique failure record identifier."
+    },
+    "source_contract": {
+      "type": "string",
+      "enum": [
+        "TaskSpec",
+        "RuntimeAuthorization",
+        "ExecutionReport",
+        "TestRunSpec",
+        "TestExecutionReport",
+        "EvidenceManifest",
+        "ReviewVerdict",
+        "GateResult",
+        "FinalVerdict",
+        "PinReadiness"
+      ],
+      "description": "Contract or layer where the failure/blocker was detected."
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["P0", "P1", "P2", "P3"],
+      "description": "Severity of the failure."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["blocked", "failed", "warning", "open", "resolved"],
+      "description": "Current failure state."
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Why this failure exists."
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human, coordinator, module, or agent responsible for next action."
+    },
+    "next_action": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Required next action."
+    },
+    "evidence_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Path to evidence supporting this record."
+    },
+    "related_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Related run, gate, test, or verdict identifiers."
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "failure_id": "fr-pin-drift-agent-acceptance",
+      "source_contract": "PinReadiness",
+      "severity": "P0",
+      "status": "blocked",
+      "reason": "Observed submodule head differs from lock and has no accepted review evidence.",
+      "owner": "main-coordinator",
+      "next_action": "Collect accepted submodule report before pin decision.",
+      "evidence_path": "integration/reports/pin-readiness-matrix-v1-2026-06-15.md"
+    }
+  ]
+}

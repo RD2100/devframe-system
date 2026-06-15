@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TestRunSpec",
+  "description": "Authorization and expectation contract for a test-frame test run. A dry-run spec cannot be used as live environment evidence.",
+  "type": "object",
+  "required": [
+    "test_id",
+    "target_module",
+    "test_profile",
+    "runtime_allowed",
+    "expected_status",
+    "blocked_by_env_policy",
+    "artifact_output_path"
+  ],
+  "properties": {
+    "test_id": {
+      "type": "string",
+      "pattern": "^tr-[A-Za-z0-9._-]+$",
+      "description": "Unique test run specification identifier."
+    },
+    "target_module": {
+      "type": "string",
+      "enum": ["test-frame", "dev-frame-opencode", "agent-acceptance", "devframe-control-plane", "devframe-system"],
+      "description": "Module under test."
+    },
+    "test_profile": {
+      "type": "string",
+      "enum": ["dry_run", "synthetic_offline", "blocked_env_probe", "real_env_positive_pilot"],
+      "description": "Profile that defines runtime expectations."
+    },
+    "runtime_allowed": {
+      "type": "boolean",
+      "description": "Whether real runtime is authorized for this test."
+    },
+    "runtime_authorization_id": {
+      "type": "string",
+      "pattern": "^ra-[A-Za-z0-9._-]+$",
+      "description": "Required when runtime_allowed is true."
+    },
+    "fixture_path": {
+      "type": "string",
+      "description": "Synthetic fixture path used by the run, if any."
+    },
+    "expected_status": {
+      "type": "string",
+      "enum": ["pass", "fail", "blocked"],
+      "description": "Expected result of the test run."
+    },
+    "blocked_by_env_policy": {
+      "type": "string",
+      "enum": ["blocked_not_pass", "not_applicable"],
+      "description": "Policy for missing environment prerequisites."
+    },
+    "artifact_output_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Where the TestExecutionReport and artifacts must be written."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional planning notes."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "runtime_allowed": { "const": true } },
+        "required": ["runtime_allowed"]
+      },
+      "then": {
+        "required": ["runtime_authorization_id"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "test_profile": { "const": "real_env_positive_pilot" } },
+        "required": ["test_profile"]
+      },
+      "then": {
+        "properties": {
+          "runtime_allowed": { "const": true }
+        },
+        "required": ["runtime_authorization_id"]
+      }
+    }
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "test_id": "tr-tgm-miniapp-dry-run-a1",
+      "target_module": "test-frame",
+      "test_profile": "dry_run",
+      "runtime_allowed": false,
+      "expected_status": "pass",
+      "blocked_by_env_policy": "not_applicable",
+      "artifact_output_path": "integration/reports/time-goal-manager-miniapp-dry-run-2026-06-15.md"
+    }
+  ]
+}

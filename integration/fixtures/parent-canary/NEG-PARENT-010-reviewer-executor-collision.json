@@ -1,0 +1,16 @@
+{
+  "fixture_id": "pcf-neg-parent-010",
+  "negative_case_id": "NEG-PARENT-010",
+  "contract_under_test": "ReviewVerdict",
+  "input_artifact_type": "synthetic_review_verdict",
+  "expected_result": "blocked",
+  "expected_reason": "reviewer_id must differ from executor_id",
+  "runtime_allowed": false,
+  "owner": "agent-acceptance",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "reviewer_id": "agent-001",
+    "executor_id": "agent-001",
+    "verdict": "pass"
+  }
+}

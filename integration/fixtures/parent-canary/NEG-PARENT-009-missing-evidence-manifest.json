@@ -1,0 +1,16 @@
+{
+  "fixture_id": "pcf-neg-parent-009",
+  "negative_case_id": "NEG-PARENT-009",
+  "contract_under_test": "EvidenceManifest",
+  "input_artifact_type": "synthetic_reviewer_pack_metadata",
+  "expected_result": "blocked",
+  "expected_reason": "reviewer pack cannot be accepted without EvidenceManifest",
+  "runtime_allowed": false,
+  "owner": "agent-acceptance",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "reviewer_pack_id": "rpack-missing-manifest",
+    "evidence_manifest_path": null,
+    "status": "accepted"
+  }
+}

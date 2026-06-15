@@ -7,6 +7,22 @@ reports.
 
 Current reports:
 
+- `bound-gpt-consultation-review-2026-06-15.md` records the consultation with
+  the bound ChatGPT conversation and the review verdict that its output was not
+  usable as a plan.
+- `constraint-evidence-vocabulary-v1-2026-06-15.md` records S00 allowed and
+  forbidden actions, evidence vocabulary, non-equivalence rules, and report
+  directory policy.
+- `governance-boundary-assessment-v1-2026-06-15.md` records S03 parent and
+  module boundaries: who may produce which claim and which promotions are
+  blocked.
+- `zip-evidence-discovery-v1-2026-06-15.md` records S04 ZIP evidence discovery:
+  A120 review is bounded and verified locally; global A101-A120 acceptance is
+  unknown.
+- `target-architecture-dag-v1-2026-06-15.md` records S05 target architecture,
+  evidence flow DAG, planning slice DAG, and non-equivalent success states.
+- `devframe-master-plan-v1-go-no-go-2026-06-15.md` records S09 final parent
+  completeness plan and Go/No-Go decision for this cycle.
 - `phase-0.5-1b-checkpoint.md` records the `/rdinit`, Phase 0.5,
   four-submodule contract branches, paper focus, and static verification
   checkpoint.
@@ -27,6 +43,111 @@ Current reports:
 - `a120/a120-evidence-zip-review.json` and
   `a120/a120-evidence-zip-review.md` record the independent A120 evidence ZIP
   review boundary.
+- `devframe-master-plan-v0-2026-06-15.md` records the parent-only integrated
+  S00-S09 plan, current reality inventory, Go/No-Go boundary, and next
+  devframe-system task suggestions.
+- `reality-inventory-v1-2026-06-15.md` records the S01 parent reality
+  inventory: parent repo, submodules, lock drift, advisory branch mismatch,
+  alias paths, reports, task specs, and A120 evidence paths.
+- `pin-readiness-matrix-v1-2026-06-15.md` records the parent pin-readiness
+  judgement: observed drift is not pin-ready; `devframe-control-plane` remains
+  aligned and frozen.
+- `pin-readiness-matrix-v2-2026-06-15.md` records updated pin readiness after
+  parent canary intake: `agent-acceptance` and `test-frame` returns accepted
+  for intake, but pin remains no-go.
+- `parent-pin-review-a1-2026-06-15.md` records the explicit parent pin review
+  after current drift inspection: no pin, no lock mutation, next step is
+  module summaries/returns before any pin proposal.
+- `opencode-dirty-state-observation-2026-06-15.md` records parent observation
+  of active `dev-frame-opencode` dirty metadata-only Zotero hardening work and
+  why parent pin remains no-go.
+- `opencode-zotero-metadata-export-hardening-return-review-2026-06-15.md`
+  records parent intake review of `dev-frame-opencode` commit `9d4c2f6`.
+- `parent-pin-review-a2-2026-06-15.md` records the updated pin review:
+  candidate pins are identifiable, but human/coordinator approval is required
+  before any pin mutation.
+- `parent-pin-review-a3-2026-06-15.md` records the post-A2 drift review:
+  `dev-frame-opencode` and `test-frame` are dirty again, so parent pin is
+  currently no-go.
+- `parent-pin-review-a4-2026-06-15.md` records active module self-iteration:
+  `dev-frame-opencode` is dirty in a RIS parser slice and `test-frame` is
+  awaiting closeout GPT verdict, so parent pin remains no-go.
+- `test-frame-readiness-closeout-return-review-2026-06-15.md` records parent
+  intake of `test-frame` closeout milestone head `c3353fb...`.
+- `parent-pin-review-a5-2026-06-15.md` records the updated parent pin review:
+  `test-frame` is now a pin candidate, but grouped parent pin remains no-go
+  because `dev-frame-opencode` is still active/dirty.
+- `opencode-zotero-ris-metadata-parser-return-review-2026-06-15.md` records
+  parent intake of `dev-frame-opencode` RIS metadata parser head `cb4997a...`.
+- `parent-pin-review-a6-2026-06-15.md` records the grouped parent pin candidate
+  set after opencode RIS and test-frame closeout returns; mutation still needs
+  explicit approval.
+- `opencode-zotero-metadata-scope-limits-return-review-2026-06-15.md` records
+  parent intake of `dev-frame-opencode` metadata-only pilot scope-limit head
+  `6bd9809...`; A6 opencode pin choice is superseded.
+- `parent-pin-review-a7-2026-06-15.md` records the current grouped parent pin
+  candidate set after opencode scope limits, test-frame closeout, and
+  agent-acceptance parent canary return.
+- `opencode-zotero-export-file-type-guard-return-review-2026-06-15.md`
+  records parent intake of `dev-frame-opencode` metadata-only export file type
+  guard head `3a72213...`; A7 opencode pin choice is superseded.
+- `parent-pin-review-a8-2026-06-15.md` records the current grouped parent pin
+  candidate set after opencode file type guard, test-frame closeout, and
+  agent-acceptance parent canary return.
+- `opencode-zotero-empty-metadata-failclosed-return-review-2026-06-15.md`
+  records parent intake of `dev-frame-opencode` empty/unrecognized metadata
+  fail-closed head `58b79e2...`; A8 opencode pin choice is superseded.
+- `parent-pin-review-a9-2026-06-15.md` records the current grouped parent pin
+  candidate set after opencode empty metadata fail-closed, test-frame closeout,
+  and agent-acceptance parent canary return.
+- `opencode-zotero-evidence-manifest-boundary-return-review-2026-06-15.md`
+  records parent intake of `dev-frame-opencode` evidence-manifest boundary head
+  `a2cedaa...`; A9 opencode pin choice is superseded.
+- `parent-pin-review-a10-2026-06-15.md` records the current grouped parent pin
+  candidate set after opencode evidence-manifest boundary, test-frame closeout,
+  and agent-acceptance parent canary return.
+- `grouped-parent-pin-a10-2026-06-15.md` records the grouped parent gitlink
+  and lock update to the A10 candidate set.
+- `contract-alignment-matrix-v1-2026-06-15.md` records S06 contract alignment:
+  producers, consumers, required fields, invalid cases, schema coverage, and
+  non-equivalence rules.
+- `contract-schema-gaps-v1-2026-06-15.md` records missing or partial parent
+  schemas and the recommended schema creation order.
+- `contract-schema-creation-v1-2026-06-15.md` records the created parent draft
+  schemas for runtime authorization, test specs/reports, failures, audit
+  events, and final verdicts.
+- `phase-negative-matrix-v1-2026-06-15.md` records S07 parent negative cases
+  for candidate overclaim, dry-run/live confusion, pin drift, ZIP overreach,
+  missing authorization, and final verdict provenance.
+- `parent-canary-fixture-plan-v1-2026-06-15.md` records synthetic canary
+  fixture needs for NEG-PARENT-001 through NEG-PARENT-016.
+- `parent-canary-fixtures-a1-2026-06-15.md` records the created synthetic
+  parent canary fixtures under `integration/fixtures/parent-canary/`.
+- `parent-canary-validation-a1-2026-06-15.md` records read-only validation of
+  the parent canary fixtures: 16/16 present, unique, synthetic, and
+  `runtime_allowed=false`.
+- `parent-canary-dispatch-a1-2026-06-15.md` records dispatch of parent canary
+  consumption TaskSpecs to `agent-acceptance` and `test-frame`.
+- `parent-canary-dispatch-status-2026-06-15.md` records the current dispatch
+  monitoring status: `agent-acceptance` and `test-frame` are in progress, no
+  final parent canary returns have been observed, and parent pin readiness
+  remains no-go.
+- `parent-canary-return-intake-checklist-2026-06-15.md` records the checklist
+  the parent should use when `agent-acceptance` and `test-frame` return parent
+  canary reports.
+- `parent-canary-agent-acceptance-return-review-2026-06-15.md` records parent
+  intake review of `agent-acceptance` return
+  `PARENT_CANARY_GATE_GAP_FIXED` at `b9bb53a...`.
+- `parent-canary-test-frame-return-review-2026-06-15.md` records parent intake
+  review of `test-frame` return `PARENT_CANARY_REPORT_GAP_FIXED` at
+  `eed8d88...`.
+- `parent-canary-combined-intake-review-2026-06-15.md` records combined parent
+  intake: both parent canary returns accepted for intake, pin still no-go.
+- `ci-canary-risk-work-plan-v1-2026-06-15.md` records S08 read-only CI,
+  canary, risk, parallel/serial execution, and phase-condition planning.
+- `phase-0.5-state-review-v1-2026-06-15.md` records S02 parent Phase 0.5
+  state: bootstrap assets present, current baseline not clean-final, CI runner
+  proof unknown, and pin/runtime still no-go.
 
 Current policy:
 

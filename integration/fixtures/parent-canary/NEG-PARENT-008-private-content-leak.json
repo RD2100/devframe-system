@@ -1,0 +1,17 @@
+{
+  "fixture_id": "pcf-neg-parent-008",
+  "negative_case_id": "NEG-PARENT-008",
+  "contract_under_test": "EvidenceManifest",
+  "input_artifact_type": "synthetic_redaction_failure_report",
+  "expected_result": "blocked",
+  "expected_reason": "private paper content must not appear in parent evidence",
+  "runtime_allowed": false,
+  "owner": "dev-frame-opencode",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "data_class": "private",
+    "redaction_required": true,
+    "redaction_applied": false,
+    "content_sample": "<PRIVATE_PAPER_TEXT_SHOULD_NOT_BE_PRESENT>"
+  }
+}

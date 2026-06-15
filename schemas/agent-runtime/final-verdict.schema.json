@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinalVerdict",
+  "description": "Governance final verdict boundary. This must be produced by governance or human/main coordinator, never by the executor alone.",
+  "type": "object",
+  "required": [
+    "verdict_id",
+    "produced_by",
+    "produced_at",
+    "producer_role",
+    "final_state",
+    "inputs_reviewed",
+    "gate_summary",
+    "reviewer_summary",
+    "limitations",
+    "human_or_governance_reference"
+  ],
+  "properties": {
+    "verdict_id": {
+      "type": "string",
+      "pattern": "^fv-[A-Za-z0-9._-]+$",
+      "description": "Unique final verdict identifier."
+    },
+    "produced_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Governance layer, human reviewer, or main coordinator identity."
+    },
+    "produced_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 verdict timestamp."
+    },
+    "producer_role": {
+      "type": "string",
+      "not": { "enum": ["executor", "fixer", "coder", "worker"] },
+      "description": "Role producing the verdict. Must not be executor/fixer/coder/worker."
+    },
+    "final_state": {
+      "type": "string",
+      "enum": ["final_ready", "accepted_with_limitation", "blocked", "failed", "deferred"],
+      "description": "Final governance state."
+    },
+    "inputs_reviewed": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Evidence/report paths reviewed before verdict."
+    },
+    "gate_summary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["gate_id", "result"],
+        "properties": {
+          "gate_id": { "type": "string" },
+          "result": { "type": "string", "enum": ["pass", "fail", "blocked", "warning", "skipped"] },
+          "evidence_path": { "type": "string" }
+        },
+        "additionalProperties": false
+      },
+      "description": "Gate results considered by the final verdict."
+    },
+    "reviewer_summary": {
+      "type": "object",
+      "required": ["reviewer_id", "verdict", "evidence_path"],
+      "properties": {
+        "reviewer_id": { "type": "string", "minLength": 1 },
+        "verdict": { "type": "string", "enum": ["pass", "blocked", "fail", "escalate"] },
+        "evidence_path": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false,
+      "description": "Independent reviewer summary used by final verdict."
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Limits that remain true even if final_state is final_ready."
+    },
+    "human_or_governance_reference": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human approval or governance record authorizing this final verdict."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "final_state": { "const": "final_ready" } },
+        "required": ["final_state"]
+      },
+      "then": {
+        "not": {
+          "properties": {
+            "limitations": {
+              "contains": {
+                "pattern": "(offline candidate|dry-run only|zip review only|runtime not executed)"
+              }
+            }
+          },
+          "required": ["limitations"]
+        }
+      }
+    }
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "verdict_id": "fv-parent-planning-v1",
+      "produced_by": "devframe-system-main-coordinator",
+      "produced_at": "2026-06-15T00:00:00Z",
+      "producer_role": "governance",
+      "final_state": "accepted_with_limitation",
+      "inputs_reviewed": ["integration/reports/devframe-master-plan-v1-go-no-go-2026-06-15.md"],
+      "gate_summary": [
+        {
+          "gate_id": "parent-planning",
+          "result": "pass",
+          "evidence_path": "integration/reports/devframe-master-plan-v1-go-no-go-2026-06-15.md"
+        }
+      ],
+      "reviewer_summary": {
+        "reviewer_id": "main-coordinator",
+        "verdict": "pass",
+        "evidence_path": "integration/reports/devframe-master-plan-v1-go-no-go-2026-06-15.md"
+      },
+      "limitations": ["pin update no-go", "real runtime no-go", "final ready no-go for product use"],
+      "human_or_governance_reference": "devframe-master-plan-v1-go-no-go-2026-06-15"
+    }
+  ]
+}

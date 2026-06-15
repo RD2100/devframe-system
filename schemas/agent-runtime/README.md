@@ -23,6 +23,12 @@ This directory contains JSON Schema definitions for the core integration contrac
 | 12 | `chain-evidence.schema.json` | Role/session chain for an @go run |
 | 13 | `multi-agent-gate0-preflight.schema.json` | Read-only readiness report for multi-agent / multi-GPT pilot startup |
 | 14 | `multi-agent-dispatch-plan.schema.json` | Read-only first-wave worker assignment packet with conflict boundaries |
+| 15 | `runtime-authorization.schema.json` | Human/coordinator authorization for bounded live or controlled runtime |
+| 16 | `test-run-spec.schema.json` | Test-frame run specification with runtime boundary and expected status |
+| 17 | `test-execution-report.schema.json` | Test-frame execution result with blocked/failed/pass semantics |
+| 18 | `failure-record.schema.json` | Traceable blocked/failed state record |
+| 19 | `audit-event.schema.json` | Append-only governance event shape |
+| 20 | `final-verdict.schema.json` | Governance final verdict boundary |
 
 ## Constraints
 
@@ -32,4 +38,7 @@ This directory contains JSON Schema definitions for the core integration contrac
   - SkillIntakeRecord disposition: `reference_only`, `candidate`, `defer`, `reject` only (no `install`, `absorb`, `approved`)
   - MemoryUpdateRecord status: `proposed` only for new records (no `approved` at agent level)
   - GateResult signer_role: must not be `executor`, `fixer`, or `coder`
+- RuntimeAuthorization does not imply a quality verdict.
+- TestExecutionReport does not imply final acceptance.
+- FinalVerdict must not be produced by executor/fixer/coder/worker roles.
 - Forbidden patterns (MCP config modification, UI-TARS/computer-use, package managers, external script execution) are documented in descriptions and NOT listed as permitted values.

@@ -1,0 +1,18 @@
+{
+  "fixture_id": "pcf-neg-parent-006",
+  "negative_case_id": "NEG-PARENT-006",
+  "contract_under_test": "PinReadiness",
+  "input_artifact_type": "synthetic_pin_readiness_matrix",
+  "expected_result": "failed",
+  "expected_reason": "observed submodule drift cannot be marked PIN_READY without accepted review",
+  "runtime_allowed": false,
+  "owner": "devframe-system",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "module": "dev-frame-opencode",
+    "locked_commit": "0c24204fd99e6cab1d853ecadb12200244119fe1",
+    "observed_commit": "e3f628b3f5ff23aeb8ded675bae4b109b31576eb",
+    "review_status": "missing",
+    "pin_decision": "PIN_READY"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TestExecutionReport",
+  "description": "Structured output from test-frame. This is test evidence only; it must not contain or imply final acceptance.",
+  "type": "object",
+  "required": [
+    "report_id",
+    "test_id",
+    "run_id",
+    "generated_at",
+    "status",
+    "exit_code",
+    "profile_used",
+    "artifacts",
+    "environment_summary"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string",
+      "pattern": "^ter-[A-Za-z0-9._-]+$",
+      "description": "Unique test execution report identifier."
+    },
+    "test_id": {
+      "type": "string",
+      "pattern": "^tr-[A-Za-z0-9._-]+$",
+      "description": "Reference to TestRunSpec."
+    },
+    "run_id": {
+      "type": "string",
+      "description": "Run identifier used by test-frame."
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 report generation timestamp."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pass", "fail", "blocked"],
+      "description": "Test result. blocked/failed must never be summarized as pass."
+    },
+    "exit_code": {
+      "type": "integer",
+      "enum": [0, 1, 2],
+      "description": "0=PASS, 1=BLOCKED, 2=FAILED."
+    },
+    "profile_used": {
+      "type": "string",
+      "enum": ["dry_run", "synthetic_offline", "blocked_env_probe", "real_env_positive_pilot"],
+      "description": "Actual profile used by the test."
+    },
+    "artifacts": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Paths to produced logs/reports/artifacts."
+    },
+    "blocked_reason": {
+      "type": "string",
+      "description": "Required when status is blocked."
+    },
+    "failed_reason": {
+      "type": "string",
+      "description": "Required when status is fail."
+    },
+    "environment_summary": {
+      "type": "object",
+      "required": ["environment_ready", "runtime_used"],
+      "properties": {
+        "environment_ready": { "type": "boolean" },
+        "runtime_used": { "type": "boolean" },
+        "details": { "type": "string" }
+      },
+      "additionalProperties": false,
+      "description": "Environment readiness and runtime use summary."
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Limitations that must remain visible downstream."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "status": { "const": "pass" } },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": { "exit_code": { "const": 0 } }
+      }
+    },
+    {
+      "if": {
+        "properties": { "status": { "const": "blocked" } },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": { "exit_code": { "const": 1 } },
+        "required": ["blocked_reason"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "status": { "const": "fail" } },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": { "exit_code": { "const": 2 } },
+        "required": ["failed_reason"]
+      }
+    }
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "report_id": "ter-tgm-miniapp-blocked-a1",
+      "test_id": "tr-tgm-miniapp-real-env-a1",
+      "run_id": "run-tgm-miniapp-real-env-a1",
+      "generated_at": "2026-06-15T00:00:00Z",
+      "status": "blocked",
+      "exit_code": 1,
+      "profile_used": "blocked_env_probe",
+      "artifacts": ["integration/reports/time-goal-manager-miniapp-blocked-failed-semantics-2026-06-15.md"],
+      "blocked_reason": "real MiniApp environment not authorized",
+      "environment_summary": {
+        "environment_ready": false,
+        "runtime_used": false
+      }
+    }
+  ]
+}

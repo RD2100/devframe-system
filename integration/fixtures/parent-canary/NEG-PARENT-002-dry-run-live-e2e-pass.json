@@ -1,0 +1,21 @@
+{
+  "fixture_id": "pcf-neg-parent-002",
+  "negative_case_id": "NEG-PARENT-002",
+  "contract_under_test": "TestExecutionReport",
+  "input_artifact_type": "synthetic_test_execution_report",
+  "expected_result": "blocked",
+  "expected_reason": "dry-run profile cannot claim real environment E2E pass",
+  "runtime_allowed": false,
+  "owner": "test-frame",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "report_id": "ter-dry-run-live-overclaim",
+    "status": "pass",
+    "profile_used": "dry_run",
+    "environment_summary": {
+      "runtime_used": false,
+      "environment_ready": false
+    },
+    "claim": "real MiniApp E2E passed"
+  }
+}

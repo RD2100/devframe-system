@@ -1,0 +1,18 @@
+{
+  "fixture_id": "pcf-neg-parent-001",
+  "negative_case_id": "NEG-PARENT-001",
+  "contract_under_test": "ExecutionReport",
+  "input_artifact_type": "synthetic_paper_execution_report",
+  "expected_result": "blocked",
+  "expected_reason": "offline candidate must not be marked final_ready",
+  "runtime_allowed": false,
+  "owner": "agent-acceptance",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "report_id": "rep-offline-overclaim",
+    "status": "pass",
+    "validation_mode": "synthetic_offline",
+    "final_ready": true,
+    "claim": "offline MVP is production ready"
+  }
+}

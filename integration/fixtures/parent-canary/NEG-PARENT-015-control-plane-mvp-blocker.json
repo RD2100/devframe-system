@@ -1,0 +1,15 @@
+{
+  "fixture_id": "pcf-neg-parent-015",
+  "negative_case_id": "NEG-PARENT-015",
+  "contract_under_test": "RoadmapBoundary",
+  "input_artifact_type": "synthetic_roadmap_markdown",
+  "expected_result": "failed",
+  "expected_reason": "frozen control-plane must not become MVP blocker without explicit scope approval",
+  "runtime_allowed": false,
+  "owner": "devframe-system",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "roadmap_claim": "offline paper MVP cannot proceed until control-plane worker is implemented",
+    "control_plane_status": "frozen"
+  }
+}

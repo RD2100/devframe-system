@@ -1,0 +1,16 @@
+{
+  "fixture_id": "pcf-neg-parent-014",
+  "negative_case_id": "NEG-PARENT-014",
+  "contract_under_test": "GitLabCIReadOnlyPolicy",
+  "input_artifact_type": "synthetic_ci_diff",
+  "expected_result": "blocked",
+  "expected_reason": "read-only CI must not add install/runtime command",
+  "runtime_allowed": false,
+  "owner": "devframe-system",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "file": ".gitlab-ci.yml",
+    "added_commands": ["npm install", "pytest tests -q", "paper real-pilot --live"],
+    "policy": "read_only"
+  }
+}

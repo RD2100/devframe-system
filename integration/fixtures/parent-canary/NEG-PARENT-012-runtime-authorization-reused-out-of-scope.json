@@ -1,0 +1,18 @@
+{
+  "fixture_id": "pcf-neg-parent-012",
+  "negative_case_id": "NEG-PARENT-012",
+  "contract_under_test": "RuntimeAuthorization",
+  "input_artifact_type": "synthetic_runtime_authorization",
+  "expected_result": "blocked",
+  "expected_reason": "RuntimeAuthorization cannot be reused outside runtime/data/time scope",
+  "runtime_allowed": false,
+  "owner": "agent-acceptance",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "authorization_id": "ra-zotero-only",
+    "runtime_type": "zotero_live",
+    "data_class": "redacted",
+    "attempted_runtime_type": "writelab_live",
+    "attempted_data_class": "private"
+  }
+}

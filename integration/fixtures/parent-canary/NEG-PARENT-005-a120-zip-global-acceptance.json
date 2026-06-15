@@ -1,0 +1,16 @@
+{
+  "fixture_id": "pcf-neg-parent-005",
+  "negative_case_id": "NEG-PARENT-005",
+  "contract_under_test": "EvidenceZipReviewReport",
+  "input_artifact_type": "synthetic_zip_review_markdown",
+  "expected_result": "failed",
+  "expected_reason": "A120 bounded ZIP review cannot claim global A101-A120 acceptance",
+  "runtime_allowed": false,
+  "owner": "agent-acceptance",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "review_type": "A120EvidenceZipReviewReport",
+    "status": "PASS_WITH_BOUNDARY",
+    "invalid_claim": "all A101-A120 evidence accepted"
+  }
+}

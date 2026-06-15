@@ -1,0 +1,20 @@
+{
+  "fixture_id": "pcf-neg-parent-013",
+  "negative_case_id": "NEG-PARENT-013",
+  "contract_under_test": "TestExecutionReport",
+  "input_artifact_type": "synthetic_positive_pilot_report",
+  "expected_result": "blocked",
+  "expected_reason": "missing environment must be blocked, not pass",
+  "runtime_allowed": false,
+  "owner": "test-frame",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "profile_used": "real_env_positive_pilot",
+    "environment_summary": {
+      "environment_ready": false,
+      "runtime_used": false
+    },
+    "status": "pass",
+    "exit_code": 0
+  }
+}

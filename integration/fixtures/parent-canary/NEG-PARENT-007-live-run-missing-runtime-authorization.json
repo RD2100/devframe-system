@@ -1,0 +1,17 @@
+{
+  "fixture_id": "pcf-neg-parent-007",
+  "negative_case_id": "NEG-PARENT-007",
+  "contract_under_test": "RuntimeAuthorization",
+  "input_artifact_type": "synthetic_live_adapter_report",
+  "expected_result": "blocked",
+  "expected_reason": "live adapter run requires RuntimeAuthorization",
+  "runtime_allowed": false,
+  "owner": "agent-acceptance",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "adapter": "writelab_live",
+    "resource_binding": "live_resource",
+    "runtime_authorization_id": null,
+    "status": "pass"
+  }
+}

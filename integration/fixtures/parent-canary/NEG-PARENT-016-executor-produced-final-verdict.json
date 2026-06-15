@@ -1,0 +1,17 @@
+{
+  "fixture_id": "pcf-neg-parent-016",
+  "negative_case_id": "NEG-PARENT-016",
+  "contract_under_test": "FinalVerdict",
+  "input_artifact_type": "synthetic_final_verdict",
+  "expected_result": "blocked",
+  "expected_reason": "executor/worker must not produce final verdict",
+  "runtime_allowed": false,
+  "owner": "agent-acceptance",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "verdict_id": "fv-executor-overclaim",
+    "producer_role": "executor",
+    "final_state": "final_ready",
+    "inputs_reviewed": ["execution-report-only"]
+  }
+}

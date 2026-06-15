@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuntimeAuthorization",
+  "description": "Explicit human/coordinator authorization for bounded live or controlled runtime. This authorizes a run scope only; it is not a quality verdict or final acceptance.",
+  "type": "object",
+  "required": [
+    "authorization_id",
+    "authorized_by",
+    "authorized_at",
+    "expires_at",
+    "runtime_type",
+    "resource_binding",
+    "data_class",
+    "allowed_commands",
+    "allowed_paths",
+    "redaction_required",
+    "evidence_output_path",
+    "human_gate_reference"
+  ],
+  "properties": {
+    "authorization_id": {
+      "type": "string",
+      "pattern": "^ra-[A-Za-z0-9._-]+$",
+      "description": "Unique authorization identifier."
+    },
+    "authorized_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human or main-coordinator identity approving the runtime scope."
+    },
+    "authorized_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 approval timestamp."
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 expiration timestamp. Authorization must not be reused after this time."
+    },
+    "runtime_type": {
+      "type": "string",
+      "enum": [
+        "miniapp_real_e2e",
+        "zotero_live",
+        "obsidian_live",
+        "rag_live",
+        "writelab_live",
+        "browser_cdp",
+        "cloud_runtime",
+        "controlled_local"
+      ],
+      "description": "The exact runtime being authorized."
+    },
+    "resource_binding": {
+      "type": "string",
+      "enum": ["fixture_only", "live_resource"],
+      "description": "Whether the run may touch live resources."
+    },
+    "data_class": {
+      "type": "string",
+      "enum": ["synthetic", "redacted", "private", "public"],
+      "description": "Data class allowed for this runtime."
+    },
+    "allowed_commands": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Exact command allowlist for this authorization."
+    },
+    "allowed_paths": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Allowed input/output paths for this authorization."
+    },
+    "redaction_required": {
+      "type": "boolean",
+      "description": "Whether outputs must be redacted before storage or review."
+    },
+    "evidence_output_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Path where bounded evidence for the authorized run must be written."
+    },
+    "human_gate_reference": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Reference to the human approval, TaskSpec, or decision record."
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Known limits. These must remain visible in downstream reports."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "data_class": { "enum": ["private", "redacted"] }
+        },
+        "required": ["data_class"]
+      },
+      "then": {
+        "properties": {
+          "redaction_required": { "const": true }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "resource_binding": { "const": "live_resource" }
+        },
+        "required": ["resource_binding"]
+      },
+      "then": {
+        "not": {
+          "properties": {
+            "data_class": { "const": "synthetic" }
+          },
+          "required": ["data_class"]
+        }
+      }
+    }
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "authorization_id": "ra-paper-real-pilot-a1",
+      "authorized_by": "human-rd",
+      "authorized_at": "2026-06-15T00:00:00Z",
+      "expires_at": "2026-06-16T00:00:00Z",
+      "runtime_type": "writelab_live",
+      "resource_binding": "live_resource",
+      "data_class": "redacted",
+      "allowed_commands": ["paper real-pilot --authorized"],
+      "allowed_paths": ["D:\\devframe-system\\.agent\\evidence"],
+      "redaction_required": true,
+      "evidence_output_path": "D:\\devframe-system\\.agent\\evidence\\paper-real-pilot",
+      "human_gate_reference": "HUMAN-GATE-2026-06-15"
+    }
+  ]
+}

@@ -26,3 +26,16 @@ schemas under `schemas/agent-runtime/`.
 No contract may promote its own success to a later layer. For example,
 dispatch success is not execution success, execution success is not review
 success, and review success is not governance final acceptance.
+
+## Parent Draft Schemas
+
+The following parent draft schemas exist under `schemas/agent-runtime/`:
+
+| Schema | Boundary |
+|---|---|
+| `runtime-authorization.schema.json` | authorizes bounded runtime scope only, not success |
+| `test-run-spec.schema.json` | describes a test run and expected status |
+| `test-execution-report.schema.json` | records test evidence only, not final acceptance |
+| `failure-record.schema.json` | records blocked/failed states so they cannot be hidden |
+| `audit-event.schema.json` | records governance events, not authorization by itself |
+| `final-verdict.schema.json` | records governance final verdict boundary |

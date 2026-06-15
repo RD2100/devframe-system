@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AuditEvent",
+  "description": "Append-only governance event for significant state transitions. This schema records events; it does not authorize the transition by itself.",
+  "type": "object",
+  "required": [
+    "event_id",
+    "timestamp",
+    "actor",
+    "action",
+    "subject_type",
+    "subject_id",
+    "after_state",
+    "reason"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "pattern": "^ae-[A-Za-z0-9._-]+$",
+      "description": "Unique audit event identifier."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 event timestamp."
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human, coordinator, module, or agent producing the event."
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "created",
+        "submitted",
+        "reviewed",
+        "blocked",
+        "failed",
+        "accepted_with_limitation",
+        "authorized",
+        "rejected",
+        "pinned",
+        "deferred"
+      ],
+      "description": "Governance action being recorded."
+    },
+    "subject_type": {
+      "type": "string",
+      "enum": [
+        "TaskSpec",
+        "RuntimeAuthorization",
+        "ExecutionReport",
+        "TestExecutionReport",
+        "EvidenceManifest",
+        "ReviewVerdict",
+        "GateResult",
+        "FinalVerdict",
+        "SubmodulePin",
+        "Report"
+      ],
+      "description": "Type of object affected by this event."
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identifier of the affected object."
+    },
+    "before_state": {
+      "type": "string",
+      "description": "Previous state, if known."
+    },
+    "after_state": {
+      "type": "string",
+      "minLength": 1,
+      "description": "New state after the action."
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Why the event was recorded."
+    },
+    "evidence_path": {
+      "type": "string",
+      "description": "Path to supporting evidence."
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "event_id": "ae-master-plan-v1",
+      "timestamp": "2026-06-15T00:00:00Z",
+      "actor": "devframe-system-main-coordinator",
+      "action": "reviewed",
+      "subject_type": "Report",
+      "subject_id": "devframe-master-plan-v1-go-no-go-2026-06-15",
+      "after_state": "parent_planning_ready",
+      "reason": "S00-S09 parent reports completed with pin/runtime/final no-go boundaries.",
+      "evidence_path": "integration/reports/devframe-master-plan-v1-go-no-go-2026-06-15.md"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "fixture_id": "pcf-neg-parent-004",
+  "negative_case_id": "NEG-PARENT-004",
+  "contract_under_test": "DispatchAssignment",
+  "input_artifact_type": "synthetic_dispatch_assignment",
+  "expected_result": "blocked",
+  "expected_reason": "dispatch assignment is not task execution success",
+  "runtime_allowed": false,
+  "owner": "agent-acceptance",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "assignment_id": "da-overclaim",
+    "dispatch_status": "sent",
+    "execution_report_path": null,
+    "claim": "task completed because dispatch succeeded"
+  }
+}

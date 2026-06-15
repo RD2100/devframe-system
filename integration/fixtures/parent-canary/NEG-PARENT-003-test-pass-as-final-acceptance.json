@@ -1,0 +1,21 @@
+{
+  "fixture_id": "pcf-neg-parent-003",
+  "negative_case_id": "NEG-PARENT-003",
+  "contract_under_test": "FinalVerdict",
+  "input_artifact_type": "synthetic_final_verdict_shortcut",
+  "expected_result": "failed",
+  "expected_reason": "test pass is not final governance acceptance",
+  "runtime_allowed": false,
+  "owner": "agent-acceptance",
+  "source_report": "integration/reports/phase-negative-matrix-v1-2026-06-15.md",
+  "synthetic_input": {
+    "test_execution_report": {
+      "status": "pass",
+      "profile_used": "synthetic_offline"
+    },
+    "final_verdict": {
+      "final_state": "final_ready",
+      "inputs_reviewed": ["test_execution_report_only"]
+    }
+  }
+}
