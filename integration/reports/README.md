@@ -7,6 +7,11 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-a30-2026-06-15.md` records the parent gitlink and lock
+  update to clean committed `dev-frame-opencode` head `f5a62ae...`.
+- `opencode-citation-metadata-privacy-fields-return-review-2026-06-15.md`
+  records parent intake of citation integrity and synthetic Zotero metadata
+  privacy-field hardening.
 - `parent-pin-review-a29-2026-06-15.md` records the parent gitlink and lock
   update to clean committed `dev-frame-opencode` head `01a59d7...`.
 - `opencode-zotero-fixture-abstract-snippet-redaction-return-review-2026-06-15.md`
