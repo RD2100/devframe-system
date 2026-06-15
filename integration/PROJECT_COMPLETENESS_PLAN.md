@@ -836,6 +836,11 @@ Parent decision:
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.
+- A real Zotero metadata-only pilot was attempted with
+  `D:\devframe-system\.agent\manual-input\导出的条目.bib`, but the run was
+  correctly `BLOCKED` because the export contained `abstract`, `file`, and
+  `note` fields. See
+  `integration/reports/zotero-metadata-only-pilot-blocked-2026-06-15.md`.
 - Parent now has a local authorization-packet validator and synthetic fixtures
   for RuntimeAuthorization/TestRunSpec cross-contract checks before any real
   positive pilot. The wrapper schema is registered at

@@ -7,6 +7,9 @@ reports.
 
 Current reports:
 
+- `zotero-metadata-only-pilot-blocked-2026-06-15.md` records the first real
+  Zotero metadata-only pilot attempt. The run was correctly blocked because the
+  user-provided BibTeX export contained `abstract`, `file`, and `note` fields.
 - `bound-gpt-consultation-review-2026-06-15.md` records the consultation with
   the bound ChatGPT conversation and the review verdict that its output was not
   usable as a plan.
