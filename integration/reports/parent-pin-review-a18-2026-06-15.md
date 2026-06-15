@@ -38,10 +38,8 @@ Keep the other module pins unchanged from the current parent baseline.
   `E97DA005A1F1B6F8D3CCD1DBF916380E8C17880249889620E0C35F8E7B76476D`
 - Direct parent verification:
   - authorization request pytest: 14 passed
-  - adjacent real-pilot local/offline pytest group: 66 passed
-  - business capability validation: 7 passed
-  - request schema parse: PASS
-  - human decision schema parse: PASS
+  - adjacent real-pilot local/offline pytest group: 73 passed
+  - JSON schema parse: PASS
   - diff check: PASS
 
 ## Boundary
