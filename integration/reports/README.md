@@ -7,6 +7,11 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-a27-2026-06-15.md` records the parent gitlink and lock
+  update to clean committed `dev-frame-opencode` head `bc53b8b...`.
+- `opencode-preauth-blocker-nonclaim-closed-scope-return-review-2026-06-15.md`
+  records parent intake of the local/offline preauth blocker, non-claim, and
+  reviewer verdict list schema hardening slice.
 - `parent-pin-review-a26-2026-06-15.md` records the parent gitlink and lock
   update to clean committed `dev-frame-opencode` head `a852bf1...`.
 - `opencode-preauth-sensitive-fields-closed-scope-return-review-2026-06-15.md`

@@ -116,6 +116,9 @@ Latest parent pin review A25:
 Latest parent pin review A26:
 `integration/reports/parent-pin-review-a26-2026-06-15.md`
 
+Latest parent pin review A27:
+`integration/reports/parent-pin-review-a27-2026-06-15.md`
+
 Latest Zotero metadata-only pilot blocked report:
 `integration/reports/zotero-metadata-only-pilot-blocked-newbib-2026-06-15.md`
 
@@ -760,10 +763,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A26_OPENCODE_PREAUTH_SENSITIVE_FIELDS_CLOSED_SCOPE_PIN_REVIEW_PASS`
+Status: `A27_OPENCODE_PREAUTH_BLOCKER_NONCLAIM_CLOSED_SCOPE_PIN_REVIEW_PASS`
 
 Latest report:
-`integration/reports/parent-pin-review-a26-2026-06-15.md`
+`integration/reports/parent-pin-review-a27-2026-06-15.md`
 
 Current facts:
 
@@ -852,6 +855,9 @@ Current facts:
 - `dev-frame-opencode` then completed preauth sensitive field closed-scope
   hardening at `a852bf166dc30aec855d04185f9e14d60c6791df`; parent accepted it
   for A26 pin.
+- `dev-frame-opencode` then completed preauth blocker/non-claim/reviewer
+  verdict list closed-scope hardening at
+  `bc53b8b3a17a2dc885b6dd726b560426382bd2e6`; parent accepted it for A27 pin.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -889,6 +895,11 @@ Parent decision:
   `205ce19...`.
 - A26 opencode preauth sensitive fields closed-scope pin review accepts clean
   committed `a852bf1...`.
+- A27 opencode preauth blocker/non-claim/reviewer verdict closed-scope pin
+  review accepts clean committed `bc53b8b...`.
+- Next opencode priority is `OPENCODE_ZOTERO_METADATA_EXPORT_SANITIZER_A1`:
+  the software must sanitize user-provided Zotero/BibTeX exports instead of
+  requiring users to produce perfectly clean files.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.
