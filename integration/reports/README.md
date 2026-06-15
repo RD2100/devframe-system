@@ -7,6 +7,10 @@ reports.
 
 Current reports:
 
+- `opencode-real-zotero-metadata-export-smoke-return-review-2026-06-16.md`
+  records parent intake of the evidence-only real Zotero metadata export smoke
+  over three user-provided local metadata files at already-pinned
+  `dev-frame-opencode` head `7ccbdef...`.
 - `parent-pin-review-opencode-citation-lookup-workflow-2026-06-16.md` records
   the parent gitlink and lock update to `dev-frame-opencode` citation lookup
   workflow commit `7ccbdef...`.

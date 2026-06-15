@@ -149,6 +149,9 @@ Latest opencode citation lookup workflow return review:
 Latest opencode citation lookup workflow parent pin review:
 `integration/reports/parent-pin-review-opencode-citation-lookup-workflow-2026-06-16.md`
 
+Latest real Zotero metadata export smoke return review:
+`integration/reports/opencode-real-zotero-metadata-export-smoke-return-review-2026-06-16.md`
+
 Latest opencode grouped command policy return review:
 `integration/reports/opencode-grouped-command-policy-return-review-2026-06-16.md`
 
@@ -1001,6 +1004,11 @@ Parent decision:
   `7ccbdefa4037a40c76ce137b2d16b48931701c94`. Parent accepted it for pin review
   as fixture-metadata workflow evidence only, not production/live citation
   verification.
+- `dev-frame-opencode` then completed an evidence-only real Zotero metadata
+  export smoke at already-pinned `7ccbdef...`: three user-provided local
+  metadata export files produced `PASS_METADATA_ONLY` with sanitizer
+  redactions, raw-sensitive summary counts were zero, and GPT accepted the
+  result with limitations. No new gitlink update was required.
 - `dev-frame-opencode` then completed an evidence-only manual-input metadata
   batch smoke at already-pinned `f9ab656...`: two BibTeX inputs and one RDF
   input each produced `PASS_METADATA_ONLY` with sanitizer redactions, raw export
