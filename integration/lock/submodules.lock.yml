@@ -27,5 +27,5 @@ modules:
     path: "test-frame"
     role: "controlled_verification_runtime_candidate"
     branch: "codex/adapter-negative-matrix"
-    commit: "bf6bca421c467cbcc11aa1420606bdf9b57e5f26"
+    commit: "ebf3fc77536be986c800b3be2abeb2059c9cdadc"
     remote: "https://github.com/RD2100/test-frame.git"
