@@ -80,6 +80,15 @@ Latest parent pin review A10:
 Latest grouped parent pin:
 `integration/reports/grouped-parent-pin-a10-2026-06-15.md`
 
+Latest opencode evidence-manifest schema return review:
+`integration/reports/opencode-zotero-evidence-manifest-schema-return-review-2026-06-15.md`
+
+Latest parent pin review A11:
+`integration/reports/parent-pin-review-a11-2026-06-15.md`
+
+Latest parent pin A11:
+`integration/reports/grouped-parent-pin-a11-2026-06-15.md`
+
 Latest contract alignment:
 `integration/reports/contract-alignment-matrix-v1-2026-06-15.md`
 
@@ -701,10 +710,13 @@ Current facts:
 - `dev-frame-opencode` then advanced to evidence-manifest boundary at
   `a2cedaa280f12f717d4bf0a64c1c12ece6f5fefe`; parent intake accepted it and
   A9 is superseded for opencode pin choice. HOLD was sent so parent can pin.
+- `dev-frame-opencode` then advanced to schema-gated evidence manifest at
+  `f9d381c0f8e974f1dd36642e1e412dfb2581ad5a`; parent intake accepted it.
+  A11 updates only opencode and keeps A10 pins for the other modules.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
 
-- Grouped parent pin is being applied using A10 candidate heads.
-- Parent lock files now target the A10 candidate set.
+- A10 grouped parent pin has been applied.
+- A11 opencode-only pin is being applied for `f9d381c...`.
 - Do not authorize real runtime or final acceptance from this pin review.

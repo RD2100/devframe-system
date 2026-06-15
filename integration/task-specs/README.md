@@ -32,11 +32,11 @@ Every TaskSpec must preserve these boundaries:
 
 ## Next Required Assignment
 
-Review `integration/reports/parent-pin-review-a10-2026-06-15.md` before
+Review `integration/reports/parent-pin-review-a11-2026-06-15.md` before
 preparing any pin proposal.
 
-The current next work is to fresh re-check and, if stable, update parent
-gitlinks and lock files to the A10 candidate set.
+The current next work is to fresh re-check and, if stable, update the
+opencode parent gitlink and lock files to the A11 candidate set.
 
 Current `dev-frame-opencode` note:
 
@@ -64,6 +64,9 @@ Current `dev-frame-opencode` note:
   `a2cedaa280f12f717d4bf0a64c1c12ece6f5fefe`.
 - Parent intake accepted the manifest boundary return; this supersedes the A9
   opencode pin choice. A HOLD was sent before parent pin.
+- The module then returned schema-gated evidence manifest at
+  `f9d381c0f8e974f1dd36642e1e412dfb2581ad5a`.
+- Parent intake accepted the schema-gated return; A11 updates only opencode.
 
 Current `test-frame` note:
 
@@ -75,7 +78,7 @@ Current `test-frame` note:
 
 Current parent decision:
 
-- A10 grouped candidate heads are verified for parent pin review.
+- A11 opencode candidate head is verified for parent pin review.
 - Re-check module heads immediately before any lock/gitlink mutation.
 
 None of this authorizes real paper content, live WriteLab, external runtime,
