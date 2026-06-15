@@ -11,7 +11,7 @@
       "role": "governance_acceptance_framework",
       "remote": "https://github.com/RD2100/agent-acceptance.git",
       "branch": "codex/paper-archive-final-verdict-boundary",
-      "commit": "38d7b2e0aad226cce5732cb4d56e45ae2d065ec7",
+      "commit": "54d60a28827271b857c173a9f1c6f65af94bb24b",
       "pre_pin_status": "clean_submodule_branch_committed"
     },
     {
@@ -38,7 +38,7 @@
       "role": "controlled_verification_runtime_candidate",
       "remote": "https://github.com/RD2100/test-frame.git",
       "branch": "codex/adapter-negative-matrix",
-      "commit": "7940891cf5643f59fb50709c6ac77137d861b4c1",
+      "commit": "bdd7b67a4bb9cfee2c6601c2f755abfd68164da7",
       "pre_pin_status": "clean_submodule_branch_committed"
     }
   ],
