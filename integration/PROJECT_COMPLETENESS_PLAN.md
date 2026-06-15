@@ -113,6 +113,9 @@ Latest parent pin review A24:
 Latest parent pin review A25:
 `integration/reports/parent-pin-review-a25-2026-06-15.md`
 
+Latest Zotero metadata-only pilot blocked report:
+`integration/reports/zotero-metadata-only-pilot-blocked-newbib-2026-06-15.md`
+
 Latest opencode evidence row command binding return review:
 `integration/reports/opencode-business-validation-evidence-row-command-binding-return-review-2026-06-15.md`
 
@@ -886,6 +889,11 @@ Parent decision:
   correctly `BLOCKED` because the export contained `abstract`, `file`, and
   `note` fields. See
   `integration/reports/zotero-metadata-only-pilot-blocked-2026-06-15.md`.
+- A second real Zotero metadata-only pilot was attempted with
+  `D:\devframe-system\.agent\manual-input\导出的条目2.bib`, but the run was
+  correctly `BLOCKED` because the export still contained `abstract`, `file`,
+  and `note` fields. See
+  `integration/reports/zotero-metadata-only-pilot-blocked-newbib-2026-06-15.md`.
 - Parent now has a local authorization-packet validator and synthetic fixtures
   for RuntimeAuthorization/TestRunSpec cross-contract checks before any real
   positive pilot. The wrapper schema is registered at

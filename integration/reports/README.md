@@ -7,6 +7,9 @@ reports.
 
 Current reports:
 
+- `zotero-metadata-only-pilot-blocked-newbib-2026-06-15.md` records the second
+  user-provided BibTeX export attempt. The run was correctly blocked because
+  `导出的条目2.bib` still contained `abstract`, `file`, and `note` fields.
 - `parent-pin-review-a25-2026-06-15.md` records the parent gitlink and lock
   update to clean committed `dev-frame-opencode` head `205ce19...`.
 - `opencode-preauth-top-level-pilot-scope-return-review-2026-06-15.md`
