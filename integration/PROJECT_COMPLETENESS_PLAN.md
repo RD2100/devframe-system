@@ -143,6 +143,12 @@ Latest agent-acceptance rule center closeout return review:
 Latest agent-acceptance rule center closeout parent pin review:
 `integration/reports/parent-pin-review-agent-acceptance-rule-center-closeout-2026-06-16.md`
 
+Latest opencode citation lookup workflow return review:
+`integration/reports/opencode-citation-lookup-workflow-return-review-2026-06-16.md`
+
+Latest opencode citation lookup workflow parent pin review:
+`integration/reports/parent-pin-review-opencode-citation-lookup-workflow-2026-06-16.md`
+
 Latest opencode grouped command policy return review:
 `integration/reports/opencode-grouped-command-policy-return-review-2026-06-16.md`
 
@@ -990,6 +996,11 @@ Parent decision:
   `6b9a83c1dca0ea650dbc7e97f13977ac02e3e3ee`, summarizing minimal rule center,
   cross-module intake smoke, paper real-pilot acceptance rules, and minimal
   final verdict rule center. Parent accepted it for pin review.
+- `dev-frame-opencode` then completed local/offline paper citation lookup
+  workflow integration and evidence closeout at
+  `7ccbdefa4037a40c76ce137b2d16b48931701c94`. Parent accepted it for pin review
+  as fixture-metadata workflow evidence only, not production/live citation
+  verification.
 - `dev-frame-opencode` then completed an evidence-only manual-input metadata
   batch smoke at already-pinned `f9ab656...`: two BibTeX inputs and one RDF
   input each produced `PASS_METADATA_ONLY` with sanitizer redactions, raw export

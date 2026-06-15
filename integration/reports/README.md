@@ -7,6 +7,12 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-opencode-citation-lookup-workflow-2026-06-16.md` records
+  the parent gitlink and lock update to `dev-frame-opencode` citation lookup
+  workflow commit `7ccbdef...`.
+- `opencode-citation-lookup-workflow-return-review-2026-06-16.md` records
+  parent intake of the local/offline paper citation lookup workflow milestone
+  and its evidence closeout.
 - `parent-pin-review-agent-acceptance-rule-center-closeout-2026-06-16.md`
   records the parent gitlink and lock update to `agent-acceptance`
   rule-center closeout commit `6b9a83c...`.
