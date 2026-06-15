@@ -7,6 +7,10 @@ reports.
 
 Current reports:
 
+- `zotero-web-api-metadata-only-preflight-blocked-2026-06-16.md` records the
+  first authorized Zotero Web API metadata-only preflight. API authentication
+  succeeded, but the remote personal library returned zero items, so the result
+  is blocked until Zotero sync/account alignment is fixed.
 - `opencode-real-zotero-metadata-export-smoke-return-review-2026-06-16.md`
   records parent intake of the evidence-only real Zotero metadata export smoke
   over three user-provided local metadata files at already-pinned

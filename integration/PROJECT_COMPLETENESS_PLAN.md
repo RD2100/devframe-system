@@ -152,6 +152,9 @@ Latest opencode citation lookup workflow parent pin review:
 Latest real Zotero metadata export smoke return review:
 `integration/reports/opencode-real-zotero-metadata-export-smoke-return-review-2026-06-16.md`
 
+Latest Zotero Web API metadata-only preflight:
+`integration/reports/zotero-web-api-metadata-only-preflight-blocked-2026-06-16.md`
+
 Latest opencode grouped command policy return review:
 `integration/reports/opencode-grouped-command-policy-return-review-2026-06-16.md`
 
@@ -1009,6 +1012,12 @@ Parent decision:
   metadata export files produced `PASS_METADATA_ONLY` with sanitizer
   redactions, raw-sensitive summary counts were zero, and GPT accepted the
   result with limitations. No new gitlink update was required.
+- Parent then attempted an authorized Zotero Web API metadata-only preflight
+  using the user's local credential file. API authentication succeeded, but the
+  remote personal library returned `Total-Results=0` for both all items and top
+  items, so the result is `BLOCKED_EMPTY_REMOTE_LIBRARY`. The likely next human
+  action is to enable/finish Zotero data sync or confirm that the API key and
+  user id point to the populated Zotero account.
 - `dev-frame-opencode` then completed an evidence-only manual-input metadata
   batch smoke at already-pinned `f9ab656...`: two BibTeX inputs and one RDF
   input each produced `PASS_METADATA_ONLY` with sanitizer redactions, raw export
