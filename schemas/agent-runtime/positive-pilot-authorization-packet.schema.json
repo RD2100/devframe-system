@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PositivePilotAuthorizationPacket",
+  "description": "Wrapper packet pairing RuntimeAuthorization with TestRunSpec for a single real-resource positive pilot. The packet can be a synthetic fixture or a real authorization input; it is never a final acceptance verdict.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_id",
+    "packet_mode",
+    "selected_track",
+    "runtime_authorization",
+    "test_run_spec"
+  ],
+  "properties": {
+    "packet_id": {
+      "type": "string",
+      "pattern": "^ppauth-[A-Za-z0-9._-]+$"
+    },
+    "packet_mode": {
+      "type": "string",
+      "enum": ["synthetic_fixture", "real_authorization"]
+    },
+    "selected_track": {
+      "type": "string",
+      "enum": ["miniapp_real_e2e", "zotero_metadata_live", "writelab_live_boundary"]
+    },
+    "expected_validation_status": {
+      "type": "string",
+      "enum": ["PASS", "FAIL"],
+      "description": "Fixture-only expectation used by local canaries. Real authorization inputs should omit this field."
+    },
+    "runtime_authorization": {
+      "$ref": "runtime-authorization.schema.json"
+    },
+    "test_run_spec": {
+      "$ref": "test-run-spec.schema.json"
+    }
+  },
+  "not": {
+    "required": ["selected_tracks"]
+  }
+}

@@ -772,5 +772,6 @@ Parent decision:
   and provides a fresh scoped authorization packet.
 - Parent now has a local authorization-packet validator and synthetic fixtures
   for RuntimeAuthorization/TestRunSpec cross-contract checks before any real
-  positive pilot.
+  positive pilot. The wrapper schema is registered at
+  `schemas/agent-runtime/positive-pilot-authorization-packet.schema.json`.
 - Do not authorize real runtime or final acceptance from this pin review.

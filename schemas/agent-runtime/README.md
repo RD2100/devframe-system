@@ -25,6 +25,7 @@ This directory contains JSON Schema definitions for the core integration contrac
 | 14 | `multi-agent-dispatch-plan.schema.json` | Read-only first-wave worker assignment packet with conflict boundaries |
 | 15 | `runtime-authorization.schema.json` | Human/coordinator authorization for bounded live or controlled runtime |
 | 16 | `test-run-spec.schema.json` | Test-frame run specification with runtime boundary and expected status |
+| 17 | `positive-pilot-authorization-packet.schema.json` | Wrapper pairing RuntimeAuthorization with TestRunSpec for exactly one real-resource positive pilot track |
 | 17 | `test-execution-report.schema.json` | Test-frame execution result with blocked/failed/pass semantics |
 | 18 | `failure-record.schema.json` | Traceable blocked/failed state record |
 | 19 | `audit-event.schema.json` | Append-only governance event shape |

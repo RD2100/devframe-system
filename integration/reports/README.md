@@ -148,8 +148,8 @@ Current reports:
   records the required human RuntimeAuthorization packet and single-track
   selection gate before any real positive pilot.
 - `positive-pilot-authorization-packet-validator-2026-06-15.md` records the
-  local validator and synthetic fixtures for RuntimeAuthorization/TestRunSpec
-  positive-pilot authorization packets.
+  local validator, wrapper schema, and synthetic fixtures for
+  RuntimeAuthorization/TestRunSpec positive-pilot authorization packets.
 - `opencode-zotero-summary-sample-closed-shape-return-review-2026-06-15.md`
   records parent intake of `dev-frame-opencode` A15 local/offline Zotero
   summary sample closed-shape schema hardening at `128cbf8...`.
