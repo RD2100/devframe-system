@@ -153,6 +153,9 @@ Latest real Zotero metadata export smoke return review:
 `integration/reports/opencode-real-zotero-metadata-export-smoke-return-review-2026-06-16.md`
 
 Latest Zotero Web API metadata-only preflight:
+`integration/reports/zotero-web-api-metadata-only-preflight-pass-2026-06-16.md`
+
+Previous Zotero Web API metadata-only blocked preflight:
 `integration/reports/zotero-web-api-metadata-only-preflight-blocked-2026-06-16.md`
 
 Latest opencode grouped command policy return review:
@@ -1018,6 +1021,13 @@ Parent decision:
   items, so the result is `BLOCKED_EMPTY_REMOTE_LIBRARY`. The likely next human
   action is to enable/finish Zotero data sync or confirm that the API key and
   user id point to the populated Zotero account.
+- After the user completed Zotero sync, parent reran the authorized Zotero Web
+  API metadata-only preflight. It passed: the all-items count probe returned
+  `25`, the top-items count probe returned `23`, and the metadata query read
+  `23` `journalArticle` records while excluding `note` and `attachment` item
+  types. No raw items, raw titles, raw abstracts, API key, notes, attachments,
+  PDF, full text, Obsidian, RAG, WriteLab, browser/CDP, cloud, or final
+  acceptance claim was persisted.
 - `dev-frame-opencode` then completed an evidence-only manual-input metadata
   batch smoke at already-pinned `f9ab656...`: two BibTeX inputs and one RDF
   input each produced `PASS_METADATA_ONLY` with sanitizer redactions, raw export

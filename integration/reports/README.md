@@ -7,6 +7,10 @@ reports.
 
 Current reports:
 
+- `zotero-web-api-metadata-only-preflight-pass-2026-06-16.md` records the
+  authorized Zotero Web API metadata-only preflight pass after sync: 23
+  `journalArticle` metadata records were read while notes, attachments, PDF,
+  and full text remained blocked.
 - `zotero-web-api-metadata-only-preflight-blocked-2026-06-16.md` records the
   first authorized Zotero Web API metadata-only preflight. API authentication
   succeeded, but the remote personal library returned zero items, so the result
