@@ -95,6 +95,9 @@ Latest post-pin status:
 Latest A11 cross-module smoke intake:
 `integration/reports/agent-acceptance-a11-cross-module-smoke-return-review-2026-06-15.md`
 
+Latest stage closeout:
+`integration/reports/stage-closeout-a11-2026-06-15.md`
+
 Latest contract alignment:
 `integration/reports/contract-alignment-matrix-v1-2026-06-15.md`
 
@@ -688,10 +691,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `GROUP_PIN_CANDIDATE_READY_CURRENT_HEADS_VERIFIED`
+Status: `A11_STAGE_CLOSEOUT_READY_FOR_HUMAN_PUSH_DECISION`
 
 Latest report:
-`integration/reports/parent-pin-review-a10-2026-06-15.md`
+`integration/reports/stage-closeout-a11-2026-06-15.md`
 
 Current facts:
 
