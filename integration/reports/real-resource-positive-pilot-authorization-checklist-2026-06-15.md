@@ -12,16 +12,18 @@ authorize any runtime and does not claim live readiness.
 ## Current Safe Baseline
 
 - Parent branch: `codex/rdinit-phase-0-5`
-- Latest parent pin: `df9537ac9f5a4e7a944e1cf65cd2275e0a098946`
+- Latest parent pin review:
+  `integration/reports/parent-pin-review-a18-2026-06-15.md`
 - Current pinned modules:
   - `agent-acceptance`: `75f8eb329778d4a8cffb28f6ba79b137038d4fed`
-  - `dev-frame-opencode`: `f8de96134d61427854cd6e4c35e376914577e8af`
+  - `dev-frame-opencode`: `8ae6cb77ac977a602dd834efd14405a523c0cb5a`
   - `devframe-control-plane`: `79399541b8426cff0f362b665bad09e3c23e974b`
   - `test-frame`: `c3353fb34900aa24f56df5b9c9230f3249d6c01a`
 - Executed external runtime in this preparation step: `false`
 - Baseline refresh note: the current pin includes local/offline closed-shape
-  schema gates through A17, including the human RuntimeAuthorization decision
-  packet boundary. It still does not authorize any real runtime.
+  schema gates through A18, including the human RuntimeAuthorization decision
+  packet boundary and `agent_acceptance_rules` governance-readiness boundary.
+  It still does not authorize any real runtime.
 
 ## Hard Boundary
 
