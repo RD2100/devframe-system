@@ -10,7 +10,7 @@ so.
 
 | Path | Project | Role | Branch | Locked commit |
 |---|---|---|---|---:|
-| `agent-acceptance` | `agent-acceptance` | Governance, acceptance, TaskSpec/Gate0 contracts | `codex/paper-archive-final-verdict-boundary` | `54d60a28827271b857c173a9f1c6f65af94bb24b` |
+| `agent-acceptance` | `agent-acceptance` | Governance, acceptance, TaskSpec/Gate0 contracts | `codex/paper-archive-final-verdict-boundary` | `3cf2c9be9f33ddabdc029a652dca512d8193a5e5` |
 | `devframe-control-plane` | `devframe-control-plane` | Queue/dispatch/control-plane candidate | `codex/lease-source-lock-contracts` | `79399541b8426cff0f362b665bad09e3c23e974b` |
 | `dev-frame-opencode` | `dev-frame-opencode` | Controlled coding runtime candidate | `codex/paper-audit-privacy-hard-gate` | `0c24204fd99e6cab1d853ecadb12200244119fe1` |
 | `test-frame` | `test-frame` | Controlled verification runtime candidate | `codex/adapter-negative-matrix` | `bdd7b67a4bb9cfee2c6601c2f755abfd68164da7` |

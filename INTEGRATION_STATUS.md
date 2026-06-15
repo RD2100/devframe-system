@@ -17,7 +17,7 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 
 | Module | Role | Pinned commit | Status |
 |---|---|---:|---|
-| `agent-acceptance` | Governance and acceptance framework | `54d60a28827271b857c173a9f1c6f65af94bb24b` | SD-04 through SD-07 boundaries retained, and minimal rule-center TaskSpec `agent-acceptance-minimal-rule-center-a1` added for the next autonomous iteration |
+| `agent-acceptance` | Governance and acceptance framework | `3cf2c9be9f33ddabdc029a652dca512d8193a5e5` | SD-04 through SD-07 boundaries retained, and minimal rule-center TaskSpec `agent-acceptance-minimal-rule-center-a1` added and write_set parsing fixed for the next autonomous iteration |
 | `devframe-control-plane` | Control-plane runtime candidate | `79399541b8426cff0f362b665bad09e3c23e974b` | Lease/source-lock contract, in-memory dry-run runtime state machine, and paper real-content/live WriteLab RuntimeAuthorization dry-run guard branch pinned |
 | `dev-frame-opencode` | Controlled coding runtime candidate | `0c24204fd99e6cab1d853ecadb12200244119fe1` | Runtime/paper privacy gate, WriteLab handoff fixture, audit sensitive scan, live WriteLab authorization guard, CLI/status/reviewer-pack/finalizer boundaries, Security Preflight P1 gates, machine-readable paper business validation report, and visible SD-07 report gate branch pinned |
 | `test-frame` | Controlled verification runtime candidate | `bdd7b67a4bb9cfee2c6601c2f755abfd68164da7` | Adapter/negative matrix retained, and time-goal-manager MiniApp smoke dry-run contract is pinned with missing-environment BLOCKED/FAILED semantics recorded in parent reports |
@@ -26,7 +26,7 @@ generated SADP rules, schemas, and agent-runtime documents are present under
 
 | Gap | Severity | Status | Notes |
 |---|---|---|---|
-| `agent-acceptance` active binding path drift | P1 | Contracted and pinned | Commit `88dd581` documents the integration path, legacy path, and HUMAN_REQUIRED preservation; current pin `54d60a2` preserves SD-04/SD-05/SD-06/SD-07 boundaries and adds the minimal rule-center TaskSpec. Active rebinding is still human-gated. |
+| `agent-acceptance` active binding path drift | P1 | Contracted and pinned | Commit `88dd581` documents the integration path, legacy path, and HUMAN_REQUIRED preservation; current pin `3cf2c9b` preserves SD-04/SD-05/SD-06/SD-07 boundaries and adds the minimal rule-center TaskSpec and write_set parsing fix. Active rebinding is still human-gated. |
 | A120 evidence location split | P1 | Open | A120 generated evidence exists in `D:\dev-frame-opencode\ai-workflow-hub`, not the submodule path. |
 | Independent A120 ZIP verifier | P1 | Implemented | `scripts/review_a120_evidence_zip.py` produced `PASS_WITH_BOUNDARY`; reports are stored under `integration/reports/a120`. This is evidence review, not final acceptance. |
 | `control-plane` lease/heartbeat/cancellation runtime | P0/P1 | Contracted, dry-run state-machine pinned, and paper authorization guard pinned | Commit `b001cea` adds a pure in-memory dry-run runtime state machine for dispatch, lease acquire, heartbeat, source lock, completion, cancellation, failure, retry, and dispatch-success promotion boundaries. Commit `7939954` blocks paper real-content/live WriteLab dry-run dispatch without fresh scoped RuntimeAuthorization. Runtime enforcement remains future work. |
