@@ -86,14 +86,17 @@ Latest real-resource positive pilot authorization checklist:
 Latest positive-pilot authorization packet validator:
 `integration/reports/positive-pilot-authorization-packet-validator-2026-06-15.md`
 
-Latest parent pin review A16:
-`integration/reports/parent-pin-review-a16-2026-06-15.md`
+Latest parent pin review A17:
+`integration/reports/parent-pin-review-a17-2026-06-15.md`
 
 Latest opencode summary sample closed-shape return review:
 `integration/reports/opencode-zotero-summary-sample-closed-shape-return-review-2026-06-15.md`
 
 Latest opencode authorization result closed-shape return review:
 `integration/reports/opencode-zotero-authorization-result-closed-shape-return-review-2026-06-15.md`
+
+Latest opencode human RuntimeAuthorization decision closed-shape return review:
+`integration/reports/opencode-human-runtime-authorization-decision-closed-shape-return-review-2026-06-15.md`
 
 Latest grouped parent pin:
 `integration/reports/grouped-parent-pin-a10-2026-06-15.md`
@@ -709,10 +712,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A16_OPENCODE_AUTHORIZATION_RESULT_CLOSED_SHAPE_PIN_REVIEW_PASS`
+Status: `A17_OPENCODE_HUMAN_RUNTIME_AUTHORIZATION_DECISION_CLOSED_SHAPE_PIN_REVIEW_PASS`
 
 Latest report:
-`integration/reports/parent-pin-review-a16-2026-06-15.md`
+`integration/reports/parent-pin-review-a17-2026-06-15.md`
 
 Current facts:
 
@@ -759,6 +762,10 @@ Current facts:
   closed-shape schema hardening at
   `d19d9ac9c75e05131ec1bd466020bde3ef42bbd0`; parent intake accepted it for
   A16 pin.
+- `dev-frame-opencode` then advanced to human RuntimeAuthorization decision
+  closed-shape schema hardening at
+  `f8de96134d61427854cd6e4c35e376914577e8af`; parent intake accepted it for
+  A17 pin.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -776,6 +783,8 @@ Parent decision:
   `128cbf8...`.
 - A16 opencode authorization result closed-shape schema pin review accepts
   `d19d9ac...`.
+- A17 opencode human RuntimeAuthorization decision closed-shape schema pin
+  review accepts `f8de961...`.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.
