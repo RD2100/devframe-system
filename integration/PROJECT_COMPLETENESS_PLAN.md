@@ -161,6 +161,12 @@ Latest opencode Zotero Web API metadata-only adapter return review:
 Latest opencode Zotero Web API metadata-only adapter parent pin review:
 `integration/reports/parent-pin-review-opencode-zotero-web-api-metadata-only-adapter-2026-06-16.md`
 
+Latest test-frame Zotero Web API metadata-only verification return review:
+`integration/reports/test-frame-zotero-web-api-metadata-only-verification-return-review-2026-06-16.md`
+
+Latest test-frame Zotero Web API metadata-only verification parent pin review:
+`integration/reports/parent-pin-review-test-frame-zotero-web-api-metadata-only-verification-2026-06-16.md`
+
 Previous Zotero Web API metadata-only blocked preflight:
 `integration/reports/zotero-web-api-metadata-only-preflight-blocked-2026-06-16.md`
 
@@ -1042,6 +1048,13 @@ Parent decision:
   abstracts, notes, attachments, PDF, full text, Obsidian, RAG, WriteLab,
   browser/CDP, cloud, and final acceptance out of scope. Parent accepted it for
   pin review.
+- `test-frame` then implemented synthetic/offline Zotero Web API metadata-only
+  verification contracts and negative canaries at
+  `b1925fc39d5393402fee0fcc664edbc83eaf3a27`. The slice blocks empty remote
+  library PASS, forbidden note/attachment reads, forbidden resource flags, raw
+  sensitive evidence leaks, metadata-only final/live overclaims, and test-frame
+  pass promoted to final governance acceptance. Parent accepted it for pin
+  review.
 - `dev-frame-opencode` then completed an evidence-only manual-input metadata
   batch smoke at already-pinned `f9ab656...`: two BibTeX inputs and one RDF
   input each produced `PASS_METADATA_ONLY` with sanitizer redactions, raw export

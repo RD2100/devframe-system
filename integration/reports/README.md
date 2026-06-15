@@ -7,6 +7,12 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-test-frame-zotero-web-api-metadata-only-verification-2026-06-16.md`
+  records the parent gitlink and lock update to `test-frame` Zotero Web API
+  metadata-only verification contract commit `b1925fc...`.
+- `test-frame-zotero-web-api-metadata-only-verification-return-review-2026-06-16.md`
+  records parent intake of test-frame synthetic/offline verification contracts
+  and negative canaries for Zotero Web API metadata-only evidence.
 - `parent-pin-review-opencode-zotero-web-api-metadata-only-adapter-2026-06-16.md`
   records the parent gitlink and lock update to `dev-frame-opencode` Zotero Web
   API metadata-only adapter commit `bd31f7f...`.
