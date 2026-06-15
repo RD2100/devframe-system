@@ -107,6 +107,9 @@ Latest parent pin review A22:
 Latest parent pin review A23:
 `integration/reports/parent-pin-review-a23-2026-06-15.md`
 
+Latest parent pin review A24:
+`integration/reports/parent-pin-review-a24-2026-06-15.md`
+
 Latest opencode evidence row command binding return review:
 `integration/reports/opencode-business-validation-evidence-row-command-binding-return-review-2026-06-15.md`
 
@@ -748,10 +751,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A23_OPENCODE_BUSINESS_VALIDATION_EVIDENCE_ROW_COMMAND_BINDING_PIN_REVIEW_PASS`
+Status: `A24_OPENCODE_PREAUTH_PILOT_SCENARIO_MATRIX_ROW_BINDING_PIN_REVIEW_PASS`
 
 Latest report:
-`integration/reports/parent-pin-review-a23-2026-06-15.md`
+`integration/reports/parent-pin-review-a24-2026-06-15.md`
 
 Current facts:
 
@@ -831,6 +834,9 @@ Current facts:
   committed head for A22.
 - `dev-frame-opencode` then completed evidence row command binding at
   `4333c1218d5c7871e090b8364bbe96c4e57ecd50`; parent accepted it for A23 pin.
+- `dev-frame-opencode` then completed preauth pilot scenario matrix row binding
+  at `5074f712f7d5bfd7cd40cba4fbaed49b9eadda42`; parent accepted it for A24
+  pin.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -862,6 +868,8 @@ Parent decision:
   committed `f29fe61...`.
 - A23 opencode business validation evidence row command binding pin review
   accepts clean committed `4333c12...`.
+- A24 opencode preauth pilot scenario matrix row binding pin review accepts
+  clean committed `5074f71...`.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.

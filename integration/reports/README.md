@@ -7,6 +7,11 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-a24-2026-06-15.md` records the parent gitlink and lock
+  update to clean committed `dev-frame-opencode` head `5074f71...`.
+- `opencode-preauth-pilot-scenario-matrix-row-binding-return-review-2026-06-15.md`
+  records parent intake of the local/offline preauth pilot scenario matrix row
+  binding schema hardening slice.
 - `parent-pin-review-a23-2026-06-15.md` records the parent gitlink and lock
   update to clean committed `dev-frame-opencode` head `4333c12...`.
 - `opencode-business-validation-evidence-row-command-binding-return-review-2026-06-15.md`
