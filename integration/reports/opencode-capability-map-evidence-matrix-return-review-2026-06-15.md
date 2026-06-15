@@ -4,26 +4,27 @@
 
 ## 状态
 
-`OPENCODE_CAPABILITY_MAP_EVIDENCE_MATRIX_A22_REVIEWED_AS_PIN_CANDIDATE`
+`OPENCODE_CAPABILITY_MAP_EVIDENCE_MATRIX_A22_ACCEPTED_FOR_PARENT_INTAKE`
 
 父仓审查了 `dev-frame-opencode` 从 A21 后继续推进的 local/offline 论文能力图谱、
-schema 关闭、证据包和 business validation evidence matrix 链条，并将
-`7ffc609...` 识别为 A22 pin 候选。
+schema 关闭、证据包、business validation evidence matrix 和 capability map hash
+绑定链条。
 
-后续父仓 pin 审查中，opencode 又前进到 dirty `f5b0c80...` 状态，所以本候选
-只作为已审记录保留，不作为最终 pin。
+最终父仓 pin 目标是 committed head
+`f5b0c80450aed908ae3cddc578c06962a86ddea7`。opencode 当前仍有 HOLD 到达前
+产生的未提交 WIP；这些 WIP 不纳入本次 pin。
 
 ## 来源
 
 - 模块：`dev-frame-opencode`
 - 分支：`codex/paper-audit-privacy-hard-gate`
 - A21 基线：`a1ed82bb06bb42f4ba0bb14c8518988302cd2894`
-- 当前候选：`7ffc609a1546efafd6849143b6ba2be5d0d0e573`
-- 最新提交信息：`Index capability map in business validation evidence`
+- 当前候选：`f5b0c80450aed908ae3cddc578c06962a86ddea7`
+- 最新提交信息：`Bind capability map hash in business validation`
 - evidence ZIP：
-  `D:\devframe-system\.agent\evidence\evidence-opencode-business-validation-capability-map-evidence-matrix-a1-7ffc609.zip`
+  `D:\devframe-system\.agent\evidence\evidence-opencode-business-validation-capability-map-hash-a1-f5b0c80.zip`
 - evidence ZIP SHA256：
-  `15E21DF9CF382308FAA06F74CDB8F62D8D2FBDC16C10F5AD578E67E4C1927E65`
+  `0B2D7DB7B3FFC5C142C4A1F5799A5FF7788EB0A658EA6B2768185F408732EBB9`
 
 ## 覆盖的提交链
 
@@ -47,6 +48,7 @@ schema 关闭、证据包和 business validation evidence matrix 链条，并将
 - `a680c6e` Expose capability map artifact in business validation
 - `dec0a32` Add paper capability map CLI artifact
 - `7ffc609` Index capability map in business validation evidence
+- `f5b0c80` Bind capability map hash in business validation
 
 ## 父仓侧验证
 
@@ -56,6 +58,8 @@ schema 关闭、证据包和 business validation evidence matrix 链条，并将
   -> PASS
 - `git diff --check a1ed82bb06bb42f4ba0bb14c8518988302cd2894..HEAD`
   -> PASS
+- f5 evidence package recorded business/MVP/schema guard tests
+  -> 24 passed
 
 ## 边界判断
 
@@ -66,6 +70,12 @@ schema 关闭、证据包和 business validation evidence matrix 链条，并将
 - capability map、schema closure、EvidenceManifest、paper evidence pack、
   business validation evidence matrix 的合同硬化；
 - 父仓候选审查记录。
+
+WIP 边界：
+
+- `ai-workflow-hub/tests/test_paper_business_capability_validation.py` 的未提交修改不纳入本次 pin；
+- `schemas/paper_business_validation_report.schema.json` 的未提交修改不纳入本次 pin；
+- 父仓只 pin `f5b0c80` committed state。
 
 不接受、不授权：
 
