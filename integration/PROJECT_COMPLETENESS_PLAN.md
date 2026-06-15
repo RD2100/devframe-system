@@ -119,6 +119,9 @@ Latest parent pin review A26:
 Latest parent pin review A27:
 `integration/reports/parent-pin-review-a27-2026-06-15.md`
 
+Latest parent pin review A28:
+`integration/reports/parent-pin-review-a28-2026-06-15.md`
+
 Latest Zotero metadata-only pilot blocked report:
 `integration/reports/zotero-metadata-only-pilot-blocked-newbib-2026-06-15.md`
 
@@ -763,10 +766,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A27_OPENCODE_PREAUTH_BLOCKER_NONCLAIM_CLOSED_SCOPE_PIN_REVIEW_PASS`
+Status: `A28_OPENCODE_ZOTERO_METADATA_EXPORT_SANITIZER_PIN_REVIEW_PASS`
 
 Latest report:
-`integration/reports/parent-pin-review-a27-2026-06-15.md`
+`integration/reports/parent-pin-review-a28-2026-06-15.md`
 
 Current facts:
 
@@ -858,6 +861,12 @@ Current facts:
 - `dev-frame-opencode` then completed preauth blocker/non-claim/reviewer
   verdict list closed-scope hardening at
   `bc53b8b3a17a2dc885b6dd726b560426382bd2e6`; parent accepted it for A27 pin.
+- `dev-frame-opencode` then completed Zotero metadata export sanitizer at
+  `c31e490d7297d192f0e7d6b3fd591a36e998ff3b`; parent accepted it for A28 pin.
+  This changes product behavior: ordinary Zotero/BibTeX exports containing
+  `abstract`, `file`, or `note` are sanitized instead of immediately blocked,
+  while malformed, empty, unsupported, oversized, and non-metadata inputs still
+  fail closed.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -897,9 +906,11 @@ Parent decision:
   committed `a852bf1...`.
 - A27 opencode preauth blocker/non-claim/reviewer verdict closed-scope pin
   review accepts clean committed `bc53b8b...`.
-- Next opencode priority is `OPENCODE_ZOTERO_METADATA_EXPORT_SANITIZER_A1`:
-  the software must sanitize user-provided Zotero/BibTeX exports instead of
-  requiring users to produce perfectly clean files.
+- A28 opencode Zotero metadata export sanitizer pin review accepts clean
+  committed `c31e490...`.
+- The user's `导出的条目2.bib` now passes metadata-only local/offline smoke after
+  sanitizer redaction: `PASS_METADATA_ONLY`, `SANITIZED_WITH_REDACTIONS`,
+  23 items, and removed field counts `abstract: 23`, `file: 2`, `note: 23`.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.

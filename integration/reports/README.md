@@ -7,6 +7,11 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-a28-2026-06-15.md` records the parent gitlink and lock
+  update to clean committed `dev-frame-opencode` head `c31e490...`.
+- `opencode-zotero-metadata-export-sanitizer-return-review-2026-06-15.md`
+  records parent intake of the Zotero metadata export sanitizer slice that
+  makes user-provided BibTeX exports usable after safe redaction.
 - `parent-pin-review-a27-2026-06-15.md` records the parent gitlink and lock
   update to clean committed `dev-frame-opencode` head `bc53b8b...`.
 - `opencode-preauth-blocker-nonclaim-closed-scope-return-review-2026-06-15.md`
