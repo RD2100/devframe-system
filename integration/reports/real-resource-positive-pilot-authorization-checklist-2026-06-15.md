@@ -12,13 +12,16 @@ authorize any runtime and does not claim live readiness.
 ## Current Safe Baseline
 
 - Parent branch: `codex/rdinit-phase-0-5`
-- Latest parent pin: `8f11a7344f6e6131430216223015defa5c45f973`
+- Latest parent pin: `df9537ac9f5a4e7a944e1cf65cd2275e0a098946`
 - Current pinned modules:
   - `agent-acceptance`: `75f8eb329778d4a8cffb28f6ba79b137038d4fed`
-  - `dev-frame-opencode`: `739082bc3ed970716605a61f31d1753f089d36d8`
+  - `dev-frame-opencode`: `f8de96134d61427854cd6e4c35e376914577e8af`
   - `devframe-control-plane`: `79399541b8426cff0f362b665bad09e3c23e974b`
   - `test-frame`: `c3353fb34900aa24f56df5b9c9230f3249d6c01a`
 - Executed external runtime in this preparation step: `false`
+- Baseline refresh note: the current pin includes local/offline closed-shape
+  schema gates through A17, including the human RuntimeAuthorization decision
+  packet boundary. It still does not authorize any real runtime.
 
 ## Hard Boundary
 
@@ -209,6 +212,8 @@ No-go if any are true:
 - Commands run:
   - `rg` over `integration`, `docs`, and `schemas` for authorization and pilot
     references.
+  - `git status --short --branch -uall`.
+  - `git submodule status --recursive`.
 - Commands not run:
   - no real MiniApp/H5/MeterSphere/cloud/Android/browser/CDP/ChatGPT/WriteLab;
   - no live Zotero/Obsidian/RAG/PDF/private paper;
