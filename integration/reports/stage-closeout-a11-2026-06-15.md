@@ -11,9 +11,14 @@ Parent branch:
 
 - `codex/rdinit-phase-0-5`
 
-Current parent head:
+A11 stage closeout baseline:
 
 - `b40fb99 Record A11 stage closeout`
+
+Note:
+
+- Later parent commits may update or correct reporting metadata without changing
+  the A11 pin set.
 
 Pinned submodules:
 
@@ -120,8 +125,8 @@ mutation that should be performed automatically.
 
 Recommended:
 
-- Push or PR parent head `b40fb99` or later if the current A11 baseline should
-  be shared.
+- Push or PR the latest parent head if the current A11 baseline should be
+  shared.
 
 Safe alternative:
 
