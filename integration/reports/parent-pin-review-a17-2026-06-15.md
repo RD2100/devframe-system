@@ -37,10 +37,9 @@ Keep the other module pins unchanged from the current parent baseline.
 - Evidence ZIP SHA256:
   `69DC3542CF33C4C64C4D39F443A41F18141A0CF9B825EC10A224F4AC6A0CE887`
 - Direct parent verification:
-  - human authorization request pytest: 12 passed
-  - adjacent real-pilot local/offline pytest group: 64 passed
-  - business capability validation: 7 passed
-  - human decision schema parse: PASS
+  - authorization decision pytest: 12 passed
+  - adjacent real-pilot local/offline pytest group: 71 passed
+  - JSON schema parse: PASS
   - diff check: PASS
 
 ## Boundary
