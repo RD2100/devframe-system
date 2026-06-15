@@ -131,6 +131,12 @@ Latest parent pin review A30:
 Latest parent pin review A31:
 `integration/reports/parent-pin-review-a31-2026-06-15.md`
 
+Latest parent pin review A32:
+`integration/reports/parent-pin-review-a32-2026-06-16.md`
+
+Latest opencode RDF/XML metadata parser hardening return review:
+`integration/reports/opencode-zotero-rdf-xml-parser-hardening-return-review-2026-06-16.md`
+
 Latest real Zotero metadata-only pilot return review:
 `integration/reports/opencode-real-zotero-metadata-only-pilot-return-review-2026-06-15.md`
 
@@ -778,10 +784,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A31_OPENCODE_REAL_ZOTERO_METADATA_ONLY_PILOT_PIN_REVIEW_PASS`
+Status: `A32_OPENCODE_ZOTERO_RDF_XML_PARSER_HARDENING_PIN_REVIEW_PASS`
 
 Latest report:
-`integration/reports/parent-pin-review-a31-2026-06-15.md`
+`integration/reports/parent-pin-review-a32-2026-06-16.md`
 
 Current facts:
 
@@ -894,6 +900,11 @@ Current facts:
   `PASS_METADATA_ONLY`, detected `23` items, sanitized `abstract=23`,
   `file=2`, and `note=23`, and GPT accepted the milestone with limitations.
   Parent accepted it for A31 pin.
+- `dev-frame-opencode` then completed Zotero RDF/XML metadata-only parser
+  hardening at `6b4a3aaf3b8a6b7ee3877014ccc7b6a11f8d639d`. The real RDF smoke
+  used a user-provided export file only, produced `PASS_METADATA_ONLY`,
+  detected `23` items, sanitized `abstract=23` and `uri=23`, and GPT accepted
+  the slice with limitations. Parent accepted it for A32 pin.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -946,6 +957,10 @@ Parent decision:
   `b086ca2...` with limitations. This is a metadata-export-file milestone only,
   not Zotero app/API, PDF/full-text, Obsidian, RAG, WriteLab, MiniApp,
   browser/CDP, cloud, or final governance acceptance.
+- A32 opencode Zotero RDF/XML metadata parser hardening pin review accepts
+  `6b4a3aa...` with limitations. This expands metadata-only export-file
+  coverage to RDF/XML, but remains non-final and does not authorize app/API,
+  PDF/full-text, Obsidian, RAG, WriteLab, MiniApp, browser/CDP, or cloud.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.

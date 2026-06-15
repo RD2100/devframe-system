@@ -7,6 +7,13 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-a32-2026-06-16.md` records the parent gitlink and lock
+  update to `dev-frame-opencode` Zotero RDF/XML metadata-only parser hardening
+  commit `6b4a3aa...`.
+- `opencode-zotero-rdf-xml-parser-hardening-return-review-2026-06-16.md`
+  records parent intake of the narrow RDF/XML metadata export parser
+  hardening: real RDF smoke, sanitizer redaction, and
+  `accepted_with_limitations` boundary.
 - `parent-pin-review-a31-2026-06-15.md` records the parent gitlink and lock
   update to `dev-frame-opencode` real Zotero metadata-only pilot code baseline
   `b086ca2...`.
