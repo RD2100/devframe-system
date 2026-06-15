@@ -8,8 +8,7 @@ reports.
 Current reports:
 
 - `parent-pin-review-a22-2026-06-15.md` records the parent gitlink and lock
-  update to committed `dev-frame-opencode` head `f5b0c80...`; dirty WIP is
-  explicitly excluded.
+  update to clean committed `dev-frame-opencode` head `f29fe61...`.
 - `opencode-capability-map-evidence-matrix-return-review-2026-06-15.md`
   records parent intake of the latest local/offline opencode capability-map
   and business validation evidence-matrix chain.

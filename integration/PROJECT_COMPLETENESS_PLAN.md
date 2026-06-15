@@ -742,7 +742,7 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A22_OPENCODE_CAPABILITY_MAP_HASH_PIN_REVIEW_PASS_WITH_DIRTY_WIP_NOTE`
+Status: `A22_OPENCODE_BUSINESS_VALIDATION_EVIDENCE_MATRIX_PIN_REVIEW_PASS`
 
 Latest report:
 `integration/reports/parent-pin-review-a22-2026-06-15.md`
@@ -819,8 +819,10 @@ Current facts:
   A22 candidate.
 - During A22 pin review, `dev-frame-opencode` advanced again to
   `f5b0c80450aed908ae3cddc578c06962a86ddea7`; parent sent
-  `HOLD-3_FROM_PARENT_CONTROL`, then pinned that committed head while excluding
-  the remaining dirty WIP from the parent commit.
+  `HOLD-3_FROM_PARENT_CONTROL`.
+- `dev-frame-opencode` then completed the evidence matrix enum closure at
+  `f29fe61fdf9952bfa77fe6e5f858219293355641`; parent pinned that clean
+  committed head for A22.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -848,8 +850,8 @@ Parent decision:
   accepts `3f6d64a...`.
 - A21 opencode preauth pilot scenario matrix closed-shape schema pin review
   accepts `a1ed82b...`.
-- A22 opencode capability-map hash pin review accepts committed
-  `f5b0c80...`; dirty WIP remains outside parent pin.
+- A22 opencode business validation evidence matrix pin review accepts clean
+  committed `f29fe61...`.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.

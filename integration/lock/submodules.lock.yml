@@ -21,7 +21,7 @@ modules:
     path: "dev-frame-opencode"
     role: "opencode_workflow_runtime_candidate"
     branch: "codex/paper-audit-privacy-hard-gate"
-    commit: "f5b0c80450aed908ae3cddc578c06962a86ddea7"
+    commit: "f29fe61fdf9952bfa77fe6e5f858219293355641"
     remote: "https://github.com/RD2100/dev-frame-opencode.git"
   test-frame:
     path: "test-frame"
