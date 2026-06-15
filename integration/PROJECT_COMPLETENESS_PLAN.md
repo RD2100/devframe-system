@@ -74,8 +74,8 @@ Latest parent pin review A9:
 Latest opencode evidence-manifest boundary return review:
 `integration/reports/opencode-zotero-evidence-manifest-boundary-return-review-2026-06-15.md`
 
-Latest parent pin review A12:
-`integration/reports/parent-pin-review-a12-2026-06-15.md`
+Latest parent pin review A13:
+`integration/reports/parent-pin-review-a13-2026-06-15.md`
 
 Latest grouped parent pin:
 `integration/reports/grouped-parent-pin-a10-2026-06-15.md`
@@ -691,10 +691,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A12_OPENCODE_RECORD_SHAPE_SCHEMA_PIN_REVIEW_PASS`
+Status: `A13_OPENCODE_MANIFEST_CLOSED_SHAPE_PIN_REVIEW_PASS`
 
 Latest report:
-`integration/reports/parent-pin-review-a12-2026-06-15.md`
+`integration/reports/parent-pin-review-a13-2026-06-15.md`
 
 Current facts:
 
@@ -728,6 +728,9 @@ Current facts:
 - `dev-frame-opencode` then advanced to Zotero manifest record-shape schema
   hardening at `3c08f3aaadae8282a5ca6d11676d1826d5895ee5`; parent intake
   accepted it for A12 pin.
+- `dev-frame-opencode` then advanced to Zotero manifest closed-shape schema
+  hardening at `4d8c57543bdf77023e7b4dc9e6abca7990dc0ab6`; parent intake
+  accepted it for A13 pin.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -739,4 +742,5 @@ Parent decision:
 - A12 agent-acceptance evidence-ignore hygiene has been applied for
   `75f8eb...`.
 - A12 opencode record-shape schema pin review accepts `3c08f3a...`.
+- A13 opencode manifest closed-shape schema pin review accepts `4d8c575...`.
 - Do not authorize real runtime or final acceptance from this pin review.
