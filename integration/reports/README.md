@@ -7,6 +7,13 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-a31-2026-06-15.md` records the parent gitlink and lock
+  update to `dev-frame-opencode` real Zotero metadata-only pilot code baseline
+  `b086ca2...`.
+- `opencode-real-zotero-metadata-only-pilot-return-review-2026-06-15.md`
+  records parent intake of the metadata-export-file pilot milestone: user
+  BibTeX export, sanitizer redaction, `PASS_METADATA_ONLY`, and
+  `accepted_with_limitations` boundary.
 - `parent-pin-review-a30-2026-06-15.md` records the parent gitlink and lock
   update to clean committed `dev-frame-opencode` head `f5a62ae...`.
 - `opencode-citation-metadata-privacy-fields-return-review-2026-06-15.md`

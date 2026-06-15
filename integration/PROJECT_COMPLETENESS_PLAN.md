@@ -128,6 +128,12 @@ Latest parent pin review A29:
 Latest parent pin review A30:
 `integration/reports/parent-pin-review-a30-2026-06-15.md`
 
+Latest parent pin review A31:
+`integration/reports/parent-pin-review-a31-2026-06-15.md`
+
+Latest real Zotero metadata-only pilot return review:
+`integration/reports/opencode-real-zotero-metadata-only-pilot-return-review-2026-06-15.md`
+
 Latest Zotero metadata-only pilot blocked report:
 `integration/reports/zotero-metadata-only-pilot-blocked-newbib-2026-06-15.md`
 
@@ -772,10 +778,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A30_OPENCODE_CITATION_METADATA_PRIVACY_FIELDS_PIN_REVIEW_PASS`
+Status: `A31_OPENCODE_REAL_ZOTERO_METADATA_ONLY_PILOT_PIN_REVIEW_PASS`
 
 Latest report:
-`integration/reports/parent-pin-review-a30-2026-06-15.md`
+`integration/reports/parent-pin-review-a31-2026-06-15.md`
 
 Current facts:
 
@@ -882,6 +888,12 @@ Current facts:
   pin. Citation integrity now treats common Zotero export private fields such
   as `abstract`, `abstractNote`, `attachmentPath`, `file`, `filePath`, `note`,
   and `notes` as forbidden raw source fields.
+- `dev-frame-opencode` then completed the real Zotero metadata-only pilot
+  chain at code baseline `b086ca283fb71b16833acc3461e42a3e2e727456`. The run
+  used a user-provided BibTeX metadata export file only, produced
+  `PASS_METADATA_ONLY`, detected `23` items, sanitized `abstract=23`,
+  `file=2`, and `note=23`, and GPT accepted the milestone with limitations.
+  Parent accepted it for A31 pin.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -930,6 +942,10 @@ Parent decision:
   accepts clean committed `01a59d7...`.
 - A30 opencode citation metadata privacy-field hardening pin review accepts
   clean committed `f5a62ae...`.
+- A31 opencode real Zotero metadata-only pilot pin review accepts code baseline
+  `b086ca2...` with limitations. This is a metadata-export-file milestone only,
+  not Zotero app/API, PDF/full-text, Obsidian, RAG, WriteLab, MiniApp,
+  browser/CDP, cloud, or final governance acceptance.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.
