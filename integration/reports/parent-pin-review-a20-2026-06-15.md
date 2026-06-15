@@ -38,8 +38,7 @@ Keep the other module pins unchanged from the current parent baseline.
   `FF62578464EA88AFB21DA240B1372C69B2ED6925C0CCD0174D2FFA63F60987BD`
 - Direct parent verification:
   - preauth packet pytest: 8 passed
-  - adjacent real-pilot local/offline pytest group: 67 passed
-  - business capability validation: 7 passed
+  - adjacent real-pilot local/offline pytest group: 74 passed
   - preauth packet schema parse: PASS
   - diff check: PASS
 

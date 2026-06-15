@@ -37,12 +37,10 @@ The slice tightens the preauthorization packet schema:
 
 ## Parent Verification
 
-- `$env:PYTHONPATH='src'; python -m pytest tests\test_paper_real_pilot_preauth_packet.py -q`
+- `$env:PYTHONPATH='ai-workflow-hub\src'; python -m pytest ai-workflow-hub\tests\test_paper_real_pilot_preauth_packet.py -q`
   -> 8 passed
-- `$env:PYTHONPATH='src'; $files = Get-ChildItem tests -Filter 'test_paper_real_pilot_*.py' | ForEach-Object { $_.FullName }; python -m pytest @files tests\test_paper_real_zotero_metadata_only_pilot.py -q`
-  -> 67 passed
-- `$env:PYTHONPATH='src'; python -m pytest tests\test_paper_business_capability_validation.py -q`
-  -> 7 passed
+- `$env:PYTHONPATH='ai-workflow-hub\src'; python -m pytest ai-workflow-hub\tests\test_paper_real_pilot_preauth_packet.py ai-workflow-hub\tests\test_paper_real_pilot_authorization_request.py ai-workflow-hub\tests\test_paper_real_pilot_blocking.py ai-workflow-hub\tests\test_paper_real_pilot_local_dry_run.py ai-workflow-hub\tests\test_paper_real_zotero_metadata_only_pilot.py ai-workflow-hub\tests\test_paper_business_capability_validation.py -q`
+  -> 74 passed
 - `python -m json.tool schemas\paper_real_pilot_preauth_packet.schema.json > $null`
   -> PASS
 - `git diff --check` -> PASS, CRLF warnings only
