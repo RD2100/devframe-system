@@ -7,6 +7,12 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-opencode-zotero-web-api-metadata-only-adapter-2026-06-16.md`
+  records the parent gitlink and lock update to `dev-frame-opencode` Zotero Web
+  API metadata-only adapter commit `bd31f7f...`.
+- `opencode-zotero-web-api-metadata-only-adapter-return-review-2026-06-16.md`
+  records parent intake of the reusable Zotero Web API metadata-only adapter
+  and minimized live smoke evidence.
 - `zotero-web-api-metadata-only-preflight-pass-2026-06-16.md` records the
   authorized Zotero Web API metadata-only preflight pass after sync: 23
   `journalArticle` metadata records were read while notes, attachments, PDF,

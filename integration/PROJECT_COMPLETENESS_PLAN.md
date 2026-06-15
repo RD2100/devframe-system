@@ -155,6 +155,12 @@ Latest real Zotero metadata export smoke return review:
 Latest Zotero Web API metadata-only preflight:
 `integration/reports/zotero-web-api-metadata-only-preflight-pass-2026-06-16.md`
 
+Latest opencode Zotero Web API metadata-only adapter return review:
+`integration/reports/opencode-zotero-web-api-metadata-only-adapter-return-review-2026-06-16.md`
+
+Latest opencode Zotero Web API metadata-only adapter parent pin review:
+`integration/reports/parent-pin-review-opencode-zotero-web-api-metadata-only-adapter-2026-06-16.md`
+
 Previous Zotero Web API metadata-only blocked preflight:
 `integration/reports/zotero-web-api-metadata-only-preflight-blocked-2026-06-16.md`
 
@@ -1028,6 +1034,14 @@ Parent decision:
   types. No raw items, raw titles, raw abstracts, API key, notes, attachments,
   PDF, full text, Obsidian, RAG, WriteLab, browser/CDP, cloud, or final
   acceptance claim was persisted.
+- `dev-frame-opencode` then implemented the reusable Zotero Web API
+  metadata-only adapter and CLI at
+  `bd31f7feb4353412d2ac70cf614f4db3b70c3770`. The live smoke read `23`
+  `journalArticle` metadata records from `api.zotero.org`, persisted minimized
+  evidence only, and kept API key, raw user id, raw item JSON, raw titles, raw
+  abstracts, notes, attachments, PDF, full text, Obsidian, RAG, WriteLab,
+  browser/CDP, cloud, and final acceptance out of scope. Parent accepted it for
+  pin review.
 - `dev-frame-opencode` then completed an evidence-only manual-input metadata
   batch smoke at already-pinned `f9ab656...`: two BibTeX inputs and one RDF
   input each produced `PASS_METADATA_ONLY` with sanitizer redactions, raw export
