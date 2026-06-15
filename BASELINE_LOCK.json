@@ -11,8 +11,8 @@
       "role": "governance_acceptance_framework",
       "remote": "https://github.com/RD2100/agent-acceptance.git",
       "branch": "codex/paper-archive-final-verdict-boundary",
-      "commit": "b9bb53a72bbd7b4c4e4402aca11b4cc67f9506f5",
-      "pre_pin_status": "accepted_parent_canary_gate_with_untracked_evidence_note"
+      "commit": "75f8eb329778d4a8cffb28f6ba79b137038d4fed",
+      "pre_pin_status": "accepted_parent_canary_gate_with_local_evidence_ignore_cleanup"
     },
     {
       "project_id": "devframe-control-plane",

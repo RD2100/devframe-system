@@ -123,6 +123,9 @@ Current reports:
   return from `agent-acceptance`.
 - `stage-closeout-a11-2026-06-15.md` records the A11 stage closeout, current
   usable baseline, remaining human decisions, and no-real-runtime boundary.
+- `agent-acceptance-evidence-ignore-a12-2026-06-15.md` records the narrow
+  `agent-acceptance` local evidence ignore cleanup, parent gitlink/lock update,
+  and the explicit decision not to pin concurrent `dev-frame-opencode` work.
 - `contract-alignment-matrix-v1-2026-06-15.md` records S06 contract alignment:
   producers, consumers, required fields, invalid cases, schema coverage, and
   non-equivalence rules.
