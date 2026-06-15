@@ -13,7 +13,7 @@ Parent branch:
 
 Current parent head:
 
-- `3bcf436 Record A11 cross-module smoke intake`
+- `b40fb99 Record A11 stage closeout`
 
 Pinned submodules:
 
@@ -120,7 +120,8 @@ mutation that should be performed automatically.
 
 Recommended:
 
-- Push or PR parent head `3bcf436` if the current A11 baseline should be shared.
+- Push or PR parent head `b40fb99` or later if the current A11 baseline should
+  be shared.
 
 Safe alternative:
 
