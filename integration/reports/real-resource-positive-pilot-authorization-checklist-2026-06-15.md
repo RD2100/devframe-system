@@ -13,18 +13,18 @@ authorize any runtime and does not claim live readiness.
 
 - Parent branch: `codex/rdinit-phase-0-5`
 - Latest parent pin review:
-  `integration/reports/parent-pin-review-a20-2026-06-15.md`
+  `integration/reports/parent-pin-review-a21-2026-06-15.md`
 - Current pinned modules:
   - `agent-acceptance`: `75f8eb329778d4a8cffb28f6ba79b137038d4fed`
-  - `dev-frame-opencode`: `3f6d64a534a29ffe256346b8758cdb87fd864b02`
+  - `dev-frame-opencode`: `a1ed82bb06bb42f4ba0bb14c8518988302cd2894`
   - `devframe-control-plane`: `79399541b8426cff0f362b665bad09e3c23e974b`
   - `test-frame`: `c3353fb34900aa24f56df5b9c9230f3249d6c01a`
 - Executed external runtime in this preparation step: `false`
 - Baseline refresh note: the current pin includes local/offline closed-shape
-  schema gates through A20, including the human RuntimeAuthorization decision
+  schema gates through A21, including the human RuntimeAuthorization decision
   packet boundary, `agent_acceptance_rules` governance-readiness boundary, and
-  preauth authorization and reviewer verdict template boundaries. It still does
-  not authorize any real runtime.
+  preauth authorization, reviewer verdict, and pilot scenario matrix
+  boundaries. It still does not authorize any real runtime.
 
 ## Hard Boundary
 
