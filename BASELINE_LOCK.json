@@ -20,7 +20,7 @@
       "role": "control_plane_runtime_candidate",
       "remote": "https://github.com/RD2100/devframe-control-plane.git",
       "branch": "codex/lease-source-lock-contracts",
-      "commit": "b001cea174e3a4224bea68786adbb10cd82ce84f",
+      "commit": "79399541b8426cff0f362b665bad09e3c23e974b",
       "pre_pin_status": "clean_submodule_branch_committed"
     },
     {
@@ -29,7 +29,7 @@
       "role": "opencode_workflow_runtime_candidate",
       "remote": "https://github.com/RD2100/dev-frame-opencode.git",
       "branch": "codex/paper-audit-privacy-hard-gate",
-      "commit": "08ac4f593006d62bf5b096133dfe9212cce8e49f",
+      "commit": "0c24204fd99e6cab1d853ecadb12200244119fe1",
       "pre_pin_status": "clean_submodule_branch_committed"
     },
     {
@@ -38,7 +38,7 @@
       "role": "controlled_verification_runtime_candidate",
       "remote": "https://github.com/RD2100/test-frame.git",
       "branch": "codex/adapter-negative-matrix",
-      "commit": "891b10658c69356cd5a587c3f120fdfdc2b9cb8d",
+      "commit": "7940891cf5643f59fb50709c6ac77137d861b4c1",
       "pre_pin_status": "clean_submodule_branch_committed"
     }
   ],

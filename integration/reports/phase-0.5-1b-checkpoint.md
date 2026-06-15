@@ -2,7 +2,7 @@
 
 Date: 2026-06-15
 Branch: `codex/rdinit-phase-0-5`
-Status: checkpoint only, not final acceptance; machine-readable Paper Business Validation report artifact candidate recorded with boundary
+Status: checkpoint only, not final acceptance; SD-07 readiness slices pinned with boundary
 
 ## Summary
 
@@ -15,9 +15,9 @@ superproject has advanced submodule gitlinks to committed branch tips.
 | Module | Branch | Status | Review focus |
 |---|---|---|---|
 | `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `38d7b2e` | Path drift, expired authorization, HUMAN_REQUIRED preservation, paper archive SD-04, dispatch/test-frame/control-plane SD-05, paper business-validation SD-06, and real-content/live WriteLab SD-07 RuntimeAuthorization boundary |
-| `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `b001cea` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion, in-memory runtime contract probe, and dry-run state machine |
-| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `08ac4f5` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, focused mojibake cleanup, post-run write-set hard gate, paper audit privacy hard gate, Security Preflight P1 reviewed gates, and machine-readable synthetic/offline paper business validation report |
-| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `891b106` | Adapter mapping, required/optional profile semantics, fake-green canaries, paper reviewer-pack negative fixtures, business-validation negative fixtures, and business report shape negative fixtures |
+| `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `7939954` | DispatchAssignment, WorkerLease, runtime SourceLock, stale completion, in-memory runtime contract probe, dry-run state machine, and paper RuntimeAuthorization dry-run guard |
+| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `0c24204` | RuntimeAuthorization, EvidenceManifest, paper schema/fixture readability, runtime/API privacy gate, WriteLab handoff fixture coverage, audit sensitive scan, live WriteLab authorization guard, CLI status boundary, redacted reviewer pack boundary, finalizer acceptance boundary, focused mojibake cleanup, post-run write-set hard gate, paper audit privacy hard gate, Security Preflight P1 reviewed gates, machine-readable synthetic/offline paper business validation report, and visible SD-07 report gate |
+| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `7940891` | Adapter mapping, required/optional profile semantics, fake-green canaries, paper reviewer-pack negative fixtures, business-validation negative fixtures, business report shape negative fixtures, and SD-07 synthetic-live canary |
 
 ## Paper Focus
 
@@ -99,6 +99,16 @@ Completed in the `dev-frame-opencode` submodule branch:
   real-content/live WriteLab evidence cannot pass without fresh scoped
   RuntimeAuthorization, non-empty human gate evidence, sensitive-field
   authorization, and required redaction flags.
+- Added visible SD-07 governance gate output in `dev-frame-opencode` commit
+  `0c24204` so `paper business-validate` JSON reports expose candidate-only
+  real-content/live readiness boundaries in the machine-readable schema.
+- Added `test-frame` NEG-049 in commit `7940891` so synthetic/offline paper
+  reports that claim `live_execution_authorized=true` are a P0 negative
+  canary.
+- Added `devframe-control-plane` paper RuntimeAuthorization dry-run guard in
+  commit `7939954` so paper real-content/live WriteLab dispatch metadata is
+  blocked without fresh scoped RuntimeAuthorization and creates no active
+  assignment.
 
 Security Preflight status:
 
@@ -202,6 +212,17 @@ Allowed local verification only:
   -> generated `profile=paper_business_validation_report`,
   `validation_mode=synthetic_offline`, `candidate_status=BUSINESS_CAPABILITY_VALIDATION_CANDIDATE`,
   `runtime_authorization_required_for_real_content=true`, and 14 command-chain entries.
+- `dev-frame-opencode`: after commit `0c24204`,
+  `python -m pytest ai-workflow-hub\tests\test_paper_business_capability_validation.py -q`
+  -> `7 passed in 0.69s`.
+- `dev-frame-opencode`: after commit `0c24204`,
+  `python -m pytest ai-workflow-hub\tests\test_paper_business_capability_validation.py ai-workflow-hub\tests\test_paper_cli.py ai-workflow-hub\tests\test_paper_cli_a18.py ai-workflow-hub\tests\test_paper_cli_a18b.py -q`
+  -> `104 passed in 3.01s`.
+- `dev-frame-opencode`: after commit `0c24204`,
+  `python -m ai_workflow_hub.cli paper business-validate` JSON probe ->
+  `gate=SD-07`, `candidate=True`,
+  `real=blocked_until_fresh_runtime_authorization`, and
+  `live=blocked_until_dedicated_pilot_taskspec`.
 - `dev-frame-opencode`: with `PYTHONPATH` set to the submodule source path,
   the current paper regression group -> `435 passed in 13.62s`.
 - `test-frame`: `python -m pytest tests\test_paper_negative_fixtures.py tests\contracts\test_contracts.py tests\schema\test_canonical.py -q`
@@ -209,6 +230,15 @@ Allowed local verification only:
 - `test-frame`: after commit `891b106`,
   `python -m pytest tests\test_paper_negative_fixtures.py tests\contracts\test_contracts.py tests\schema\test_canonical.py -q`
   -> `19 passed in 0.31s`.
+- `test-frame`: after commit `7940891`,
+  `python -m pytest tests\test_paper_negative_fixtures.py tests\contracts\test_contracts.py tests\schema\test_canonical.py -q`
+  -> `19 passed in 0.21s`.
+- `devframe-control-plane`: after commit `7939954`,
+  `python -m pytest tests\test_runtime_contract_probe.py -q`
+  -> `21 passed in 0.06s`.
+- `devframe-control-plane`: after commit `7939954`, unauthorized paper live
+  dispatch probe -> `allowed=False`, `code=RUNTIME_AUTHORIZATION_REQUIRED`,
+  `assignments=0`, `failures=1`.
 - `agent-acceptance`: `python -m pytest tests\test_workflow_closure_validation.py -q`
   -> `23 passed in 0.11s`.
 - `agent-acceptance`: `python -m compileall -q scripts\validate_workflow_closure.py` -> passed.

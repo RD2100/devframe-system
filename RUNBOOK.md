@@ -63,9 +63,9 @@ Current submodule branch outputs:
 | Module | Branch | Main-thread status |
 |---|---|---|
 | `agent-acceptance` | `codex/paper-archive-final-verdict-boundary` | Pinned at `38d7b2e`; SD-04, SD-05, SD-06, and SD-07 RuntimeAuthorization boundaries active |
-| `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `b001cea`; runtime contract probe plus dry-run state machine active, runtime enforcement remains future work |
-| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `891b106`; paper reviewer-pack, business-validation, and business report negative matrix active, canary implementation remains future work |
-| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `08ac4f5`; paper runtime/privacy/write-scope/audit privacy boundaries, Security Preflight P1 reviewed gates, and machine-readable synthetic/offline business validation report active |
+| `devframe-control-plane` | `codex/lease-source-lock-contracts` | Pinned at `7939954`; runtime contract probe, dry-run state machine, and paper RuntimeAuthorization dry-run guard active; runtime enforcement remains future work |
+| `test-frame` | `codex/adapter-negative-matrix` | Pinned at `7940891`; paper reviewer-pack, business-validation, business report, and SD-07 synthetic-live negative matrix active, canary implementation remains future work |
+| `dev-frame-opencode` | `codex/paper-audit-privacy-hard-gate` | Pinned at `0c24204`; paper runtime/privacy/write-scope/audit privacy boundaries, Security Preflight P1 reviewed gates, machine-readable synthetic/offline business validation report, and visible SD-07 report gate active |
 
 Current delegated next-slice assignments:
 
@@ -75,6 +75,9 @@ Current delegated next-slice assignments:
 | `TS-TEST-FRAME-BUSINESS-REPORT-NEGATIVES.md` | `test-frame` | Completed in `891b106`: negative fixtures/tests for business validation report shape |
 | `TS-AGENT-ACCEPTANCE-SD07-AUTH-GATE.md` | `agent-acceptance` | Read-only completed and implementation pinned in `38d7b2e`: SD-07 real-content/live WriteLab RuntimeAuthorization boundary |
 | `TS-CONTROL-PLANE-DRY-RUN-STATE-MACHINE.md` | `devframe-control-plane` | Completed in `b001cea`: pure in-memory dry-run state machine/validator candidate |
+| `TS-OPENCODE-PAPER-SD07-REPORT-UX.md` | `dev-frame-opencode` | Completed in `0c24204`: visible SD-07 governance gate in paper business-validation report |
+| `TS-TEST-FRAME-SD07-NEGATIVE-REVIEW.md` | `test-frame` | Completed in `7940891`: SD-07 NEG-049 synthetic/live authorization canary |
+| `TS-CONTROL-PLANE-PAPER-AUTH-DRY-RUN-GUARD.md` | `devframe-control-plane` | Completed in `7939954`: paper real-content/live RuntimeAuthorization dry-run guard |
 
 ## Paper Focus
 
@@ -89,9 +92,12 @@ review has passed with boundary; real paper content and live WriteLab flows
 still require fresh RuntimeAuthorization before execution.
 
 Paper Business Validation report artifact candidate evidence is tracked in
-`integration\reports\paper-business-validation-2026-06-15.md`. Treat that
-candidate as review input only: it validates the synthetic/offline command,
-schema, JSON artifact, and evidence shape, not final user acceptance.
+`integration\reports\paper-business-validation-2026-06-15.md`. Cross-module
+SD-07 readiness slice evidence is tracked in
+`integration\reports\sd07-readiness-slices-2026-06-15.md`. Treat those
+candidates as review input only: they validate the synthetic/offline command,
+schema, JSON artifact, negative matrix, and dry-run guard shape, not final user
+acceptance.
 
 SD-07 RuntimeAuthorization boundary evidence is tracked in
 `integration\reports\sd07-runtime-authorization-boundary-2026-06-15.md`. Treat

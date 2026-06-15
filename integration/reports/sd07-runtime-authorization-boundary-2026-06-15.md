@@ -22,6 +22,20 @@ runtime.
 |---|---:|---|---|
 | `agent-acceptance` | `38d7b2e0aad226cce5732cb4d56e45ae2d065ec7` | SD-07 implemented and self-verified | `scripts/validate_workflow_closure.py`; `tests/test_workflow_closure_validation.py`; `docs/agent-runtime/negative-test-fixtures/NEG-044` through `NEG-046`; `_evidence/paper-real-content-runtime-authorization-boundary-a1/` |
 
+## Related Readiness Slices
+
+These slices make SD-07 visible to adjacent modules but do not authorize live
+or real-content execution:
+
+- `dev-frame-opencode` commit `0c24204`: exposes `sd07_governance_gate` in
+  `paper business-validate` JSON output, schema, tests, and docs.
+- `test-frame` commit `7940891`: adds `NEG-049` for synthetic/offline reports
+  that incorrectly claim live execution authorization.
+- `devframe-control-plane` commit `7939954`: blocks paper real-content/live
+  WriteLab dry-run dispatch metadata without fresh scoped RuntimeAuthorization.
+- Detailed verification is recorded in
+  `integration/reports/sd07-readiness-slices-2026-06-15.md`.
+
 ## Main-Thread Verification
 
 - `python -m py_compile scripts\validate_workflow_closure.py tests\test_workflow_closure_validation.py` -> passed.

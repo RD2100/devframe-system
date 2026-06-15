@@ -28,14 +28,19 @@ development. The source implementation currently lives in
 5. Review the machine-readable Paper Function Business Validation report
    candidate with synthetic/offline evidence; keep real content gated by the
    pinned SD-07 boundary and fresh RuntimeAuthorization.
+6. Treat the SD-07 report UX, negative canary, and control-plane dry-run guard
+   as a cross-module readiness slice that still requires independent review.
 
 ## Current Gate
 
-`PAPER_BUSINESS_VALIDATION_REPORT_ARTIFACT_CANDIDATE_WITH_SD07_GATE`
+`PAPER_SD07_READINESS_SLICES_PINNED`
 
 Next target:
 
-Human review of the synthetic/offline report candidate, then a separate pilot
+Independent review of the SD-07 readiness slices, then a separate pilot
 TaskSpec only after fresh RuntimeAuthorization exists. SD-07 is pinned in
-`agent-acceptance` commit `38d7b2e`; it is a gate, not authorization to run real
-paper content.
+`agent-acceptance` commit `38d7b2e`; `dev-frame-opencode` commit `0c24204`
+exposes it in the report artifact; `test-frame` commit `7940891` adds the
+synthetic-live canary; `devframe-control-plane` commit `7939954` adds the
+dry-run dispatch guard. This is a gate, not authorization to run real paper
+content.
