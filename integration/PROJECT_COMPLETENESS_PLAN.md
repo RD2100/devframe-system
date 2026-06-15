@@ -140,6 +140,9 @@ Latest security closeout:
 Latest opencode grouped command policy return review:
 `integration/reports/opencode-grouped-command-policy-return-review-2026-06-16.md`
 
+Latest opencode manual-input metadata batch smoke return review:
+`integration/reports/opencode-manual-input-metadata-batch-smoke-return-review-2026-06-16.md`
+
 Latest parent current status overview:
 `integration/reports/parent-current-status-overview-2026-06-16.md`
 
@@ -977,6 +980,11 @@ Parent decision:
   - `devframe-control-plane` at `09167bc...`;
   - `test-frame` at `a30758a...`.
   This is targeted-regression proof, not a four-repository full-suite pass.
+- `dev-frame-opencode` then completed an evidence-only manual-input metadata
+  batch smoke at already-pinned `f9ab656...`: two BibTeX inputs and one RDF
+  input each produced `PASS_METADATA_ONLY` with sanitizer redactions, raw export
+  files absent from the ZIP, and GPT accepted the result with limitations. No
+  new gitlink update was required.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.

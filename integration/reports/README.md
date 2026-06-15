@@ -7,6 +7,9 @@ reports.
 
 Current reports:
 
+- `opencode-manual-input-metadata-batch-smoke-return-review-2026-06-16.md`
+  records parent intake of the evidence-only manual-input Zotero metadata export
+  batch smoke at already-pinned `dev-frame-opencode` head `f9ab656...`.
 - `opencode-grouped-command-policy-return-review-2026-06-16.md` records parent
   intake of the grouped `dev-frame-opencode` command execution policy and
   command policy matrix security hardening batch at `f9ab656...`.
