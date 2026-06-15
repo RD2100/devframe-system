@@ -101,6 +101,12 @@ Latest parent pin review A20:
 Latest parent pin review A21:
 `integration/reports/parent-pin-review-a21-2026-06-15.md`
 
+Latest parent pin review A22:
+`integration/reports/parent-pin-review-a22-2026-06-15.md`
+
+Latest opencode capability-map evidence matrix return review:
+`integration/reports/opencode-capability-map-evidence-matrix-return-review-2026-06-15.md`
+
 Latest opencode summary sample closed-shape return review:
 `integration/reports/opencode-zotero-summary-sample-closed-shape-return-review-2026-06-15.md`
 
@@ -736,10 +742,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A21_OPENCODE_PREAUTH_PILOT_SCENARIO_MATRIX_CLOSED_SHAPE_PIN_REVIEW_PASS`
+Status: `A22_OPENCODE_CAPABILITY_MAP_PIN_REVIEW_NO_GO_MOVING_DIRTY_HEAD`
 
 Latest report:
-`integration/reports/parent-pin-review-a21-2026-06-15.md`
+`integration/reports/parent-pin-review-a22-2026-06-15.md`
 
 Current facts:
 
@@ -806,6 +812,14 @@ Current facts:
   closed-shape schema hardening at
   `a1ed82bb06bb42f4ba0bb14c8518988302cd2894`; parent intake accepted it for
   A21 pin.
+- `dev-frame-opencode` then advanced through 20 local/offline schema closure,
+  EvidenceManifest, paper evidence pack, capability map, and business
+  validation evidence-matrix commits to
+  `7ffc609a1546efafd6849143b6ba2be5d0d0e573`; parent intake reviewed it as an
+  A22 candidate.
+- During A22 pin review, `dev-frame-opencode` advanced again to
+  `f5b0c80450aed908ae3cddc578c06962a86ddea7` and became dirty, so parent sent
+  `HOLD-3_FROM_PARENT_CONTROL` and did not update lock/gitlink.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -833,6 +847,8 @@ Parent decision:
   accepts `3f6d64a...`.
 - A21 opencode preauth pilot scenario matrix closed-shape schema pin review
   accepts `a1ed82b...`.
+- A22 opencode capability-map evidence matrix pin review is no-go until
+  opencode returns a clean final head under HOLD-3.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.
