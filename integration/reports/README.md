@@ -156,6 +156,12 @@ Current reports:
 - `parent-pin-review-a15-2026-06-15.md` records the parent decision to pin
   `dev-frame-opencode` to `128cbf8...` while preserving the no-real-runtime and
   no-final-acceptance boundary.
+- `opencode-zotero-authorization-result-closed-shape-return-review-2026-06-15.md`
+  records parent intake of `dev-frame-opencode` A16 local/offline Zotero
+  authorization result closed-shape schema hardening at `d19d9ac...`.
+- `parent-pin-review-a16-2026-06-15.md` records the parent decision to pin
+  `dev-frame-opencode` to `d19d9ac...` while preserving the no-real-runtime and
+  no-final-acceptance boundary.
 - `contract-alignment-matrix-v1-2026-06-15.md` records S06 contract alignment:
   producers, consumers, required fields, invalid cases, schema coverage, and
   non-equivalence rules.
