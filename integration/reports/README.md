@@ -7,6 +7,15 @@ reports.
 
 Current reports:
 
+- `opencode-grouped-command-policy-return-review-2026-06-16.md` records parent
+  intake of the grouped `dev-frame-opencode` command execution policy and
+  command policy matrix security hardening batch at `f9ab656...`.
+- `security-closeout-2026-06-16.md` records the targeted security-fix closeout,
+  pinned submodule heads, verification commands, known gaps, and reviewer
+  focus.
+- `parent-current-status-overview-2026-06-16.md` records the current parent
+  status after A32 and the security closeout: usable metadata-only framework,
+  remaining human-required resources, and recommended next work.
 - `parent-pin-review-a32-2026-06-16.md` records the parent gitlink and lock
   update to `dev-frame-opencode` Zotero RDF/XML metadata-only parser hardening
   commit `6b4a3aa...`.

@@ -11,8 +11,8 @@
       "role": "governance_acceptance_framework",
       "remote": "https://github.com/RD2100/agent-acceptance.git",
       "branch": "codex/paper-archive-final-verdict-boundary",
-      "commit": "75f8eb329778d4a8cffb28f6ba79b137038d4fed",
-      "pre_pin_status": "accepted_parent_canary_gate_with_local_evidence_ignore_cleanup"
+      "commit": "c37bf85a06c2c8a5be1710fb2f7b988ed14fcb7f",
+      "pre_pin_status": "security_closeout_batch_command_policy_hardened"
     },
     {
       "project_id": "devframe-control-plane",
@@ -20,8 +20,8 @@
       "role": "control_plane_runtime_candidate",
       "remote": "https://github.com/RD2100/devframe-control-plane.git",
       "branch": "codex/lease-source-lock-contracts",
-      "commit": "79399541b8426cff0f362b665bad09e3c23e974b",
-      "pre_pin_status": "clean_submodule_branch_committed"
+      "commit": "09167bc656f8625c97bfae5c52dae5a0280b116c",
+      "pre_pin_status": "security_closeout_verifier_failures_fail_closed"
     },
     {
       "project_id": "dev-frame-opencode",
@@ -29,8 +29,8 @@
       "role": "opencode_workflow_runtime_candidate",
       "remote": "https://github.com/RD2100/dev-frame-opencode.git",
       "branch": "codex/paper-audit-privacy-hard-gate",
-      "commit": "6b4a3aaf3b8a6b7ee3877014ccc7b6a11f8d639d",
-      "pre_pin_status": "accepted_zotero_rdf_xml_metadata_parser_hardening_with_limitations"
+      "commit": "f9ab656fb602b648639d9e27ea3ab54df4f22bad",
+      "pre_pin_status": "security_closeout_project_command_policy_hardened"
     },
     {
       "project_id": "test-frame",
@@ -38,8 +38,8 @@
       "role": "controlled_verification_runtime_candidate",
       "remote": "https://github.com/RD2100/test-frame.git",
       "branch": "codex/adapter-negative-matrix",
-      "commit": "c3353fb34900aa24f56df5b9c9230f3249d6c01a",
-      "pre_pin_status": "accepted_tgm_miniapp_readiness_closeout"
+      "commit": "a30758a3b309dd5f0e33e57cce5a15a90b725c82",
+      "pre_pin_status": "security_closeout_toolcontract_lifecycle_io_constrained"
     }
   ],
   "verification": {

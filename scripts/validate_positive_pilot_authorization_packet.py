@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import os
 import sys
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -121,9 +122,14 @@ def has_wildcard_command(commands: Any) -> bool:
 
 
 def is_under_approved_evidence_root(path_value: str) -> bool:
-    normalized = path_value.replace("/", "\\").rstrip("\\")
-    root = APPROVED_EVIDENCE_ROOT.rstrip("\\")
-    return normalized == root or normalized.startswith(root + "\\")
+    try:
+        candidate = Path(path_value).expanduser().resolve(strict=False)
+        root = Path(APPROVED_EVIDENCE_ROOT).expanduser().resolve(strict=False)
+        candidate_norm = os.path.normcase(str(candidate))
+        root_norm = os.path.normcase(str(root))
+        return os.path.commonpath([candidate_norm, root_norm]) == root_norm
+    except (OSError, ValueError):
+        return False
 
 
 def collect_true_final_acceptance_flags(value: Any, prefix: str = "$") -> list[str]:

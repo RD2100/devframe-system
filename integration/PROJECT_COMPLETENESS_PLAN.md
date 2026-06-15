@@ -134,6 +134,15 @@ Latest parent pin review A31:
 Latest parent pin review A32:
 `integration/reports/parent-pin-review-a32-2026-06-16.md`
 
+Latest security closeout:
+`integration/reports/security-closeout-2026-06-16.md`
+
+Latest opencode grouped command policy return review:
+`integration/reports/opencode-grouped-command-policy-return-review-2026-06-16.md`
+
+Latest parent current status overview:
+`integration/reports/parent-current-status-overview-2026-06-16.md`
+
 Latest opencode RDF/XML metadata parser hardening return review:
 `integration/reports/opencode-zotero-rdf-xml-parser-hardening-return-review-2026-06-16.md`
 
@@ -784,10 +793,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A32_OPENCODE_ZOTERO_RDF_XML_PARSER_HARDENING_PIN_REVIEW_PASS`
+Status: `PRACTICAL_TOOLCHAIN_CANDIDATE_WITH_SECURITY_CLOSEOUT`
 
 Latest report:
-`integration/reports/parent-pin-review-a32-2026-06-16.md`
+`integration/reports/parent-current-status-overview-2026-06-16.md`
 
 Current facts:
 
@@ -961,6 +970,13 @@ Parent decision:
   `6b4a3aa...` with limitations. This expands metadata-only export-file
   coverage to RDF/XML, but remains non-final and does not authorize app/API,
   PDF/full-text, Obsidian, RAG, WriteLab, MiniApp, browser/CDP, or cloud.
+- Security closeout pins targeted command/path/URL/fake-green fixes across all
+  four submodules:
+  - `agent-acceptance` at `c37bf85...`;
+  - `dev-frame-opencode` at `f9ab656...`;
+  - `devframe-control-plane` at `09167bc...`;
+  - `test-frame` at `a30758a...`.
+  This is targeted-regression proof, not a four-repository full-suite pass.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.
