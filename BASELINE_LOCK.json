@@ -38,8 +38,8 @@
       "role": "controlled_verification_runtime_candidate",
       "remote": "https://github.com/RD2100/test-frame.git",
       "branch": "codex/adapter-negative-matrix",
-      "commit": "878fe5e18e009ddcc5af308af00bb07ac31f2a57",
-      "pre_pin_status": "accepted_paper_pipeline_metadata_only_dry_run_orchestration_checks"
+      "commit": "36c363d87813cb19ee4e8117d47d78537b26911b",
+      "pre_pin_status": "accepted_opencode_a37_a38_business_closeout_consumption_checks"
     }
   ],
   "verification": {
