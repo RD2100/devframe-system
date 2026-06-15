@@ -10,7 +10,7 @@
 source_project: "RD2100 Agent Runtime v2"
 source_version: "1.0"
 bootstrap_date: "{{CURRENT_DATE}}"
-canonical_root: "D:\agent-acceptance"
+canonical_root: "{{PROJECT_ROOT}}"
 ```
 
 ## Protected Sections (Locked ¡ª Hash-Verified)

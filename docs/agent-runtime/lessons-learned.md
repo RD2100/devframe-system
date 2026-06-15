@@ -39,7 +39,7 @@
 
 - **Date**: 2026-05-28
 - **Context**: Attempted to give agent explicit directory access
-- **Problem**: `opencode run --add-dir D:\agent-acceptance` �� exit 1, shows help
+- **Problem**: `opencode run --add-dir D:\devframe-system\agent-acceptance` �� exit 1, shows help
 - **Root Cause**: `--add-dir` is not a valid option for `opencode run` subcommand
 - **Solution**: Use absolute paths in prompt; agent has filesystem access via build agent permissions
 - **Derived**: Documented in build agent limitations

@@ -4,7 +4,7 @@
 
 ```powershell
 cd D:\your-project
-powershell -ExecutionPolicy Bypass -File D:\agent-acceptance\templates\runtime-bootstrap\bootstrap.ps1
+powershell -ExecutionPolicy Bypass -File D:\devframe-system\templates\runtime-bootstrap\bootstrap.ps1
 ```
 
 Auto-detects project name from directory or git remote. Override: `.\bootstrap.ps1 -ProjectName "my-app" -ProjectRoot "D:\my-app" -Platform Both`

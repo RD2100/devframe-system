@@ -56,7 +56,7 @@ If the report mixes outputs from multiple batches without approval, decision is 
 Expected canonical root:
 
 ```text
-D:\agent-acceptance
+D:\devframe-system
 ```
 
 Rules:
@@ -76,7 +76,7 @@ Decision:
 The report must include:
 
 - Command: `git status --short`
-- CWD: `D:\agent-acceptance`
+- CWD: `D:\devframe-system`
 - Existing dirty files
 - Existing untracked files
 

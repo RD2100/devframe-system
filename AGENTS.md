@@ -9,6 +9,7 @@
 1. [Operating Model](docs/agent-runtime/operating-model.md)
 2. [Integration Contracts](docs/agent-runtime/integration-contracts.md)
 3. [Verification Gates](docs/agent-runtime/verification-gates.md)
+4. [Project-Local Skill Bindings](docs/agent-runtime/project-local-skill-bindings.md)
 
 ## Default Development Process: Sub-Agent Dispatch
 
@@ -39,6 +40,7 @@ docs/agent-runtime/
   tool-policy.md              <- Phase-aware tool policy (generated)
   capability-inventory.md     <- Cross-platform capability inventory
   runtime-invariants.md       <- Runtime invariants
+  project-local-skill-bindings.md <- /rdinit and /bindChrome local path bindings
   reviewer-playbook.md        <- Reviewer guide + decision tree
   negative-acceptance-tests.md <- 30 negative test definitions
   negative-test-fixtures/     <- 30 JSON

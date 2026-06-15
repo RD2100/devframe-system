@@ -60,7 +60,7 @@ $Placeholders = @{
 # Governance manifest placeholders filled after GEN step
 $ManifestPlaceholders = @{}
 
-$SourceRoot = "D:\agent-acceptance"
+$SourceRoot = Split-Path -Parent (Split-Path -Parent $ScriptDir)
 if (-not (Test-Path $SourceRoot)) { Write-Error "Source not found: $SourceRoot"; exit 1 }
 
 function Copy-Universal($srcRel, $dstRel, $desc) {
@@ -94,7 +94,8 @@ Copy-Universal "docs/agent-runtime/runtime-invariants.md" "docs/agent-runtime/ru
 Copy-Universal "docs/agent-runtime/reviewer-playbook.md" "docs/agent-runtime/reviewer-playbook.md" "Reviewer playbook"
 Copy-Universal "docs/agent-runtime/sub-agent-dispatch-protocol.md" "docs/agent-runtime/sub-agent-dispatch-protocol.md" "SADP protocol"
 Copy-Universal "docs/agent-runtime/dispatch-model-profiles.md" "docs/agent-runtime/dispatch-model-profiles.md" "Model profiles"
-Copy-Universal "docs/agent-runtime/lessons-learned.md" "docs/agent-runtime/lessons-learned.md" "Lessons learned"Copy-Universal "docs/agent-runtime/sub-agent-dispatch-protocol.md" "docs/agent-runtime/sub-agent-dispatch-protocol.md" "Sub-agent dispatch protocol"
+Copy-Universal "docs/agent-runtime/lessons-learned.md" "docs/agent-runtime/lessons-learned.md" "Lessons learned"
+Copy-Universal "docs/agent-runtime/sub-agent-dispatch-protocol.md" "docs/agent-runtime/sub-agent-dispatch-protocol.md" "Sub-agent dispatch protocol"
 Copy-Universal "docs/agent-runtime/negative-acceptance-tests.md" "docs/agent-runtime/negative-acceptance-tests.md" "Negative tests"
 Copy-Universal "docs/agent-runtime/negative-test-fixtures" "docs/agent-runtime/negative-test-fixtures" "30 fixtures"
 # Self-copy templates for re-bootstrap (skip in dry-run)

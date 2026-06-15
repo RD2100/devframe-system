@@ -1,7 +1,7 @@
 # Operating Model -- RD2100 Agent Runtime v2
 
 > Batch B1, 2026-05-27
-> Canonical root: D:\agent-acceptance
+> Canonical root: D:\devframe-system
 
 ## Overview
 
@@ -72,14 +72,19 @@ Session End
 ## File System Layout
 
 ```
-D:\agent-acceptance\              <- CANONICAL_ROOT
-  scripts/                        <- PowerShell runners (L0-L3)
-  agent-workqueue/                <- Tier-graded queue definitions
+D:\devframe-system\              <- CANONICAL_ROOT
+  scripts/                        <- Superproject integration checks
+  agent-acceptance/
+    scripts/                      <- SADP PowerShell runners (L0-L3)
+    agent-workqueue/              <- Tier-graded queue definitions
+    skills-inbox/                 <- Incoming skill intake area
+    runs/                         <- Historical execution records
+    templates/                    <- AGENTS and queue templates
+  dev-frame-opencode/             <- Paper workflow implementation
+  test-frame/                     <- Test orchestration implementation
+  devframe-control-plane/         <- Frozen runtime orchestration candidate
   docs/
     agent-runtime/                <- Runtime documentation (this file set)
-  skills-inbox/                   <- Incoming skill intake area
-    external/                     <- External skills awaiting review
-  runs/                           <- Historical execution records
   templates/                      <- AGENTS and queue templates
   .codegraph/                     <- Code intelligence index
 ```

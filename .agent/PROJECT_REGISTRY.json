@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "devframe-system-local",
+  "canonical_root": "D:\\devframe-system",
+  "updated_at": "2026-06-15",
+  "projects": [
+    {
+      "project_id": "devframe-system",
+      "project_root": "D:\\devframe-system",
+      "role": "superproject-governance",
+      "binding_status": "active",
+      "conversation_binding_path": "D:\\devframe-system\\.agent\\CONVERSATION_BINDING.json"
+    },
+    {
+      "project_id": "agent-acceptance",
+      "project_root": "D:\\devframe-system\\agent-acceptance",
+      "role": "acceptance-and-governance",
+      "binding_status": "pending_binding",
+      "conversation_binding_path": "D:\\devframe-system\\.agent\\bindings\\agent-acceptance\\CONVERSATION_BINDING.json"
+    },
+    {
+      "project_id": "dev-frame-opencode",
+      "project_root": "D:\\devframe-system\\dev-frame-opencode",
+      "role": "paper-workflow-implementation",
+      "binding_status": "pending_binding",
+      "conversation_binding_path": "D:\\devframe-system\\.agent\\bindings\\dev-frame-opencode\\CONVERSATION_BINDING.json"
+    },
+    {
+      "project_id": "test-frame",
+      "project_root": "D:\\devframe-system\\test-frame",
+      "role": "test-orchestration",
+      "binding_status": "pending_binding",
+      "conversation_binding_path": "D:\\devframe-system\\.agent\\bindings\\test-frame\\CONVERSATION_BINDING.json"
+    },
+    {
+      "project_id": "devframe-control-plane",
+      "project_root": "D:\\devframe-system\\devframe-control-plane",
+      "role": "runtime-orchestration-candidate",
+      "binding_status": "deferred",
+      "conversation_binding_path": "D:\\devframe-system\\.agent\\bindings\\devframe-control-plane\\CONVERSATION_BINDING.json",
+      "notes": "Frozen unless RuntimeAuthorization schema alignment is explicitly resumed."
+    }
+  ]
+}

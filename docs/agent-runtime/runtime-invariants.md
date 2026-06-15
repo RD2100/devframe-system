@@ -28,9 +28,9 @@ P0 invariants cannot be downgraded by P1-P4 considerations. No exception path ex
 | **ID** | INV-001 |
 | **Priority** | P0 (Hard Stop) |
 | **Scope** | All phases, all agents |
-| **Rule** | The canonical project root is `D:\agent-acceptance`. All path references in execution reports, evidence chains, and contract records must resolve to absolute paths rooted at this directory. Relative paths are resolved from this root. |
+| **Rule** | The canonical project root is `D:\devframe-system`. All path references in execution reports, evidence chains, and contract records must resolve to absolute paths rooted at this directory. Relative paths are resolved from this root. |
 | **Violation Example** | An agent writes a report referencing `..\other-project\config.json` without resolving the absolute path. A task spec references `~/Documents/project` instead of the canonical root. |
-| **Detection** | Grep all output files for relative path references (not starting with `D:\agent-acceptance\`). Verify `git rev-parse --show-toplevel` equals the canonical root. |
+| **Detection** | Grep all output files for relative path references (not starting with `D:\devframe-system\`). Verify `git rev-parse --show-toplevel` equals the canonical root. |
 | **Gate Decision on Violation** | BLOCKED. All paths must be corrected to absolute canonical form. |
 
 ### INV-002: No Path Drift
@@ -56,8 +56,8 @@ P0 invariants cannot be downgraded by P1-P4 considerations. No exception path ex
 | **ID** | INV-003 |
 | **Priority** | P0 (Hard Stop) |
 | **Scope** | Phase 0-5, all agents |
-| **Rule** | Agents may only write to paths explicitly approved in the batch plan's "Approved Output Path" section. No write to any other path is permitted. The approved scope for Batch D2 is: `D:\agent-acceptance\docs\agent-runtime\runtime-invariants.md`. |
-| **Violation Example** | An agent writes `D:\agent-acceptance\docs\FLOW_CATALOG.md` (a dirty baseline file not in approved scope). An agent creates `D:\agent-acceptance\new-file.log` without batch plan approval. |
+| **Rule** | Agents may only write to paths explicitly approved in the batch plan's "Approved Output Path" section. No write to any other path is permitted. The approved scope for Batch D2 is: `D:\devframe-system\docs\agent-runtime\runtime-invariants.md`. |
+| **Violation Example** | An agent writes `D:\devframe-system\docs\FLOW_CATALOG.md` (a dirty baseline file not in approved scope). An agent creates `D:\devframe-system\new-file.log` without batch plan approval. |
 | **Detection** | `git status --short` diff between pre and post. Any new or modified file not in the approved paths list is a violation. |
 | **Gate Decision on Violation** | BLOCKED. Unapproved writes must be reverted or escalated for review. |
 
@@ -80,8 +80,8 @@ P0 invariants cannot be downgraded by P1-P4 considerations. No exception path ex
 | **ID** | INV-005 |
 | **Priority** | P0 (Hard Stop) |
 | **Scope** | Phase 0-5 |
-| **Rule** | Any new file created must be under a directory path explicitly approved in the batch plan. For Batch D2, only `D:\agent-acceptance\docs\agent-runtime\` is approved for new file creation. No files may be created at the repository root or in unapproved subdirectories. |
-| **Violation Example** | An agent creates `D:\agent-acceptance\templates\new-template.md` without approval. An agent creates `D:\agent-acceptance\invariants-backup.md` at the repo root. |
+| **Rule** | Any new file created must be under a directory path explicitly approved in the batch plan. For Batch D2, only `D:\devframe-system\docs\agent-runtime\` is approved for new file creation. No files may be created at the repository root or in unapproved subdirectories. |
+| **Violation Example** | An agent creates `D:\devframe-system\templates\new-template.md` without approval. An agent creates `D:\devframe-system\invariants-backup.md` at the repo root. |
 | **Detection** | `git status --short` shows untracked files. Each must be verified against the approved directories list. |
 | **Gate Decision on Violation** | BLOCKED. Unapproved new files must be deleted or formally added to the batch-approved output paths. |
 
@@ -121,7 +121,7 @@ P0 invariants cannot be downgraded by P1-P4 considerations. No exception path ex
 | **Priority** | P0 (Hard Stop) |
 | **Scope** | Phase 0-5, every batch |
 | **Rule** | The diff between pre-batch and post-batch `git status --short` must show zero unexpected changes. Dirty baseline files must appear unchanged in both snapshots. Only files in the batch-approved output paths may appear as new. |
-| **Violation Example** | Pre-batch shows `M README.md`. Post-batch also shows `M README.md` but the content hash differs -- it was silently edited. A new untracked file `D:\agent-acceptance\test.log` appears that is not in the batch-approved output paths. |
+| **Violation Example** | Pre-batch shows `M README.md`. Post-batch also shows `M README.md` but the content hash differs -- it was silently edited. A new untracked file `D:\devframe-system\test.log` appears that is not in the batch-approved output paths. |
 | **Detection** | Compare pre and post `git status --short` line by line. Check content hashes (`git diff`) for files that appear `M` in both snapshots. |
 | **Gate Decision on Violation** | BLOCKED. Report the specific unexpected change immediately. |
 
@@ -314,7 +314,7 @@ P0 invariants cannot be downgraded by P1-P4 considerations. No exception path ex
 | **Priority** | P0 (Hard Stop) |
 | **Scope** | All phases, all agents |
 | **Rule** | Agents must not read files that are likely to contain secrets. This includes `.env`, `*.key`, `*.pem`, `*token*`, `*credential*`, `*secret*`, SSH private keys, and any file with restricted permissions. If a task requires accessing such a file, stop and ask for human guidance. |
-| **Violation Example** | An agent runs `Read` on `D:\agent-acceptance\.env` to check configuration. An agent greps for `*.pem` files and reads their contents. |
+| **Violation Example** | An agent runs `Read` on `D:\devframe-system\.env` to check configuration. An agent greps for `*.pem` files and reads their contents. |
 | **Detection** | Audit file access logs for secret-pattern paths. Grep Read tool calls for `.env`, `.key`, `.pem`, `token`, `credential`, `secret`. |
 | **Gate Decision on Violation** | BLOCKED. Report the access. If secrets were read into context, escalate for context-clearing protocol. |
 
@@ -522,7 +522,7 @@ P0 invariants cannot be downgraded by P1-P4 considerations. No exception path ex
 | **Scope** | All phases, all agents |
 | **Rule** | File paths constructed with user or external input must be validated to stay within the intended directory or project root. Reject paths containing `..` segments that would escape the root. Resolve and verify the canonical path is within the allowed boundary. Absolute paths outside the batch-approved output paths are rejected. |
 | **Violation Example** | A task spec includes a relative path `../../etc/config` which an agent uses without validation. An agent constructs a path `D:\outside\file.txt` from user input and writes to it. |
-| **Detection** | For any user-supplied path, resolve the canonical path and verify it starts with `D:\agent-acceptance\` or the explicitly approved output directory. |
+| **Detection** | For any user-supplied path, resolve the canonical path and verify it starts with `D:\devframe-system\` or the explicitly approved output directory. |
 | **Gate Decision on Violation** | BLOCKED. Path must be rejected. Escalation if path traversal was attempted. |
 
 ---
@@ -560,7 +560,7 @@ P0 invariants cannot be downgraded by P1-P4 considerations. No exception path ex
 | **ID** | INV-040 |
 | **Priority** | P1 (Scope Control) |
 | **Scope** | All phases |
-| **Rule** | All `artifact_path` values in EvidenceIndex records must be within the project root (`D:\agent-acceptance\`). Path traversal outside the project root is a P0 violation (see INV-037). Even internal paths must be validated to prevent drift. |
+| **Rule** | All `artifact_path` values in EvidenceIndex records must be within the project root (`D:\devframe-system\`). Path traversal outside the project root is a P0 violation (see INV-037). Even internal paths must be validated to prevent drift. |
 | **Violation Example** | An EvidenceIndex entry references `D:\other-project\output.log`. An entry references a path that does not exist on disk. |
 | **Detection** | For each EvidenceIndex entry, verify `artifact_path` starts with the project root and `test -f <path>` returns true. |
 | **Gate Decision on Violation** | FAILED. Invalid evidence paths must be corrected or removed. |

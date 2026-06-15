@@ -10,7 +10,7 @@
 source_project: "RD2100 Agent Runtime v2"
 source_version: "1.0"
 bootstrap_date: "2026-06-15"
-canonical_root: "D:\agent-acceptance"
+canonical_root: "D:\devframe-system"
 ```
 
 ## Protected Sections (Locked ¡ª Hash-Verified)

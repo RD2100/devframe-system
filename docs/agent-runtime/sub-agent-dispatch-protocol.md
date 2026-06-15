@@ -1,7 +1,7 @@
 # Sub-Agent Dispatch Protocol (SADP) v1.0
 
 > RD2100 Agent Runtime v2 | 2026-05-28
-> Canonical root: `D:\agent-acceptance`
+> Canonical root: `D:\devframe-system`
 > Default development workflow for Codex + Claude Code collaboration
 
 ---
@@ -634,7 +634,7 @@ scripts/cdp_dispatch_runner.py — orchestration: plan → adapter → evidence
 
 ### 4.5 WorkQueue (Task Dispatch Queue)
 
-Agent WorkQueue (`D:\agent-acceptance\agent-workqueue`) provides tier-graded task management:
+Agent WorkQueue (`D:\devframe-system\agent-acceptance\agent-workqueue`) provides tier-graded task management:
 - Tasks flow: WorkQueue.create 锟斤拷 SADP dispatch 锟斤拷 Claude Code execute 锟斤拷 ExecutionReport 锟斤拷 WorkQueue.complete
 - Priority tiers: P0 (critical) 锟斤拷 P1 (high) 锟斤拷 P2 (normal) 锟斤拷 P3 (low)
 - Each task gets a WorkQueue ID that maps to TaskSpec.ID
@@ -642,7 +642,7 @@ Agent WorkQueue (`D:\agent-acceptance\agent-workqueue`) provides tier-graded tas
 
 ### 4.6 Scripts (Verification Runners)
 
-PowerShell runners (`D:\agent-acceptance\scripts`) provide automated verification:
+PowerShell runners (`D:\devframe-system\agent-acceptance\scripts`) provide automated verification:
 - Source inspection authorized (read script contents, understand what it does)
 - Execution requires ScriptSafetyRecord + separate human gate
 - Script paths documented in capability-inventory.md
