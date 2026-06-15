@@ -15,8 +15,12 @@ parent pin consideration.
 - Branch: `codex/paper-audit-privacy-hard-gate`
 - Commit: `739082bc3ed970716605a61f31d1753f089d36d8`
 - Message: `Fail closed on unexpected Zotero report fields`
-- Evidence mode: parent-verified local checks; no evidence ZIP was generated or
-  claimed for this intake.
+- Evidence ZIP:
+  `D:\devframe-system\.agent\evidence\evidence-opencode-zotero-report-closed-shape-a1-739082b.zip`
+- Evidence ZIP SHA256:
+  `B1A671AE23A32027167BC61BF2D18D4771A9C4F2A60F15A5CC8B5FF412FC968E`
+- Evidence directory:
+  `D:\devframe-system\.agent\evidence\opencode-zotero-report-closed-shape-a1-739082b`
 
 ## Accepted Scope
 
@@ -66,6 +70,7 @@ Accepted for parent intake/pin as:
   - Top-level report closed-shape validation.
   - Blocked/failed variant compatibility fields.
   - Candidate-to-final boundary language.
+  - Evidence ZIP existence and hash capture.
 - Tests/checks:
   - Targeted Zotero metadata-only pytest.
   - Adjacent real-pilot local/offline pytest group.
@@ -74,7 +79,6 @@ Accepted for parent intake/pin as:
 - Generated artifacts:
   - This report only.
 - Known gaps:
-  - No evidence ZIP was generated for this intake.
   - Parent did not run real Zotero, Obsidian, RAG, WriteLab, MiniApp, browser,
     PDF, attachment, full-text, or private paper runtime.
   - This is not a production/live readiness verdict.

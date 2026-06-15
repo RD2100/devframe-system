@@ -32,6 +32,10 @@ Keep the other module pins unchanged from the current parent baseline.
 
 - A14 return review:
   `integration/reports/opencode-zotero-report-closed-shape-return-review-2026-06-15.md`
+- Evidence ZIP:
+  `D:\devframe-system\.agent\evidence\evidence-opencode-zotero-report-closed-shape-a1-739082b.zip`
+- Evidence ZIP SHA256:
+  `B1A671AE23A32027167BC61BF2D18D4771A9C4F2A60F15A5CC8B5FF412FC968E`
 - Direct parent verification:
   - targeted metadata-only pytest: 27 passed
   - adjacent real-pilot local/offline pytest group: 63 passed
@@ -73,5 +77,4 @@ It does not authorize or claim:
 - Known gaps:
   - No real runtime executed.
   - No independent live pilot review.
-  - No evidence ZIP was generated for this intake.
   - No push performed by this review.
