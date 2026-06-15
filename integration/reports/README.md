@@ -7,6 +7,13 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-agent-acceptance-rule-center-closeout-2026-06-16.md`
+  records the parent gitlink and lock update to `agent-acceptance`
+  rule-center closeout commit `6b9a83c...`.
+- `agent-acceptance-rule-center-closeout-return-review-2026-06-16.md` records
+  parent intake of the `agent-acceptance` rule center closeout package covering
+  minimal rule center, cross-module intake smoke, paper real-pilot rules, and
+  minimal final verdict rule center.
 - `opencode-manual-input-metadata-batch-smoke-return-review-2026-06-16.md`
   records parent intake of the evidence-only manual-input Zotero metadata export
   batch smoke at already-pinned `dev-frame-opencode` head `f9ab656...`.
