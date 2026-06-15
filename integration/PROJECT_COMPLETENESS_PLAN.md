@@ -167,6 +167,12 @@ Latest test-frame Zotero Web API metadata-only verification return review:
 Latest test-frame Zotero Web API metadata-only verification parent pin review:
 `integration/reports/parent-pin-review-test-frame-zotero-web-api-metadata-only-verification-2026-06-16.md`
 
+Latest test-frame Zotero metadata adapter evidence consumption return review:
+`integration/reports/test-frame-zotero-metadata-adapter-evidence-consumption-return-review-2026-06-16.md`
+
+Latest test-frame Zotero metadata adapter evidence consumption parent pin review:
+`integration/reports/parent-pin-review-test-frame-zotero-metadata-adapter-evidence-consumption-2026-06-16.md`
+
 Previous Zotero Web API metadata-only blocked preflight:
 `integration/reports/zotero-web-api-metadata-only-preflight-blocked-2026-06-16.md`
 
@@ -1055,6 +1061,13 @@ Parent decision:
   sensitive evidence leaks, metadata-only final/live overclaims, and test-frame
   pass promoted to final governance acceptance. Parent accepted it for pin
   review.
+- `test-frame` then implemented consumption validation for parent-pinned
+  opencode Zotero Web API metadata-only minimized evidence at
+  `f8bce53333f9087af06b1842716f73777794be27`. The slice verifies the
+  minimized opencode evidence fixture as test-frame verification evidence only
+  and fails closed on final/live overclaims, raw persistence flags, forbidden
+  resource flags, zero-record PASS, forbidden item type counts, and raw
+  sensitive markers. Parent accepted it for pin review.
 - `dev-frame-opencode` then completed an evidence-only manual-input metadata
   batch smoke at already-pinned `f9ab656...`: two BibTeX inputs and one RDF
   input each produced `PASS_METADATA_ONLY` with sanitizer redactions, raw export

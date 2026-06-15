@@ -7,6 +7,12 @@ reports.
 
 Current reports:
 
+- `parent-pin-review-test-frame-zotero-metadata-adapter-evidence-consumption-2026-06-16.md`
+  records the parent gitlink and lock update to `test-frame` Zotero metadata
+  adapter evidence consumption commit `f8bce53...`.
+- `test-frame-zotero-metadata-adapter-evidence-consumption-return-review-2026-06-16.md`
+  records parent intake of test-frame consumption validation for
+  parent-pinned opencode Zotero Web API metadata-only minimized evidence.
 - `parent-pin-review-test-frame-zotero-web-api-metadata-only-verification-2026-06-16.md`
   records the parent gitlink and lock update to `test-frame` Zotero Web API
   metadata-only verification contract commit `b1925fc...`.
