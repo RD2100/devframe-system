@@ -115,6 +115,9 @@ Current reports:
   review after the A10 grouped baseline.
 - `grouped-parent-pin-a11-2026-06-15.md` records the opencode-only parent
   gitlink and lock update to `f9d381c...`.
+- `post-pin-status-a11-2026-06-15.md` records the current A11 post-pin state,
+  including the `agent-acceptance` untracked evidence note and verification
+  boundary.
 - `contract-alignment-matrix-v1-2026-06-15.md` records S06 contract alignment:
   producers, consumers, required fields, invalid cases, schema coverage, and
   non-equivalence rules.

@@ -89,6 +89,9 @@ Latest parent pin review A11:
 Latest parent pin A11:
 `integration/reports/grouped-parent-pin-a11-2026-06-15.md`
 
+Latest post-pin status:
+`integration/reports/post-pin-status-a11-2026-06-15.md`
+
 Latest contract alignment:
 `integration/reports/contract-alignment-matrix-v1-2026-06-15.md`
 
@@ -718,5 +721,7 @@ Current facts:
 Parent decision:
 
 - A10 grouped parent pin has been applied.
-- A11 opencode-only pin is being applied for `f9d381c...`.
+- A11 opencode-only pin has been applied for `f9d381c...`.
+- The only current parent worktree note is old untracked evidence inside
+  `agent-acceptance`; do not clean it without explicit approval.
 - Do not authorize real runtime or final acceptance from this pin review.
