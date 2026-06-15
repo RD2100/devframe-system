@@ -95,6 +95,9 @@ Latest parent pin review A18:
 Latest parent pin review A19:
 `integration/reports/parent-pin-review-a19-2026-06-15.md`
 
+Latest parent pin review A20:
+`integration/reports/parent-pin-review-a20-2026-06-15.md`
+
 Latest opencode summary sample closed-shape return review:
 `integration/reports/opencode-zotero-summary-sample-closed-shape-return-review-2026-06-15.md`
 
@@ -109,6 +112,9 @@ Latest opencode agent-acceptance rules closed-shape return review:
 
 Latest opencode preauth authorization template closed-shape return review:
 `integration/reports/opencode-preauth-authorization-template-closed-shape-return-review-2026-06-15.md`
+
+Latest opencode preauth reviewer verdict template closed-shape return review:
+`integration/reports/opencode-preauth-reviewer-verdict-template-closed-shape-return-review-2026-06-15.md`
 
 Latest grouped parent pin:
 `integration/reports/grouped-parent-pin-a10-2026-06-15.md`
@@ -724,10 +730,10 @@ Until then, all submodule-dependent outcomes remain explicitly marked as
 
 ## 11. Current Parent Pin Review Result
 
-Status: `A19_OPENCODE_PREAUTH_AUTHORIZATION_TEMPLATE_CLOSED_SHAPE_PIN_REVIEW_PASS`
+Status: `A20_OPENCODE_PREAUTH_REVIEWER_VERDICT_TEMPLATE_CLOSED_SHAPE_PIN_REVIEW_PASS`
 
 Latest report:
-`integration/reports/parent-pin-review-a19-2026-06-15.md`
+`integration/reports/parent-pin-review-a20-2026-06-15.md`
 
 Current facts:
 
@@ -786,6 +792,10 @@ Current facts:
   closed-shape schema hardening at
   `86262b49abcf05cb3507aad575fe521c70d8cd51`; parent intake accepted it for
   A19 pin.
+- `dev-frame-opencode` then advanced to preauth reviewer verdict template
+  closed-shape schema hardening at
+  `3f6d64a534a29ffe256346b8758cdb87fd864b02`; parent intake accepted it for
+  A20 pin.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -809,6 +819,8 @@ Parent decision:
   `8ae6cb7...`.
 - A19 opencode preauth authorization template closed-shape schema pin review
   accepts `86262b4...`.
+- A20 opencode preauth reviewer verdict template closed-shape schema pin review
+  accepts `3f6d64a...`.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.
