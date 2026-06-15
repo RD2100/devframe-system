@@ -32,10 +32,15 @@ Keep the other module pins unchanged from the current parent baseline.
 
 - A19 return review:
   `integration/reports/opencode-preauth-authorization-template-closed-shape-return-review-2026-06-15.md`
+- Evidence ZIP:
+  `D:\devframe-system\.agent\evidence\evidence-opencode-preauth-authorization-template-closed-shape-a1-86262b4.zip`
+- Evidence ZIP SHA256:
+  `345F97BB7AB6C766E71AEDA04A1813668D59536EEB9EA68153070CA08BBF3351`
 - Direct parent verification:
   - preauth packet pytest: 8 passed
-  - adjacent real-pilot local/offline pytest group: 74 passed
-  - JSON schema parse: PASS
+  - adjacent real-pilot local/offline pytest group: 67 passed
+  - business capability validation: 7 passed
+  - preauth packet schema parse: PASS
   - diff check: PASS
 
 ## Boundary
@@ -57,7 +62,6 @@ It does not authorize or claim:
   - `D:\devframe-system\integration\lock\submodules.lock.yml`
   - `D:\devframe-system\integration\reports\opencode-preauth-authorization-template-closed-shape-return-review-2026-06-15.md`
   - `D:\devframe-system\integration\reports\parent-pin-review-a19-2026-06-15.md`
-  - `D:\devframe-system\integration\reports\real-resource-positive-pilot-authorization-checklist-2026-06-15.md`
   - `D:\devframe-system\integration\reports\README.md`
   - `D:\devframe-system\integration\PROJECT_COMPLETENESS_PLAN.md`
   - `D:\devframe-system\dev-frame-opencode` gitlink
