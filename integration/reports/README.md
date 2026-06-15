@@ -150,6 +150,12 @@ Current reports:
 - `positive-pilot-authorization-packet-validator-2026-06-15.md` records the
   local validator and synthetic fixtures for RuntimeAuthorization/TestRunSpec
   positive-pilot authorization packets.
+- `opencode-zotero-summary-sample-closed-shape-return-review-2026-06-15.md`
+  records parent intake of `dev-frame-opencode` A15 local/offline Zotero
+  summary sample closed-shape schema hardening at `128cbf8...`.
+- `parent-pin-review-a15-2026-06-15.md` records the parent decision to pin
+  `dev-frame-opencode` to `128cbf8...` while preserving the no-real-runtime and
+  no-final-acceptance boundary.
 - `contract-alignment-matrix-v1-2026-06-15.md` records S06 contract alignment:
   producers, consumers, required fields, invalid cases, schema coverage, and
   non-equivalence rules.

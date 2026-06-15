@@ -86,6 +86,12 @@ Latest real-resource positive pilot authorization checklist:
 Latest positive-pilot authorization packet validator:
 `integration/reports/positive-pilot-authorization-packet-validator-2026-06-15.md`
 
+Latest parent pin review A15:
+`integration/reports/parent-pin-review-a15-2026-06-15.md`
+
+Latest opencode summary sample closed-shape return review:
+`integration/reports/opencode-zotero-summary-sample-closed-shape-return-review-2026-06-15.md`
+
 Latest grouped parent pin:
 `integration/reports/grouped-parent-pin-a10-2026-06-15.md`
 
@@ -743,6 +749,9 @@ Current facts:
 - `dev-frame-opencode` then advanced to Zotero report closed-shape schema
   hardening at `739082bc3ed970716605a61f31d1753f089d36d8`; parent intake
   accepted it for A14 pin.
+- `dev-frame-opencode` then advanced to Zotero summary sample closed-shape
+  schema hardening at `128cbf839ee97fddcdf6459d57202ec4d83f4197`; parent
+  intake accepted it for A15 pin.
 - `devframe-control-plane` remains aligned and frozen at `7939954...`.
 
 Parent decision:
@@ -756,6 +765,8 @@ Parent decision:
 - A12 opencode record-shape schema pin review accepts `3c08f3a...`.
 - A13 opencode manifest closed-shape schema pin review accepts `4d8c575...`.
 - A14 opencode report closed-shape schema pin review accepts `739082b...`.
+- A15 opencode summary sample closed-shape schema pin review accepts
+  `128cbf8...`.
 - Real-resource positive pilot preparation is documented, but execution remains
   `RUNTIME_AUTHORIZATION_REQUIRED` until a human selects exactly one pilot track
   and provides a fresh scoped authorization packet.
