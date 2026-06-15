@@ -144,6 +144,9 @@ Current reports:
 - `parent-pin-review-a14-2026-06-15.md` records the parent decision to pin
   `dev-frame-opencode` to `739082b...` while preserving the no-real-runtime and
   no-final-acceptance boundary.
+- `real-resource-positive-pilot-authorization-checklist-2026-06-15.md`
+  records the required human RuntimeAuthorization packet and single-track
+  selection gate before any real positive pilot.
 - `contract-alignment-matrix-v1-2026-06-15.md` records S06 contract alignment:
   producers, consumers, required fields, invalid cases, schema coverage, and
   non-equivalence rules.
