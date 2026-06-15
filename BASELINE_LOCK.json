@@ -29,8 +29,8 @@
       "role": "opencode_workflow_runtime_candidate",
       "remote": "https://github.com/RD2100/dev-frame-opencode.git",
       "branch": "codex/paper-audit-privacy-hard-gate",
-      "commit": "62994c1c45009032c1cb81053a07917b130449b2",
-      "pre_pin_status": "accepted_business_validation_set_like_fields_a58_with_limitations"
+      "commit": "580f6e9f3ad2ff7c22949d1694990a12b822ce12",
+      "pre_pin_status": "accepted_real_pilot_set_like_fields_batch_a59_a60_with_limitations"
     },
     {
       "project_id": "test-frame",
