@@ -36,6 +36,11 @@ Keep the other module pins unchanged from the current parent baseline.
   `D:\devframe-system\.agent\evidence\evidence-opencode-zotero-authorization-result-closed-shape-a1-d19d9ac.zip`
 - Evidence ZIP SHA256:
   `2EE1A2D8D320656FCCC677B42B816D3F4DCECFD43DE2151BD2D8F2788993D74B`
+- Direct parent verification:
+  - targeted metadata-only pytest: 27 passed
+  - adjacent real-pilot local/offline pytest group: 63 passed
+  - JSON schema parse: PASS
+  - diff check: PASS
 
 ## Boundary
 

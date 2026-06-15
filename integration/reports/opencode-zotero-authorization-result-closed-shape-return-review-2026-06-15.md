@@ -37,13 +37,17 @@ The slice tightens the local metadata-only Zotero pilot report schema so
 ## Parent Verification
 
 - Evidence ZIP exists and SHA256 was captured.
-- `git -C D:\devframe-system\dev-frame-opencode diff --check HEAD~1 HEAD`
+- `git -C D:\devframe-system\dev-frame-opencode diff --check`
   -> PASS.
-- Module-reported checks:
-  - targeted metadata-only pytest -> 27 passed
-  - adjacent real-pilot local/offline pytest group -> 63 passed
-  - business capability validation -> 7 passed
-  - JSON schema parse -> PASS
+- `python -m json.tool schemas\paper_real_zotero_metadata_only_pilot_report.schema.json`
+  from `D:\devframe-system\dev-frame-opencode`
+  -> PASS.
+- `$env:PYTHONPATH='ai-workflow-hub\src'; python -m pytest ai-workflow-hub\tests\test_paper_real_zotero_metadata_only_pilot.py -q`
+  from `D:\devframe-system\dev-frame-opencode`
+  -> 27 passed.
+- `$env:PYTHONPATH='ai-workflow-hub\src'; python -m pytest ai-workflow-hub\tests\test_paper_real_pilot_authorization_request.py ai-workflow-hub\tests\test_paper_real_pilot_blocking.py ai-workflow-hub\tests\test_paper_real_pilot_local_dry_run.py ai-workflow-hub\tests\test_paper_real_pilot_preauth_packet.py ai-workflow-hub\tests\test_paper_real_zotero_metadata_only_pilot.py -q`
+  from `D:\devframe-system\dev-frame-opencode`
+  -> 63 passed.
 
 ## Parent Boundary Decision
 
