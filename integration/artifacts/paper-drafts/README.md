@@ -4,28 +4,30 @@
 
 Use this file for normal human review:
 
-- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.6.docx`
+- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.7.docx`
 
 Use this file when Markdown editing is preferred:
 
-- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.6.md`
+- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.7.md`
 
 Use this package for handoff:
 
-- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.6-package.zip`
+- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.7-package.zip`
 
-The v0.6 clean manuscript is the current lightly polished paper-facing draft.
-It removes internal governance scaffolding and keeps the title, abstract, body,
-conclusion, and references.
+The v0.7 clean manuscript is the current reviewer-facing draft. It preserves the
+v0.6 argument and converts internal source labels to conventional numeric
+references `[1]` through `[6]`.
 
 ## Supporting Review Artifacts
 
+- v0.6 clean manuscript:
+  `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.6.docx`
+- v0.5 clean manuscript:
+  `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.5.docx`
 - v0.4 reviewer draft with internal boundaries:
   `integration/artifacts/paper-drafts/local-paper-rag-reviewer-draft-v0.4.md`
 - v0.4 DOCX:
   `integration/artifacts/paper-drafts/local-paper-rag-reviewer-draft-v0.4.docx`
-- v0.5 clean manuscript:
-  `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.5.docx`
 - v0.3 review findings:
   `integration/artifacts/paper-drafts/local-paper-rag-v0.3-review-findings.md`
 - v0.3 review prompt:
@@ -33,6 +35,12 @@ conclusion, and references.
 
 ## Latest Hashes
 
+- v0.7 clean DOCX:
+  `4D6BCEA981F87C299872A30BD6237ED45BFC141F22F7E0A68305AD83FD0BA098`
+- v0.7 clean Markdown:
+  `1D9D313C6C6F97422EA4E8FB4030B3CCBD32DD5FFA48BD69F9FD50F054CDE55F`
+- v0.7 package ZIP:
+  `17E480BB08226BD00CF0737DB06D18816C823EC44337675654B0F42575409BEA`
 - v0.6 clean DOCX:
   `D8D57442261BDCF195F045A8226C0F9B154ABD613DDBCB7D9FEC12BED401A200`
 - v0.6 clean Markdown:
