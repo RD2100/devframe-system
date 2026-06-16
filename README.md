@@ -2,6 +2,22 @@
 
 [中文](#中文) | [English](#english)
 
+> **核心卖点 / Core Value Proposition**
+>
+> **devframe-system 把 GPT 网页版变成软件工作流的“外置大脑”。**
+> 它让 GPT 负责理解目标、拆解任务、记忆上下文、调度 agent、审查证据和沉淀经验；
+> 让 IDE、CLI、浏览器、自动化脚本、测试框架以及不同厂商的 coding agent 作为可替换的执行器接入。
+> 这套框架不绑定某一个软件或某一个 agent，而是用统一的规则、契约、TaskSpec、ExecutionReport 和验证门禁，
+> 去适配所有软件协作场景和多 agent 工作流。
+>
+> **devframe-system turns the GPT web app into an external brain for software work.**
+> GPT handles intent, planning, context memory, agent dispatch, evidence review,
+> and lessons learned; IDEs, CLIs, browsers, automation scripts, test frameworks,
+> and coding agents become interchangeable executors. The framework is not tied
+> to one tool or one agent. It uses portable rules, contracts, TaskSpecs,
+> ExecutionReports, and verification gates to adapt across software workflows
+> and multi-agent systems.
+
 **Agent Runtime Governance Framework & Multi-Agent Collaboration Infrastructure**
 **AI 智能体运行时治理框架 & 多智能体协同基础设施**
 
