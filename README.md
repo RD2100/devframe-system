@@ -1,9 +1,10 @@
 <p align="center">
-  <img src="docs/assets/devframe-system-banner.svg" alt="devframe-system: GPT Web as an external brain" width="100%" />
+  <img src="docs/assets/devframe-system-banner.svg" alt="devframe-system: web AI as an external brain" width="100%" />
 </p>
 
-<h3 align="center">Use GPT Web as an external brain to raise code quality and keep engineering direction on track.</h3>
-<h3 align="center">把 GPT 网页版变成外置大脑，用最低成本提升代码质量并把住研发方向。</h3>
+<h3 align="center">Use GPT Web first, or bind another capable web AI, as an external brain to raise code quality and keep engineering direction on track.</h3>
+
+<h3 align="center">以 GPT Web 为默认入口，也可绑定 DeepSeek、豆包等网页版 AI；用外置大脑低成本提升代码质量并把住研发方向。</h3>
 
 <p align="center">
   <a href="#english">English</a> | <a href="#中文">简体中文</a>
@@ -17,7 +18,7 @@
 </p>
 
 <p align="center">
-  <img alt="GPT Web" src="https://img.shields.io/badge/GPT%20Web-External%20Brain-1f6feb" />
+  <img alt="Web AI Brain" src="https://img.shields.io/badge/Web%20AI-External%20Brain-1f6feb" />
   <img alt="Focus" src="https://img.shields.io/badge/focus-code%20quality%20%2B%20direction-20c997" />
   <img alt="No new platform" src="https://img.shields.io/badge/no%20new%20platform-required-00a884" />
   <img alt="Agents" src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude%20Code%20%7C%20CLI-6f42c1" />
@@ -25,11 +26,16 @@
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%20%7C%20PowerShell-24506b" />
 </p>
 
+```text
+/rdinit                 # initialize a project with the external-brain operating layer
+/bindChrome <url>       # bind a GPT Web, DeepSeek, Doubao, or browser AI URL as the project brain session
+```
+
 **真正的问题不是“怎样再做一套治理框架”，而是：怎样在不增加预算、不替换工具链、不训练新模型的情况下，最简单、最直接地提升代码质量，并持续把住产品与工程方向？**
 
-**devframe-system 的答案，是把几乎免费的 GPT 网页版变成软件研发的外置大脑：GPT 负责理解目标、拆解任务、记忆上下文、校准方向、调度 agent、审查证据和沉淀经验；IDE、CLI、浏览器、自动化脚本、测试框架以及不同厂商的 coding agent 都作为可替换执行器接入。**
+**devframe-system 的答案，是把 GPT Web、DeepSeek、豆包等网页版 AI 变成软件研发的外置大脑：网页 AI 负责理解目标、拆解任务、记忆上下文、校准方向、调度 agent、审查证据和沉淀经验；IDE、CLI、浏览器、自动化脚本、测试框架以及不同厂商的 coding agent 都作为可替换执行器接入。**
 
-**The real question is not how to build another governance framework. It is how to improve code quality and direction control with the least cost, the fewest new tools, and the most direct workflow. devframe-system answers by turning the low-cost GPT web app into an external brain for software development while every IDE, CLI, browser, script, test runner, and coding agent becomes an interchangeable executor.**
+**The real question is not how to build another governance framework. It is how to improve code quality and direction control with the least cost, the fewest new tools, and the most direct workflow. devframe-system answers by turning a low-cost web AI session into an external brain for software development while every IDE, CLI, browser, script, test runner, and coding agent becomes an interchangeable executor. GPT Web is the default example, but DeepSeek, Doubao, or another browser-accessible AI can play the same coordinating role.**
 
 ---
 
@@ -39,6 +45,7 @@
   - [What is devframe-system?](#what-is-devframe-system)
   - [Why It Is Different](#why-it-is-different)
   - [How It Works](#how-it-works)
+  - [Two Skill Entrypoints](#two-skill-entrypoints)
   - [One-Minute Example](#one-minute-example)
   - [What You Get](#what-you-get)
   - [Who Should Use This](#who-should-use-this)
@@ -51,6 +58,7 @@
   - [devframe-system 是什么？](#devframe-system-是什么)
   - [它到底独特在哪里？](#它到底独特在哪里)
   - [它如何工作？](#它如何工作)
+  - [两个技能入口](#两个技能入口)
   - [一分钟例子](#一分钟例子)
   - [你会得到什么？](#你会得到什么)
   - [谁适合使用？](#谁适合使用)
@@ -62,16 +70,27 @@
 - [Current Delivery / 当前交付物](#current-delivery--当前交付物)
 - [Submodules / 子模块](#submodules--子模块)
 
+<details>
+<summary>Local governance handoff for future agents</summary>
+
+Read [`LOCAL_GOVERNANCE.md`](LOCAL_GOVERNANCE.md) first. It records the current
+repository state, what is intentionally local-only, and how to continue without
+mixing private runtime output into versioned governance evidence.
+
+</details>
+
 ---
 
 # English
 
 ## What is devframe-system?
 
-devframe-system is a **GPT-web-centered software quality system**. It starts
-from a practical promise: use the GPT web app you already have as an external
+devframe-system is a **web-AI-centered software quality system**. It starts
+from a practical promise: use the web AI session you already have as an external
 brain, then connect it to the software, repositories, CLIs, browsers, scripts,
-test runners, and coding agents you already use.
+test runners, and coding agents you already use. GPT Web is the default
+reference path; DeepSeek, Doubao, or another browser-accessible AI can be bound
+the same way when it can hold project context and coordinate work.
 
 The goal is direct and concrete:
 
@@ -83,8 +102,8 @@ The goal is direct and concrete:
 The governance pieces are not the main attraction. They are the control surface
 that lets the external brain work safely across many tools:
 
-**1. Direction Control** — GPT web keeps the problem, product intent, tradeoffs,
-and current context in view before code is written.
+**1. Direction Control** — the bound web AI session keeps the problem, product
+intent, tradeoffs, and current context in view before code is written.
 
 **2. Agent Dispatch** — TaskSpec and SADP turn vague requests into bounded work
 for Codex, Claude Code, CLI scripts, browser automation, or other executors.
@@ -103,7 +122,7 @@ above them**.
 
 | Common approach | devframe-system approach |
 |---|---|
-| Buy or install another coding tool | Use GPT web as the external brain you can start with immediately |
+| Buy or install another coding tool | Use GPT Web, DeepSeek, Doubao, or another web AI as the external brain you can start with immediately |
 | Ask an agent to "fix this" | Turn intent into TaskSpec, boundaries, evidence, and review focus |
 | Trust the agent's final answer | Require ExecutionReport, verification output, and reviewer-readable evidence |
 | Let each tool keep its own context | Keep direction, decisions, and lessons in one coordinating brain |
@@ -114,7 +133,7 @@ evidence decides whether the work is accepted.**
 
 ## How It Works
 
-1. **Set direction in GPT Web** — clarify the product goal, constraints,
+1. **Set direction in the web AI session** — clarify the product goal, constraints,
    acceptance criteria, and risk before any executor starts changing files.
 2. **Convert intent into a TaskSpec** — describe the exact task, allowed files,
    forbidden files, verification commands, and stop conditions.
@@ -127,6 +146,32 @@ evidence decides whether the work is accepted.**
 6. **Feed lessons back into the brain** — repeated failures become operating
    memory instead of disappearing into chat history.
 
+## Two Skill Entrypoints
+
+The repository should feel simple at the point of use. The complete operating
+system collapses into two project-facing skills:
+
+| Skill | Use it for | What it gives the agent |
+|---|---|---|
+| `/rdinit` | Initialize a repository with the devframe-system operating layer | `AGENTS.md`, rules, schemas, tool policy, capability inventory, verification docs, and bootstrap paths |
+| `/bindChrome <url>` | Bind a GPT Web, DeepSeek, Doubao, project page, or browser AI URL to the current project | A stable external-brain session tied to the project registry, Chrome profile, and local module roots |
+
+Recommended flow:
+
+1. Run `/rdinit` when a project needs the external-brain workflow.
+2. Run `/bindChrome <url>` to bind the GPT Web, DeepSeek, Doubao, or browser
+   context that should act as the project's external brain.
+3. The agent reads `AGENTS.md`,
+   `docs/agent-runtime/project-local-skill-bindings.md`, and the generated
+   runtime docs to understand the complete process.
+4. From that point on, work moves through TaskSpec, execution, evidence,
+   review, and lessons learned instead of ad hoc prompting.
+
+Provider note: the provider is replaceable; the governance contract is not. The
+bound web AI must preserve context, coordinate TaskSpecs, review evidence, and
+respect local privacy boundaries. If a provider cannot reliably do that for a
+project, use it as a secondary reviewer rather than the primary external brain.
+
 ## One-Minute Example
 
 Without devframe-system:
@@ -136,17 +181,18 @@ Without devframe-system:
 
 With devframe-system:
 
-> "Use GPT web to define the goal, scope, constraints, success criteria, and
-> review focus. Dispatch the bounded TaskSpec to an executor. Accept the work
-> only when the ExecutionReport, verification output, and reviewer checks prove
-> that code quality improved without drifting from the product direction."
+> "Use the bound web AI session to define the goal, scope, constraints, success
+> criteria, and review focus. Dispatch the bounded TaskSpec to an executor.
+> Accept the work only when the ExecutionReport, verification output, and
+> reviewer checks prove that code quality improved without drifting from the
+> product direction."
 
 ## What You Get
 
 | Need | What devframe-system provides |
 |---|---|
 | Better code quality | Review gates, negative fixtures, evidence requirements, and no-fake-green rules |
-| Better direction control | GPT-web-centered planning, TaskSpec boundaries, and reviewer focus |
+| Better direction control | Web-AI-centered planning, TaskSpec boundaries, and reviewer focus |
 | Multi-agent coordination | SADP, ExecutionReport, capability inventory, and conflict-aware file scopes |
 | Low-cost adoption | A repository-based workflow that works with existing tools and agents |
 | Reusable process | Bootstrap templates, rules, schemas, docs, and runbooks you can copy into another project |
@@ -621,7 +667,7 @@ your-project/
 
 ## devframe-system 是什么？
 
-devframe-system 是一个**以 GPT 网页版为中心的软件质量提升系统**。它先解决最现实的问题：不新增预算、不替换工具链、不训练新模型，只把你已经在用的 GPT 网页版变成外置大脑，再接入你已经在用的软件、仓库、CLI、浏览器、脚本、测试框架和 coding agent。
+devframe-system 是一个**以网页版 AI 为中心的软件质量提升系统**。它先解决最现实的问题：不新增预算、不替换工具链、不训练新模型，只把你已经在用的 GPT Web、DeepSeek、豆包或其他网页版 AI 变成外置大脑，再接入你已经在用的软件、仓库、CLI、浏览器、脚本、测试框架和 coding agent。
 
 它追求的是非常直接的结果：
 
@@ -632,7 +678,7 @@ devframe-system 是一个**以 GPT 网页版为中心的软件质量提升系统
 
 规则、契约和门禁不是主卖点，而是让这个外置大脑可以安全连接多软件、多 agent 的控制面：
 
-**1. 方向把控** — GPT 网页版在写代码之前持续保留问题、产品意图、取舍和当前上下文。
+**1. 方向把控** — 被绑定的网页版 AI 在写代码之前持续保留问题、产品意图、取舍和当前上下文。
 
 **2. Agent 调度** — TaskSpec 和 SADP 把模糊需求变成有边界的任务，交给 Codex、Claude Code、CLI 脚本、浏览器自动化或其他执行器。
 
@@ -646,7 +692,7 @@ devframe-system 是一个**以 GPT 网页版为中心的软件质量提升系统
 
 | 常见做法 | devframe-system 的做法 |
 |---|---|
-| 再买或再安装一个编码工具 | 先把 GPT 网页版变成马上可用的外置大脑 |
+| 再买或再安装一个编码工具 | 先把 GPT Web、DeepSeek、豆包或其他网页版 AI 变成马上可用的外置大脑 |
 | 让 agent “帮我修一下” | 把意图变成 TaskSpec、边界、证据和审查重点 |
 | 相信 agent 的最终回答 | 要求 ExecutionReport、验证输出和可审查证据 |
 | 每个工具各自保存上下文 | 把方向、决策和经验放在同一个协调大脑里 |
@@ -656,12 +702,30 @@ devframe-system 是一个**以 GPT 网页版为中心的软件质量提升系统
 
 ## 它如何工作？
 
-1. **在 GPT 网页版中校准方向** — 开工前先明确产品目标、约束、验收标准和风险。
+1. **在网页版 AI 会话中校准方向** — 开工前先明确产品目标、约束、验收标准和风险。
 2. **把意图转换成 TaskSpec** — 写清任务、允许文件、禁止文件、验证命令和停止条件。
 3. **交给最合适的执行器** — Codex、Claude Code、CLI 脚本、浏览器自动化或其他 agent 都可以在同一契约下执行。
 4. **收集证据，而不是收集感觉** — 执行器返回改动文件、运行命令、输出、制品和已知缺口。
 5. **先审查，再接受** — 用 P0-P3 门禁检查证据，让代码质量、安全和方向都可见。
 6. **把经验喂回外置大脑** — 重复踩坑会沉淀成操作记忆，而不是消失在聊天记录里。
+
+## 两个技能入口
+
+真正使用时不应该让人先读完整套文档。整套操作系统应该收敛成两个面向项目的技能入口：
+
+| 技能 | 用来做什么 | agent 能获得什么 |
+|---|---|---|
+| `/rdinit` | 给一个仓库初始化 devframe-system 外置大脑操作层 | `AGENTS.md`、规则、Schema、工具策略、能力清单、验证文档和 bootstrap 路径 |
+| `/bindChrome <url>` | 把 GPT Web、DeepSeek、豆包、项目页面或浏览器 AI URL 绑定到当前项目 | 一个稳定的外置大脑会话，绑定项目注册表、Chrome profile 和本地模块根目录 |
+
+推荐流程：
+
+1. 新项目先运行 `/rdinit`，让项目具备外置大脑工作流。
+2. 再运行 `/bindChrome <url>`，把应该作为项目外置大脑的 GPT Web、DeepSeek、豆包或浏览器上下文绑定起来。
+3. agent 读取 `AGENTS.md`、`docs/agent-runtime/project-local-skill-bindings.md` 和生成的运行时文档，就能理解完整流程。
+4. 之后每轮工作都走 TaskSpec、执行、证据、审查和经验沉淀，而不是临时提示词。
+
+提供商说明：提供商可以替换，治理契约不能替换。被绑定的网页版 AI 必须能稳定保留项目上下文、协调 TaskSpec、审查证据并遵守本地隐私边界。如果某个提供商做不到，就把它当二级审阅器，而不是主外置大脑。
 
 ## 一分钟例子
 
@@ -678,7 +742,7 @@ devframe-system 是一个**以 GPT 网页版为中心的软件质量提升系统
 | 需求 | devframe-system 提供什么 |
 |---|---|
 | 提升代码质量 | 审查门禁、负面夹具、证据要求和禁止假绿规则 |
-| 把控产品与工程方向 | GPT 网页版规划、TaskSpec 边界和审查重点 |
+| 把控产品与工程方向 | 网页版 AI 规划、TaskSpec 边界和审查重点 |
 | 多 agent 协同 | SADP、ExecutionReport、能力清单和文件冲突边界 |
 | 低成本落地 | 基于仓库的流程，可接入现有工具和 agent |
 | 可复用流程 | Bootstrap 模板、规则、Schema、文档和 runbook 可复制到其他项目 |
