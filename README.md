@@ -69,12 +69,16 @@ broad RAG readiness, or RuntimeAuthorization.
 
 ## Submodules
 
+Authoritative current pins are `integration/lock/submodules.lock.yml` plus the
+Git submodule entries in the parent tree. The table below reflects the current
+local paper RAG handoff milestone, not the original bootstrap baseline.
+
 | Path | Role | Branch | Pinned commit |
 |---|---|---|---|
-| `agent-acceptance` | Governance and acceptance framework | `master` | `285d5c906a074ce7c689c8f656caabbdb32af8dc` |
-| `devframe-control-plane` | Control-plane runtime candidate | `codex/route-a-baseline-candidate` | `311847818927d3c7ec8c8718949b38c74605fc83` |
-| `dev-frame-opencode` | Opencode workflow/runtime candidate | `master` | `3a3aa5722bd6015bec30a8e9190140148b45167c` |
-| `test-frame` | Controlled verification runtime candidate | `codex/harden-baseline` | `aeb4a31f770e35e7f698e5c3169406ddba231a4d` |
+| `agent-acceptance` | Governance and acceptance framework | `codex/paper-archive-final-verdict-boundary` | `2e0bd5633eaca20bd0124dd22b7dd6d8702325b1` |
+| `devframe-control-plane` | Control-plane runtime candidate | `codex/lease-source-lock-contracts` | `09167bc656f8625c97bfae5c52dae5a0280b116c` |
+| `dev-frame-opencode` | Opencode workflow/runtime candidate | `codex/paper-audit-privacy-hard-gate` | `528f5b801082a10759df000a2315486a55a22e79` |
+| `test-frame` | Controlled verification runtime candidate | `codex/adapter-negative-matrix` | `72c3150e89c6542054547bc5f092f38388be153c` |
 
 ## Boundary
 

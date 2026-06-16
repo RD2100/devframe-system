@@ -43,6 +43,15 @@ Use these v1.0 files only when comparing history:
 
 `SHIP_V1_1_FOR_HUMAN_REVIEW_NON_FINAL`
 
+Fast parallel closeout plan:
+
+- `integration/reports/current-local-paper-rag-fast-parallel-closeout-plan-2026-06-16.md`
+
+Current parent closeout and evidence index:
+
+- `integration/reports/current-local-paper-rag-v1-1-final-closeout-2026-06-16.md`
+- `integration/reports/current-local-paper-rag-v1-1-evidence-index-2026-06-16.md`
+
 Previous v1.0 handoff verdict retained for compatibility with the v1.0 verifier:
 
 `SHIP_V1_0_FOR_HUMAN_REVIEW_NON_FINAL`
