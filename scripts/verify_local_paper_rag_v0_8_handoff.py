@@ -61,7 +61,7 @@ def normalize_space(text: str) -> str:
     return " ".join(text.split())
 
 
-def verify(root: Path) -> dict[str, Any]:
+def verify(root: Path, include_timestamp: bool = False) -> dict[str, Any]:
     artifacts = root / "integration" / "artifacts" / "paper-drafts"
     reports = root / "integration" / "reports"
     checks: list[CheckResult] = []
@@ -83,7 +83,7 @@ def verify(root: Path) -> dict[str, Any]:
         add_check(checks, f"{label}_exists", path.exists(), path=str(path))
 
     if not all(path.exists() for path in paths.values()):
-        return build_report(root, checks, paths)
+        return build_report(root, checks, paths, include_timestamp=include_timestamp)
 
     for label in ("docx", "markdown", "package", "opencode_answer_preview_zip"):
         actual = sha256_file(paths[label])
@@ -158,7 +158,7 @@ def verify(root: Path) -> dict[str, Any]:
             actual=actual_commit,
         )
 
-    return build_report(root, checks, paths)
+    return build_report(root, checks, paths, include_timestamp=include_timestamp)
 
 
 def safe_name(value: str) -> str:
@@ -193,11 +193,18 @@ def find_lock_commit(payload: Any, module: str) -> str | None:
     return None
 
 
-def build_report(root: Path, checks: list[CheckResult], paths: dict[str, Path]) -> dict[str, Any]:
+def build_report(
+    root: Path,
+    checks: list[CheckResult],
+    paths: dict[str, Path],
+    include_timestamp: bool = False,
+) -> dict[str, Any]:
     failed = [check for check in checks if check.status != "PASS"]
     return {
         "schema_version": 1,
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": datetime.now(timezone.utc).isoformat()
+        if include_timestamp
+        else "deterministic-local-paper-rag-v0.8-handoff-verification",
         "root": str(root),
         "verdict": "PASS_LOCAL_PAPER_RAG_V0_8_HANDOFF_VERIFICATION" if not failed else "FAIL",
         "non_final_boundary": {
@@ -257,13 +264,18 @@ def parse_args() -> argparse.Namespace:
         default="integration/reports/local-paper-rag-v0-8-handoff-verification",
         help="Directory for JSON and Markdown verification reports.",
     )
+    parser.add_argument(
+        "--include-timestamp",
+        action="store_true",
+        help="Include the current UTC timestamp in output. Omitted by default for repeatable committed reports.",
+    )
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
     root = Path(args.root).resolve()
-    report = verify(root)
+    report = verify(root, include_timestamp=args.include_timestamp)
     write_outputs(report, root / args.out_dir)
     print(report["verdict"])
     print(f"passed={report['summary']['passed']} failed={report['summary']['failed']}")

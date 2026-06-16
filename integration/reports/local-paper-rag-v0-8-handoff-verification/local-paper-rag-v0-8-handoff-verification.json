@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-16T12:13:30.520383+00:00",
+  "generated_at": "deterministic-local-paper-rag-v0.8-handoff-verification",
   "root": "D:\\devframe-system",
   "verdict": "PASS_LOCAL_PAPER_RAG_V0_8_HANDOFF_VERIFICATION",
   "non_final_boundary": {
