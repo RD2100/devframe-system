@@ -1,32 +1,26 @@
-# devframe-system
+<p align="center">
+  <img src="docs/assets/devframe-system-banner.svg" alt="devframe-system: GPT Web as an external brain" width="100%" />
+</p>
 
-[中文](#中文) | [English](#english)
+<h3 align="center">Use GPT Web as an external brain to raise code quality and keep engineering direction on track.</h3>
 
-> **真正要解决的问题 / The Real Problem**
->
-> **怎样在不增加预算、不替换工具链、不训练新模型的情况下，最简单、最直接地提升代码质量，并持续把住产品与工程方向？**
->
-> devframe-system 的答案不是再造一个常见的“治理框架”。它真正独特的地方，是把 **GPT 网页版作为软件研发的外置大脑**：
-> 让 GPT 负责理解目标、拆解任务、记忆上下文、校准方向、调度 agent、审查证据和沉淀经验；
-> 让 IDE、CLI、浏览器、自动化脚本、测试框架以及不同厂商的 coding agent 作为可替换执行器接入。
-> 换句话说，它用几乎免费的 GPT 网页版能力，把所有软件和 agent 组织成一个可控、可复盘、可持续改进的研发系统。
->
-> **How can you improve code quality and keep product/engineering direction under control with the least cost, the fewest new tools, and the most direct workflow?**
->
-> devframe-system is not interesting because it is another governance framework.
-> Its distinctive idea is using the **GPT web app as an external brain for software development**:
-> GPT handles intent, task decomposition, context memory, direction checks, agent dispatch, evidence review,
-> and lessons learned; IDEs, CLIs, browsers, automation scripts, test frameworks,
-> and coding agents become interchangeable executors.
-> In short, it turns the low-cost GPT web experience into the coordinating brain for software teams, tools, and multi-agent workflows.
+<p align="center">
+  <a href="#english">English</a> | <a href="#中文">简体中文</a>
+</p>
 
-**Agent Runtime Governance Framework & Multi-Agent Collaboration Infrastructure**
-**AI 智能体运行时治理框架 & 多智能体协同基础设施**
+<p align="center">
+  <img alt="GPT Web" src="https://img.shields.io/badge/GPT%20Web-External%20Brain-1f6feb" />
+  <img alt="Focus" src="https://img.shields.io/badge/focus-code%20quality%20%2B%20direction-20c997" />
+  <img alt="Agents" src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude%20Code%20%7C%20CLI-6f42c1" />
+  <img alt="Cost" src="https://img.shields.io/badge/cost-low%20budget-ffb703" />
+  <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%20%7C%20PowerShell-24506b" />
+</p>
 
-Route A strict-clean superproject for the devframe family. This repository pins
-four source repositories as Git submodules and hosts the portable RD2100 Agent
-Runtime v2 governance framework — a reusable system of rules, contracts,
-verification gates, and bootstrap tooling for AI agent orchestration.
+**真正的问题不是“怎样再做一套治理框架”，而是：怎样在不增加预算、不替换工具链、不训练新模型的情况下，最简单、最直接地提升代码质量，并持续把住产品与工程方向？**
+
+**devframe-system 的答案，是把几乎免费的 GPT 网页版变成软件研发的外置大脑：GPT 负责理解目标、拆解任务、记忆上下文、校准方向、调度 agent、审查证据和沉淀经验；IDE、CLI、浏览器、自动化脚本、测试框架以及不同厂商的 coding agent 都作为可替换执行器接入。**
+
+**The real question is not how to build another governance framework. It is how to improve code quality and direction control with the least cost, the fewest new tools, and the most direct workflow. devframe-system answers by turning the low-cost GPT web app into an external brain for software development while every IDE, CLI, browser, script, test runner, and coding agent becomes an interchangeable executor.**
 
 ---
 
@@ -55,28 +49,32 @@ verification gates, and bootstrap tooling for AI agent orchestration.
 
 ## What is devframe-system?
 
-devframe-system is a **governance superproject** that provides a portable,
-production-grade framework for orchestrating AI coding agents. It answers a
-fundamental question: *how do you make AI agents work together reliably,
-verifiably, and safely on real software projects?*
+devframe-system is a **GPT-web-centered software quality system**. It starts
+from a practical promise: use the GPT web app you already have as an external
+brain, then connect it to the software, repositories, CLIs, browsers, scripts,
+test runners, and coding agents you already use.
 
-The framework consists of three layers:
+The goal is direct and concrete:
 
-**1. Governance Rules & Verification Gates** — A comprehensive rule system (46
-rules across 7 domains) with a 4-level verification gate hierarchy (P0-P3)
-that enforces security, correctness, quality, and completeness standards on
-every piece of agent-produced work.
+- improve code quality without buying a new platform;
+- keep product and engineering direction visible before agents drift;
+- make every agent action reviewable through evidence, not trust;
+- turn repeated lessons into reusable operating memory.
 
-**2. Sub-Agent Dispatch Protocol (SADP)** — A structured collaboration protocol
-between planning agents (Codex) and execution agents (Claude Code) that enforces
-separation of concerns: the planner decomposes goals, the executor implements,
-the reviewer validates, and the finalizer packages. No agent can approve its own
-work.
+The governance pieces are not the main attraction. They are the control surface
+that lets the external brain work safely across many tools:
 
-**3. Bootstrap & Integration Contracts** — 8 core data contracts (TaskSpec,
-RunSpec, EvidenceIndex, GateResult, ExecutionReport, and more) with JSON Schema
-validation, plus a one-command PowerShell bootstrap that deploys the entire
-framework to any project.
+**1. Direction Control** — GPT web keeps the problem, product intent, tradeoffs,
+and current context in view before code is written.
+
+**2. Agent Dispatch** — TaskSpec and SADP turn vague requests into bounded work
+for Codex, Claude Code, CLI scripts, browser automation, or other executors.
+
+**3. Quality Verification** — ExecutionReport, evidence indexes, review gates,
+and negative tests make code quality measurable instead of rhetorical.
+
+**4. Portable Bootstrap** — Rules, contracts, verification docs, and templates
+can be deployed into another repository with one PowerShell command.
 
 ### Design Philosophy
 
@@ -510,15 +508,24 @@ your-project/
 
 ## devframe-system 是什么？
 
-devframe-system 是一个**治理超级项目**，提供可移植的、生产级别的 AI 编码智能体编排框架。它回答了一个根本性问题：*如何让 AI 智能体在真实的软件项目中可靠地、可验证地、安全地协同工作？*
+devframe-system 是一个**以 GPT 网页版为中心的软件质量提升系统**。它先解决最现实的问题：不新增预算、不替换工具链、不训练新模型，只把你已经在用的 GPT 网页版变成外置大脑，再接入你已经在用的软件、仓库、CLI、浏览器、脚本、测试框架和 coding agent。
 
-该框架包含三个层次：
+它追求的是非常直接的结果：
 
-**1. 治理规则与验证门禁** — 一套全面的规则系统（7 个领域共 46 条规则），配合 4 级验证门禁体系（P0-P3），对智能体产出的每一项工作强制执行安全性、正确性、质量和完整性标准。
+- 不买新平台，也能提升代码质量；
+- 在 agent 开始跑偏前，把产品方向和工程方向拉回视野；
+- 让每一次 agent 行动都能靠证据审查，而不是靠信任；
+- 把反复踩坑的经验沉淀成可复用的操作记忆。
 
-**2. 子智能体调度协议（SADP）** — 规划智能体（Codex）和执行智能体（Claude Code）之间的结构化协作协议，强制实施关注点分离：规划者分解目标，执行者实施代码，审查者验证证据，终结者打包交付。任何智能体都不能审批自己的工作。
+规则、契约和门禁不是主卖点，而是让这个外置大脑可以安全连接多软件、多 agent 的控制面：
 
-**3. 引导部署与集成契约** — 8 个核心数据契约（TaskSpec、RunSpec、EvidenceIndex、GateResult、ExecutionReport 等），配合 JSON Schema 验证，加上一条 PowerShell 命令即可将整个框架部署到任何项目。
+**1. 方向把控** — GPT 网页版在写代码之前持续保留问题、产品意图、取舍和当前上下文。
+
+**2. Agent 调度** — TaskSpec 和 SADP 把模糊需求变成有边界的任务，交给 Codex、Claude Code、CLI 脚本、浏览器自动化或其他执行器。
+
+**3. 质量验证** — ExecutionReport、证据索引、审查门禁和负面测试让代码质量变成可以检查的东西，而不是一句“看起来没问题”。
+
+**4. 可迁移引导** — 规则、契约、验证文档和模板可以通过一条 PowerShell 命令部署到其他仓库。
 
 ### 设计理念
 
