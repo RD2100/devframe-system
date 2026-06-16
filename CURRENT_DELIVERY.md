@@ -231,6 +231,13 @@ Real authorized-folder reproduction after parent pin:
   `refresh_required=false`, `index_reused=true`
 - report: `D:\devframe-system\integration\reports\local-paper-rag-one-command-real-reproduction-2026-06-16.md`
 
+Independent non-final governance review:
+
+- agent-acceptance commit: `bad61c9bf8274181a24cb70ed54aad17534c6333`
+- verdict: `LOCAL_PAPER_RAG_V1_2_ONE_COMMAND_REPRODUCTION_ACCEPTED_AS_NON_FINAL_MILESTONE_CANDIDATE`
+- evidence ZIP: `D:\devframe-system\agent-acceptance\_evidence\AGENT_ACCEPTANCE_LOCAL_PAPER_RAG_V1_2_AND_ONE_COMMAND_REPRODUCTION_GOVERNANCE_REVIEW_A1\evidence-agent-acceptance-local-paper-rag-v1-2-and-one-command-reproduction-governance-review-a1.zip`
+- SHA256: `744F83A562CCF89D08AC000398194C78C427F0E68051EF5BB2A8279E41032492`
+
 ## Current Local RAG Evidence
 
 Latest local RAG pipeline evidence accepted for current milestone review:

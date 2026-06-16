@@ -13,10 +13,13 @@ or RuntimeAuthorization.
 
 ## What Was Added In This Closeout
 
-Two parent commits complete the current fast closeout layer:
+The current fast closeout layer includes:
 
 - `b8c50fc Add local paper RAG submission candidate v1.2`
 - `bfe4cfd Pin opencode local paper RAG one-command runner`
+- `01e3d85 Record local paper RAG one-command reproduction`
+- `bad61c9bf8274181a24cb70ed54aad17534c6333` in `agent-acceptance`
+  for independent non-final governance review
 
 ## User-Visible Deliverables
 
@@ -43,6 +46,14 @@ One-command local RAG runner:
 - command: `paper local-rag-run`
 - evidence ZIP: `D:\devframe-system\.agent\evidence\OPENCODE_LOCAL_PAPER_RAG_ONE_COMMAND_RUNNER_A1-a22f3bb-20260616.zip`
 - evidence SHA256: `DF5B07CCAD4A43F06A4C92ED5704458E490738DA484ECB8F8B28D4D9F237A113`
+
+Independent governance review:
+
+- submodule: `agent-acceptance`
+- pinned commit: `bad61c9bf8274181a24cb70ed54aad17534c6333`
+- verdict: `LOCAL_PAPER_RAG_V1_2_ONE_COMMAND_REPRODUCTION_ACCEPTED_AS_NON_FINAL_MILESTONE_CANDIDATE`
+- evidence ZIP: `D:\devframe-system\agent-acceptance\_evidence\AGENT_ACCEPTANCE_LOCAL_PAPER_RAG_V1_2_AND_ONE_COMMAND_REPRODUCTION_GOVERNANCE_REVIEW_A1\evidence-agent-acceptance-local-paper-rag-v1-2-and-one-command-reproduction-governance-review-a1.zip`
+- evidence SHA256: `744F83A562CCF89D08AC000398194C78C427F0E68051EF5BB2A8279E41032492`
 
 ## How To Re-Run The Current Checks
 
@@ -83,6 +94,24 @@ One-command runner parent intake checks:
 - schema JSON parse: passed
 - evidence ZIP hash: matched
 - parent `git diff --cached --check`: passed before commit
+
+Real authorized-folder reproduction:
+
+- first run: `PASS_LOCAL_RAG_RUN`, `document_count=6`, `chunk_count=47`,
+  `retrieval_success_count=3`, `answer_preview_count=5`
+- second run: `PASS_LOCAL_RAG_RUN`, `refresh_required=false`,
+  `index_reused=true`
+- reproduction report:
+  `D:\devframe-system\integration\reports\local-paper-rag-one-command-real-reproduction-2026-06-16.md`
+
+Independent governance review checks:
+
+- v1.2 package ZIP hash: matched
+- opencode runner evidence ZIP hash: matched
+- ZIP inspection limited to entry names and sizes
+- py_compile: passed
+- workflow closure pytest: `43 passed`
+- git diff checks: passed
 
 ## Practical Current Capability
 
@@ -155,9 +184,11 @@ Parent files added or updated in this closeout:
 - `integration/reports/local-paper-rag-submission-candidate-v1-2-verification/local-paper-rag-submission-candidate-v1-2-verification.md`
 - `integration/reports/parent-local-paper-rag-submission-candidate-v1-2-a1-2026-06-16.md`
 - `integration/reports/parent-pin-review-opencode-local-paper-rag-one-command-runner-a1-2026-06-16.md`
+- `integration/reports/local-paper-rag-one-command-real-reproduction-2026-06-16.md`
 - `integration/reports/current-local-paper-rag-v1-2-and-one-command-closeout-2026-06-16.md`
 - `scripts/build_local_paper_rag_submission_candidate_v1_2.py`
 - `scripts/verify_local_paper_rag_submission_candidate_v1_2.py`
+- `agent-acceptance` gitlink
 - `dev-frame-opencode` gitlink
 
 Suggested review focus:
