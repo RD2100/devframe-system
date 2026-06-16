@@ -5,6 +5,33 @@ Route A strict-clean superproject for the devframe family.
 This repository pins four source repositories as Git submodules. It does not
 copy source code across repository boundaries.
 
+## Current Delivery
+
+The active handoff entrypoint is:
+
+- `CURRENT_DELIVERY.md`
+
+Current reviewer-facing paper/RAG artifact:
+
+- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v1.0.docx`
+
+One-command verification:
+
+```powershell
+python scripts\verify_local_paper_rag_v1_0_handoff.py --root D:\devframe-system
+```
+
+Expected result:
+
+```text
+PASS_LOCAL_PAPER_RAG_V1_0_HANDOFF_VERIFICATION
+passed=36 failed=0
+```
+
+This is a non-final human-review handoff. It does not claim final
+paper-quality acceptance, training-effect acceptance, production readiness,
+broad RAG readiness, or RuntimeAuthorization.
+
 ## Submodules
 
 | Path | Role | Branch | Pinned commit |
