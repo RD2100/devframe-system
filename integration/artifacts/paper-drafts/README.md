@@ -4,22 +4,25 @@
 
 Use this file for normal human review:
 
-- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.7.docx`
+- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.8.docx`
 
 Use this file when Markdown editing is preferred:
 
-- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.7.md`
+- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.8.md`
 
 Use this package for handoff:
 
-- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.7-package.zip`
+- `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.8-package.zip`
 
-The v0.7 clean manuscript is the current reviewer-facing draft. It preserves the
-v0.6 argument and converts internal source labels to conventional numeric
-references `[1]` through `[6]`.
+The v0.8 clean manuscript is the current reviewer-facing draft. It preserves the
+v0.7 numeric-reference format and incorporates the human spot-check caution that
+local RAG/Obsidian/paper-generation evidence cannot prove training effects or
+paper quality.
 
 ## Supporting Review Artifacts
 
+- v0.7 clean manuscript:
+  `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.7.docx`
 - v0.6 clean manuscript:
   `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.6.docx`
 - v0.5 clean manuscript:
@@ -35,6 +38,12 @@ references `[1]` through `[6]`.
 
 ## Latest Hashes
 
+- v0.8 clean DOCX:
+  `8739E522CBA03A0D2F84BB89C92B3F3A6EACFF9C8C5C3F543A661FEACC11A637`
+- v0.8 clean Markdown:
+  `BCCE83581CC398BFBC344FADB4ACD15C08B7A4CE977B72B94E92B358F75A8CA3`
+- v0.8 package ZIP:
+  `D8FBD5C203E7ACB9ABF412D09986E7B6AFFB34F3C3652CB62C63FF2AE647C742`
 - v0.7 clean DOCX:
   `4D6BCEA981F87C299872A30BD6237ED45BFC141F22F7E0A68305AD83FD0BA098`
 - v0.7 clean Markdown:
@@ -57,6 +66,6 @@ references `[1]` through `[6]`.
 ## Boundary
 
 These are draft paper artifacts. They do not claim final paper-quality
-acceptance, final governance acceptance, production readiness, broad/general RAG
-readiness, whole-vault readiness, external/private RAG readiness, or
-RuntimeAuthorization.
+acceptance, final training-effect acceptance, final governance acceptance,
+production readiness, broad/general RAG readiness, whole-vault readiness,
+external/private RAG readiness, or RuntimeAuthorization.
