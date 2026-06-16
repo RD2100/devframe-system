@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "generated_at": "deterministic-local-paper-rag-submission-candidate-v1.2",
+  "source": "local-paper-rag-short-paper-v1.1.md",
+  "manuscript_markdown": "local-paper-rag-submission-candidate-v1.2.md",
+  "manuscript_docx": "local-paper-rag-submission-candidate-v1.2.docx",
+  "reference_check": "local-paper-rag-reference-final-check-v1.2.md",
+  "format_closeout": "local-paper-rag-submission-format-closeout-v1.2.md",
+  "recommended_use": "generic-gbt-style-human-review-candidate",
+  "requires_human_reference_metadata_check": true,
+  "requires_target_venue_template_check": true,
+  "non_final_boundary": {
+    "paper_quality_acceptance": false,
+    "training_effect_acceptance": false,
+    "final_governance_acceptance": false,
+    "production_ready": false,
+    "broad_rag_ready": false,
+    "whole_vault_ready": false,
+    "cloud_vector_db_ready": false,
+    "runtime_authorization": false
+  },
+  "hashes": {
+    "local-paper-rag-submission-candidate-v1.2.md": "DCEB8DF0437FEBF455DDB30DEE5AC1C296E940C2D05D748DE97D37E64F815E0E",
+    "local-paper-rag-submission-candidate-v1.2.docx": "A6EC9E3B5F59181F93D7E34902BFD0446A6BF590CF16982903B0F3292187558D",
+    "local-paper-rag-reference-final-check-v1.2.md": "7FE09F41E61958019A2645142816E992BB36A44B5E29FCA3FAB254A42E3B9907",
+    "local-paper-rag-submission-format-closeout-v1.2.md": "1479575FF235C01149C6405601A6843E3F9ABC1FF14AA94D372316C23BB6B4F2"
+  }
+}

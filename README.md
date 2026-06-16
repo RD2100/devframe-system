@@ -38,6 +38,12 @@ Review-variants supplement verification:
 python scripts\verify_local_paper_rag_review_variants_v1_0.py --root D:\devframe-system
 ```
 
+Submission-candidate supplement verification:
+
+```powershell
+python scripts\verify_local_paper_rag_submission_candidate_v1_2.py --root D:\devframe-system
+```
+
 Expected result:
 
 ```text
@@ -54,6 +60,13 @@ PASS_LOCAL_PAPER_RAG_REVIEW_VARIANTS_V1_0_VERIFICATION
 passed=79 failed=0
 ```
 
+Submission-candidate expected result:
+
+```text
+PASS_LOCAL_PAPER_RAG_SUBMISSION_CANDIDATE_V1_2_VERIFICATION
+passed=52 failed=0
+```
+
 Current optional review variants:
 
 - Short paper:
@@ -62,6 +75,10 @@ Current optional review variants:
   `integration/artifacts/paper-drafts/local-paper-rag-technical-note-v1.1.docx`
 - Internal brief:
   `integration/artifacts/paper-drafts/local-paper-rag-internal-brief-v1.1.docx`
+
+Generic GB/T-style submission candidate:
+
+- `integration/artifacts/paper-drafts/local-paper-rag-submission-candidate-v1.2.docx`
 
 This is a non-final human-review handoff. It does not claim final
 paper-quality acceptance, training-effect acceptance, production readiness,

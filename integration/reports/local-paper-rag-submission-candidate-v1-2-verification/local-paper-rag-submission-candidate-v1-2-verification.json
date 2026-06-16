@@ -1,0 +1,349 @@
+{
+  "schema_version": 1,
+  "generated_at": "deterministic-local-paper-rag-submission-candidate-v1.2-verification",
+  "root": "D:\\devframe-system",
+  "package": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-submission-candidate-v1.2-package.zip",
+  "package_sha256": "FBFF4C4BF77EA31FF4B9415E07413CF741B058DECF756C52877EE0EB40A76AF5",
+  "verdict": "PASS_LOCAL_PAPER_RAG_SUBMISSION_CANDIDATE_V1_2_VERIFICATION",
+  "summary": {
+    "passed": 52,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "md_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-submission-candidate-v1.2.md"
+      }
+    },
+    {
+      "name": "docx_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-submission-candidate-v1.2.docx"
+      }
+    },
+    {
+      "name": "reference_check_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-reference-final-check-v1.2.md"
+      }
+    },
+    {
+      "name": "format_closeout_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-submission-format-closeout-v1.2.md"
+      }
+    },
+    {
+      "name": "manifest_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-submission-candidate-v1.2-manifest.json"
+      }
+    },
+    {
+      "name": "package_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-submission-candidate-v1.2-package.zip"
+      }
+    },
+    {
+      "name": "manifest_schema_version",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "manifest_requires_reference_check",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "manifest_requires_template_check",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "manifest_recommended_use",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_paper_quality_acceptance_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_training_effect_acceptance_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_final_governance_acceptance_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_production_ready_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_broad_rag_ready_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_whole_vault_ready_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_cloud_vector_db_ready_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_runtime_authorization_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "manuscript_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "面向应急救援与军事职业教育的虚拟训练系统"
+      }
+    },
+    {
+      "name": "manuscript_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "摘要"
+      }
+    },
+    {
+      "name": "manuscript_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "关键词"
+      }
+    },
+    {
+      "name": "manuscript_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "本文主要从三个方面展开"
+      }
+    },
+    {
+      "name": "manuscript_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "由于现有证据主要来自文献分析"
+      }
+    },
+    {
+      "name": "manuscript_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "训练效果已经得到充分证明"
+      }
+    },
+    {
+      "name": "manuscript_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "参考文献"
+      }
+    },
+    {
+      "name": "manuscript_contains_5",
+      "status": "PASS",
+      "details": {
+        "token": "[5] 焦楷哲, 程培源, 刘滔, 等."
+      }
+    },
+    {
+      "name": "manuscript_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "本地授权文献"
+      }
+    },
+    {
+      "name": "manuscript_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "本地流程验证"
+      }
+    },
+    {
+      "name": "manuscript_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "当前版本可作为"
+      }
+    },
+    {
+      "name": "manuscript_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "文章编号:"
+      }
+    },
+    {
+      "name": "manuscript_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "文章编号："
+      }
+    },
+    {
+      "name": "manuscript_excludes_runtimeauthorization",
+      "status": "PASS",
+      "details": {
+        "token": "RuntimeAuthorization"
+      }
+    },
+    {
+      "name": "manuscript_excludes_production_ready",
+      "status": "PASS",
+      "details": {
+        "token": "production_ready"
+      }
+    },
+    {
+      "name": "manuscript_excludes_final_acceptance",
+      "status": "PASS",
+      "details": {
+        "token": "final_acceptance"
+      }
+    },
+    {
+      "name": "manuscript_excludes_raw_pdf_text",
+      "status": "PASS",
+      "details": {
+        "token": "raw_pdf_text"
+      }
+    },
+    {
+      "name": "manuscript_excludes_raw_markdown_body",
+      "status": "PASS",
+      "details": {
+        "token": "raw_markdown_body"
+      }
+    },
+    {
+      "name": "manuscript_excludes_raw_chunks",
+      "status": "PASS",
+      "details": {
+        "token": "raw_chunks"
+      }
+    },
+    {
+      "name": "manuscript_excludes_raw_query",
+      "status": "PASS",
+      "details": {
+        "token": "raw_query"
+      }
+    },
+    {
+      "name": "manuscript_excludes_source_path",
+      "status": "PASS",
+      "details": {
+        "token": "source_path"
+      }
+    },
+    {
+      "name": "manuscript_excludes_writelab_token",
+      "status": "PASS",
+      "details": {
+        "token": "WRITELAB_TOKEN"
+      }
+    },
+    {
+      "name": "reference_count_six",
+      "status": "PASS",
+      "details": {
+        "count": 6
+      }
+    },
+    {
+      "name": "citation_ranges_present",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "reference_check_requires_human",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "reference_check_no_city_guess",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "docx_readable",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "package_entries_exact",
+      "status": "PASS",
+      "details": {
+        "actual": [
+          "SUBMISSION-CANDIDATE-V1.2-README.md",
+          "local-paper-rag-reference-final-check-v1.2.md",
+          "local-paper-rag-submission-candidate-v1.2-manifest.json",
+          "local-paper-rag-submission-candidate-v1.2.docx",
+          "local-paper-rag-submission-candidate-v1.2.md",
+          "local-paper-rag-submission-format-closeout-v1.2.md"
+        ]
+      }
+    },
+    {
+      "name": "package_has_no_absolute_paths",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "package_boundary_non_final",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "manifest_hash_local_paper_rag_submission_candidate_v1_2_md",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "manifest_hash_local_paper_rag_submission_candidate_v1_2_docx",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "manifest_hash_local_paper_rag_reference_final_check_v1_2_md",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "manifest_hash_local_paper_rag_submission_format_closeout_v1_2_md",
+      "status": "PASS",
+      "details": {}
+    }
+  ],
+  "non_final_boundary": {
+    "paper_quality_acceptance": false,
+    "training_effect_acceptance": false,
+    "final_governance_acceptance": false,
+    "production_ready": false,
+    "broad_rag_ready": false,
+    "runtime_authorization": false
+  }
+}

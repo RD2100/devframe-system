@@ -155,6 +155,40 @@ PASS_LOCAL_PAPER_RAG_FINAL_REVIEW_V1_1_VERIFICATION
 passed=109 failed=0
 ```
 
+## Submission Candidate Supplement
+
+Generic GB/T-style submission candidate package:
+
+- `integration/artifacts/paper-drafts/local-paper-rag-submission-candidate-v1.2-package.zip`
+
+SHA256:
+
+- `FBFF4C4BF77EA31FF4B9415E07413CF741B058DECF756C52877EE0EB40A76AF5`
+
+Primary file:
+
+- `integration/artifacts/paper-drafts/local-paper-rag-submission-candidate-v1.2.docx`
+
+Human reference checklist:
+
+- `integration/artifacts/paper-drafts/local-paper-rag-reference-final-check-v1.2.md`
+
+Verify with:
+
+```powershell
+python scripts\verify_local_paper_rag_submission_candidate_v1_2.py --root D:\devframe-system
+```
+
+Expected output:
+
+```text
+PASS_LOCAL_PAPER_RAG_SUBMISSION_CANDIDATE_V1_2_VERIFICATION
+passed=52 failed=0
+```
+
+This is still a non-final candidate. It requires human reference metadata
+checking and target-venue template checking before any submission-ready claim.
+
 ## Current Local RAG Evidence
 
 Latest local RAG pipeline evidence accepted for current milestone review:
