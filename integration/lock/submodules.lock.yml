@@ -9,7 +9,7 @@ modules:
     path: "agent-acceptance"
     role: "governance_acceptance_framework"
     branch: "codex/paper-archive-final-verdict-boundary"
-    commit: "b8bad65dc7d6e8fdfda2620d92a652cb5c860c4b"
+    commit: "c8e73a2a983bf41ce183be40ebb7364803b3e25e"
     remote: "https://github.com/RD2100/agent-acceptance.git"
   devframe-control-plane:
     path: "devframe-control-plane"
