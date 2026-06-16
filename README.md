@@ -17,12 +17,14 @@ verification gates, and bootstrap tooling for AI agent orchestration.
   - [Architecture Overview](#architecture-overview)
   - [Core Components](#core-components)
   - [Getting Started](#getting-started)
+  - [How to Use This Repository](#how-to-use-this-repository)
   - [Using the Governance Framework in Your Project](#using-the-governance-framework-in-your-project)
 - [中文](#中文)
   - [devframe-system 是什么？](#devframe-system-是什么)
   - [架构概览](#架构概览)
   - [核心组件](#核心组件)
   - [快速上手](#快速上手)
+  - [具体使用方式](#具体使用方式)
   - [在你自己的项目中使用治理框架](#在你自己的项目中使用治理框架)
 - [Current Delivery / 当前交付物](#current-delivery--当前交付物)
 - [Submodules / 子模块](#submodules--子模块)
@@ -302,6 +304,109 @@ Read the rules:
 - `rules/security.md` — 8 security rules
 - `rules/coding.md` — 7 coding rules
 - `rules/review.md` — 6 review rules
+
+## How to Use This Repository
+
+Use devframe-system as both a **reference implementation** and a **portable
+runtime kit**. The most common workflows are:
+
+### 1. Understand the System Before Running Anything
+
+Start from the lightweight entry points:
+
+1. `README.md` — project overview, architecture, and usage map.
+2. `AGENTS.md` — active project-local operating instructions and hard stops.
+3. `RUNBOOK.md` — safe read-only health checks and phase boundaries.
+4. `CURRENT_DELIVERY.md` — current reviewer-facing deliverables and their
+   verification commands.
+
+In Phase 0-5, treat the repository as a governance baseline. Prefer read-only
+inspection, evidence review, and dry runs. Do not push, commit, reset, stash,
+install packages, change MCP configuration, or run live external capabilities
+without explicit human authorization.
+
+### 2. Audit the Current Superproject State
+
+Run these checks from the repository root when you need a quick safety snapshot:
+
+```powershell
+git status --short --branch
+git submodule status --recursive
+git diff --check
+```
+
+For a fuller read-only inventory, follow `RUNBOOK.md`. The runbook lists the
+expected outputs, current phase gates, active TaskSpecs, and human-gate triggers.
+
+### 3. Review a Current Delivery Package
+
+Use `CURRENT_DELIVERY.md` as the active handoff index. It tells reviewers which
+artifact package to open first, which hashes to verify, which scripts correspond
+to the current delivery, and which claims are intentionally out of scope.
+
+Typical review flow:
+
+1. Confirm the package path and SHA256 in `CURRENT_DELIVERY.md`.
+2. Run only the listed verification command for that package.
+3. Compare produced evidence with the supporting reports under
+   `integration/reports/`.
+4. Record the verdict as `pass`, `failed`, `blocked`, or `human_required`; never
+   turn a failed or blocked check into a pass.
+
+### 4. Use SADP for Multi-Agent Work
+
+For delegated work, follow the Sub-Agent Dispatch Protocol instead of sending
+free-form instructions:
+
+1. The goal agent writes a TaskSpec with scope, allowed files, forbidden files,
+   verification commands, rollback plan, and hard-stop rules.
+2. The executor implements only the TaskSpec scope and returns an ExecutionReport.
+3. A separate reviewer validates evidence, changed files, test output, and risk.
+4. A finalizer packages the accepted state and points to exact artifacts.
+
+The core contract files are:
+
+- `docs/agent-runtime/sub-agent-dispatch-protocol.md`
+- `docs/agent-runtime/integration-contracts.md`
+- `docs/agent-runtime/reviewer-playbook.md`
+- `integration/task-specs/`
+- `integration/reports/`
+
+### 5. Bootstrap the Governance Kit into Another Project
+
+Use `templates/runtime-bootstrap/bootstrap.ps1` when another repository needs the
+same governance framework. Always dry-run first:
+
+```powershell
+cd templates\runtime-bootstrap
+.\bootstrap.ps1 -ProjectName "my-project" -ProjectRoot "D:\my-project" -DryRun
+.\bootstrap.ps1 -ProjectName "my-project" -ProjectRoot "D:\my-project"
+```
+
+The bootstrap copies the rules, schemas, agent-runtime documentation, negative
+fixtures, and generated project-local files. After bootstrap, the target project
+gets its own `AGENTS.md`, capability inventory, tool policy, and governance
+manifest.
+
+### 6. Extend the Framework Safely
+
+When adding a new rule, contract, verifier, or capability:
+
+1. Check `docs/agent-runtime/capability-inventory.md` first; new capabilities
+   need inventory registration and reviewer approval before use.
+2. Keep the change in the smallest relevant area: `rules/`, `schemas/`,
+   `docs/agent-runtime/`, `templates/`, or `integration/`.
+3. Add or update evidence under `integration/reports/` when the change affects
+   review, verification, or delivery claims.
+4. Run the narrowest read-only checks that prove the new material is internally
+   consistent.
+
+### 7. Know When to Stop
+
+Stop and ask for human approval before any action involving production data,
+secrets, live external services, runtime pilots, package installation, git
+mutation, deployment, MCP configuration, or broad repository rewrites. These are
+not etiquette rules; they are part of the repository's P0 safety boundary.
 
 ## Using the Governance Framework in Your Project
 
@@ -616,6 +721,86 @@ python scripts\verify_local_paper_rag_submission_candidate_v1_2.py --root D:\dev
 - `rules/security.md` — 8 条安全规则
 - `rules/coding.md` — 7 条编码规则
 - `rules/review.md` — 6 条审查规则
+
+## 具体使用方式
+
+devframe-system 既可以作为 **治理框架参考实现**，也可以作为 **可迁移的运行时治理套件**。最常见的使用路径如下：
+
+### 1. 先理解系统，再执行命令
+
+建议从这些轻量入口开始：
+
+1. `README.md` — 项目概览、架构和使用地图。
+2. `AGENTS.md` — 当前项目本地运行规则和硬停止。
+3. `RUNBOOK.md` — 安全的只读健康检查和阶段边界。
+4. `CURRENT_DELIVERY.md` — 当前面向审查者的交付物、哈希和验证命令。
+
+当前 Phase 0-5 应把仓库视为治理基线。优先做只读检查、证据审查和 dry run。没有明确人工授权时，不要 push、commit、reset、stash、安装包、修改 MCP 配置，也不要运行 live 外部能力。
+
+### 2. 审计当前超级项目状态
+
+需要快速确认仓库安全状态时，在根目录运行：
+
+```powershell
+git status --short --branch
+git submodule status --recursive
+git diff --check
+```
+
+如果需要更完整的只读盘点，按 `RUNBOOK.md` 执行。Runbook 会列出预期输出、当前阶段门禁、活跃 TaskSpec 和必须触发人工门禁的动作。
+
+### 3. 审查当前交付包
+
+`CURRENT_DELIVERY.md` 是当前交付入口。它说明审查者应该先打开哪个 artifact package、校验哪个 SHA256、运行哪些验证脚本，以及哪些结论仍然不在本次交付范围内。
+
+典型审查流程：
+
+1. 确认 `CURRENT_DELIVERY.md` 中的包路径和 SHA256。
+2. 只运行该交付物列出的验证命令。
+3. 将生成的证据与 `integration/reports/` 下的支持报告交叉核对。
+4. 将结论记录为 `pass`、`failed`、`blocked` 或 `human_required`；失败或阻塞不能被包装成通过。
+
+### 4. 用 SADP 管理多智能体协作
+
+涉及派发或多智能体执行时，不要直接发送开放式指令，而是走 Sub-Agent Dispatch Protocol：
+
+1. Goal Agent 写 TaskSpec，明确范围、允许文件、禁止文件、验证命令、回滚方案和硬停止。
+2. Executor 只在 TaskSpec 范围内实现，并返回 ExecutionReport。
+3. 独立 Reviewer 校验证据、改动文件、测试输出和风险。
+4. Finalizer 打包已接受状态，并指向精确 artifact 路径。
+
+核心契约文件：
+
+- `docs/agent-runtime/sub-agent-dispatch-protocol.md`
+- `docs/agent-runtime/integration-contracts.md`
+- `docs/agent-runtime/reviewer-playbook.md`
+- `integration/task-specs/`
+- `integration/reports/`
+
+### 5. 把治理套件引导到另一个项目
+
+当其他仓库需要同一套治理框架时，使用 `templates/runtime-bootstrap/bootstrap.ps1`。务必先 dry run：
+
+```powershell
+cd templates\runtime-bootstrap
+.\bootstrap.ps1 -ProjectName "my-project" -ProjectRoot "D:\my-project" -DryRun
+.\bootstrap.ps1 -ProjectName "my-project" -ProjectRoot "D:\my-project"
+```
+
+Bootstrap 会复制规则、Schema、agent-runtime 文档、负面测试夹具和项目本地生成文件。完成后，目标项目会得到自己的 `AGENTS.md`、能力清单、工具策略和治理清单。
+
+### 6. 安全扩展框架
+
+新增规则、契约、验证器或能力时：
+
+1. 先检查 `docs/agent-runtime/capability-inventory.md`；新能力必须注册并通过审查后才能启用。
+2. 将改动限制在最小相关区域：`rules/`、`schemas/`、`docs/agent-runtime/`、`templates/` 或 `integration/`。
+3. 如果改动影响审查、验证或交付结论，在 `integration/reports/` 下补充或更新证据。
+4. 运行最窄的只读检查，证明新增内容内部一致。
+
+### 7. 什么时候必须停止
+
+任何涉及生产数据、密钥、live 外部服务、runtime pilot、安装依赖、git 变更、部署、MCP 配置或大范围重写的动作，都必须先停下并请求人工批准。这不是礼貌约定，而是仓库 P0 安全边界的一部分。
 
 ## 在你自己的项目中使用治理框架
 
