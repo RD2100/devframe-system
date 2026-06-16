@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "generated_at": "deterministic-local-paper-rag-v1.0-handoff-verification",
+  "root": "D:\\devframe-system",
+  "verdict": "PASS_LOCAL_PAPER_RAG_V1_0_HANDOFF_VERIFICATION",
+  "non_final_boundary": {
+    "final_paper_quality_acceptance": false,
+    "training_effect_acceptance": false,
+    "production_ready": false,
+    "broad_rag_ready": false,
+    "runtime_authorization": false
+  },
+  "paths": {
+    "docx": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-clean-manuscript-v1.0.docx",
+    "markdown": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-clean-manuscript-v1.0.md",
+    "package": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-clean-manuscript-v1.0-package.zip",
+    "reference_audit": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\reference-format-audit-v1.0.md",
+    "reference_human_check": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\references-needs-human-check-v1.0.md",
+    "allowed_claims": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\allowed-claims-v1.0.md",
+    "non_claim_boundary": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\non-claim-boundary-v1.0.md",
+    "verification_checklist": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\v1.0-verification-risk-checklist.md",
+    "current_delivery": "D:\\devframe-system\\CURRENT_DELIVERY.md"
+  },
+  "checks": [
+    {
+      "name": "docx_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-clean-manuscript-v1.0.docx"
+      }
+    },
+    {
+      "name": "markdown_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-clean-manuscript-v1.0.md"
+      }
+    },
+    {
+      "name": "package_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-clean-manuscript-v1.0-package.zip"
+      }
+    },
+    {
+      "name": "reference_audit_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\reference-format-audit-v1.0.md"
+      }
+    },
+    {
+      "name": "reference_human_check_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\references-needs-human-check-v1.0.md"
+      }
+    },
+    {
+      "name": "allowed_claims_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\allowed-claims-v1.0.md"
+      }
+    },
+    {
+      "name": "non_claim_boundary_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\non-claim-boundary-v1.0.md"
+      }
+    },
+    {
+      "name": "verification_checklist_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\v1.0-verification-risk-checklist.md"
+      }
+    },
+    {
+      "name": "current_delivery_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\CURRENT_DELIVERY.md"
+      }
+    },
+    {
+      "name": "docx_sha256",
+      "status": "PASS",
+      "details": {
+        "expected": "C92DDF4D53D4E6C16E101580C138626B3911B73959D362964395E259FAA399E8",
+        "actual": "C92DDF4D53D4E6C16E101580C138626B3911B73959D362964395E259FAA399E8"
+      }
+    },
+    {
+      "name": "markdown_sha256",
+      "status": "PASS",
+      "details": {
+        "expected": "E6AEB7B8CBF45D038EAB12DDCEA3ABB7FFB2F808E6CD0209665D0AEE31E5640C",
+        "actual": "E6AEB7B8CBF45D038EAB12DDCEA3ABB7FFB2F808E6CD0209665D0AEE31E5640C"
+      }
+    },
+    {
+      "name": "package_sha256",
+      "status": "PASS",
+      "details": {
+        "expected": "88657D835CDEDAFFAF52943C9175F9D659AE2A61A09ED23BFBD147093138DCF4",
+        "actual": "88657D835CDEDAFFAF52943C9175F9D659AE2A61A09ED23BFBD147093138DCF4"
+      }
+    },
+    {
+      "name": "markdown_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "辅助与增强手段"
+      }
+    },
+    {
+      "name": "markdown_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "而非真实训练和实装操作的替代方案"
+      }
+    },
+    {
+      "name": "markdown_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "本文不主张训练效果已经得到充分证明"
+      }
+    },
+    {
+      "name": "markdown_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "实验评价、过程数据和专家审阅"
+      }
+    },
+    {
+      "name": "markdown_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "本地授权文献"
+      }
+    },
+    {
+      "name": "markdown_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "本地流程验证"
+      }
+    },
+    {
+      "name": "markdown_excludes_source_claim_matrix",
+      "status": "PASS",
+      "details": {
+        "token": "Source-Claim Matrix"
+      }
+    },
+    {
+      "name": "markdown_excludes_status",
+      "status": "PASS",
+      "details": {
+        "token": "Status:"
+      }
+    },
+    {
+      "name": "markdown_excludes_s1",
+      "status": "PASS",
+      "details": {
+        "token": "[S1]"
+      }
+    },
+    {
+      "name": "markdown_excludes_s2",
+      "status": "PASS",
+      "details": {
+        "token": "[S2]"
+      }
+    },
+    {
+      "name": "markdown_excludes_s3",
+      "status": "PASS",
+      "details": {
+        "token": "[S3]"
+      }
+    },
+    {
+      "name": "markdown_excludes_s4",
+      "status": "PASS",
+      "details": {
+        "token": "[S4]"
+      }
+    },
+    {
+      "name": "markdown_excludes_s5",
+      "status": "PASS",
+      "details": {
+        "token": "[S5]"
+      }
+    },
+    {
+      "name": "markdown_excludes_s6",
+      "status": "PASS",
+      "details": {
+        "token": "[S6]"
+      }
+    },
+    {
+      "name": "markdown_six_reference_entries",
+      "status": "PASS",
+      "details": {
+        "actual": 6
+      }
+    },
+    {
+      "name": "markdown_no_repeated_bracket_citation_groups",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "markdown_sequential_reference_groups",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "docx_openxml_readable",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "package_entries_exact",
+      "status": "PASS",
+      "details": {
+        "expected": [
+          "ARTIFACTS-README.md",
+          "CLOSEOUT-REPORT.md",
+          "allowed-claims-v1.0.md",
+          "local-paper-rag-clean-manuscript-v1.0.docx",
+          "local-paper-rag-clean-manuscript-v1.0.md",
+          "non-claim-boundary-v1.0.md",
+          "reference-format-audit-v1.0.md",
+          "references-needs-human-check-v1.0.md",
+          "usage-profile-internal-brief-v1.0.md",
+          "usage-profile-short-paper-v1.0.md",
+          "usage-profile-technical-note-v1.0.md",
+          "v1.0-verification-risk-checklist.md"
+        ],
+        "actual": [
+          "ARTIFACTS-README.md",
+          "CLOSEOUT-REPORT.md",
+          "allowed-claims-v1.0.md",
+          "local-paper-rag-clean-manuscript-v1.0.docx",
+          "local-paper-rag-clean-manuscript-v1.0.md",
+          "non-claim-boundary-v1.0.md",
+          "reference-format-audit-v1.0.md",
+          "references-needs-human-check-v1.0.md",
+          "usage-profile-internal-brief-v1.0.md",
+          "usage-profile-short-paper-v1.0.md",
+          "usage-profile-technical-note-v1.0.md",
+          "v1.0-verification-risk-checklist.md"
+        ]
+      }
+    },
+    {
+      "name": "current_delivery_contains_local_paper_rag_clean_manuscript_v1_0_docx",
+      "status": "PASS",
+      "details": {
+        "token": "local-paper-rag-clean-manuscript-v1.0.docx"
+      }
+    },
+    {
+      "name": "current_delivery_contains_ship_v1_0_for_human_review_non_final",
+      "status": "PASS",
+      "details": {
+        "token": "SHIP_V1_0_FOR_HUMAN_REVIEW_NON_FINAL"
+      }
+    },
+    {
+      "name": "current_delivery_contains_c92ddf4d53d4e6c16e101580c138626b3911b73959d362964395e259faa399e8",
+      "status": "PASS",
+      "details": {
+        "token": "C92DDF4D53D4E6C16E101580C138626B3911B73959D362964395E259FAA399E8"
+      }
+    },
+    {
+      "name": "current_delivery_contains_e6aeb7b8cbf45d038eab12ddcea3abb7ffb2f808e6cd0209665d0aee31e5640c",
+      "status": "PASS",
+      "details": {
+        "token": "E6AEB7B8CBF45D038EAB12DDCEA3ABB7FFB2F808E6CD0209665D0AEE31E5640C"
+      }
+    },
+    {
+      "name": "current_delivery_contains_88657d835cdedaffaf52943c9175f9d659ae2a61a09ed23bfbd147093138dcf4",
+      "status": "PASS",
+      "details": {
+        "token": "88657D835CDEDAFFAF52943C9175F9D659AE2A61A09ED23BFBD147093138DCF4"
+      }
+    }
+  ],
+  "summary": {
+    "passed": 36,
+    "failed": 0
+  }
+}
