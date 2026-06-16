@@ -2,7 +2,22 @@
 
 ## Use This Artifact
 
-Current reviewer-facing paper draft:
+Current recommended human-review package:
+
+- `integration/artifacts/paper-drafts/local-paper-rag-review-variants-v1.1-package.zip`
+
+SHA256:
+
+- `2731FE77DB74BBDF29822AFEB401B25B09431FC93D942C44B1080884918AC574`
+
+Use these files first:
+
+- Short paper: `integration/artifacts/paper-drafts/local-paper-rag-short-paper-v1.1.docx`
+- Technical note: `integration/artifacts/paper-drafts/local-paper-rag-technical-note-v1.1.docx`
+- Internal research brief: `integration/artifacts/paper-drafts/local-paper-rag-internal-brief-v1.1.docx`
+- Human review route: `integration/artifacts/paper-drafts/local-paper-rag-human-review-route-v1.1.md`
+
+Previous reviewer-facing main draft:
 
 - `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v1.0.docx`
 
@@ -16,9 +31,9 @@ Handoff package:
 
 Review variants package:
 
-- `integration/artifacts/paper-drafts/local-paper-rag-review-variants-v1.0-package.zip`
+- `integration/artifacts/paper-drafts/local-paper-rag-review-variants-v1.1-package.zip`
 
-Use these files when the target form is already known:
+Use these v1.0 files only when comparing history:
 
 - Short paper: `integration/artifacts/paper-drafts/local-paper-rag-short-paper-v1.0.docx`
 - Technical note: `integration/artifacts/paper-drafts/local-paper-rag-technical-note-v1.0.docx`
@@ -26,10 +41,15 @@ Use these files when the target form is already known:
 
 ## Current Verdict
 
+`SHIP_V1_1_FOR_HUMAN_REVIEW_NON_FINAL`
+
+Previous v1.0 handoff verdict retained for compatibility with the v1.0 verifier:
+
 `SHIP_V1_0_FOR_HUMAN_REVIEW_NON_FINAL`
 
 This means the current local paper RAG pipeline has produced a practical
-human-review deliverable. It does not mean final paper-quality acceptance,
+human-review deliverable. v1.1 adds a clean review route, fixed manifest metadata,
+and a smaller final review package. It does not mean final paper-quality acceptance,
 training-effect acceptance, production readiness, broad RAG readiness, whole-vault
 readiness, or RuntimeAuthorization.
 
@@ -39,18 +59,22 @@ Run from `D:\devframe-system`:
 
 ```powershell
 python scripts\verify_local_paper_rag_v1_0_handoff.py --root D:\devframe-system
+python scripts\verify_local_paper_rag_final_review_v1_1.py --root D:\devframe-system
 ```
 
 Expected output:
 
 ```text
 PASS_LOCAL_PAPER_RAG_V1_0_HANDOFF_VERIFICATION
+PASS_LOCAL_PAPER_RAG_FINAL_REVIEW_V1_1_VERIFICATION
 ```
 
 Verifier outputs:
 
 - `integration/reports/local-paper-rag-v1-0-handoff-verification/local-paper-rag-v1-0-handoff-verification.json`
 - `integration/reports/local-paper-rag-v1-0-handoff-verification/local-paper-rag-v1-0-handoff-verification.md`
+- `integration/reports/local-paper-rag-final-review-v1-1-verification/local-paper-rag-final-review-v1-1-verification.json`
+- `integration/reports/local-paper-rag-final-review-v1-1-verification/local-paper-rag-final-review-v1-1-verification.md`
 
 ## Key Hashes
 
@@ -92,34 +116,34 @@ python scripts\verify_local_paper_rag_submission_prep_v1_0.py --root D:\devframe
 
 ## Review Variants Supplement
 
-Three use-case variants are available for faster human review:
+Three v1.1 use-case variants are available for faster human review:
 
 - Short paper draft:
-  `integration/artifacts/paper-drafts/local-paper-rag-short-paper-v1.0.docx`
+  `integration/artifacts/paper-drafts/local-paper-rag-short-paper-v1.1.docx`
 - Technical note draft:
-  `integration/artifacts/paper-drafts/local-paper-rag-technical-note-v1.0.docx`
+  `integration/artifacts/paper-drafts/local-paper-rag-technical-note-v1.1.docx`
 - Internal research brief:
-  `integration/artifacts/paper-drafts/local-paper-rag-internal-brief-v1.0.docx`
+  `integration/artifacts/paper-drafts/local-paper-rag-internal-brief-v1.1.docx`
 
 Review-variants package:
 
-- `integration/artifacts/paper-drafts/local-paper-rag-review-variants-v1.0-package.zip`
+- `integration/artifacts/paper-drafts/local-paper-rag-review-variants-v1.1-package.zip`
 
 SHA256:
 
-- `60ABD31ED49B7325B7BAE69002577FCB17D15CFDC865AA999BC6AC5AE3F4A42F`
+- `2731FE77DB74BBDF29822AFEB401B25B09431FC93D942C44B1080884918AC574`
 
 Verify with:
 
 ```powershell
-python scripts\verify_local_paper_rag_review_variants_v1_0.py --root D:\devframe-system
+python scripts\verify_local_paper_rag_final_review_v1_1.py --root D:\devframe-system
 ```
 
 Expected output:
 
 ```text
-PASS_LOCAL_PAPER_RAG_REVIEW_VARIANTS_V1_0_VERIFICATION
-passed=79 failed=0
+PASS_LOCAL_PAPER_RAG_FINAL_REVIEW_V1_1_VERIFICATION
+passed=109 failed=0
 ```
 
 ## Current Local RAG Evidence

@@ -1,0 +1,125 @@
+# Local Paper RAG Final Review v1.1 Verification
+
+- Verdict: `PASS_LOCAL_PAPER_RAG_FINAL_REVIEW_V1_1_VERIFICATION`
+- Passed checks: 109
+- Failed checks: 0
+- Package SHA256: `2731FE77DB74BBDF29822AFEB401B25B09431FC93D942C44B1080884918AC574`
+
+## Checks
+
+- `PASS` local-paper-rag-review-variants-v1.1-manifest.json_exists
+- `PASS` local-paper-rag-review-variants-v1.1-package.zip_exists
+- `PASS` local-paper-rag-human-review-route-v1.1.md_exists
+- `PASS` manifest_schema_version
+- `PASS` manifest_recommended_route
+- `PASS` manifest_not_mojibake
+- `PASS` boundary_paper_quality_acceptance_false
+- `PASS` boundary_training_effect_acceptance_false
+- `PASS` boundary_final_governance_acceptance_false
+- `PASS` boundary_production_ready_false
+- `PASS` boundary_broad_rag_ready_false
+- `PASS` boundary_whole_vault_ready_false
+- `PASS` boundary_runtime_authorization_false
+- `PASS` variant_ids_exact
+- `PASS` short-paper_md_exists
+- `PASS` short-paper_docx_exists
+- `PASS` short-paper_contains_token
+- `PASS` short-paper_contains_token
+- `PASS` short-paper_contains_token
+- `PASS` short-paper_excludes_token
+- `PASS` short-paper_excludes_token
+- `PASS` short-paper_excludes_token
+- `PASS` short-paper_excludes_token
+- `PASS` short-paper_excludes_token
+- `PASS` short-paper_excludes_token
+- `PASS` short-paper_excludes_final_acceptance_claimed_true
+- `PASS` short-paper_excludes_paper_quality_acceptance_true
+- `PASS` short-paper_excludes_production_ready_true
+- `PASS` short-paper_excludes_runtime_authorization_true
+- `PASS` short-paper_excludes_raw_pdf_text
+- `PASS` short-paper_excludes_raw_markdown_body
+- `PASS` short-paper_excludes_raw_chunks
+- `PASS` short-paper_excludes_raw_query
+- `PASS` short-paper_excludes_source_path
+- `PASS` short-paper_excludes_faiss_binary
+- `PASS` short-paper_excludes_writelab_token
+- `PASS` short-paper_docx_readable
+- `PASS` short-paper_manifest_md_hash
+- `PASS` short-paper_manifest_docx_hash
+- `PASS` technical-note_md_exists
+- `PASS` technical-note_docx_exists
+- `PASS` technical-note_contains_token
+- `PASS` technical-note_contains_token
+- `PASS` technical-note_contains_token
+- `PASS` technical-note_excludes_token
+- `PASS` technical-note_excludes_token
+- `PASS` technical-note_excludes_token
+- `PASS` technical-note_excludes_token
+- `PASS` technical-note_excludes_token
+- `PASS` technical-note_excludes_token
+- `PASS` technical-note_excludes_final_acceptance_claimed_true
+- `PASS` technical-note_excludes_paper_quality_acceptance_true
+- `PASS` technical-note_excludes_production_ready_true
+- `PASS` technical-note_excludes_runtime_authorization_true
+- `PASS` technical-note_excludes_raw_pdf_text
+- `PASS` technical-note_excludes_raw_markdown_body
+- `PASS` technical-note_excludes_raw_chunks
+- `PASS` technical-note_excludes_raw_query
+- `PASS` technical-note_excludes_source_path
+- `PASS` technical-note_excludes_faiss_binary
+- `PASS` technical-note_excludes_writelab_token
+- `PASS` technical-note_docx_readable
+- `PASS` technical-note_manifest_md_hash
+- `PASS` technical-note_manifest_docx_hash
+- `PASS` internal-brief_md_exists
+- `PASS` internal-brief_docx_exists
+- `PASS` internal-brief_contains_token
+- `PASS` internal-brief_contains_token
+- `PASS` internal-brief_contains_token
+- `PASS` internal-brief_excludes_token
+- `PASS` internal-brief_excludes_token
+- `PASS` internal-brief_excludes_token
+- `PASS` internal-brief_excludes_token
+- `PASS` internal-brief_excludes_token
+- `PASS` internal-brief_excludes_token
+- `PASS` internal-brief_excludes_final_acceptance_claimed_true
+- `PASS` internal-brief_excludes_paper_quality_acceptance_true
+- `PASS` internal-brief_excludes_production_ready_true
+- `PASS` internal-brief_excludes_runtime_authorization_true
+- `PASS` internal-brief_excludes_raw_pdf_text
+- `PASS` internal-brief_excludes_raw_markdown_body
+- `PASS` internal-brief_excludes_raw_chunks
+- `PASS` internal-brief_excludes_raw_query
+- `PASS` internal-brief_excludes_source_path
+- `PASS` internal-brief_excludes_faiss_binary
+- `PASS` internal-brief_excludes_writelab_token
+- `PASS` internal-brief_docx_readable
+- `PASS` internal-brief_manifest_md_hash
+- `PASS` internal-brief_manifest_docx_hash
+- `PASS` route_recommends_short_paper_first
+- `PASS` route_keeps_human_review_gate
+- `PASS` package_entries_exact
+- `PASS` package_excludes_token
+- `PASS` package_excludes_token
+- `PASS` package_excludes_token
+- `PASS` package_excludes_token
+- `PASS` package_excludes_token
+- `PASS` package_excludes_token
+- `PASS` package_excludes_final_acceptance_claimed_true
+- `PASS` package_excludes_paper_quality_acceptance_true
+- `PASS` package_excludes_production_ready_true
+- `PASS` package_excludes_runtime_authorization_true
+- `PASS` package_excludes_raw_pdf_text
+- `PASS` package_excludes_raw_markdown_body
+- `PASS` package_excludes_raw_chunks
+- `PASS` package_excludes_raw_query
+- `PASS` package_excludes_source_path
+- `PASS` package_excludes_faiss_binary
+- `PASS` package_excludes_writelab_token
+
+## Boundary
+
+This verification covers package integrity, review-route clarity, and
+non-final claim boundaries. It does not grant paper-quality acceptance,
+training-effect acceptance, production readiness, broad/general RAG
+readiness, whole-vault readiness, or RuntimeAuthorization.

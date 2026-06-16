@@ -2,7 +2,36 @@
 
 ## Current Recommended Artifact
 
-Use this file for normal human review:
+Use this package for normal human review:
+
+- `integration/artifacts/paper-drafts/local-paper-rag-review-variants-v1.1-package.zip`
+
+SHA256:
+
+- `2731FE77DB74BBDF29822AFEB401B25B09431FC93D942C44B1080884918AC574`
+
+Recommended first DOCX:
+
+- `integration/artifacts/paper-drafts/local-paper-rag-short-paper-v1.1.docx`
+
+Human review route:
+
+- `integration/artifacts/paper-drafts/local-paper-rag-human-review-route-v1.1.md`
+
+Verify with:
+
+```powershell
+python scripts\verify_local_paper_rag_final_review_v1_1.py --root D:\devframe-system
+```
+
+Expected output:
+
+```text
+PASS_LOCAL_PAPER_RAG_FINAL_REVIEW_V1_1_VERIFICATION
+passed=109 failed=0
+```
+
+Previous main manuscript:
 
 - `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v1.0.docx`
 

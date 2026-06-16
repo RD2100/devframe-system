@@ -1,0 +1,757 @@
+{
+  "schema_version": 1,
+  "generated_at": "deterministic-local-paper-rag-final-review-v1.1-verification",
+  "root": "D:\\devframe-system",
+  "package": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-review-variants-v1.1-package.zip",
+  "package_sha256": "2731FE77DB74BBDF29822AFEB401B25B09431FC93D942C44B1080884918AC574",
+  "verdict": "PASS_LOCAL_PAPER_RAG_FINAL_REVIEW_V1_1_VERIFICATION",
+  "summary": {
+    "passed": 109,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "local-paper-rag-review-variants-v1.1-manifest.json_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-review-variants-v1.1-manifest.json"
+      }
+    },
+    {
+      "name": "local-paper-rag-review-variants-v1.1-package.zip_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-review-variants-v1.1-package.zip"
+      }
+    },
+    {
+      "name": "local-paper-rag-human-review-route-v1.1.md_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-human-review-route-v1.1.md"
+      }
+    },
+    {
+      "name": "manifest_schema_version",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "manifest_recommended_route",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "manifest_not_mojibake",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_paper_quality_acceptance_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_training_effect_acceptance_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_final_governance_acceptance_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_production_ready_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_broad_rag_ready_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_whole_vault_ready_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "boundary_runtime_authorization_false",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "variant_ids_exact",
+      "status": "PASS",
+      "details": {
+        "actual": [
+          "internal-brief",
+          "short-paper",
+          "technical-note"
+        ]
+      }
+    },
+    {
+      "name": "short-paper_md_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-short-paper-v1.1.md"
+      }
+    },
+    {
+      "name": "short-paper_docx_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-short-paper-v1.1.docx"
+      }
+    },
+    {
+      "name": "short-paper_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "辅助价值、场景构建与评价边界"
+      }
+    },
+    {
+      "name": "short-paper_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "由于现有证据主要来自文献分析"
+      }
+    },
+    {
+      "name": "short-paper_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "后续仍需结合实验评价、过程数据和专家审阅"
+      }
+    },
+    {
+      "name": "short-paper_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "本地授权文献"
+      }
+    },
+    {
+      "name": "short-paper_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "本地流程验证"
+      }
+    },
+    {
+      "name": "short-paper_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "当前版本可作为短论文或技术札记的审阅稿"
+      }
+    },
+    {
+      "name": "short-paper_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "显著提升训练效果"
+      }
+    },
+    {
+      "name": "short-paper_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "有效替代真实训练"
+      }
+    },
+    {
+      "name": "short-paper_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "全面改善军事职业教育质量"
+      }
+    },
+    {
+      "name": "short-paper_excludes_final_acceptance_claimed_true",
+      "status": "PASS",
+      "details": {
+        "token": "final_acceptance_claimed\": true"
+      }
+    },
+    {
+      "name": "short-paper_excludes_paper_quality_acceptance_true",
+      "status": "PASS",
+      "details": {
+        "token": "paper_quality_acceptance\": true"
+      }
+    },
+    {
+      "name": "short-paper_excludes_production_ready_true",
+      "status": "PASS",
+      "details": {
+        "token": "production_ready\": true"
+      }
+    },
+    {
+      "name": "short-paper_excludes_runtime_authorization_true",
+      "status": "PASS",
+      "details": {
+        "token": "runtime_authorization\": true"
+      }
+    },
+    {
+      "name": "short-paper_excludes_raw_pdf_text",
+      "status": "PASS",
+      "details": {
+        "token": "raw_pdf_text"
+      }
+    },
+    {
+      "name": "short-paper_excludes_raw_markdown_body",
+      "status": "PASS",
+      "details": {
+        "token": "raw_markdown_body"
+      }
+    },
+    {
+      "name": "short-paper_excludes_raw_chunks",
+      "status": "PASS",
+      "details": {
+        "token": "raw_chunks"
+      }
+    },
+    {
+      "name": "short-paper_excludes_raw_query",
+      "status": "PASS",
+      "details": {
+        "token": "raw_query"
+      }
+    },
+    {
+      "name": "short-paper_excludes_source_path",
+      "status": "PASS",
+      "details": {
+        "token": "source_path"
+      }
+    },
+    {
+      "name": "short-paper_excludes_faiss_binary",
+      "status": "PASS",
+      "details": {
+        "token": "FAISS binary"
+      }
+    },
+    {
+      "name": "short-paper_excludes_writelab_token",
+      "status": "PASS",
+      "details": {
+        "token": "WRITELAB_TOKEN"
+      }
+    },
+    {
+      "name": "short-paper_docx_readable",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "short-paper_manifest_md_hash",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "short-paper_manifest_docx_hash",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "technical-note_md_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-technical-note-v1.1.md"
+      }
+    },
+    {
+      "name": "technical-note_docx_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-technical-note-v1.1.docx"
+      }
+    },
+    {
+      "name": "technical-note_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "技术札记"
+      }
+    },
+    {
+      "name": "technical-note_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "方案论证和后续系统评审"
+      }
+    },
+    {
+      "name": "technical-note_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "训练成效已经被证明"
+      }
+    },
+    {
+      "name": "technical-note_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "本地授权文献"
+      }
+    },
+    {
+      "name": "technical-note_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "本地流程验证"
+      }
+    },
+    {
+      "name": "technical-note_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "当前版本可作为短论文或技术札记的审阅稿"
+      }
+    },
+    {
+      "name": "technical-note_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "显著提升训练效果"
+      }
+    },
+    {
+      "name": "technical-note_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "有效替代真实训练"
+      }
+    },
+    {
+      "name": "technical-note_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "全面改善军事职业教育质量"
+      }
+    },
+    {
+      "name": "technical-note_excludes_final_acceptance_claimed_true",
+      "status": "PASS",
+      "details": {
+        "token": "final_acceptance_claimed\": true"
+      }
+    },
+    {
+      "name": "technical-note_excludes_paper_quality_acceptance_true",
+      "status": "PASS",
+      "details": {
+        "token": "paper_quality_acceptance\": true"
+      }
+    },
+    {
+      "name": "technical-note_excludes_production_ready_true",
+      "status": "PASS",
+      "details": {
+        "token": "production_ready\": true"
+      }
+    },
+    {
+      "name": "technical-note_excludes_runtime_authorization_true",
+      "status": "PASS",
+      "details": {
+        "token": "runtime_authorization\": true"
+      }
+    },
+    {
+      "name": "technical-note_excludes_raw_pdf_text",
+      "status": "PASS",
+      "details": {
+        "token": "raw_pdf_text"
+      }
+    },
+    {
+      "name": "technical-note_excludes_raw_markdown_body",
+      "status": "PASS",
+      "details": {
+        "token": "raw_markdown_body"
+      }
+    },
+    {
+      "name": "technical-note_excludes_raw_chunks",
+      "status": "PASS",
+      "details": {
+        "token": "raw_chunks"
+      }
+    },
+    {
+      "name": "technical-note_excludes_raw_query",
+      "status": "PASS",
+      "details": {
+        "token": "raw_query"
+      }
+    },
+    {
+      "name": "technical-note_excludes_source_path",
+      "status": "PASS",
+      "details": {
+        "token": "source_path"
+      }
+    },
+    {
+      "name": "technical-note_excludes_faiss_binary",
+      "status": "PASS",
+      "details": {
+        "token": "FAISS binary"
+      }
+    },
+    {
+      "name": "technical-note_excludes_writelab_token",
+      "status": "PASS",
+      "details": {
+        "token": "WRITELAB_TOKEN"
+      }
+    },
+    {
+      "name": "technical-note_docx_readable",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "technical-note_manifest_md_hash",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "technical-note_manifest_docx_hash",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "internal-brief_md_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-internal-brief-v1.1.md"
+      }
+    },
+    {
+      "name": "internal-brief_docx_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-internal-brief-v1.1.docx"
+      }
+    },
+    {
+      "name": "internal-brief_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "内部研究简报"
+      }
+    },
+    {
+      "name": "internal-brief_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "已完成的自动化闭环"
+      }
+    },
+    {
+      "name": "internal-brief_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "不能宣称最终论文质量已经被接受"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "本地授权文献"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "本地流程验证"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "当前版本可作为短论文或技术札记的审阅稿"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "显著提升训练效果"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "有效替代真实训练"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "全面改善军事职业教育质量"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_final_acceptance_claimed_true",
+      "status": "PASS",
+      "details": {
+        "token": "final_acceptance_claimed\": true"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_paper_quality_acceptance_true",
+      "status": "PASS",
+      "details": {
+        "token": "paper_quality_acceptance\": true"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_production_ready_true",
+      "status": "PASS",
+      "details": {
+        "token": "production_ready\": true"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_runtime_authorization_true",
+      "status": "PASS",
+      "details": {
+        "token": "runtime_authorization\": true"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_raw_pdf_text",
+      "status": "PASS",
+      "details": {
+        "token": "raw_pdf_text"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_raw_markdown_body",
+      "status": "PASS",
+      "details": {
+        "token": "raw_markdown_body"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_raw_chunks",
+      "status": "PASS",
+      "details": {
+        "token": "raw_chunks"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_raw_query",
+      "status": "PASS",
+      "details": {
+        "token": "raw_query"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_source_path",
+      "status": "PASS",
+      "details": {
+        "token": "source_path"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_faiss_binary",
+      "status": "PASS",
+      "details": {
+        "token": "FAISS binary"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_writelab_token",
+      "status": "PASS",
+      "details": {
+        "token": "WRITELAB_TOKEN"
+      }
+    },
+    {
+      "name": "internal-brief_docx_readable",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "internal-brief_manifest_md_hash",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "internal-brief_manifest_docx_hash",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "route_recommends_short_paper_first",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "route_keeps_human_review_gate",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "package_entries_exact",
+      "status": "PASS",
+      "details": {
+        "actual": [
+          "REVIEW-VARIANTS-V1.1-README.md",
+          "local-paper-rag-human-review-route-v1.1.md",
+          "local-paper-rag-internal-brief-v1.1.docx",
+          "local-paper-rag-internal-brief-v1.1.md",
+          "local-paper-rag-review-variants-v1.1-manifest.json",
+          "local-paper-rag-short-paper-v1.1.docx",
+          "local-paper-rag-short-paper-v1.1.md",
+          "local-paper-rag-technical-note-v1.1.docx",
+          "local-paper-rag-technical-note-v1.1.md"
+        ]
+      }
+    },
+    {
+      "name": "package_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "本地授权文献"
+      }
+    },
+    {
+      "name": "package_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "本地流程验证"
+      }
+    },
+    {
+      "name": "package_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "当前版本可作为短论文或技术札记的审阅稿"
+      }
+    },
+    {
+      "name": "package_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "显著提升训练效果"
+      }
+    },
+    {
+      "name": "package_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "有效替代真实训练"
+      }
+    },
+    {
+      "name": "package_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "全面改善军事职业教育质量"
+      }
+    },
+    {
+      "name": "package_excludes_final_acceptance_claimed_true",
+      "status": "PASS",
+      "details": {
+        "token": "final_acceptance_claimed\": true"
+      }
+    },
+    {
+      "name": "package_excludes_paper_quality_acceptance_true",
+      "status": "PASS",
+      "details": {
+        "token": "paper_quality_acceptance\": true"
+      }
+    },
+    {
+      "name": "package_excludes_production_ready_true",
+      "status": "PASS",
+      "details": {
+        "token": "production_ready\": true"
+      }
+    },
+    {
+      "name": "package_excludes_runtime_authorization_true",
+      "status": "PASS",
+      "details": {
+        "token": "runtime_authorization\": true"
+      }
+    },
+    {
+      "name": "package_excludes_raw_pdf_text",
+      "status": "PASS",
+      "details": {
+        "token": "raw_pdf_text"
+      }
+    },
+    {
+      "name": "package_excludes_raw_markdown_body",
+      "status": "PASS",
+      "details": {
+        "token": "raw_markdown_body"
+      }
+    },
+    {
+      "name": "package_excludes_raw_chunks",
+      "status": "PASS",
+      "details": {
+        "token": "raw_chunks"
+      }
+    },
+    {
+      "name": "package_excludes_raw_query",
+      "status": "PASS",
+      "details": {
+        "token": "raw_query"
+      }
+    },
+    {
+      "name": "package_excludes_source_path",
+      "status": "PASS",
+      "details": {
+        "token": "source_path"
+      }
+    },
+    {
+      "name": "package_excludes_faiss_binary",
+      "status": "PASS",
+      "details": {
+        "token": "FAISS binary"
+      }
+    },
+    {
+      "name": "package_excludes_writelab_token",
+      "status": "PASS",
+      "details": {
+        "token": "WRITELAB_TOKEN"
+      }
+    }
+  ],
+  "non_final_boundary": {
+    "paper_quality_acceptance": false,
+    "training_effect_acceptance": false,
+    "final_governance_acceptance": false,
+    "production_ready": false,
+    "broad_rag_ready": false,
+    "runtime_authorization": false
+  }
+}

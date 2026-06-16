@@ -52,6 +52,15 @@ Closeout pins completed after this plan was opened:
   - `dev-frame-opencode` commit
     `528f5b801082a10759df000a2315486a55a22e79`.
 
+Final-review package completed after the closeout pins:
+
+- v1.1 final-review package:
+  `integration/artifacts/paper-drafts/local-paper-rag-review-variants-v1.1-package.zip`
+- SHA256:
+  `2731FE77DB74BBDF29822AFEB401B25B09431FC93D942C44B1080884918AC574`
+- Verification:
+  `PASS_LOCAL_PAPER_RAG_FINAL_REVIEW_V1_1_VERIFICATION`, 109 passed, 0 failed.
+
 ## Remaining Work
 
 ### R1. Test-Frame Current Closed-Loop Consumption
@@ -132,7 +141,7 @@ Human blocker:
 
 Owner: user / human reviewer
 
-Status: `NEXT_REQUIRED_DECISION`
+Status: `NEXT_REQUIRED_DECISION_AFTER_V1_1_HANDOFF`
 
 Goal:
 
@@ -202,8 +211,10 @@ Stop and return findings if any worker observes:
 
 ## Current Practical Recommendation
 
-Treat the current state as good enough for a human-review handoff. The only
-required next decision is which manuscript form to use:
+Treat the current state as good enough for a human-review handoff. Open
+`local-paper-rag-short-paper-v1.1.docx` first unless a technical-note or internal
+brief route is already preferred. The only required next decision is which
+manuscript form to use:
 
 - short paper;
 - technical note;
