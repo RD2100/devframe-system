@@ -5,7 +5,7 @@ Status: ACCEPTED_AND_PARENT_PINNED
 Parent:
 - path: D:\devframe-system
 - branch: codex/rdinit-phase-0-5
-- parent commit: PENDING_AT_REPORT_CREATION
+- parent commit: 3c519c797cf210ad5a5c8dfa12c2116514cf1668
 - message: Pin opencode runtime auth set fields
 
 Pinned submodule:
