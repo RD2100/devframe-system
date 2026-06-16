@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-06-16T12:13:30.520383+00:00",
+  "root": "D:\\devframe-system",
+  "verdict": "PASS_LOCAL_PAPER_RAG_V0_8_HANDOFF_VERIFICATION",
+  "non_final_boundary": {
+    "final_paper_quality_acceptance": false,
+    "training_effect_acceptance": false,
+    "production_ready": false,
+    "broad_rag_ready": false,
+    "runtime_authorization": false
+  },
+  "paths": {
+    "docx": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-clean-manuscript-v0.8.docx",
+    "markdown": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-clean-manuscript-v0.8.md",
+    "package": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-clean-manuscript-v0.8-package.zip",
+    "readiness": "D:\\devframe-system\\integration\\reports\\parent-current-local-paper-rag-final-readiness-packet-v0-8-2026-06-16.md",
+    "closeout": "D:\\devframe-system\\integration\\reports\\parent-local-paper-rag-clean-manuscript-v0-8-a1-2026-06-16.md",
+    "baseline_lock": "D:\\devframe-system\\BASELINE_LOCK.json",
+    "opencode_answer_preview_zip": "D:\\devframe-system\\.agent\\evidence\\evidence-opencode-local-paper-rag-answer-preview-a1-528f5b8.zip"
+  },
+  "checks": [
+    {
+      "name": "docx_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-clean-manuscript-v0.8.docx"
+      }
+    },
+    {
+      "name": "markdown_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-clean-manuscript-v0.8.md"
+      }
+    },
+    {
+      "name": "package_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-clean-manuscript-v0.8-package.zip"
+      }
+    },
+    {
+      "name": "readiness_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\reports\\parent-current-local-paper-rag-final-readiness-packet-v0-8-2026-06-16.md"
+      }
+    },
+    {
+      "name": "closeout_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\reports\\parent-local-paper-rag-clean-manuscript-v0-8-a1-2026-06-16.md"
+      }
+    },
+    {
+      "name": "baseline_lock_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\BASELINE_LOCK.json"
+      }
+    },
+    {
+      "name": "opencode_answer_preview_zip_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\.agent\\evidence\\evidence-opencode-local-paper-rag-answer-preview-a1-528f5b8.zip"
+      }
+    },
+    {
+      "name": "docx_sha256",
+      "status": "PASS",
+      "details": {
+        "expected": "8739E522CBA03A0D2F84BB89C92B3F3A6EACFF9C8C5C3F543A661FEACC11A637",
+        "actual": "8739E522CBA03A0D2F84BB89C92B3F3A6EACFF9C8C5C3F543A661FEACC11A637"
+      }
+    },
+    {
+      "name": "markdown_sha256",
+      "status": "PASS",
+      "details": {
+        "expected": "BCCE83581CC398BFBC344FADB4ACD15C08B7A4CE977B72B94E92B358F75A8CA3",
+        "actual": "BCCE83581CC398BFBC344FADB4ACD15C08B7A4CE977B72B94E92B358F75A8CA3"
+      }
+    },
+    {
+      "name": "package_sha256",
+      "status": "PASS",
+      "details": {
+        "expected": "D8FBD5C203E7ACB9ABF412D09986E7B6AFFB34F3C3652CB62C63FF2AE647C742",
+        "actual": "D8FBD5C203E7ACB9ABF412D09986E7B6AFFB34F3C3652CB62C63FF2AE647C742"
+      }
+    },
+    {
+      "name": "opencode_answer_preview_zip_sha256",
+      "status": "PASS",
+      "details": {
+        "expected": "F1AB005DBE53429E825E2ACBF58750635744DE7D8A94F978878C9EEABA4F5FB9",
+        "actual": "F1AB005DBE53429E825E2ACBF58750635744DE7D8A94F978878C9EEABA4F5FB9"
+      }
+    },
+    {
+      "name": "markdown_no_internal_source_markers",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "markdown_numeric_refs_1_to_6",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "markdown_six_reference_entries",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "markdown_no_status_block",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "markdown_no_source_claim_matrix",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "markdown_doi_signals",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "markdown_handoff_boundary_signals",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "docx_openxml_readable",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "package_entries_exact",
+      "status": "PASS",
+      "details": {
+        "expected": [
+          "ARTIFACTS-README.md",
+          "CLOSEOUT-REPORT.md",
+          "local-paper-rag-clean-manuscript-v0.8.docx",
+          "local-paper-rag-clean-manuscript-v0.8.md"
+        ],
+        "actual": [
+          "ARTIFACTS-README.md",
+          "CLOSEOUT-REPORT.md",
+          "local-paper-rag-clean-manuscript-v0.8.docx",
+          "local-paper-rag-clean-manuscript-v0.8.md"
+        ]
+      }
+    },
+    {
+      "name": "readiness_contains_ship_v0_8_for_human_review_non_final",
+      "status": "PASS",
+      "details": {
+        "token": "SHIP_V0_8_FOR_HUMAN_REVIEW_NON_FINAL"
+      }
+    },
+    {
+      "name": "readiness_contains_local_paper_rag_clean_manuscript_v0_8_docx",
+      "status": "PASS",
+      "details": {
+        "token": "local-paper-rag-clean-manuscript-v0.8.docx"
+      }
+    },
+    {
+      "name": "readiness_contains_8739e522cba03a0d2f84bb89c92b3f3a6eacff9c8c5c3f543a661feacc11a637",
+      "status": "PASS",
+      "details": {
+        "token": "8739E522CBA03A0D2F84BB89C92B3F3A6EACFF9C8C5C3F543A661FEACC11A637"
+      }
+    },
+    {
+      "name": "readiness_contains_bcce83581cc398bfbc344fadb4acd15c08b7a4ce977b72b94e92b358f75a8ca3",
+      "status": "PASS",
+      "details": {
+        "token": "BCCE83581CC398BFBC344FADB4ACD15C08B7A4CE977B72B94E92B358F75A8CA3"
+      }
+    },
+    {
+      "name": "readiness_contains_d8fbd5c203e7acb9abf412d09986e7b6affb34f3c3652cb62c63ff2ae647c742",
+      "status": "PASS",
+      "details": {
+        "token": "D8FBD5C203E7ACB9ABF412D09986E7B6AFFB34F3C3652CB62C63FF2AE647C742"
+      }
+    },
+    {
+      "name": "readiness_contains_does_not_authorize_new_live_resource_access",
+      "status": "PASS",
+      "details": {
+        "token": "does not authorize new live resource access"
+      }
+    },
+    {
+      "name": "closeout_non_final_boundary",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "baseline_lock_dev_frame_opencode",
+      "status": "PASS",
+      "details": {
+        "expected": "528f5b801082a10759df000a2315486a55a22e79",
+        "actual": "528f5b801082a10759df000a2315486a55a22e79"
+      }
+    },
+    {
+      "name": "baseline_lock_test_frame",
+      "status": "PASS",
+      "details": {
+        "expected": "18c19898c599eca5452f2e10fcaa23f2d151339d",
+        "actual": "18c19898c599eca5452f2e10fcaa23f2d151339d"
+      }
+    },
+    {
+      "name": "baseline_lock_agent_acceptance",
+      "status": "PASS",
+      "details": {
+        "expected": "aa0fcd5844454f1ba69cfb62472da55d448feac8",
+        "actual": "aa0fcd5844454f1ba69cfb62472da55d448feac8"
+      }
+    },
+    {
+      "name": "baseline_lock_devframe_control_plane",
+      "status": "PASS",
+      "details": {
+        "expected": "09167bc656f8625c97bfae5c52dae5a0280b116c",
+        "actual": "09167bc656f8625c97bfae5c52dae5a0280b116c"
+      }
+    }
+  ],
+  "summary": {
+    "passed": 31,
+    "failed": 0
+  }
+}
