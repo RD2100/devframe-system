@@ -107,3 +107,181 @@ Suggested next TaskSpec:
 Goal: produce a compact parent-level review packet from minimized evidence only:
 five preview IDs, source-match booleans, counts, status, known gaps, and a clear
 manual checklist for paper-quality review.
+# Parent Current Local Paper RAG Answer Preview Milestone Closeout
+
+Date: 2026-06-16
+
+## Verdict
+
+`LOCAL_PAPER_RAG_ANSWER_PREVIEW_CLOSED_AS_NON_FINAL_MILESTONE_CANDIDATE`
+
+The parent superproject now has a complete non-final evidence chain for the
+local paper RAG answer-preview milestone:
+
+1. opencode generated deterministic local answer-preview packet evidence.
+2. test-frame consumed the minimized evidence and verified fail-closed
+   boundaries.
+3. agent-acceptance reviewed the chain as non-final governance evidence.
+4. parent lock/gitlink pins and parent intake reports are aligned.
+5. parent paper artifacts now include reviewer-facing clean manuscript v0.7.
+
+This closes the answer-preview milestone only as scoped local paper RAG
+human-review support evidence. It is not final governance acceptance,
+paper-quality acceptance, production readiness, broad live readiness,
+whole-vault readiness, general RAG readiness, external/private RAG readiness,
+cloud readiness, cloud vector DB readiness, or RuntimeAuthorization.
+
+## Pinned Chain
+
+### Opencode
+
+- parent pin commit: `3879e6e`
+- module: `dev-frame-opencode`
+- pinned commit: `528f5b801082a10759df000a2315486a55a22e79`
+- task: `OPENCODE_LOCAL_PAPER_RAG_ANSWER_PREVIEW_PACKET_A1`
+- evidence ZIP: `D:\devframe-system\.agent\evidence\evidence-opencode-local-paper-rag-answer-preview-a1-528f5b8.zip`
+- SHA256: `F1AB005DBE53429E825E2ACBF58750635744DE7D8A94F978878C9EEABA4F5FB9`
+
+### Test-Frame
+
+- parent pin commit: `a48b7cb`
+- module: `test-frame`
+- pinned commit: `18c19898c599eca5452f2e10fcaa23f2d151339d`
+- task: `TESTFRAME_OPENCODE_LOCAL_PAPER_RAG_ANSWER_PREVIEW_CONSUMPTION_A1`
+- evidence ZIP: `D:\devframe-system\test-frame\reports\evidence-opencode-local-paper-rag-answer-preview-consumption-a1.zip`
+- SHA256: `B091B9C9BFEE25E46515A2C4561A69CBD1A3527BE7E8FEFBA932A6509F9B769E`
+
+### Agent-Acceptance
+
+- parent pin commit: `03cec19`
+- module: `agent-acceptance`
+- pinned commit: `aa0fcd5844454f1ba69cfb62472da55d448feac8`
+- task: `AGENT_ACCEPTANCE_LOCAL_PAPER_RAG_ANSWER_PREVIEW_GOVERNANCE_REVIEW_A1`
+- evidence ZIP: `D:\devframe-system\.agent\evidence\evidence-agent-acceptance-local-paper-rag-answer-preview-governance-review-a1-aa0fcd5.zip`
+- SHA256: `F9D9B06D220D983B02234D7CA470CE0CDA990A5F2339E2603F169581DEFE1FC1`
+
+## What Is Now Proven
+
+The local paper RAG chain now has scoped evidence that it can produce a
+deterministic answer-preview packet suitable for human review:
+
+- `preview_status=PASS_LOCAL_RAG_ANSWER_PREVIEW`
+- answer preview count: 5
+- document count: 6
+- chunk count: 47
+- query count: 5
+- Q4 hybrid expected source match: true
+- issue count: 0
+- warning count: 0
+- report and manifest schema validation: PASS
+- raw-sensitive value scan over report/manifest/evidence staging: PASS
+
+The test-frame consumption slice verifies the minimized evidence shape and fails
+closed when:
+
+- provenance, package hash, package entries, schema, source commit, or parent
+  pin drift.
+- preview status, counts, Q4 routing, issue count, or warning count drift.
+- raw-sensitive markers appear.
+- runtime scope expands.
+- final, paper-quality, production, general-RAG, whole-vault,
+  external/private-RAG, cloud, or RuntimeAuthorization claims are made.
+
+The agent-acceptance review confirms that this chain is governance-acceptable
+only as non-final milestone evidence.
+
+## Current Paper Artifact
+
+The parent superproject also now has a reviewer-facing clean manuscript artifact
+derived after this local RAG evidence chain:
+
+- current recommended DOCX:
+  `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.7.docx`
+- current recommended Markdown:
+  `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.7.md`
+- handoff package:
+  `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v0.7-package.zip`
+
+The v0.7 manuscript converts internal source labels to numeric references
+`[1]` through `[6]` and remains a human-review draft only.
+
+## What Is Not Proven
+
+This closeout does not prove:
+
+- final governance acceptance
+- final citation acceptance
+- paper-quality acceptance
+- human paper-quality acceptance
+- LLM answer generation quality
+- full citation-grounded answer verification
+- broad ranking quality
+- broader corpus coverage
+- whole-vault indexing
+- broad live readiness
+- private/external RAG readiness
+- cloud vector DB integration
+- cloud readiness
+- production readiness
+- RuntimeAuthorization
+
+## Boundary
+
+The parent closeout did not inspect raw PDF text, Markdown bodies, chunks, query
+text, source paths, vectors, FAISS binaries, API keys, WriteLab
+payloads/responses, private runtime artifacts, Zotero key/API, live RAG, PDF
+conversion, Obsidian runtime, browser/CDP/cloud, MiniApp, cloud LLM, cloud
+vector DB, external/private RAG, embeddings API, or vector DB service.
+
+The parent closeout does not update runtime authorization scope and does not
+authorize new live resource access.
+
+## Current Practical Meaning
+
+The project now has a local paper RAG path that is useful enough for a human
+review loop:
+
+- authorized PDFs were converted into local Markdown artifacts.
+- local FAISS-backed pipeline can build and reuse an index.
+- deterministic quality-eval passes on minimized evidence.
+- hybrid rerank closes the recorded Q4 source-routing gap as a scoped
+  spot-check.
+- answer-preview packet exposes five stable human-review rows without storing
+  raw source text, raw queries, paths, vectors, or private payloads in evidence.
+- reviewer-facing clean manuscript v0.7 is available as DOCX, Markdown, and
+  package ZIP.
+- opencode, test-frame, and agent-acceptance have all produced/pinned evidence
+  for the answer-preview milestone.
+
+The next meaningful work should be acceptance-facing:
+
+- human read-through of the v0.7 manuscript;
+- final citation format review against the target venue;
+- human spot-check of the five answer-preview rows against allowed local
+  sources;
+- only after that, a final milestone readiness review that explicitly decides
+  whether the current result is enough for tonight's target.
+
+## Reviewer Index
+
+- changed files:
+  - `integration/task-specs/PARENT_CURRENT_LOCAL_PAPER_RAG_ANSWER_PREVIEW_MILESTONE_CLOSEOUT_A1.md`
+  - `integration/reports/parent-current-local-paper-rag-answer-preview-milestone-closeout-2026-06-16.md`
+- critical code paths: none; parent closeout report only.
+- tests/probes run:
+  - inherited verified opencode/test-frame/agent-acceptance ZIP hashes
+  - parent pin review checks from `3879e6e`, `a48b7cb`, and `03cec19`
+  - v0.7 artifact verification from parent commit `01624ec`
+- generated artifacts:
+  - this closeout report
+  - closeout TaskSpec
+- known gaps:
+  - non-final milestone closeout only
+  - no runtime reproduction by parent
+  - no raw/private content inspection by parent
+  - no paper-quality acceptance
+- suggested review focus:
+  - confirm the closeout preserves non-final boundary
+  - confirm answer preview is not treated as LLM answer generation or
+    paper-quality acceptance
+  - confirm all module pins and v0.7 artifacts are represented accurately
