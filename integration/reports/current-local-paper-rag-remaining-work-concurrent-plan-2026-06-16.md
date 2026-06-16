@@ -2,7 +2,7 @@
 
 Date: 2026-06-16
 
-Status: `ACTIVE_FAST_CLOSEOUT_PLAN`
+Status: `R1_R2_R3_PINNED_WAITING_HUMAN_REVIEW`
 
 ## Objective
 
@@ -38,11 +38,27 @@ Latest local RAG evidence already available from opencode:
 - hybrid rerank;
 - answer preview.
 
+Closeout pins completed after this plan was opened:
+
+- agent-acceptance governance review pinned in parent commit
+  `6356fd1 Pin agent-acceptance current local paper RAG governance`.
+- test-frame current closed-loop consumption pinned in parent commit
+  `fbe26a4 Pin test-frame current local paper RAG closeout consumption`.
+- parent lock now records:
+  - `agent-acceptance` commit
+    `2e0bd5633eaca20bd0124dd22b7dd6d8702325b1`;
+  - `test-frame` commit
+    `72c3150e89c6542054547bc5f092f38388be153c`;
+  - `dev-frame-opencode` commit
+    `528f5b801082a10759df000a2315486a55a22e79`.
+
 ## Remaining Work
 
 ### R1. Test-Frame Current Closed-Loop Consumption
 
 Owner: test-frame worker
+
+Status: `DONE_AND_PARENT_PINNED`
 
 Goal:
 
@@ -66,6 +82,8 @@ Human blocker:
 ### R2. Agent-Acceptance Current Milestone Governance
 
 Owner: agent-acceptance worker
+
+Status: `DONE_AND_PARENT_PINNED`
 
 Goal:
 
@@ -91,6 +109,8 @@ Human blocker:
 
 Owner: parent thread
 
+Status: `DONE`
+
 Goal:
 
 - after R1 and R2 commits exist, review and pin them separately;
@@ -111,6 +131,8 @@ Human blocker:
 ### R4. Human Paper Review
 
 Owner: user / human reviewer
+
+Status: `NEXT_REQUIRED_DECISION`
 
 Goal:
 
@@ -137,6 +159,8 @@ Human blocker:
 
 Owner: parent/opencode later task, only after R4 decision
 
+Status: `OPTIONAL_AFTER_R4`
+
 Goal:
 
 - convert the chosen manuscript into target-specific style, likely GB/T 7714 or
@@ -155,11 +179,13 @@ Human blocker:
 
 ## Fast Sequencing
 
-1. Do not wait on old Axx tasks unless they affect current closed-loop evidence.
-2. Finish R1 and R2 in parallel.
-3. Parent pins R1/R2 separately if accepted.
-4. Parent emits final current-milestone status.
-5. User picks manuscript form and review direction.
+1. Treat old Axx tasks as closed for the current local-paper-RAG milestone unless
+   a specific blocker is rediscovered.
+2. Do not start new runtime expansion before the manuscript decision.
+3. User picks manuscript form and review direction.
+4. If a target venue is chosen, run a focused formatting/reference pass.
+5. If no target venue is chosen, preserve the three generated variants as the
+   current handoff package.
 
 ## Hard Stops
 
@@ -176,6 +202,10 @@ Stop and return findings if any worker observes:
 
 ## Current Practical Recommendation
 
-Treat the current state as good enough for a human-review handoff once R1 and R2
-are pinned or recorded as non-blocking. The only required human decision after
-that is which manuscript form to use.
+Treat the current state as good enough for a human-review handoff. The only
+required next decision is which manuscript form to use:
+
+- short paper;
+- technical note;
+- internal research brief;
+- or target-specific submission candidate.
