@@ -1,0 +1,610 @@
+{
+  "schema_version": 1,
+  "generated_at": "deterministic-local-paper-rag-review-variants-v1.0-verification",
+  "root": "D:\\devframe-system",
+  "manifest": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-review-variants-v1.0-manifest.json",
+  "package": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-review-variants-v1.0-package.zip",
+  "package_sha256": "60ABD31ED49B7325B7BAE69002577FCB17D15CFDC865AA999BC6AC5AE3F4A42F",
+  "verdict": "PASS_LOCAL_PAPER_RAG_REVIEW_VARIANTS_V1_0_VERIFICATION",
+  "non_final_boundary": {
+    "paper_quality_acceptance": false,
+    "training_effect_acceptance": false,
+    "production_ready": false,
+    "broad_rag_ready": false,
+    "runtime_authorization": false
+  },
+  "checks": [
+    {
+      "name": "local-paper-rag-review-variants-v1.0-manifest.json_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-review-variants-v1.0-manifest.json"
+      }
+    },
+    {
+      "name": "local-paper-rag-review-variants-v1.0-package.zip_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-review-variants-v1.0-package.zip"
+      }
+    },
+    {
+      "name": "manifest_schema_version",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "manifest_non_final_boundary",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "manifest_variant_ids_exact",
+      "status": "PASS",
+      "details": {
+        "actual": [
+          "internal-brief",
+          "short-paper",
+          "technical-note"
+        ]
+      }
+    },
+    {
+      "name": "short-paper_markdown_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-short-paper-v1.0.md"
+      }
+    },
+    {
+      "name": "short-paper_docx_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-short-paper-v1.0.docx"
+      }
+    },
+    {
+      "name": "short-paper_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "辅助价值、场景构建与评价边界"
+      }
+    },
+    {
+      "name": "short-paper_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "## 摘要"
+      }
+    },
+    {
+      "name": "short-paper_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "## 参考文献"
+      }
+    },
+    {
+      "name": "short-paper_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "????????"
+      }
+    },
+    {
+      "name": "short-paper_excludes_writelab_token",
+      "status": "PASS",
+      "details": {
+        "token": "WRITELAB_TOKEN"
+      }
+    },
+    {
+      "name": "short-paper_excludes_raw_pdf_text",
+      "status": "PASS",
+      "details": {
+        "token": "raw_pdf_text"
+      }
+    },
+    {
+      "name": "short-paper_excludes_raw_markdown_body",
+      "status": "PASS",
+      "details": {
+        "token": "raw_markdown_body"
+      }
+    },
+    {
+      "name": "short-paper_excludes_raw_chunks",
+      "status": "PASS",
+      "details": {
+        "token": "raw_chunks"
+      }
+    },
+    {
+      "name": "short-paper_excludes_raw_query",
+      "status": "PASS",
+      "details": {
+        "token": "raw_query"
+      }
+    },
+    {
+      "name": "short-paper_excludes_source_path",
+      "status": "PASS",
+      "details": {
+        "token": "source_path"
+      }
+    },
+    {
+      "name": "short-paper_excludes_faiss_binary",
+      "status": "PASS",
+      "details": {
+        "token": "FAISS binary"
+      }
+    },
+    {
+      "name": "short-paper_excludes_final_acceptance_claimed_true",
+      "status": "PASS",
+      "details": {
+        "token": "final_acceptance_claimed\": true"
+      }
+    },
+    {
+      "name": "short-paper_excludes_paper_quality_acceptance_true",
+      "status": "PASS",
+      "details": {
+        "token": "paper_quality_acceptance\": true"
+      }
+    },
+    {
+      "name": "short-paper_excludes_production_ready_true",
+      "status": "PASS",
+      "details": {
+        "token": "production_ready\": true"
+      }
+    },
+    {
+      "name": "short-paper_excludes_runtime_authorization_true",
+      "status": "PASS",
+      "details": {
+        "token": "runtime_authorization\": true"
+      }
+    },
+    {
+      "name": "short-paper_docx_readable",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "technical-note_markdown_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-technical-note-v1.0.md"
+      }
+    },
+    {
+      "name": "technical-note_docx_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-technical-note-v1.0.docx"
+      }
+    },
+    {
+      "name": "technical-note_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "技术札记"
+      }
+    },
+    {
+      "name": "technical-note_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "## 札记定位"
+      }
+    },
+    {
+      "name": "technical-note_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "从展示模型到训练环境"
+      }
+    },
+    {
+      "name": "technical-note_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "????????"
+      }
+    },
+    {
+      "name": "technical-note_excludes_writelab_token",
+      "status": "PASS",
+      "details": {
+        "token": "WRITELAB_TOKEN"
+      }
+    },
+    {
+      "name": "technical-note_excludes_raw_pdf_text",
+      "status": "PASS",
+      "details": {
+        "token": "raw_pdf_text"
+      }
+    },
+    {
+      "name": "technical-note_excludes_raw_markdown_body",
+      "status": "PASS",
+      "details": {
+        "token": "raw_markdown_body"
+      }
+    },
+    {
+      "name": "technical-note_excludes_raw_chunks",
+      "status": "PASS",
+      "details": {
+        "token": "raw_chunks"
+      }
+    },
+    {
+      "name": "technical-note_excludes_raw_query",
+      "status": "PASS",
+      "details": {
+        "token": "raw_query"
+      }
+    },
+    {
+      "name": "technical-note_excludes_source_path",
+      "status": "PASS",
+      "details": {
+        "token": "source_path"
+      }
+    },
+    {
+      "name": "technical-note_excludes_faiss_binary",
+      "status": "PASS",
+      "details": {
+        "token": "FAISS binary"
+      }
+    },
+    {
+      "name": "technical-note_excludes_final_acceptance_claimed_true",
+      "status": "PASS",
+      "details": {
+        "token": "final_acceptance_claimed\": true"
+      }
+    },
+    {
+      "name": "technical-note_excludes_paper_quality_acceptance_true",
+      "status": "PASS",
+      "details": {
+        "token": "paper_quality_acceptance\": true"
+      }
+    },
+    {
+      "name": "technical-note_excludes_production_ready_true",
+      "status": "PASS",
+      "details": {
+        "token": "production_ready\": true"
+      }
+    },
+    {
+      "name": "technical-note_excludes_runtime_authorization_true",
+      "status": "PASS",
+      "details": {
+        "token": "runtime_authorization\": true"
+      }
+    },
+    {
+      "name": "technical-note_docx_readable",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "internal-brief_markdown_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-internal-brief-v1.0.md"
+      }
+    },
+    {
+      "name": "internal-brief_docx_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-internal-brief-v1.0.docx"
+      }
+    },
+    {
+      "name": "internal-brief_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "内部研究简报"
+      }
+    },
+    {
+      "name": "internal-brief_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "已完成的自动化链路"
+      }
+    },
+    {
+      "name": "internal-brief_contains_token",
+      "status": "PASS",
+      "details": {
+        "token": "当前不能宣称什么"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "????????"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_writelab_token",
+      "status": "PASS",
+      "details": {
+        "token": "WRITELAB_TOKEN"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_raw_pdf_text",
+      "status": "PASS",
+      "details": {
+        "token": "raw_pdf_text"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_raw_markdown_body",
+      "status": "PASS",
+      "details": {
+        "token": "raw_markdown_body"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_raw_chunks",
+      "status": "PASS",
+      "details": {
+        "token": "raw_chunks"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_raw_query",
+      "status": "PASS",
+      "details": {
+        "token": "raw_query"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_source_path",
+      "status": "PASS",
+      "details": {
+        "token": "source_path"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_faiss_binary",
+      "status": "PASS",
+      "details": {
+        "token": "FAISS binary"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_final_acceptance_claimed_true",
+      "status": "PASS",
+      "details": {
+        "token": "final_acceptance_claimed\": true"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_paper_quality_acceptance_true",
+      "status": "PASS",
+      "details": {
+        "token": "paper_quality_acceptance\": true"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_production_ready_true",
+      "status": "PASS",
+      "details": {
+        "token": "production_ready\": true"
+      }
+    },
+    {
+      "name": "internal-brief_excludes_runtime_authorization_true",
+      "status": "PASS",
+      "details": {
+        "token": "runtime_authorization\": true"
+      }
+    },
+    {
+      "name": "internal-brief_docx_readable",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "variant_markdown_hashes_are_distinct",
+      "status": "PASS",
+      "details": {
+        "hashes": {
+          "short-paper": "B2F36FEF3C2839A06FBC4F1BD1A5EB1C14A8C6BC23488709C3A8B52138D82308",
+          "technical-note": "20D63583ED8163E7B09D075AA318FA37E000F4B5A23C9B0159A15496D03259C1",
+          "internal-brief": "BB37B3853AF912DE23AF68ACDE2E600654AD9FF771B9A675319D67AC1AAC6887"
+        }
+      }
+    },
+    {
+      "name": "short-paper_markdown_sha256_matches_manifest",
+      "status": "PASS",
+      "details": {
+        "expected": "B2F36FEF3C2839A06FBC4F1BD1A5EB1C14A8C6BC23488709C3A8B52138D82308",
+        "actual": "B2F36FEF3C2839A06FBC4F1BD1A5EB1C14A8C6BC23488709C3A8B52138D82308"
+      }
+    },
+    {
+      "name": "short-paper_docx_sha256_matches_manifest",
+      "status": "PASS",
+      "details": {
+        "expected": "376D7FA720798DCE82CF8830A2C41313ED0EC513F65645D301DDE9DAB5FA68B9",
+        "actual": "376D7FA720798DCE82CF8830A2C41313ED0EC513F65645D301DDE9DAB5FA68B9"
+      }
+    },
+    {
+      "name": "technical-note_markdown_sha256_matches_manifest",
+      "status": "PASS",
+      "details": {
+        "expected": "20D63583ED8163E7B09D075AA318FA37E000F4B5A23C9B0159A15496D03259C1",
+        "actual": "20D63583ED8163E7B09D075AA318FA37E000F4B5A23C9B0159A15496D03259C1"
+      }
+    },
+    {
+      "name": "technical-note_docx_sha256_matches_manifest",
+      "status": "PASS",
+      "details": {
+        "expected": "0566B1F630A4CD11D7464281A711AD6CAF0BBFE013061154808CB7F4428F5F17",
+        "actual": "0566B1F630A4CD11D7464281A711AD6CAF0BBFE013061154808CB7F4428F5F17"
+      }
+    },
+    {
+      "name": "internal-brief_markdown_sha256_matches_manifest",
+      "status": "PASS",
+      "details": {
+        "expected": "BB37B3853AF912DE23AF68ACDE2E600654AD9FF771B9A675319D67AC1AAC6887",
+        "actual": "BB37B3853AF912DE23AF68ACDE2E600654AD9FF771B9A675319D67AC1AAC6887"
+      }
+    },
+    {
+      "name": "internal-brief_docx_sha256_matches_manifest",
+      "status": "PASS",
+      "details": {
+        "expected": "1F2093E0091827422501D4B50204117B2DCFF096D10F022715345A60F5A6944D",
+        "actual": "1F2093E0091827422501D4B50204117B2DCFF096D10F022715345A60F5A6944D"
+      }
+    },
+    {
+      "name": "package_entries_exact",
+      "status": "PASS",
+      "details": {
+        "expected": [
+          "REVIEW-VARIANTS-README.md",
+          "allowed-claims-v1.0.md",
+          "local-paper-rag-internal-brief-v1.0.docx",
+          "local-paper-rag-internal-brief-v1.0.md",
+          "local-paper-rag-review-variants-v1.0-manifest.json",
+          "local-paper-rag-short-paper-v1.0.docx",
+          "local-paper-rag-short-paper-v1.0.md",
+          "local-paper-rag-technical-note-v1.0.docx",
+          "local-paper-rag-technical-note-v1.0.md",
+          "non-claim-boundary-v1.0.md",
+          "submission-decision-matrix-v1.0.md",
+          "usage-profile-internal-brief-v1.0.md",
+          "usage-profile-short-paper-v1.0.md",
+          "usage-profile-technical-note-v1.0.md"
+        ],
+        "actual": [
+          "REVIEW-VARIANTS-README.md",
+          "allowed-claims-v1.0.md",
+          "local-paper-rag-internal-brief-v1.0.docx",
+          "local-paper-rag-internal-brief-v1.0.md",
+          "local-paper-rag-review-variants-v1.0-manifest.json",
+          "local-paper-rag-short-paper-v1.0.docx",
+          "local-paper-rag-short-paper-v1.0.md",
+          "local-paper-rag-technical-note-v1.0.docx",
+          "local-paper-rag-technical-note-v1.0.md",
+          "non-claim-boundary-v1.0.md",
+          "submission-decision-matrix-v1.0.md",
+          "usage-profile-internal-brief-v1.0.md",
+          "usage-profile-short-paper-v1.0.md",
+          "usage-profile-technical-note-v1.0.md"
+        ]
+      }
+    },
+    {
+      "name": "package_excludes_token",
+      "status": "PASS",
+      "details": {
+        "token": "????????"
+      }
+    },
+    {
+      "name": "package_excludes_writelab_token",
+      "status": "PASS",
+      "details": {
+        "token": "WRITELAB_TOKEN"
+      }
+    },
+    {
+      "name": "package_excludes_raw_pdf_text",
+      "status": "PASS",
+      "details": {
+        "token": "raw_pdf_text"
+      }
+    },
+    {
+      "name": "package_excludes_raw_markdown_body",
+      "status": "PASS",
+      "details": {
+        "token": "raw_markdown_body"
+      }
+    },
+    {
+      "name": "package_excludes_raw_chunks",
+      "status": "PASS",
+      "details": {
+        "token": "raw_chunks"
+      }
+    },
+    {
+      "name": "package_excludes_raw_query",
+      "status": "PASS",
+      "details": {
+        "token": "raw_query"
+      }
+    },
+    {
+      "name": "package_excludes_source_path",
+      "status": "PASS",
+      "details": {
+        "token": "source_path"
+      }
+    },
+    {
+      "name": "package_excludes_faiss_binary",
+      "status": "PASS",
+      "details": {
+        "token": "FAISS binary"
+      }
+    },
+    {
+      "name": "package_excludes_final_acceptance_claimed_true",
+      "status": "PASS",
+      "details": {
+        "token": "final_acceptance_claimed\": true"
+      }
+    },
+    {
+      "name": "package_excludes_paper_quality_acceptance_true",
+      "status": "PASS",
+      "details": {
+        "token": "paper_quality_acceptance\": true"
+      }
+    },
+    {
+      "name": "package_excludes_production_ready_true",
+      "status": "PASS",
+      "details": {
+        "token": "production_ready\": true"
+      }
+    },
+    {
+      "name": "package_excludes_runtime_authorization_true",
+      "status": "PASS",
+      "details": {
+        "token": "runtime_authorization\": true"
+      }
+    }
+  ],
+  "summary": {
+    "passed": 79,
+    "failed": 0
+  }
+}

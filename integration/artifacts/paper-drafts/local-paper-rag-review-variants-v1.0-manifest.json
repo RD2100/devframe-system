@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "generated_at": "deterministic-local-paper-rag-review-variants-v1.0",
+  "source": "local-paper-rag-clean-manuscript-v1.0.md",
+  "variants": [
+    {
+      "id": "short-paper",
+      "role": "短论文审阅稿",
+      "markdown": "local-paper-rag-short-paper-v1.0.md",
+      "docx": "local-paper-rag-short-paper-v1.0.docx",
+      "title": "面向应急救援与军事职业教育的虚拟训练系统：辅助价值、场景构建与评价边界",
+      "markdown_sha256": "B2F36FEF3C2839A06FBC4F1BD1A5EB1C14A8C6BC23488709C3A8B52138D82308",
+      "docx_sha256": "376D7FA720798DCE82CF8830A2C41313ED0EC513F65645D301DDE9DAB5FA68B9"
+    },
+    {
+      "id": "technical-note",
+      "role": "技术札记审阅稿",
+      "markdown": "local-paper-rag-technical-note-v1.0.md",
+      "docx": "local-paper-rag-technical-note-v1.0.docx",
+      "title": "虚拟训练系统辅助训练价值的技术札记：场景构建与评价边界",
+      "markdown_sha256": "20D63583ED8163E7B09D075AA318FA37E000F4B5A23C9B0159A15496D03259C1",
+      "docx_sha256": "0566B1F630A4CD11D7464281A711AD6CAF0BBFE013061154808CB7F4428F5F17"
+    },
+    {
+      "id": "internal-brief",
+      "role": "内部研究简报",
+      "markdown": "local-paper-rag-internal-brief-v1.0.md",
+      "docx": "local-paper-rag-internal-brief-v1.0.docx",
+      "title": "本地论文 RAG 交付内部研究简报 v1.0",
+      "markdown_sha256": "BB37B3853AF912DE23AF68ACDE2E600654AD9FF771B9A675319D67AC1AAC6887",
+      "docx_sha256": "1F2093E0091827422501D4B50204117B2DCFF096D10F022715345A60F5A6944D"
+    }
+  ],
+  "non_final_boundary": {
+    "paper_quality_acceptance": false,
+    "training_effect_acceptance": false,
+    "production_ready": false,
+    "broad_rag_ready": false,
+    "runtime_authorization": false
+  }
+}

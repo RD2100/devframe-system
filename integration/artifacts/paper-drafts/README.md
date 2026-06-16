@@ -32,6 +32,35 @@ claim/non-claim boundaries.
 - `non-claim-boundary-v1.0.md`
 - `v1.0-verification-risk-checklist.md`
 
+## v1.0 Review Variants
+
+Use these when the target form is known:
+
+- Short paper:
+  `local-paper-rag-short-paper-v1.0.docx`
+- Technical note:
+  `local-paper-rag-technical-note-v1.0.docx`
+- Internal research brief:
+  `local-paper-rag-internal-brief-v1.0.docx`
+
+Variant source manifest:
+
+- `local-paper-rag-review-variants-v1.0-manifest.json`
+
+Variant handoff package:
+
+- `local-paper-rag-review-variants-v1.0-package.zip`
+
+SHA256:
+
+- `60ABD31ED49B7325B7BAE69002577FCB17D15CFDC865AA999BC6AC5AE3F4A42F`
+
+Verify with:
+
+```powershell
+python scripts\verify_local_paper_rag_review_variants_v1_0.py --root D:\devframe-system
+```
+
 ## Latest Hashes
 
 - v1.0 clean DOCX:
@@ -42,6 +71,8 @@ claim/non-claim boundaries.
   `88657D835CDEDAFFAF52943C9175F9D659AE2A61A09ED23BFBD147093138DCF4`
 - v1.0 submission-prep ZIP:
   `8433B733FEEFE22D2EF48AD8C365D329C6900BDAC6BD2FCE9CBD532912DFB40F`
+- v1.0 review-variants ZIP:
+  `60ABD31ED49B7325B7BAE69002577FCB17D15CFDC865AA999BC6AC5AE3F4A42F`
 
 ## Supporting Review Artifacts
 

@@ -27,12 +27,34 @@ Submission-prep supplement verification:
 python scripts\verify_local_paper_rag_submission_prep_v1_0.py --root D:\devframe-system
 ```
 
+Review-variants supplement verification:
+
+```powershell
+python scripts\verify_local_paper_rag_review_variants_v1_0.py --root D:\devframe-system
+```
+
 Expected result:
 
 ```text
 PASS_LOCAL_PAPER_RAG_V1_0_HANDOFF_VERIFICATION
 passed=36 failed=0
 ```
+
+Review-variants expected result:
+
+```text
+PASS_LOCAL_PAPER_RAG_REVIEW_VARIANTS_V1_0_VERIFICATION
+passed=79 failed=0
+```
+
+Current optional review variants:
+
+- Short paper:
+  `integration/artifacts/paper-drafts/local-paper-rag-short-paper-v1.0.docx`
+- Technical note:
+  `integration/artifacts/paper-drafts/local-paper-rag-technical-note-v1.0.docx`
+- Internal brief:
+  `integration/artifacts/paper-drafts/local-paper-rag-internal-brief-v1.0.docx`
 
 This is a non-final human-review handoff. It does not claim final
 paper-quality acceptance, training-effect acceptance, production readiness,

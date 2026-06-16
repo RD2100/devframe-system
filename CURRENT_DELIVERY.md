@@ -14,6 +14,16 @@ Handoff package:
 
 - `integration/artifacts/paper-drafts/local-paper-rag-clean-manuscript-v1.0-package.zip`
 
+Review variants package:
+
+- `integration/artifacts/paper-drafts/local-paper-rag-review-variants-v1.0-package.zip`
+
+Use these files when the target form is already known:
+
+- Short paper: `integration/artifacts/paper-drafts/local-paper-rag-short-paper-v1.0.docx`
+- Technical note: `integration/artifacts/paper-drafts/local-paper-rag-technical-note-v1.0.docx`
+- Internal research brief: `integration/artifacts/paper-drafts/local-paper-rag-internal-brief-v1.0.docx`
+
 ## Current Verdict
 
 `SHIP_V1_0_FOR_HUMAN_REVIEW_NON_FINAL`
@@ -80,6 +90,55 @@ Verify with:
 python scripts\verify_local_paper_rag_submission_prep_v1_0.py --root D:\devframe-system
 ```
 
+## Review Variants Supplement
+
+Three use-case variants are available for faster human review:
+
+- Short paper draft:
+  `integration/artifacts/paper-drafts/local-paper-rag-short-paper-v1.0.docx`
+- Technical note draft:
+  `integration/artifacts/paper-drafts/local-paper-rag-technical-note-v1.0.docx`
+- Internal research brief:
+  `integration/artifacts/paper-drafts/local-paper-rag-internal-brief-v1.0.docx`
+
+Review-variants package:
+
+- `integration/artifacts/paper-drafts/local-paper-rag-review-variants-v1.0-package.zip`
+
+SHA256:
+
+- `60ABD31ED49B7325B7BAE69002577FCB17D15CFDC865AA999BC6AC5AE3F4A42F`
+
+Verify with:
+
+```powershell
+python scripts\verify_local_paper_rag_review_variants_v1_0.py --root D:\devframe-system
+```
+
+Expected output:
+
+```text
+PASS_LOCAL_PAPER_RAG_REVIEW_VARIANTS_V1_0_VERIFICATION
+passed=79 failed=0
+```
+
+## Current Local RAG Evidence
+
+Latest local RAG pipeline evidence accepted for current milestone review:
+
+- Usable pipeline:
+  `D:\devframe-system\.agent\evidence\evidence-opencode-local-paper-rag-usable-pipeline-a1-7c13ff0.zip`
+  SHA256 `BA8AD8D6E9E012D17A2CE0EA71FDB478232907D6806470801DC6B4A8C1159B9A`
+- Quality eval:
+  `D:\devframe-system\.agent\evidence\evidence-opencode-local-paper-rag-quality-eval-a1-44188cd.zip`
+  SHA256 `8C5296FCE736BC8D9AD0F9218EC2B6C598CB85D2FA6897DEF2350E461FF4EDC5`
+- Hybrid rerank:
+  `D:\devframe-system\.agent\evidence\evidence-opencode-local-paper-rag-hybrid-rerank-a1-209ac0e.zip`
+  SHA256 `BE65898E071DDC351B6B600A97242774190B62D5D9529630706739C0980A0443`
+- Answer preview:
+  `D:\devframe-system\.agent\evidence\evidence-opencode-local-paper-rag-answer-preview-a1-528f5b8.zip`
+  SHA256 `F1AB005DBE53429E825E2ACBF58750635744DE7D8A94F978878C9EEABA4F5FB9`
+
 ## Supporting Reports
 
 - v1.0 manuscript closeout:
@@ -94,11 +153,12 @@ python scripts\verify_local_paper_rag_submission_prep_v1_0.py --root D:\devframe
 1. Read the v1.0 DOCX.
 2. Choose the use case: short paper, technical note, review-style course paper,
    or internal research brief.
-3. Check whether the title, abstract, contribution statement, conclusion, and
+3. If the target is already known, open the matching review-variant DOCX first.
+4. Check whether the title, abstract, contribution statement, conclusion, and
    cautious evidence boundary match the intended use case.
-4. Review `reference-format-audit-v1.0.md` and manually verify metadata that
+5. Review `reference-format-audit-v1.0.md` and manually verify metadata that
    automation cannot safely infer.
-5. Decide whether tonight's target is satisfied as a human-review handoff, or
+6. Decide whether tonight's target is satisfied as a human-review handoff, or
    whether stronger empirical training-effect evidence is required.
 
 ## Boundary
