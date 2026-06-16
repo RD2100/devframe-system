@@ -189,6 +189,38 @@ passed=52 failed=0
 This is still a non-final candidate. It requires human reference metadata
 checking and target-venue template checking before any submission-ready claim.
 
+## One-Command Local RAG Runner
+
+The current opencode submodule pin includes a scoped one-command local RAG
+entrypoint:
+
+```powershell
+python -m ai_workflow_hub.cli paper local-rag-run `
+  --pdf-folder E:\厂里\虚拟训练 `
+  --vault-root D:\Obsidian\paper-pilot `
+  --target-folder D:\Obsidian\paper-pilot\papers\virtual-training `
+  --runtime-dir D:\devframe-system\.agent\runtime\local-paper-rag-run `
+  --output D:\devframe-system\.agent\runtime\local-paper-rag-run\one-command-report.json `
+  --manifest-output D:\devframe-system\.agent\runtime\local-paper-rag-run\one-command-manifest.json
+```
+
+Pinned opencode commit:
+
+- `a22f3bb68988a2107973c46a2df4dab31def31b8`
+
+Evidence ZIP:
+
+- `D:\devframe-system\.agent\evidence\OPENCODE_LOCAL_PAPER_RAG_ONE_COMMAND_RUNNER_A1-a22f3bb-20260616.zip`
+
+SHA256:
+
+- `DF5B07CCAD4A43F06A4C92ED5704458E490738DA484ECB8F8B28D4D9F237A113`
+
+This command is a local usability runner. It chains local RAG pipeline,
+quality-eval, and answer-preview reports. It does not claim final governance
+acceptance, paper-quality acceptance, production readiness, whole-vault
+readiness, broad/general RAG readiness, cloud readiness, or RuntimeAuthorization.
+
 ## Current Local RAG Evidence
 
 Latest local RAG pipeline evidence accepted for current milestone review:
