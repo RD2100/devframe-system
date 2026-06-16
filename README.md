@@ -2,21 +2,23 @@
 
 [中文](#中文) | [English](#english)
 
-> **核心卖点 / Core Value Proposition**
+> **真正要解决的问题 / The Real Problem**
 >
-> **devframe-system 把 GPT 网页版变成软件工作流的“外置大脑”。**
-> 它让 GPT 负责理解目标、拆解任务、记忆上下文、调度 agent、审查证据和沉淀经验；
-> 让 IDE、CLI、浏览器、自动化脚本、测试框架以及不同厂商的 coding agent 作为可替换的执行器接入。
-> 这套框架不绑定某一个软件或某一个 agent，而是用统一的规则、契约、TaskSpec、ExecutionReport 和验证门禁，
-> 去适配所有软件协作场景和多 agent 工作流。
+> **怎样在不增加预算、不替换工具链、不训练新模型的情况下，最简单、最直接地提升代码质量，并持续把住产品与工程方向？**
 >
-> **devframe-system turns the GPT web app into an external brain for software work.**
-> GPT handles intent, planning, context memory, agent dispatch, evidence review,
+> devframe-system 的答案不是再造一个常见的“治理框架”。它真正独特的地方，是把 **GPT 网页版作为软件研发的外置大脑**：
+> 让 GPT 负责理解目标、拆解任务、记忆上下文、校准方向、调度 agent、审查证据和沉淀经验；
+> 让 IDE、CLI、浏览器、自动化脚本、测试框架以及不同厂商的 coding agent 作为可替换执行器接入。
+> 换句话说，它用几乎免费的 GPT 网页版能力，把所有软件和 agent 组织成一个可控、可复盘、可持续改进的研发系统。
+>
+> **How can you improve code quality and keep product/engineering direction under control with the least cost, the fewest new tools, and the most direct workflow?**
+>
+> devframe-system is not interesting because it is another governance framework.
+> Its distinctive idea is using the **GPT web app as an external brain for software development**:
+> GPT handles intent, task decomposition, context memory, direction checks, agent dispatch, evidence review,
 > and lessons learned; IDEs, CLIs, browsers, automation scripts, test frameworks,
-> and coding agents become interchangeable executors. The framework is not tied
-> to one tool or one agent. It uses portable rules, contracts, TaskSpecs,
-> ExecutionReports, and verification gates to adapt across software workflows
-> and multi-agent systems.
+> and coding agents become interchangeable executors.
+> In short, it turns the low-cost GPT web experience into the coordinating brain for software teams, tools, and multi-agent workflows.
 
 **Agent Runtime Governance Framework & Multi-Agent Collaboration Infrastructure**
 **AI 智能体运行时治理框架 & 多智能体协同基础设施**
