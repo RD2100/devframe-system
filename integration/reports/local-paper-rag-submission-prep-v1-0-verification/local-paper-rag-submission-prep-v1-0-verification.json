@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "generated_at": "deterministic-local-paper-rag-submission-prep-v1.0-verification",
+  "root": "D:\\devframe-system",
+  "package": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-submission-prep-v1.0-package.zip",
+  "verdict": "PASS_LOCAL_PAPER_RAG_SUBMISSION_PREP_V1_0_VERIFICATION",
+  "non_final_boundary": {
+    "final_journal_formatting": false,
+    "final_citation_acceptance": false,
+    "paper_quality_acceptance": false,
+    "training_effect_acceptance": false,
+    "runtime_authorization": false
+  },
+  "checks": [
+    {
+      "name": "local-paper-rag-submission-prep-v1.0-package.zip_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\local-paper-rag-submission-prep-v1.0-package.zip"
+      }
+    },
+    {
+      "name": "gbt7714-preflight-v1.0.md_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\gbt7714-preflight-v1.0.md"
+      }
+    },
+    {
+      "name": "submission-decision-matrix-v1.0.md_exists",
+      "status": "PASS",
+      "details": {
+        "path": "D:\\devframe-system\\integration\\artifacts\\paper-drafts\\submission-decision-matrix-v1.0.md"
+      }
+    },
+    {
+      "name": "submission_prep_package_sha256",
+      "status": "PASS",
+      "details": {
+        "expected": "8433B733FEEFE22D2EF48AD8C365D329C6900BDAC6BD2FCE9CBD532912DFB40F",
+        "actual": "8433B733FEEFE22D2EF48AD8C365D329C6900BDAC6BD2FCE9CBD532912DFB40F"
+      }
+    },
+    {
+      "name": "submission_prep_package_entries_exact",
+      "status": "PASS",
+      "details": {
+        "expected": [
+          "SUBMISSION-PREP-README.md",
+          "allowed-claims-v1.0.md",
+          "gbt7714-preflight-v1.0.md",
+          "local-paper-rag-clean-manuscript-v1.0.docx",
+          "local-paper-rag-clean-manuscript-v1.0.md",
+          "non-claim-boundary-v1.0.md",
+          "reference-format-audit-v1.0.md",
+          "references-needs-human-check-v1.0.md",
+          "submission-decision-matrix-v1.0.md"
+        ],
+        "actual": [
+          "SUBMISSION-PREP-README.md",
+          "allowed-claims-v1.0.md",
+          "gbt7714-preflight-v1.0.md",
+          "local-paper-rag-clean-manuscript-v1.0.docx",
+          "local-paper-rag-clean-manuscript-v1.0.md",
+          "non-claim-boundary-v1.0.md",
+          "reference-format-audit-v1.0.md",
+          "references-needs-human-check-v1.0.md",
+          "submission-decision-matrix-v1.0.md"
+        ]
+      }
+    },
+    {
+      "name": "gbt_preflight_records_done",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "gbt_preflight_keeps_human_gate",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "decision_matrix_blocks_direct_journal_submit",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "decision_matrix_keeps_internal_brief_path",
+      "status": "PASS",
+      "details": {}
+    },
+    {
+      "name": "package_readme_non_final_boundary",
+      "status": "PASS",
+      "details": {}
+    }
+  ],
+  "summary": {
+    "passed": 10,
+    "failed": 0
+  }
+}

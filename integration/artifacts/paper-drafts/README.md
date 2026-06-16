@@ -21,6 +21,8 @@ claim/non-claim boundaries.
 
 ## v1.0 Review Supplements
 
+- `gbt7714-preflight-v1.0.md`
+- `submission-decision-matrix-v1.0.md`
 - `reference-format-audit-v1.0.md`
 - `references-needs-human-check-v1.0.md`
 - `usage-profile-short-paper-v1.0.md`
@@ -38,6 +40,8 @@ claim/non-claim boundaries.
   `E6AEB7B8CBF45D038EAB12DDCEA3ABB7FFB2F808E6CD0209665D0AEE31E5640C`
 - v1.0 package ZIP:
   `88657D835CDEDAFFAF52943C9175F9D659AE2A61A09ED23BFBD147093138DCF4`
+- v1.0 submission-prep ZIP:
+  `8433B733FEEFE22D2EF48AD8C365D329C6900BDAC6BD2FCE9CBD532912DFB40F`
 
 ## Supporting Review Artifacts
 

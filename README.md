@@ -21,6 +21,12 @@ One-command verification:
 python scripts\verify_local_paper_rag_v1_0_handoff.py --root D:\devframe-system
 ```
 
+Submission-prep supplement verification:
+
+```powershell
+python scripts\verify_local_paper_rag_submission_prep_v1_0.py --root D:\devframe-system
+```
+
 Expected result:
 
 ```text

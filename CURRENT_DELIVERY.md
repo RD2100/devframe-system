@@ -55,12 +55,30 @@ Verifier outputs:
 
 - `integration/artifacts/paper-drafts/reference-format-audit-v1.0.md`
 - `integration/artifacts/paper-drafts/references-needs-human-check-v1.0.md`
+- `integration/artifacts/paper-drafts/gbt7714-preflight-v1.0.md`
+- `integration/artifacts/paper-drafts/submission-decision-matrix-v1.0.md`
 - `integration/artifacts/paper-drafts/usage-profile-short-paper-v1.0.md`
 - `integration/artifacts/paper-drafts/usage-profile-technical-note-v1.0.md`
 - `integration/artifacts/paper-drafts/usage-profile-internal-brief-v1.0.md`
 - `integration/artifacts/paper-drafts/allowed-claims-v1.0.md`
 - `integration/artifacts/paper-drafts/non-claim-boundary-v1.0.md`
 - `integration/artifacts/paper-drafts/v1.0-verification-risk-checklist.md`
+
+## Submission Prep Supplement
+
+GB/T 7714 and use-case preflight package:
+
+- `integration/artifacts/paper-drafts/local-paper-rag-submission-prep-v1.0-package.zip`
+
+SHA256:
+
+- `8433B733FEEFE22D2EF48AD8C365D329C6900BDAC6BD2FCE9CBD532912DFB40F`
+
+Verify with:
+
+```powershell
+python scripts\verify_local_paper_rag_submission_prep_v1_0.py --root D:\devframe-system
+```
 
 ## Supporting Reports
 
