@@ -221,6 +221,16 @@ quality-eval, and answer-preview reports. It does not claim final governance
 acceptance, paper-quality acceptance, production readiness, whole-vault
 readiness, broad/general RAG readiness, cloud readiness, or RuntimeAuthorization.
 
+Real authorized-folder reproduction after parent pin:
+
+- first run: `PASS_LOCAL_RAG_RUN`, `document_count=6`, `chunk_count=47`,
+  `retrieval_success_count=3`, `answer_preview_count=5`,
+  `refresh_required=true`, `index_reused=false`
+- second run: `PASS_LOCAL_RAG_RUN`, `document_count=6`, `chunk_count=47`,
+  `retrieval_success_count=3`, `answer_preview_count=5`,
+  `refresh_required=false`, `index_reused=true`
+- report: `D:\devframe-system\integration\reports\local-paper-rag-one-command-real-reproduction-2026-06-16.md`
+
 ## Current Local RAG Evidence
 
 Latest local RAG pipeline evidence accepted for current milestone review:
