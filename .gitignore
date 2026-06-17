@@ -1,3 +1,8 @@
 # Local agent runtime state
 .agent/*
 !.agent/PROJECT_REGISTRY.json
+
+# Python runtime cache
+__pycache__/
+**/__pycache__/
+*.py[cod]
