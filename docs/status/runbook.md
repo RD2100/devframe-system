@@ -81,7 +81,7 @@ Current delegated next-slice assignments:
 
 ## Paper Focus
 
-Paper functionality is tracked in `PAPER_FEATURE_STATUS.md` and
+Paper functionality is tracked in `docs/status/paper-feature-status.md` and
 `integration\paper\README.md`. Treat real paper text as sensitive by default:
 paper reports and evidence must use summaries, hashes, or redacted excerpts
 unless a fresh RuntimeAuthorization explicitly allows broader handling.

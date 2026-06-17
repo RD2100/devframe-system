@@ -47,8 +47,9 @@
 - [Getting Started](#getting-started)
 - [How to Use This Repository](#how-to-use-this-repository)
 - [Bootstrap the External-Brain System into Your Project](#bootstrap-the-external-brain-system-into-your-project)
-- [Current Delivery](#current-delivery)
-- [Submodules](#submodules)
+- [Status Documents](#status-documents)
+- [Repository Layout](#repository-layout)
+- [License](#license)
 
 ---
 
@@ -375,7 +376,7 @@ levels, core contracts, and forbidden tool categories.
 
 ## Getting Started
 
-Fastest path: read the first screen, open `CURRENT_DELIVERY.md`, run the listed
+Fastest path: read the first screen, open `docs/status/current-delivery.md`, run the listed
 verification command, and inspect the evidence report. That shows the core idea
 in practice: GPT-centered direction, executor output, and reviewer evidence.
 
@@ -449,7 +450,7 @@ runtime kit**. Pick the workflow that matches your role:
 | If you are... | Start here |
 |---|---|
 | Evaluating the idea | Read the hero, then [Why It Is Different](#why-it-is-different) |
-| Reviewing a delivery | Open `CURRENT_DELIVERY.md`, verify the package, then inspect `integration/reports/` |
+| Reviewing a delivery | Open `docs/status/current-delivery.md`, verify the package, then inspect `integration/reports/` |
 | Running an agent workflow | Write or review a TaskSpec under `integration/task-specs/` |
 | Porting the system elsewhere | Use `templates/runtime-bootstrap/bootstrap.ps1` with `-DryRun` first |
 | Extending the system | Check `docs/agent-runtime/capability-inventory.md` before adding capabilities |
@@ -462,8 +463,8 @@ Start from the lightweight entry points:
 
 1. `README.md` — project overview, architecture, and usage map.
 2. `AGENTS.md` — active project-local operating instructions and hard stops.
-3. `RUNBOOK.md` — safe read-only health checks and phase boundaries.
-4. `CURRENT_DELIVERY.md` — current reviewer-facing deliverables and their
+3. `docs/status/runbook.md` — safe read-only health checks and phase boundaries.
+4. `docs/status/current-delivery.md` — current reviewer-facing deliverables and their
    verification commands.
 
 In Phase 0-5, treat the repository as a governance baseline. Prefer read-only
@@ -481,18 +482,18 @@ git submodule status --recursive
 git diff --check
 ```
 
-For a fuller read-only inventory, follow `RUNBOOK.md`. The runbook lists the
+For a fuller read-only inventory, follow `docs/status/runbook.md`. The runbook lists the
 expected outputs, current phase gates, active TaskSpecs, and human-gate triggers.
 
 ### 3. Review a Current Delivery Package
 
-Use `CURRENT_DELIVERY.md` as the active handoff index. It tells reviewers which
+Use `docs/status/current-delivery.md` as the active handoff index. It tells reviewers which
 artifact package to open first, which hashes to verify, which scripts correspond
 to the current delivery, and which claims are intentionally out of scope.
 
 Typical review flow:
 
-1. Confirm the package path and SHA256 in `CURRENT_DELIVERY.md`.
+1. Confirm the package path and SHA256 in `docs/status/current-delivery.md`.
 2. Run only the listed verification command for that package.
 3. Compare produced evidence with the supporting reports under
    `integration/reports/`.
@@ -632,140 +633,43 @@ your-project/
 
 ---
 
-# Current Delivery
+# Status Documents
 
-The active handoff entrypoint is: `CURRENT_DELIVERY.md`
+The GitHub root is intentionally kept as the public product entry. Operational
+state, delivery reports, risk logs, and module pin details live under
+`docs/status/`.
 
-Current reviewer-facing paper/RAG artifact:
+| Need | Open |
+|---|---|
+| Current reviewer handoff | `docs/status/current-delivery.md` |
+| Safe read-only checks | `docs/status/runbook.md` |
+| Submodule pin summary | `docs/status/submodules.md` |
+| Bootstrap result | `docs/status/bootstrap-report.md` |
+| Completion matrix | `docs/status/completion-matrix.md` |
+| Integration status | `docs/status/integration-status.md` |
+| Paper feature status | `docs/status/paper-feature-status.md` |
+| Risk register | `docs/status/risk-register.md` |
 
-- `integration/artifacts/paper-drafts/local-paper-rag-review-variants-v1.1-package.zip`
-
-Recommended first DOCX:
-
-- `integration/artifacts/paper-drafts/local-paper-rag-short-paper-v1.1.docx`
-
-One-command verification:
-
-```powershell
-python scripts\verify_local_paper_rag_v1_0_handoff.py --root D:\devframe-system
-python scripts\verify_local_paper_rag_final_review_v1_1.py --root D:\devframe-system
-```
-
-Submission-prep supplement verification:
-
-```powershell
-python scripts\verify_local_paper_rag_submission_prep_v1_0.py --root D:\devframe-system
-```
-
-Review-variants supplement verification:
-
-```powershell
-python scripts\verify_local_paper_rag_review_variants_v1_0.py --root D:\devframe-system
-```
-
-Submission-candidate supplement verification:
-
-```powershell
-python scripts\verify_local_paper_rag_submission_candidate_v1_2.py --root D:\devframe-system
-```
-
-Expected results:
+# Repository Layout
 
 ```text
-PASS_LOCAL_PAPER_RAG_V1_0_HANDOFF_VERIFICATION        passed=36  failed=0
-PASS_LOCAL_PAPER_RAG_FINAL_REVIEW_V1_1_VERIFICATION   passed=109 failed=0
-PASS_LOCAL_PAPER_RAG_REVIEW_VARIANTS_V1_0_VERIFICATION passed=79  failed=0
-PASS_LOCAL_PAPER_RAG_SUBMISSION_CANDIDATE_V1_2_VERIFICATION passed=52 failed=0
-```
-
-Current optional review variants:
-
-- Short paper:
-  `integration/artifacts/paper-drafts/local-paper-rag-short-paper-v1.1.docx`
-- Technical note:
-  `integration/artifacts/paper-drafts/local-paper-rag-technical-note-v1.1.docx`
-- Internal brief:
-  `integration/artifacts/paper-drafts/local-paper-rag-internal-brief-v1.1.docx`
-
-Generic GB/T-style submission candidate:
-
-- `integration/artifacts/paper-drafts/local-paper-rag-submission-candidate-v1.2.docx`
-
-This is a non-final human-review handoff. It does not claim final
-paper-quality acceptance, training-effect acceptance, production readiness,
-broad RAG readiness, or RuntimeAuthorization.
-
-# Submodules
-
-Authoritative current pins are `integration/lock/submodules.lock.yml` plus the
-Git submodule entries in the parent tree.
-
-| Path | Role | Branch | Pinned commit |
-|---|---|---|---|
-| `agent-acceptance` | Governance and acceptance framework | `codex/paper-archive-final-verdict-boundary` | `2e0bd56` |
-| `devframe-control-plane` | Control-plane runtime candidate | `codex/lease-source-lock-contracts` | `09167bc` |
-| `dev-frame-opencode` | Opencode workflow/runtime candidate | `codex/paper-audit-privacy-hard-gate` | `528f5b8` |
-| `test-frame` | Controlled verification runtime candidate | `codex/adapter-negative-matrix` | `72c3150` |
-
-## Boundary
-
-- Physical merge type: superproject plus submodules.
-- No source squashing or monorepo copy was performed.
-- No external runtime was executed during bootstrap.
-- Each source repository was clean before pinning.
-- `dev-frame-opencode` local tests were verified before pinning:
-  `python -m pytest tests -q` → `2451 passed, 2 skipped, 3 warnings`.
-
-## Project Structure
-
-```
-D:\devframe-system\
-├── AGENTS.md                           ← Agent entry point (generated)
-├── CURRENT_DELIVERY.md                 ← Active handoff entrypoint
-├── README.md                           ← This file
-├── agent-acceptance/                   ← [submodule] Governance & acceptance
-├── dev-frame-opencode/                 ← [submodule] Workflow/RAG pipeline
-├── devframe-control-plane/             ← [submodule] Control-plane (frozen)
-├── test-frame/                         ← [submodule] Verification runtime
+devframe-system/
+├── README.md                 # default English project entry
+├── README.zh-CN.md           # Simplified Chinese project entry
+├── AGENTS.md                 # agent entrypoint and hard-stop rules
+├── BASELINE_LOCK.json        # machine-readable submodule baseline
 ├── docs/
-│   └── agent-runtime/                  ← Governance documentation (12+ files)
-│       ├── operating-model.md
-│       ├── integration-contracts.md
-│       ├── verification-gates.md
-│       ├── sub-agent-dispatch-protocol.md
-│       ├── reviewer-playbook.md
-│       ├── capability-inventory.md
-│       ├── tool-policy.md
-│       ├── dispatch-model-profiles.md
-│       ├── lessons-learned.md
-│       ├── runtime-invariants.md
-│       ├── project-local-skill-bindings.md
-│       ├── negative-acceptance-tests.md
-│       └── negative-test-fixtures/     ← 30 JSON negative test fixtures
-├── rules/                              ← Rule system (46 rules, 7 domains)
-│   ├── README.md
-│   ├── core.md
-│   ├── coding.md
-│   ├── security.md
-│   ├── review.md
-│   ├── git.md
-│   ├── research.md
-│   └── frontend.md
-├── schemas/                            ← JSON Schema validation (54+ files)
-│   ├── agent-runtime/
-│   ├── resource-integration/
-│   └── draft/
-├── templates/
-│   └── runtime-bootstrap/              ← Bootstrap deployment system
-│       ├── bootstrap.ps1
-│       ├── AGENTS.template.md
-│       ├── capability-inventory.template.md
-│       └── tool-policy.template.md
-├── integration/                        ← Artifacts, reports, paper drafts
-├── scripts/                            ← Verification scripts (Python)
-└── .agent/                             ← Agent-specific state & evidence
+│   ├── agent-runtime/        # governance contracts, gates, and protocols
+│   ├── assets/               # README artwork
+│   └── status/               # delivery state, runbooks, risks, and reports
+├── rules/                    # portable rule set
+├── schemas/                  # JSON Schemas for runtime contracts
+├── templates/                # bootstrap package for other projects
+├── scripts/                  # read-only checks and packaging helpers
+├── integration/              # task specs, evidence, artifacts, and reports
+└── */                        # pinned submodule workspaces
 ```
 
-## License
+# License
 
 This project is proprietary. All rights reserved.

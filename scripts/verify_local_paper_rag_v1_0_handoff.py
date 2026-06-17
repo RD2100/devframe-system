@@ -88,7 +88,7 @@ def verify(root: Path) -> dict[str, Any]:
         "allowed_claims": artifacts / "allowed-claims-v1.0.md",
         "non_claim_boundary": artifacts / "non-claim-boundary-v1.0.md",
         "verification_checklist": artifacts / "v1.0-verification-risk-checklist.md",
-        "current_delivery": root / "CURRENT_DELIVERY.md",
+        "current_delivery": root / "docs/status/current-delivery.md",
     }
 
     for label, path in paths.items():
